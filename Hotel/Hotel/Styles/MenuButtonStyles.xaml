@@ -20,7 +20,7 @@
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#F8F7FC" />
+                <Setter Property="Background" Value="White" />
                 <Setter Property="Foreground" Value="#6F53F3" />
                 <Setter Property="Tag" Value="Visible" />
             </Trigger>
@@ -28,9 +28,8 @@
             <Trigger Property="IsMouseOver" Value="False">
                 <Setter Property="Tag" Value="Hidden" />
             </Trigger>
-
             <DataTrigger Binding="{Binding ElementName=menuButton, Path=IsActive}" Value="True">
-                <Setter Property="Background" Value="#F8F7FC" />
+                <Setter Property="Background" Value="White" />
                 <Setter Property="Foreground" Value="#6F53F3" />
                 <Setter Property="Tag" Value="Visible" />
             </DataTrigger>
