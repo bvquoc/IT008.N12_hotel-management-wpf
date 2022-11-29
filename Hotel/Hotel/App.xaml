@@ -4,15 +4,14 @@
              xmlns:local="clr-namespace:Hotel"
 			 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             StartupUri="MainWindow.xaml">
+             StartupUri="View/Login.xaml">
     <Application.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
 				<materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="DeepPurple" SecondaryColor="Lime" />
 				<ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-				<ResourceDictionary Source="/Styles/MenuButtonStyles.xaml"/>
-				<ResourceDictionary Source="/Styles/SearchTextBoxStyles.xaml"/>
-			</ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/MenuButtonStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
     </Application.Resources>
 </Application>

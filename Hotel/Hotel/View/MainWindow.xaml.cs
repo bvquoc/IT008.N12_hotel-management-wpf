@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-namespace DoAn.View
+namespace Hotel.View
 {
     /// <summary>
     /// Interaction logic for Menu.xaml
