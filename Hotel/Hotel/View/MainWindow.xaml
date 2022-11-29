@@ -20,11 +20,10 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="55"/>
             <ColumnDefinition Width="220"/>
-            <ColumnDefinition Width="350"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <!--BackGround-->
@@ -49,39 +48,157 @@
                 Margin="-55,0,0,0" 
                 >
             <Grid>
-                <!--TopCombobox-->
-                <ComboBox VerticalAlignment="Top"
-                          Margin="25 45 0 0">
-                </ComboBox>
                 <!--Menu Buttons-->
                 <StackPanel Margin="0 160 0 0">
-                    <local:MenuButton Title="Phòng"
-                                   Icon="HomeOutline" />
+                    <local:MenuButton x:Name="Phong"
+                        Title="Phòng"
+                                   Icon="HomeOutline" 
+                                   MouseLeftButtonDown="Phong_Click"
+                                      
+                                      />
 
-                    <local:MenuButton Title="Đặt phòng"
-                                   Icon="ChartTimelineVariantShimmer" />
+                    <local:MenuButton x:Name="DatPhong"
+                        Title="Đặt phòng"
+                                   Icon="ChartTimelineVariantShimmer" 
+                                    MouseLeftButtonDown="DatPhong_Click"  />
 
-                    <local:MenuButton Title="Quản lý khách hàng"
-                                   Icon="AccountMultipleOutline" />
+                    <local:MenuButton x:Name="QlyKH"
+                        Title="Quản lý khách hàng"
+                                   Icon="AccountMultipleOutline" 
+                                      MouseLeftButtonDown="QlyKH_Click"/>
 
-                    <local:MenuButton Title="Quản lý phòng"
-                                   Icon="MessageOutline" />
+                    <local:MenuButton x:Name="QlyP" Title="Quản lý phòng"
+                                   Icon="MessageOutline" 
+                                      MouseLeftButtonDown="QlyP_Click"/>
 
-                    <local:MenuButton Title="Hóa đơn"
-                                   Icon="CurrencyUsd" />
+                    <local:MenuButton x:Name="HoaDon" Title="Hóa đơn"
+                                   Icon="CurrencyUsd" 
+                                      MouseLeftButtonDown="HoaDon_Click"/>
 
-                    <local:MenuButton Title="Quản lý dịch vụ"
-                                   Icon="MapMarkerOutline" />
+                    <local:MenuButton x:Name="QLyDV" Title="Quản lý dịch vụ"
+                                   Icon="MapMarkerOutline" 
+                                      MouseLeftButtonDown="QlyDV_Click"/>
                 </StackPanel>
                 <StackPanel VerticalAlignment="Bottom"
                             Margin="25 0 0 40">
                     <local:MenuButton Title="Logout"
                                    Icon="Logout" />
                 </StackPanel>
-
             </Grid>
         </Border>
-        <!--Top Section-->
-        
+        <!--Close, Maximize, Minimize-->
+        <Grid Grid.Row="0"
+              Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="25"/>
+                <ColumnDefinition Width="25"/>
+                <ColumnDefinition Width="25"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="MainWindow"
+                           Foreground="Black"
+                           FontSize="20"
+                           FontFamily="Montserrat"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Margin="10,0,0,0">
+            </TextBlock>
+            <Button x:Name="btnMinimize"
+                        BorderThickness="0"
+                        Content="-"
+                        Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="1"
+                        Click="btnMinimize_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Aqua"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#0066ff"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="18" 
+                                    Height="18" 
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="btnClose"
+                        BorderThickness="0"
+                        Content="X"
+                        Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="3"
+                        Click="btnClose_Click" Height="22" VerticalAlignment="Center">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Aqua"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="OrangeRed"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="18" 
+                                    Height="18" 
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="btnMaximize"
+                    
+                        BorderThickness="0"
+                        Content="{materialDesign:PackIcon Kind=WindowMaximize}"
+                        Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="2"
+                        Click="btnMaximize_Click" Height="22" VerticalAlignment="Center"
+                    >
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Aqua"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="OrangeRed"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="18" 
+                                    Height="18" 
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
     </Grid>
 </Window>

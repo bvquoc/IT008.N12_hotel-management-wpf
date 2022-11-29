@@ -49,6 +49,5 @@ namespace Hotel.View
         }
 
         public static readonly DependencyProperty IconProperty = DependencyProperty.Register("Icon", typeof(MahApps.Metro.IconPacks.PackIconMaterialKind), typeof(MenuButton));
-
     }
 }
