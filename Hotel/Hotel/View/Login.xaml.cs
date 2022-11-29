@@ -28,14 +28,5 @@ namespace Hotel.View
         {
             Application.Current.Shutdown();
         }
-
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-            MainWindow main = new MainWindow();
-            main.Show();
-            this.Close();
-
-        }
     }
 }
