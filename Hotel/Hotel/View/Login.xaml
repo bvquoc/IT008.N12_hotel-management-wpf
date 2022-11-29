@@ -22,7 +22,7 @@
     </Window.DataContext>
 
     <Border CornerRadius="10"
-            BorderBrush="#ffff99"
+            BorderBrush="#99c2ff"
             BorderThickness="5">
         <Border.Background>
             <ImageBrush ImageSource="/Images/BackgroundLogin.jpg"
@@ -40,14 +40,7 @@
                     <ColumnDefinition Width="25" />
                     <ColumnDefinition Width="5" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Log in"
-                           Foreground="DarkGray"
-                           FontSize="10"
-                           FontFamily="Montserrat"
-                           Grid.Column="0"
-                           VerticalAlignment="Center"
-                           Margin="10,0,0,0">
-                </TextBlock>
+
                 <Button x:Name="btnMinimize"
                         BorderThickness="0"
                         Content="-"
@@ -128,7 +121,7 @@
                     BorderBrush="Transparent"
                     BorderThickness="10"
                     Margin="70,158,470,102"
-                    Background="#6300cc"
+                    Background="#99c2ff"
                     Opacity="0.9">
                 <StackPanel Width="250"
                             Orientation="Vertical">
@@ -141,7 +134,6 @@
                                Margin="10,10,10,0"
                                Opacity="0.9" />
                     <TextBox x:Name="txtUser"
-                             materialDesign:HintAssist.Hint="Tài khoản"
                              FontSize="15"
                              FontFamily="Montserrat"
                              FontWeight="Medium"
@@ -152,8 +144,7 @@
                              BorderThickness="0,0,0,2"
                              Height="28"
                              VerticalContentAlignment="Center"
-                             Margin="10,5,30,10"
-                             Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                             Margin="10,5,30,10">
                         <TextBox.Background>
                             <ImageBrush ImageSource="/Images/UserLogin.png"
                                         Stretch="None"
@@ -167,7 +158,6 @@
                                FontWeight="Medium"
                                Margin="10,15,10,0" />
                     <PasswordBox x:Name="txtPass"
-                                 materialDesign:HintAssist.Hint="Mật khẩu"
                                  FontSize="15"
                                  FontFamily="Montserrat"
                                  FontWeight="Medium"
@@ -178,8 +168,7 @@
                                  BorderThickness="0,0,0,2"
                                  Height="28"
                                  VerticalContentAlignment="Center"
-                                 Margin="10,5,30,10"
-                                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+                                 Margin="10,5,30,10">
                         <PasswordBox.Background>
                             <ImageBrush ImageSource="/Images/KeyLogin.png"
                                         Stretch="None"
@@ -188,7 +177,7 @@
                     </PasswordBox>
                     <Button x:Name="btnLogin"
                             BorderThickness="0"
-                            Content="Login"
+                            Content="Đăng nhập"
                             Foreground="#0066ff"
                             FontSize="20"
                             FontFamily="Montserrat"
