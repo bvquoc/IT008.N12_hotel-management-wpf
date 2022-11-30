@@ -25,6 +25,7 @@ namespace Hotel.ViewModel
             MainWindow mainWindow = new MainWindow();
             mainWindow.ShowDialog();
             parameter.Close();
+            /// alo lao
         }
     }
 }
