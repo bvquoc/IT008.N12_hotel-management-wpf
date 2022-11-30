@@ -7,4 +7,30 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Images\BackgroundLogin.jpg" />
+    <None Remove="Images\KeyLogin.png" />
+    <None Remove="Images\UserLogin.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="Command\" />
+    <Folder Include="Styles\" />
+    <Folder Include="ViewModel\" />
+    <Folder Include="View\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
+    <PackageReference Include="ShowMeTheXAML" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\BackgroundLogin.jpg" />
+    <Resource Include="Images\KeyLogin.png" />
+    <Resource Include="Images\UserLogin.png" />
+  </ItemGroup>
+
 </Project>
