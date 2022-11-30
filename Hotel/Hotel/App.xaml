@@ -2,16 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Hotel"
-			 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             StartupUri="View/Login.xaml">
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
-		<ResourceDictionary>
-			<ResourceDictionary.MergedDictionaries>
-				<materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="DeepPurple" SecondaryColor="Lime" />
-				<ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <ResourceDictionary Source="/Styles/MenuButtonStyles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-		</ResourceDictionary>
+         
     </Application.Resources>
 </Application>
