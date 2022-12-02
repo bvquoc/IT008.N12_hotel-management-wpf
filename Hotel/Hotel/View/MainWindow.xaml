@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hotel.View"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:mv="clr-namespace:Hotel.ViewModel"
@@ -232,6 +232,38 @@
                         </Border>
                     </ControlTemplate>
                 </Button.Template>
+            </Button>
+            <Button 
+                        x:Name="btnEmployee" 
+                        Uid="4"
+                        Command="{Binding E_LoadCommand}"
+                        CommandParameter="{Binding ElementName=wdHome}"
+                        Content="Nhân viên"
+                        HorizontalAlignment="Right" 
+                        Height="40" 
+                        Margin="0" 
+                        Width="170" 
+                        VerticalAlignment="Center"
+                        BorderBrush="{x:Null}"
+                        Background="{x:Null}"
+                        FontSize="20" 
+                        VerticalContentAlignment="Center" 
+                        HorizontalContentAlignment="Left" 
+                        FontWeight="SemiBold" 
+                        Padding="50,0,0,0" 
+                        Cursor="Hand"
+                        FocusVisualStyle="{x:Null}"
+                        >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding SwitchTabCommand}" 
+                                                       CommandParameter="{Binding ElementName=wdHome}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="MouseMove">
+                        <i:InvokeCommandAction Command="{Binding GetUidCommand}" 
+                                                       CommandParameter="{Binding ElementName=btnEmployee}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </Button>
         </Grid>
     </Grid>
