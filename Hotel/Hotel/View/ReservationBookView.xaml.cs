@@ -16,9 +16,9 @@ using System.Windows.Shapes;
 namespace Hotel.View
 {
     /// <summary>
-    /// Interaction logic for DatPhongView.xaml
+    /// Interaction logic for ReservationBookView.xaml
     /// </summary>
-    public partial class ReservationBookView : Page
+    public partial class ReservationBookView : UserControl
     {
         public ReservationBookView()
         {

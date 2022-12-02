@@ -183,5 +183,9 @@ namespace Hotel.View
                 MessageBox.Show("Clicked!");
             }
         }
+
+        private void Phong_MouseEnter(object sender, MouseEventArgs e)
+        {
+        }
     }
 }

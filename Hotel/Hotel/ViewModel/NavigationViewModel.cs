@@ -1,5 +1,4 @@
-﻿using Hotel.Utilities;
-using Hotel.View;
+﻿using Hotel.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +10,7 @@ using System.Windows.Input;
 
 namespace Hotel.ViewModel
 {
-    internal class NavigationViewModel : ViewModelBase
+    internal class NavigationViewModel : BaseViewModel
     {
         private object _currentView;
         public object CurrentView
@@ -26,37 +25,40 @@ namespace Hotel.ViewModel
         public ICommand BillView { get; set; }
         public ICommand ManageServiceView { get; set; }
         public ICommand MakeNavigation { get; set; }
+        private string uid;
         public NavigationViewModel()
         {
-            RoomView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
-            {
-                parameter.Content = new RoomView();
-            });
-            ReservationBookView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
-            {
-                parameter.Content = new ReservationBookView();
-            });
-            ManageCustomerView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
-            {
-                parameter.Content = new ManageCustomerView();
-            });
-            ManageRoomView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
-            {
-                parameter.Content = new ManageRoomView();
-            });
-            BillView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
-            {
-                parameter.Content = new BillView();
-            });
-            ManageServiceView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
-            {
-                parameter.Content = new ManageServiceView();
-            });
+
+            GetFrame = new RelayCommand<Frame>((parameter) => true, (parameter) => CurrentView = parameter);
+
+            GetUidCommand = new RelayCommand<Button>((parameter) => true, (parameter) => uid = parameter.Uid);
+
             MakeNavigation = new RelayCommand<Button>((parameter) => true, (parameter) =>
             {
-                MessageBox.Show(parameter.Name.ToString());
+                switch (uid)
+                {
+                    case "0":
+                        CurrentView.Content = new PhongView();
+                        break;
+                    case "1":
+                        CurrentView.Content = new DatPhongView();
+                        break;
+                    case "2":
+                        CurrentView.Content = new QuanLyDVView();
+                        break;
+                    case "3":
+                        CurrentView.Content = new QuanLyPhongView();
+                        break;
+                    case "4":
+                        CurrentView.Content = new HoaDonView();
+                        break;
+                    case "5":
+                        CurrentView.Content = new QuanLyDVView();
+                        break;
+                    default: throw new ArgumentOutOfRangeException(nameof(uid));
+                }
             });
-            CurrentView = new RoomView();
+            CurrentView.Content = new PhongView();
         }
     }
 }
