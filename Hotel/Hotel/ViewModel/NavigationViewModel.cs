@@ -12,9 +12,18 @@ namespace Hotel.ViewModel
 {
     internal class NavigationViewModel : BaseViewModel
     {
-        public Frame CurrentView;
-        public ICommand GetFrame { get; set; }
-        public ICommand GetUidCommand { get; set; }
+        private object _currentView;
+        public object CurrentView
+        {
+            get { return _currentView; }
+            set { _currentView = value; OnPropertyChanged(); }
+        }
+        public ICommand RoomView { get; set; }
+        public ICommand ReservationBookView { get; set; }
+        public ICommand ManageCustomerView { get; set; }
+        public ICommand ManageRoomView { get; set; }
+        public ICommand BillView { get; set; }
+        public ICommand ManageServiceView { get; set; }
         public ICommand MakeNavigation { get; set; }
         private string uid;
         public NavigationViewModel()

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Hotel.View
 {
     /// <summary>
-    /// Interaction logic for PhongView.xaml
+    /// Interaction logic for BillView.xaml
     /// </summary>
-    public partial class PhongView : Page
+    public partial class BillView : UserControl
     {
-        public PhongView()
+        public BillView()
         {
             InitializeComponent();
         }
