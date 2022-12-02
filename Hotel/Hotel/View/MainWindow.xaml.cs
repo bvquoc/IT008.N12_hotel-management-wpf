@@ -12,7 +12,7 @@ namespace Hotel.View
         {
             InitializeComponent();
         }
-        bool isMaximize=false;
+        bool isMaximize = false;
         bool isClick = false;
         private void Border_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -67,11 +67,11 @@ namespace Hotel.View
                 isMaximize = true;
             }
         }
-        
+
 
         private void Phong_Click(object sender, MouseButtonEventArgs e)
         {
-            if(!isClick)
+            if (!isClick)
             {
                 Phong.IsActive = true;
                 isClick = true;
@@ -174,6 +174,13 @@ namespace Hotel.View
                 QlyKH.IsActive = false;
                 QlyP.IsActive = false;
                 HoaDon.IsActive = false;
+            }
+        }
+        private void Phong_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                MessageBox.Show("Clicked!");
             }
         }
     }

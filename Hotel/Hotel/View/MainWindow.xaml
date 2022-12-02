@@ -4,27 +4,33 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hotel.View"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mv="clr-namespace:Hotel.ViewModel"
         mc:Ignorable="d"
-        Title="Menu" Height="750" Width="1100"
+        Title="Menu"
+        Height="750"
+        Width="1100"
         Background="Transparent"
         AllowsTransparency="True"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Panel.ZIndex="999"
-        Name="MainAdminWindow"
-        >
+        Name="MainAdminWindow">
+    <Window.DataContext>
+        <mv:NavigationViewModel />
+    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="55"/>
-            <ColumnDefinition Width="220"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="55" />
+            <ColumnDefinition Width="220" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <!--BackGround-->
         <Border CornerRadius="0,20,20,0"
@@ -34,55 +40,72 @@
                 Margin="-25,0,0,0"
                 Grid.RowSpan="2"
                 MouseDown="Border_MouseDown"
-                MouseLeftButtonDown="Border_MouseLeftButtonDown"/>
+                MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <Frame Margin="50 30 10 10"
+                   x:Name="MainNav"
+                   NavigationUIVisibility="Hidden"
+                   Content="{Binding CurrentView}">
+
+            </Frame>
+        </Border>
+
         <Border CornerRadius="20"
                 Background="#99c2ff"
-                Grid.RowSpan="2"/>
+                Grid.RowSpan="2" />
         <!--LeftMenu-->
-        <Border 
+        <Border x:Name="AllMenuButton"
                 Grid.Column="1"
                 Grid.RowSpan="2"
                 CornerRadius="20"
                 Background="#99c2ff"
                 Panel.ZIndex="1"
-                Margin="-55,0,0,0" 
-                >
+                Margin="-55,0,0,0">
             <Grid>
                 <!--Menu Buttons-->
+                <!--MouseLeftButtonDown="Phong_Click"-->
+                <!--MouseLeftButtonDown="DatPhong_Click"-->
                 <StackPanel Margin="0 160 0 0">
                     <local:MenuButton x:Name="Phong"
-                        Title="Phòng"
-                                   Icon="HomeOutline" 
-                                   MouseLeftButtonDown="Phong_Click"
-                                      
-                                      />
+                                      Title="Phòng"
+                                      Icon="HomeOutline"
+                                      Cursor="Hand">
+
+                    </local:MenuButton>
 
                     <local:MenuButton x:Name="DatPhong"
-                        Title="Đặt phòng"
-                                   Icon="ChartTimelineVariantShimmer" 
-                                    MouseLeftButtonDown="DatPhong_Click"  />
+                                      Title="Đặt phòng"
+                                      Icon="ChartTimelineVariantShimmer"
+                                      Cursor="Hand" />
 
                     <local:MenuButton x:Name="QlyKH"
-                        Title="Quản lý khách hàng"
-                                   Icon="AccountMultipleOutline" 
-                                      MouseLeftButtonDown="QlyKH_Click"/>
+                                      Title="Quản lý khách hàng"
+                                      Icon="AccountMultipleOutline"
+                                      MouseLeftButtonDown="QlyKH_Click"
+                                      Cursor="Hand" />
 
-                    <local:MenuButton x:Name="QlyP" Title="Quản lý phòng"
-                                   Icon="MessageOutline" 
-                                      MouseLeftButtonDown="QlyP_Click"/>
+                    <local:MenuButton x:Name="QlyP"
+                                      Title="Quản lý phòng"
+                                      Icon="MessageOutline"
+                                      MouseLeftButtonDown="QlyP_Click"
+                                      Cursor="Hand" />
 
-                    <local:MenuButton x:Name="HoaDon" Title="Hóa đơn"
-                                   Icon="CurrencyUsd" 
-                                      MouseLeftButtonDown="HoaDon_Click"/>
+                    <local:MenuButton x:Name="HoaDon"
+                                      Title="Hóa đơn"
+                                      Icon="CurrencyUsd"
+                                      MouseLeftButtonDown="HoaDon_Click"
+                                      Cursor="Hand" />
 
-                    <local:MenuButton x:Name="QLyDV" Title="Quản lý dịch vụ"
-                                   Icon="MapMarkerOutline" 
-                                      MouseLeftButtonDown="QlyDV_Click"/>
+                    <local:MenuButton x:Name="QLyDV"
+                                      Title="Quản lý dịch vụ"
+                                      Icon="MapMarkerOutline"
+                                      MouseLeftButtonDown="QlyDV_Click"
+                                      Cursor="Hand" />
                 </StackPanel>
                 <StackPanel VerticalAlignment="Bottom"
                             Margin="25 0 0 40">
                     <local:MenuButton Title="Logout"
-                                   Icon="Logout" />
+                                      Icon="Logout"
+                                      Cursor="Hand" />
                 </StackPanel>
             </Grid>
         </Border>
@@ -90,111 +113,122 @@
         <Grid Grid.Row="0"
               Grid.Column="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="25"/>
-                <ColumnDefinition Width="25"/>
-                <ColumnDefinition Width="25"/>
-                <ColumnDefinition Width="10"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="25" />
+                <ColumnDefinition Width="25" />
+                <ColumnDefinition Width="25" />
+                <ColumnDefinition Width="10" />
             </Grid.ColumnDefinitions>
             <TextBlock Text="MainWindow"
-                           Foreground="Black"
-                           FontSize="20"
-                           FontFamily="Montserrat"
-                           Grid.Column="0"
-                           VerticalAlignment="Center"
-                           Margin="10,0,0,0">
+                       Foreground="Black"
+                       FontSize="20"
+                       FontFamily="Montserrat"
+                       Grid.Column="0"
+                       VerticalAlignment="Center"
+                       Margin="10,0,0,0">
             </TextBlock>
             <Button x:Name="btnMinimize"
-                        BorderThickness="0"
-                        Content="-"
-                        Foreground="White"
-                        FontSize="16"
-                        FontFamily="Montserrat"
-                        Cursor="Hand"
-                        Grid.Column="1"
-                        Click="btnMinimize_Click">
+                    BorderThickness="0"
+                    Content="-"
+                    Foreground="White"
+                    FontSize="16"
+                    FontFamily="Montserrat"
+                    Cursor="Hand"
+                    Grid.Column="1"
+                    Click="btnMinimize_Click">
                 <Button.Style>
                     <Style TargetType="Button">
-                        <Setter Property="Background" Value="Aqua"/>
+                        <Setter Property="Background"
+                                Value=" Aqua" />
                         <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#0066ff"/>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#0066ff" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
-                        <Border Width="18" 
-                                    Height="18" 
-                                    CornerRadius="9"
-                                    Background="{TemplateBinding Background}">
+                        <Border Width="18"
+                                Height="18"
+                                CornerRadius="9"
+                                Background="{TemplateBinding Background}">
                             <ContentPresenter VerticalAlignment="Center"
-                                                  HorizontalAlignment="Center"/>
+                                              HorizontalAlignment="Center" />
                         </Border>
                     </ControlTemplate>
                 </Button.Template>
             </Button>
             <Button x:Name="btnClose"
-                        BorderThickness="0"
-                        Content="X"
-                        Foreground="White"
-                        FontSize="16"
-                        FontFamily="Montserrat"
-                        Cursor="Hand"
-                        Grid.Column="3"
-                        Click="btnClose_Click" Height="22" VerticalAlignment="Center">
+                    BorderThickness="0"
+                    Content="X"
+                    Foreground="White"
+                    FontSize="16"
+                    FontFamily="Montserrat"
+                    Cursor="Hand"
+                    Grid.Column="3"
+                    Click="btnClose_Click"
+                    Height="22"
+                    VerticalAlignment="Center">
                 <Button.Style>
                     <Style TargetType="Button">
-                        <Setter Property="Background" Value="Aqua"/>
+                        <Setter Property="Background"
+                                Value="Aqua" />
                         <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="OrangeRed"/>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="OrangeRed" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
-                        <Border Width="18" 
-                                    Height="18" 
-                                    CornerRadius="9"
-                                    Background="{TemplateBinding Background}">
+                        <Border Width="18"
+                                Height="18"
+                                CornerRadius="9"
+                                Background="{TemplateBinding Background}">
                             <ContentPresenter VerticalAlignment="Center"
-                                                  HorizontalAlignment="Center"/>
+                                              HorizontalAlignment="Center" />
                         </Border>
                     </ControlTemplate>
                 </Button.Template>
             </Button>
             <Button x:Name="btnMaximize"
-                    
-                        BorderThickness="0"
-                        Content="{materialDesign:PackIcon Kind=WindowMaximize}"
-                        Foreground="White"
-                        FontSize="16"
-                        FontFamily="Montserrat"
-                        Cursor="Hand"
-                        Grid.Column="2"
-                        Click="btnMaximize_Click" Height="22" VerticalAlignment="Center"
-                    >
+                    BorderThickness="0"
+                    Content="{materialDesign:PackIcon Kind=WindowMaximize}"
+                    Foreground="White"
+                    FontSize="16"
+                    FontFamily="Montserrat"
+                    Cursor="Hand"
+                    Grid.Column="2"
+                    Click="btnMaximize_Click"
+                    Height="22"
+                    VerticalAlignment="Center">
                 <Button.Style>
                     <Style TargetType="Button">
-                        <Setter Property="Background" Value="Aqua"/>
+                        <Setter Property="Background"
+                                Value="Aqua" />
                         <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="OrangeRed"/>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="OrangeRed" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
-                        <Border Width="18" 
-                                    Height="18" 
-                                    CornerRadius="9"
-                                    Background="{TemplateBinding Background}">
+                        <Border Width="18"
+                                Height="18"
+                                CornerRadius="9"
+                                Background="{TemplateBinding Background}">
                             <ContentPresenter VerticalAlignment="Center"
-                                                  HorizontalAlignment="Center"/>
+                                              HorizontalAlignment="Center" />
                         </Border>
                     </ControlTemplate>
                 </Button.Template>
