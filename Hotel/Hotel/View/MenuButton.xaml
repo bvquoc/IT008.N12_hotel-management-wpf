@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:vm="clr-namespace:Hotel.ViewModel"
              mc:Ignorable="d"
              d:DesignWidth="200"
@@ -30,6 +30,7 @@
         </Grid>
         <Button x:Name="btn"
                 Panel.ZIndex="2"
+                Uid="{Binding ElementName=menuButton,Path=Uid}"
                 Style="{StaticResource menuButton}">
             <StackPanel Orientation="Horizontal">
                 <icon:PackIconMaterial Kind="{Binding ElementName=menuButton,Path=Icon}"
@@ -37,6 +38,16 @@
                 <TextBlock Text="{Binding ElementName=menuButton,Path=Title}"
                            Style="{StaticResource menuButtonText}" />
             </StackPanel>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseEnter">
+                    <i:InvokeCommandAction Command="{Binding GetUidCommand}"
+                                           CommandParameter="{Binding ElementName=btn}" />
+                </i:EventTrigger>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding MakeNavigation}"
+                                           CommandParameter="{Binding ElementName=btn}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
         </Button>
     </Grid>
 </UserControl>

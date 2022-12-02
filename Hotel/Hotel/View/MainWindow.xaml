@@ -43,9 +43,13 @@
                 MouseLeftButtonDown="Border_MouseLeftButtonDown">
             <Frame Margin="50 30 10 10"
                    x:Name="MainNav"
-                   NavigationUIVisibility="Hidden"
-                   Content="{Binding CurrentView}">
-
+                   NavigationUIVisibility="Hidden">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding GetFrame}"
+                                               CommandParameter="{Binding ElementName=MainNav}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </Frame>
         </Border>
 
@@ -66,6 +70,7 @@
                 <!--MouseLeftButtonDown="DatPhong_Click"-->
                 <StackPanel Margin="0 160 0 0">
                     <local:MenuButton x:Name="Phong"
+                                      Uid="0"
                                       Title="Phòng"
                                       Icon="HomeOutline"
                                       Cursor="Hand">
@@ -73,32 +78,35 @@
                     </local:MenuButton>
 
                     <local:MenuButton x:Name="DatPhong"
+                                      Uid="1"
                                       Title="Đặt phòng"
                                       Icon="ChartTimelineVariantShimmer"
-                                      Cursor="Hand" />
+                                      Cursor="Hand">
+
+                    </local:MenuButton>
 
                     <local:MenuButton x:Name="QlyKH"
+                                      Uid="2"
                                       Title="Quản lý khách hàng"
                                       Icon="AccountMultipleOutline"
-                                      MouseLeftButtonDown="QlyKH_Click"
                                       Cursor="Hand" />
 
                     <local:MenuButton x:Name="QlyP"
+                                      Uid="3"
                                       Title="Quản lý phòng"
                                       Icon="MessageOutline"
-                                      MouseLeftButtonDown="QlyP_Click"
                                       Cursor="Hand" />
 
                     <local:MenuButton x:Name="HoaDon"
+                                      Uid="4"
                                       Title="Hóa đơn"
                                       Icon="CurrencyUsd"
-                                      MouseLeftButtonDown="HoaDon_Click"
                                       Cursor="Hand" />
 
                     <local:MenuButton x:Name="QLyDV"
+                                      Uid="5"
                                       Title="Quản lý dịch vụ"
                                       Icon="MapMarkerOutline"
-                                      MouseLeftButtonDown="QlyDV_Click"
                                       Cursor="Hand" />
                 </StackPanel>
                 <StackPanel VerticalAlignment="Bottom"
@@ -232,38 +240,6 @@
                         </Border>
                     </ControlTemplate>
                 </Button.Template>
-            </Button>
-            <Button 
-                        x:Name="btnEmployee" 
-                        Uid="4"
-                        Command="{Binding E_LoadCommand}"
-                        CommandParameter="{Binding ElementName=wdHome}"
-                        Content="Nhân viên"
-                        HorizontalAlignment="Right" 
-                        Height="40" 
-                        Margin="0" 
-                        Width="170" 
-                        VerticalAlignment="Center"
-                        BorderBrush="{x:Null}"
-                        Background="{x:Null}"
-                        FontSize="20" 
-                        VerticalContentAlignment="Center" 
-                        HorizontalContentAlignment="Left" 
-                        FontWeight="SemiBold" 
-                        Padding="50,0,0,0" 
-                        Cursor="Hand"
-                        FocusVisualStyle="{x:Null}"
-                        >
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding SwitchTabCommand}" 
-                                                       CommandParameter="{Binding ElementName=wdHome}"/>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="MouseMove">
-                        <i:InvokeCommandAction Command="{Binding GetUidCommand}" 
-                                                       CommandParameter="{Binding ElementName=btnEmployee}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
             </Button>
         </Grid>
     </Grid>

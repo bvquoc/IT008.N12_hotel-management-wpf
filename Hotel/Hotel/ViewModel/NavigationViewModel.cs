@@ -1,5 +1,4 @@
-﻿using Hotel.Utilities;
-using Hotel.View;
+﻿using Hotel.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,52 +10,46 @@ using System.Windows.Input;
 
 namespace Hotel.ViewModel
 {
-    internal class NavigationViewModel : ViewModelBase
+    internal class NavigationViewModel : BaseViewModel
     {
-        private object _currentView;
-        public object CurrentView
-        {
-            get { return _currentView; }
-            set { _currentView = value; OnPropertyChanged(); }
-        }
-        public ICommand PhongView { get; set; }
-        public ICommand DatPhongView { get; set; }
-        public ICommand QuanLyKHView { get; set; }
-        public ICommand QuanLyPhongView { get; set; }
-        public ICommand HoaDonView { get; set; }
-        public ICommand QuanLyDVView { get; set; }
+        public Frame CurrentView;
+        public ICommand GetFrame { get; set; }
+        public ICommand GetUidCommand { get; set; }
         public ICommand MakeNavigation { get; set; }
+        private string uid;
         public NavigationViewModel()
         {
-            PhongView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
-            {
-                parameter.Content = new PhongView();
-            });
-            DatPhongView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
-            {
-                parameter.Content = new DatPhongView();
-            });
-            QuanLyKHView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
-            {
-                parameter.Content = new QuanLyKHView();
-            });
-            QuanLyPhongView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
-            {
-                parameter.Content = new QuanLyPhongView();
-            });
-            HoaDonView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
-            {
-                parameter.Content = new HoaDonView();
-            });
-            QuanLyDVView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
-            {
-                parameter.Content = new QuanLyDVView();
-            });
+
+            GetFrame = new RelayCommand<Frame>((parameter) => true, (parameter) => CurrentView = parameter);
+
+            GetUidCommand = new RelayCommand<Button>((parameter) => true, (parameter) => uid = parameter.Uid);
+
             MakeNavigation = new RelayCommand<Button>((parameter) => true, (parameter) =>
             {
-                MessageBox.Show(parameter.Name.ToString());
+                switch (uid)
+                {
+                    case "0":
+                        CurrentView.Content = new PhongView();
+                        break;
+                    case "1":
+                        CurrentView.Content = new DatPhongView();
+                        break;
+                    case "2":
+                        CurrentView.Content = new QuanLyDVView();
+                        break;
+                    case "3":
+                        CurrentView.Content = new QuanLyPhongView();
+                        break;
+                    case "4":
+                        CurrentView.Content = new HoaDonView();
+                        break;
+                    case "5":
+                        CurrentView.Content = new QuanLyDVView();
+                        break;
+                    default: throw new ArgumentOutOfRangeException(nameof(uid));
+                }
             });
-            CurrentView = new PhongView();
+            CurrentView.Content = new PhongView();
         }
     }
 }
