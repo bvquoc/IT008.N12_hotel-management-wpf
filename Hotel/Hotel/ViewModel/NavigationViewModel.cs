@@ -19,44 +19,44 @@ namespace Hotel.ViewModel
             get { return _currentView; }
             set { _currentView = value; OnPropertyChanged(); }
         }
-        public ICommand PhongView { get; set; }
-        public ICommand DatPhongView { get; set; }
-        public ICommand QuanLyKHView { get; set; }
-        public ICommand QuanLyPhongView { get; set; }
-        public ICommand HoaDonView { get; set; }
-        public ICommand QuanLyDVView { get; set; }
+        public ICommand RoomView { get; set; }
+        public ICommand ReservationBookView { get; set; }
+        public ICommand ManageCustomerView { get; set; }
+        public ICommand ManageRoomView { get; set; }
+        public ICommand BillView { get; set; }
+        public ICommand ManageServiceView { get; set; }
         public ICommand MakeNavigation { get; set; }
         public NavigationViewModel()
         {
-            PhongView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
+            RoomView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
             {
-                parameter.Content = new PhongView();
+                parameter.Content = new RoomView();
             });
-            DatPhongView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
+            ReservationBookView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
             {
-                parameter.Content = new DatPhongView();
+                parameter.Content = new ReservationBookView();
             });
-            QuanLyKHView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
+            ManageCustomerView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
             {
-                parameter.Content = new QuanLyKHView();
+                parameter.Content = new ManageCustomerView();
             });
-            QuanLyPhongView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
+            ManageRoomView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
             {
-                parameter.Content = new QuanLyPhongView();
+                parameter.Content = new ManageRoomView();
             });
-            HoaDonView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
+            BillView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
             {
-                parameter.Content = new HoaDonView();
+                parameter.Content = new BillView();
             });
-            QuanLyDVView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
+            ManageServiceView = new RelayCommand<Frame>((parameter) => true, (parameter) =>
             {
-                parameter.Content = new QuanLyDVView();
+                parameter.Content = new ManageServiceView();
             });
             MakeNavigation = new RelayCommand<Button>((parameter) => true, (parameter) =>
             {
                 MessageBox.Show(parameter.Name.ToString());
             });
-            CurrentView = new PhongView();
+            CurrentView = new RoomView();
         }
     }
 }

@@ -50,8 +50,24 @@
         </Border>
 
         <Border CornerRadius="20"
-                Background="#99c2ff"
-                Grid.RowSpan="2" />
+                Background="Transparent"
+                Grid.RowSpan="2"
+                Panel.ZIndex="2">
+            <Grid>
+                <TextBlock Text="Quản lý khách sạn"
+                           Foreground="White"
+                          
+                           FontSize="16"
+                           VerticalAlignment="Top"
+                           Margin="-10 20 0 0"
+                           HorizontalAlignment="Center"
+                           FontWeight="SemiBold">
+                    <TextBlock.LayoutTransform>
+                        <RotateTransform Angle="-90"/>
+                    </TextBlock.LayoutTransform>
+                </TextBlock>
+            </Grid>
+        </Border>
         <!--LeftMenu-->
         <Border x:Name="AllMenuButton"
                 Grid.Column="1"

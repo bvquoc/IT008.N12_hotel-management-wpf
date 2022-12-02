@@ -18,9 +18,9 @@ namespace Hotel.View
     /// <summary>
     /// Interaction logic for PhongView.xaml
     /// </summary>
-    public partial class PhongView : Page
+    public partial class RoomView : Page
     {
-        public PhongView()
+        public RoomView()
         {
             InitializeComponent();
         }
