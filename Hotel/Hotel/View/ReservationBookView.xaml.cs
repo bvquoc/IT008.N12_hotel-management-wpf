@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Hotel.View
 {
     /// <summary>
-    /// Interaction logic for QuanLyKHView.xaml
+    /// Interaction logic for DatPhongView.xaml
     /// </summary>
-    public partial class QuanLyKHView : Page
+    public partial class ReservationBookView : Page
     {
-        public QuanLyKHView()
+        public ReservationBookView()
         {
             InitializeComponent();
         }

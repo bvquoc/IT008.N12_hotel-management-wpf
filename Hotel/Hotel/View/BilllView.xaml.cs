@@ -18,9 +18,9 @@ namespace Hotel.View
     /// <summary>
     /// Interaction logic for HoaDonView.xaml
     /// </summary>
-    public partial class HoaDonView : Page
+    public partial class BillView : Page
     {
-        public HoaDonView()
+        public BillView()
         {
             InitializeComponent();
         }

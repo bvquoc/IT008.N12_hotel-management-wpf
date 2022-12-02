@@ -18,9 +18,9 @@ namespace Hotel.View
     /// <summary>
     /// Interaction logic for QuanLyPhongView.xaml
     /// </summary>
-    public partial class QuanLyPhongView : Page
+    public partial class ManageRoomView : Page
     {
-        public QuanLyPhongView()
+        public ManageRoomView()
         {
             InitializeComponent();
         }
