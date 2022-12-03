@@ -123,7 +123,7 @@
                     Margin="70,158,470,102"
                     Background="#99c2ff"
                     Opacity="0.9">
-                <StackPanel Width="250"
+                <StackPanel Width="auto"
                             Orientation="Vertical">
 
                     <TextBlock Text="Tài khoản"
@@ -131,7 +131,7 @@
                                FontSize="16"
                                FontFamily="Montserrat"
                                FontWeight="Medium"
-                               Margin="10,10,10,0"
+                               Margin="10,10,0,0"
                                Opacity="0.9" />
                     <TextBox x:Name="txtUser"
                              FontSize="15"
@@ -144,7 +144,7 @@
                              BorderThickness="0,0,0,2"
                              Height="28"
                              VerticalContentAlignment="Center"
-                             Margin="10,5,30,10">
+                             Margin="10,5,10,10">
                         <TextBox.Background>
                             <ImageBrush ImageSource="/Images/UserLogin.png"
                                         Stretch="None"
@@ -168,7 +168,7 @@
                                  BorderThickness="0,0,0,2"
                                  Height="28"
                                  VerticalContentAlignment="Center"
-                                 Margin="10,5,30,10">
+                                 Margin="10,5,10,10">
                         <PasswordBox.Background>
                             <ImageBrush ImageSource="/Images/KeyLogin.png"
                                         Stretch="None"
