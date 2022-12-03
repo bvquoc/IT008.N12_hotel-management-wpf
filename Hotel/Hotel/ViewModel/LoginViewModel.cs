@@ -1,4 +1,4 @@
-﻿using Hotel.Utilities;
+﻿
 using Hotel.View;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace Hotel.ViewModel
 {
-    internal class LoginViewModel : ViewModelBase
+    internal class LoginViewModel : BaseViewModel
     {
         public ICommand Login { get; set; }
 

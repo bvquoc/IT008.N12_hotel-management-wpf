@@ -1,5 +1,4 @@
-﻿using Hotel.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,5 +49,10 @@ namespace Hotel.View
         }
 
         public static readonly DependencyProperty IconProperty = DependencyProperty.Register("Icon", typeof(MahApps.Metro.IconPacks.PackIconMaterialKind), typeof(MenuButton));
+
+        private void btn_DpiChanged(object sender, DpiChangedEventArgs e)
+        {
+
+        }
     }
 }
