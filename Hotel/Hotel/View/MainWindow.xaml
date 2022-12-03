@@ -451,7 +451,7 @@
         </Grid>
         <Grid Grid.Row="2"
               Grid.Column="2"
-              Margin="25 15 10 10">
+              Margin="10">
             <ContentControl x:Name="Pages"
                             Content="{Binding CurrentView}" />
         </Grid>
