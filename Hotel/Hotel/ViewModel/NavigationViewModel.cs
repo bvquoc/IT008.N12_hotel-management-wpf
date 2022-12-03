@@ -56,6 +56,15 @@ namespace Hotel.ViewModel
             {
                 MessageBox.Show(parameter.Name.ToString());
             });
+            //Start process
+            IsHome = FontBase + 1;
+            IsReservation = FontBase;
+            IsCustomer = FontBase;
+            IsRoomManagement = FontBase;
+            IsBill = FontBase;
+            IsServiceManagement = FontBase;
+            IsEmployeeManagement = FontBase;
+
             CurrentView = new RoomView();
         }
     }
