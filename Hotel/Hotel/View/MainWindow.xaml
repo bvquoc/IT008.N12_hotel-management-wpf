@@ -74,45 +74,253 @@
                 <!--MouseLeftButtonDown="Phong_Click"-->
                 <!--MouseLeftButtonDown="DatPhong_Click"-->
                 <StackPanel Margin="0 160 0 0">
-                    <local:MenuButton x:Name="Phong"
-                                      Uid="0"
-                                      Title="Phòng"
-                                      Icon="HomeOutline"
-                                      Cursor="Hand">
 
-                    </local:MenuButton>
+                    <!--Phòng-->
+                    <Grid Margin="0,-17">
+                        <Grid HorizontalAlignment="Right"
+                              Width="20"
+                              Height="85"
+                              Panel.ZIndex="1"
+                              Visibility="{Binding ElementName=btnRoom,Path=Tag}">
+                            <Path Fill="White"
+                                  Stretch="Fill"
+                                  Data="M0 20.7C15 20 26.5 12 27 0V87.6C26 75 15.1 67.5 0 67V24Z" />
+                        </Grid>
+                        <Button x:Name="btnRoom"
+                                Panel.ZIndex="2"
+                                Uid="0"
+                                FontSize="{Binding IsHome}"
+                                Cursor="Hand"
+                                Style="{StaticResource menuButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <icon:PackIconMaterial Kind="HomeOutline"
+                                                       Style="{StaticResource menuButtonIcon}" />
+                                <TextBlock Text="Phòng"
+                                           Style="{StaticResource menuButtonText}" />
+                            </StackPanel>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding GetUidCommand}"
+                                                           CommandParameter="{Binding ElementName=btnRoom}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding MakeNavigation}"
+                                                           CommandParameter="{Binding ElementName=btnRoom}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Grid>
 
-                    <local:MenuButton x:Name="DatPhong"
-                                      Uid="1"
-                                      Title="Đặt phòng"
-                                      Icon="ChartTimelineVariantShimmer"
-                                      Cursor="Hand">
+                    <!--Đặt phòng-->
+                    <Grid Margin="0,-17">
+                        <Grid HorizontalAlignment="Right"
+                              Width="20"
+                              Height="85"
+                              Panel.ZIndex="1"
+                              Visibility="{Binding ElementName=btnReservation,Path=Tag}">
+                            <Path Fill="White"
+                                  Stretch="Fill"
+                                  Data="M0 20.7C15 20 26.5 12 27 0V87.6C26 75 15.1 67.5 0 67V24Z" />
+                        </Grid>
+                        <Button x:Name="btnReservation"
+                                Panel.ZIndex="2"
+                                Uid="1"
+                                Cursor="Hand"
+                                FontSize="{Binding IsReservation}"
+                                Style="{StaticResource menuButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <icon:PackIconMaterial Kind="ChartTimelineVariantShimmer"
+                                                       Style="{StaticResource menuButtonIcon}" />
+                                <TextBlock Text="Đặt phòng"
+                                           Style="{StaticResource menuButtonText}" />
+                            </StackPanel>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding GetUidCommand}"
+                                                           CommandParameter="{Binding ElementName=btnReservation}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding MakeNavigation}"
+                                                           CommandParameter="{Binding ElementName=btnReservation}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Grid>
+                    <!--Quản lý khách hàng-->
+                    <Grid Margin="0,-17">
+                        <Grid HorizontalAlignment="Right"
+                              Width="20"
+                              Height="85"
+                              Panel.ZIndex="1"
+                              Visibility="{Binding ElementName=btnCustomer,Path=Tag}">
+                            <Path Fill="White"
+                                  Stretch="Fill"
+                                  Data="M0 20.7C15 20 26.5 12 27 0V87.6C26 75 15.1 67.5 0 67V24Z" />
+                        </Grid>
+                        <Button x:Name="btnCustomer"
+                                Panel.ZIndex="2"
+                                Uid="2"
+                                FontSize="{Binding IsCustomer}"
+                                Cursor="Hand"
+                                Style="{StaticResource menuButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <icon:PackIconMaterial Kind="AccountMultipleOutline"
+                                                       Style="{StaticResource menuButtonIcon}" />
+                                <TextBlock Text="Quản lý khách hàng"
+                                           Style="{StaticResource menuButtonText}" />
+                            </StackPanel>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding GetUidCommand}"
+                                                           CommandParameter="{Binding ElementName=btnCustomer}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding MakeNavigation}"
+                                                           CommandParameter="{Binding ElementName=btnCustomer}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Grid>
+                    <!--Quản lý phòng-->
+                    <Grid Margin="0,-17">
+                        <Grid HorizontalAlignment="Right"
+                              Width="20"
+                              Height="85"
+                              Panel.ZIndex="1"
+                              Visibility="{Binding ElementName=btnRoomManagement,Path=Tag}">
+                            <Path Fill="White"
+                                  Stretch="Fill"
+                                  Data="M0 20.7C15 20 26.5 12 27 0V87.6C26 75 15.1 67.5 0 67V24Z" />
+                        </Grid>
+                        <Button x:Name="btnRoomManagement"
+                                Panel.ZIndex="2"
+                                Uid="3"
+                                FontSize="{Binding IsRoomManagement}"
+                                Cursor="Hand"
+                                Style="{StaticResource menuButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <icon:PackIconMaterial Kind="CabinAFrame"
+                                                       Style="{StaticResource menuButtonIcon}" />
+                                <TextBlock Text="Quản lý phòng"
+                                           Style="{StaticResource menuButtonText}" />
+                            </StackPanel>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding GetUidCommand}"
+                                                           CommandParameter="{Binding ElementName=btnRoomManagement}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding MakeNavigation}"
+                                                           CommandParameter="{Binding ElementName=btnRoomManagement}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Grid>
 
-                    </local:MenuButton>
+                    <Grid Margin="0,-17">
+                        <Grid HorizontalAlignment="Right"
+                              Width="20"
+                              Height="85"
+                              Panel.ZIndex="1"
+                              Visibility="{Binding ElementName=btnBill,Path=Tag}">
+                            <Path Fill="White"
+                                  Stretch="Fill"
+                                  Data="M0 20.7C15 20 26.5 12 27 0V87.6C26 75 15.1 67.5 0 67V24Z" />
+                        </Grid>
+                        <Button x:Name="btnBill"
+                                Panel.ZIndex="2"
+                                Uid="4"
+                                FontSize="{Binding IsBill}"
+                                Cursor="Hand"
+                                Style="{StaticResource menuButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <icon:PackIconMaterial Kind="CurrencyUsd"
+                                                       Style="{StaticResource menuButtonIcon}" />
+                                <TextBlock Text="Hóa đơn"
+                                           Style="{StaticResource menuButtonText}" />
+                            </StackPanel>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding GetUidCommand}"
+                                                           CommandParameter="{Binding ElementName=btnBill}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding MakeNavigation}"
+                                                           CommandParameter="{Binding ElementName=btnBill}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Grid>
 
-                    <local:MenuButton x:Name="QlyKH"
-                                      Uid="2"
-                                      Title="Quản lý khách hàng"
-                                      Icon="AccountMultipleOutline"
-                                      Cursor="Hand" />
+                    <Grid Margin="0,-17">
+                        <Grid HorizontalAlignment="Right"
+                              Width="20"
+                              Height="85"
+                              Panel.ZIndex="1"
+                              Visibility="{Binding ElementName=btnServiceManagement,Path=Tag}">
+                            <Path Fill="White"
+                                  Stretch="Fill"
+                                  Data="M0 20.7C15 20 26.5 12 27 0V87.6C26 75 15.1 67.5 0 67V24Z" />
+                        </Grid>
+                        <Button x:Name="btnServiceManagement"
+                                Panel.ZIndex="2"
+                                Uid="5"
+                                FontSize="{Binding IsServiceManagement}"
+                                Cursor="Hand"
+                                Style="{StaticResource menuButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <icon:PackIconMaterial Kind="RoomService"
+                                                       Style="{StaticResource menuButtonIcon}" />
+                                <TextBlock Text="Quản lý dịch vụ"
+                                           Style="{StaticResource menuButtonText}" />
+                            </StackPanel>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding GetUidCommand}"
+                                                           CommandParameter="{Binding ElementName=btnServiceManagement}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding MakeNavigation}"
+                                                           CommandParameter="{Binding ElementName=btnServiceManagement}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Grid>
 
-                    <local:MenuButton x:Name="QlyP"
-                                      Uid="3"
-                                      Title="Quản lý phòng"
-                                      Icon="MessageOutline"
-                                      Cursor="Hand" />
-
-                    <local:MenuButton x:Name="HoaDon"
-                                      Uid="4"
-                                      Title="Hóa đơn"
-                                      Icon="CurrencyUsd"
-                                      Cursor="Hand" />
-
-                    <local:MenuButton x:Name="QLyDV"
-                                      Uid="5"
-                                      Title="Quản lý dịch vụ"
-                                      Icon="MapMarkerOutline"
-                                      Cursor="Hand" />
+                    <Grid Margin="0,-17">
+                        <Grid HorizontalAlignment="Right"
+                              Width="20"
+                              Height="85"
+                              Panel.ZIndex="1"
+                              Visibility="{Binding ElementName=btnEmployeeManagement,Path=Tag}">
+                            <Path Fill="White"
+                                  Stretch="Fill"
+                                  Data="M0 20.7C15 20 26.5 12 27 0V87.6C26 75 15.1 67.5 0 67V24Z" />
+                        </Grid>
+                        <Button x:Name="btnEmployeeManagement"
+                                Panel.ZIndex="2"
+                                Uid="6"
+                                FontSize="{Binding IsEmployeeManagement}"
+                                Cursor="Hand"
+                                Style="{StaticResource menuButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <icon:PackIconMaterial Kind="HumanQueue"
+                                                       Style="{StaticResource menuButtonIcon}" />
+                                <TextBlock Text="Quản lý nhân viên"
+                                           Style="{StaticResource menuButtonText}" />
+                            </StackPanel>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding GetUidCommand}"
+                                                           CommandParameter="{Binding ElementName=btnEmployeeManagement}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding MakeNavigation}"
+                                                           CommandParameter="{Binding ElementName=btnEmployeeManagement}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Grid>
                 </StackPanel>
                 <StackPanel VerticalAlignment="Bottom"
                             Margin="25 0 0 40">
@@ -132,14 +340,7 @@
                 <ColumnDefinition Width="25" />
                 <ColumnDefinition Width="10" />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="MainWindow"
-                       Foreground="Black"
-                       FontSize="20"
-                       FontFamily="Montserrat"
-                       Grid.Column="0"
-                       VerticalAlignment="Center"
-                       Margin="10,0,0,0">
-            </TextBlock>
+
             <Button x:Name="btnMinimize"
                     BorderThickness="0"
                     Content="-"
