@@ -30,7 +30,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="10" />
             <RowDefinition Height="20" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
@@ -350,7 +350,7 @@
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <i:InvokeCommandAction Command="{Binding LogoutCommand}"
-                                                           CommandParameter="{Binding ElementName=btnLogout}" />
+                                                           CommandParameter="{Binding ElementName=MainAdminWindow}" />
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </Button>
@@ -482,6 +482,6 @@
             <ContentControl x:Name="Pages"
                             Content="{Binding CurrentView}" />
         </Grid>
-        
+
     </Grid>
 </Window>
