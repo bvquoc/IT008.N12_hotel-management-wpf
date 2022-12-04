@@ -164,7 +164,10 @@
                                 Uid="2"
                                 FontSize="{Binding IsCustomer}"
                                 Cursor="Hand"
-                                Style="{StaticResource menuButton}">
+                                Style="{StaticResource menuButton}"
+                                Height="45"
+                                Margin="25,0,0,20"
+                                VerticalAlignment="Bottom">
                             <StackPanel Orientation="Horizontal">
                                 <icon:PackIconMaterial Kind="AccountMultipleOutline"
                                                        Style="{StaticResource menuButtonIcon}" />
@@ -290,11 +293,17 @@
                     </Grid>
                     <!--Quản lý nhân viên-->
                     <Grid Margin="0,-17">
-                        <Grid HorizontalAlignment="Right"
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="111*" />
+                            <ColumnDefinition Width="164*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid HorizontalAlignment="Left"
                               Width="20"
                               Height="85"
                               Panel.ZIndex="1"
-                              Visibility="{Binding ElementName=btnEmployeeManagement,Path=Tag}">
+                              Visibility="{Binding ElementName=btnEmployeeManagement,Path=Tag}"
+                              Grid.Column="1"
+                              Margin="144,0,0,0">
                             <Path Fill="White"
                                   Stretch="Fill"
                                   Data="M0 20.7C15 20 26.5 12 27 0V87.6C26 75 15.1 67.5 0 67V24Z" />
@@ -304,7 +313,9 @@
                                 Uid="6"
                                 FontSize="{Binding IsEmployeeManagement}"
                                 Cursor="Hand"
-                                Style="{StaticResource menuButton}">
+                                Style="{StaticResource menuButton}"
+                                Grid.ColumnSpan="2"
+                                Margin="25,20,0,20">
                             <StackPanel Orientation="Horizontal">
                                 <icon:PackIconMaterial Kind="HumanQueue"
                                                        Style="{StaticResource menuButtonIcon}" />
