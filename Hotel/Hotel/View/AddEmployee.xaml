@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="AddEmployee" 
-        Height="240" 
-        Width="360"
+        Height="480" 
+        Width="650"
         Background="Transparent"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -41,142 +41,278 @@
                 </Style>
             </StackPanel.Resources>
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="12"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="12"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                <Border Grid.Row="0"
+                    <Border Grid.Row="0"
                         BorderBrush="Black"
                         BorderThickness="0 0 0 1">
-                    <TextBlock HorizontalAlignment="Center"
+                        <TextBlock HorizontalAlignment="Center"
                                Text="Thêm nhân viên"
                                VerticalAlignment="Top"
                                FontWeight="Bold"
                                FontSize="20">
-                    </TextBlock>
-                </Border>
-                <!--Nhập thông tin-->
-                <Grid Background="Transparent"
-                      Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="280"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0"                         
+                        </TextBlock>
+                    </Border>
+                    <Grid Grid.Row="1">
+                        <TextBlock Text="Thông tin cơ bản"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               FontWeight="Bold"
+                               Margin="40 0 10 0"></TextBlock>
+                    </Grid>
+                    <!--Nhập thông tin-->
+                    <Grid Background="Transparent"
+                      Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="400"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1"                         
                           HorizontalAlignment="Center"
-                          VerticalAlignment="Center">
-                        <materialDesign:PackIcon Kind="AccountAdd"
+                          VerticalAlignment="Bottom">
+                            <materialDesign:PackIcon Kind="AccountAdd"
                                                  Width="25"
                                                  Height="25"/>
-                    </Grid>
+                        </Grid>
 
-                    <TextBox x:Name="_Name"
-                             Grid.Column="1"
+                        <TextBox x:Name="_Name"
+                             Grid.Column="2"
                              materialDesign:HintAssist.Hint="Họ và tên"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              VerticalAlignment="Center"
                              >
-                    </TextBox>
-                </Grid>
-                <Grid Background="Transparent"
-                      Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="280"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0"
+                        </TextBox>
+                    </Grid>
+                    <Grid Background="Transparent"
+                      Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="400"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1"
                           HorizontalAlignment="Center"
-                          VerticalAlignment="Center">
-                        <materialDesign:PackIcon Kind="CardAccountDetails"
+                          VerticalAlignment="Bottom">
+                            <materialDesign:PackIcon Kind="CardAccountDetails"
                                                  Width="25"
                                                  Height="25"/>
-                    </Grid>
+                        </Grid>
 
-                    <TextBox x:Name="_CCCD"
-                             Grid.Column="1"
+                        <TextBox x:Name="_CCCD"
+                             Grid.Column="2"
                              materialDesign:HintAssist.Hint="Căn cước công dân"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              VerticalAlignment="Center"
                              >
-                    </TextBox>
-                </Grid>
-                <Grid Background="Transparent"
-                      Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="280"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid
+                        </TextBox>
+                    </Grid>
+                    <Grid Background="Transparent"
+                      Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="400"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1"
                           HorizontalAlignment="Center"
-                          VerticalAlignment="Center">
-                        <materialDesign:PackIcon Kind="CalendarRange"
+                          VerticalAlignment="Bottom">
+                            <materialDesign:PackIcon Kind="CalendarRange"
                                                  Width="25"
                                                  Height="25"/>
-                    </Grid>
-                    <DatePicker x:Name="_BirthDay"
+                        </Grid>
+                        <DatePicker x:Name="_BirthDay"
                                 
-                                Grid.Column="1"
+                                Grid.Column="2"
                                 materialDesign:HintAssist.Hint="Ngày tháng năm sinh"
-                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" HorizontalAlignment="Left" Width="280" Grid.ColumnSpan="2"/>
-                </Grid>
-                <Grid Background="Transparent"
-                      Grid.Row="4"
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
+                                    HorizontalAlignment="Left" 
+                                    Width="400" 
+                                    Grid.ColumnSpan="2"/>
+                    </Grid>
+                    <Grid Background="Transparent"
+                      Grid.Row="5"
                       Margin="0 10 0 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="280"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0"
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="17*"/>
+                            <ColumnDefinition Width="65*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1"
                           HorizontalAlignment="Center"
-                          VerticalAlignment="Center">
-                        <materialDesign:PackIcon Kind="AccountSwitch"
+                          VerticalAlignment="Bottom">
+                            <materialDesign:PackIcon Kind="AccountSwitch"
                                                  Width="25"
                                                  Height="25"/>
-                    </Grid>
-                    <ComboBox Name="cbType"
-                              Grid.Column="1"
-                              VerticalAlignment="Center"
+                        </Grid>
+                        <ComboBox Name="cbType"
+                              Grid.Column="2"
                               materialDesign:HintAssist.Hint="Loại nhân viên">
-                        <ComboBoxItem Content="Quản lý"/>
-                        <ComboBoxItem Content="Nhân viên"/>
-                    </ComboBox>
+                            <ComboBoxItem Content="Quản lý"/>
+                            <ComboBoxItem Content="Nhân viên"/>
+                        </ComboBox>
 
+                    </Grid>
+                    <Grid Background="Transparent"
+                      Grid.Row="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="400"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Bottom">
+                            <materialDesign:PackIcon Kind="Phone"
+                                                 Width="25"
+                                                 Height="25"/>
+                        </Grid>
+
+                        <TextBox x:Name="_SDT"
+                             Grid.Column="2"
+                             materialDesign:HintAssist.Hint="Số điện thoại"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             VerticalAlignment="Center"
+                             >
+                        </TextBox>
+                    </Grid>
+
+                    
                 </Grid>
-                <Grid Background="Transparent"
+            </Grid>
+            <Grid>
+                <Grid Height="auto"
+                  Width="auto">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="12"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock Text="Tài khoản đăng nhập"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               FontWeight="Bold"
+                               Margin="40 0 10 0"></TextBlock>
+                    </Grid>
+                    <Grid Background="Transparent"
+                      Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="400"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1"                         
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Bottom">
+                            <materialDesign:PackIcon Kind="Account"
+                                                 Width="25"
+                                                 Height="25"/>
+                        </Grid>
+
+                        <TextBox x:Name="_Account"
+                             Grid.Column="2"
+                             materialDesign:HintAssist.Hint="Tài khoản"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             VerticalAlignment="Center"
+                             >
+                        </TextBox>
+                    </Grid>
+                    <Grid Background="Transparent"
+                      Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="400"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1"                         
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Bottom">
+                            <materialDesign:PackIcon Kind="Key"
+                                                 Width="25"
+                                                 Height="25"/>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <PasswordBox x:Name="_Password"                             
+                             materialDesign:HintAssist.Hint="Mật khẩu"
+                             Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"                               
+                             VerticalAlignment="Center"
+                             >
+                            </PasswordBox>
+                            <TextBox x:Name="passtxt" Visibility="Collapsed"
+                                     materialDesign:HintAssist.Hint="Mật khẩu"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"                               
+                             VerticalAlignment="Center">
+                            </TextBox>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="40"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="1"
+                                  Height="40"
+                                  Width="40"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Bottom"
+                                  Panel.ZIndex="1"                                     
+                                  MouseLeftButtonDown="ShowPass"
+                                  MouseLeftButtonUp="HidePass"
+                                  Background="Transparent"
+                                  Cursor="Hand">
+                                
+                                <materialDesign:PackIcon Kind="Eye"
+                                                         Width="25"
+                                                         Height="25"  HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                         />
+                                
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid Background="Transparent"
                       
-                  Grid.Row="6">
-                    <Grid.Resources>
-                        <Style TargetType="Button"
+                  Grid.Row="4">
+                        <Grid.Resources>
+                            <Style TargetType="Button"
                            BasedOn="{StaticResource MaterialDesignRaisedDarkButton}">
-                            <Setter Property="VerticalAlignment"
+                                <Setter Property="VerticalAlignment"
                                 Value="Bottom" />
-                            <Setter Property="HorizontalAlignment"
+                                <Setter Property="HorizontalAlignment"
                                 Value="Right" />
-                            <Setter Property="Width"
+                                <Setter Property="Width"
                                 Value="90" />
-                            <Setter Property="Height"
+                                <Setter Property="Height"
                                 Value="30" />
-                        </Style>
-                    </Grid.Resources>
-                    <Button Content="Hủy"
-                            
+                            </Style>
+                        </Grid.Resources>
+                        <Button Content="Hủy"                            
                         materialDesign:ButtonAssist.CornerRadius="8"
                         Margin="0 0 110 10"
                         Command="{Binding CloseCommand}"
                         CommandParameter="{Binding ElementName=SuaKH}"
                         Background="OrangeRed"
                         BorderBrush="Transparent" />
-                    <Button Content="Lưu"
+                        <Button Content="Lưu"
                         Margin="0 0 10 10"
                         materialDesign:ButtonAssist.CornerRadius="8"
                         Command="{Binding EditCustomerCommand}"
                         CommandParameter="{Binding ElementName=SuaKH}" />
+                    </Grid>
                 </Grid>
             </Grid>
         </StackPanel>
