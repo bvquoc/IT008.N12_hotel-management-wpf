@@ -34,7 +34,7 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="230" />
                             </Grid.ColumnDefinitions>
                             <Button Grid.Column="0"
                                     Grid.Row="0"
