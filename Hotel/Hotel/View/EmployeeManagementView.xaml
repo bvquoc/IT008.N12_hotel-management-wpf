@@ -82,7 +82,8 @@
                 Content="Thêm nhân viên"
                 Background="#ffffb3"
                 VerticalAlignment="Center"
-                materialDesign:ButtonAssist.CornerRadius="10">
+                materialDesign:ButtonAssist.CornerRadius="10"
+                Click="btnAddClick">
         </Button>
     </Grid>
 </UserControl>
