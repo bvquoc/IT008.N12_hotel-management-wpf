@@ -28,6 +28,7 @@
             <ImageBrush ImageSource="/Images/BackgroundLogin.jpg"
                         Stretch="Fill" />
         </Border.Background>
+        <!--Tạo khung-->
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30" />
@@ -40,7 +41,7 @@
                     <ColumnDefinition Width="25" />
                     <ColumnDefinition Width="5" />
                 </Grid.ColumnDefinitions>
-
+                <!--Minimize, Close-->
                 <Button x:Name="btnMinimize"
                         BorderThickness="0"
                         Content="-"
@@ -112,6 +113,7 @@
                     </Button.Template>
                 </Button>
             </Grid>
+            <!--Tạo khung đăng nhập-->
             <Border Height="auto"
                     Width="auto"
                     Panel.ZIndex="1"

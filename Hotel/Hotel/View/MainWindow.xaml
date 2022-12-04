@@ -23,6 +23,7 @@
         <mv:NavigationViewModel />
     </Window.DataContext>
     <Grid>
+        <!--Chia khung-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="55" />
             <ColumnDefinition Width="220" />
@@ -43,7 +44,7 @@
                 MouseDown="Border_MouseDown"
                 MouseLeftButtonDown="Border_MouseLeftButtonDown">
         </Border>
-
+        <!--Tạo tiêu đề-->
         <Border CornerRadius="20"
                 Background="Transparent"
                 Grid.RowSpan="3"
@@ -252,7 +253,7 @@
                             </i:Interaction.Triggers>
                         </Button>
                     </Grid>
-
+                    <!--Quản lý dịch vụ-->
                     <Grid Margin="0,-17">
                         <Grid HorizontalAlignment="Right"
                               Width="20"
@@ -287,7 +288,7 @@
                             </i:Interaction.Triggers>
                         </Button>
                     </Grid>
-
+                    <!--Quản lý nhân viên-->
                     <Grid Margin="0,-17">
                         <Grid HorizontalAlignment="Right"
                               Width="20"
