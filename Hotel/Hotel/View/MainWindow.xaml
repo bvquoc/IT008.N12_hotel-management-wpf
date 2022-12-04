@@ -30,7 +30,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="10" />
             <RowDefinition Height="20" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
@@ -164,7 +164,10 @@
                                 Uid="2"
                                 FontSize="{Binding IsCustomer}"
                                 Cursor="Hand"
-                                Style="{StaticResource menuButton}">
+                                Style="{StaticResource menuButton}"
+                                Height="45"
+                                Margin="25,0,0,20"
+                                VerticalAlignment="Bottom">
                             <StackPanel Orientation="Horizontal">
                                 <icon:PackIconMaterial Kind="AccountMultipleOutline"
                                                        Style="{StaticResource menuButtonIcon}" />
@@ -290,11 +293,17 @@
                     </Grid>
                     <!--Quản lý nhân viên-->
                     <Grid Margin="0,-17">
-                        <Grid HorizontalAlignment="Right"
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="111*" />
+                            <ColumnDefinition Width="164*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid HorizontalAlignment="Left"
                               Width="20"
                               Height="85"
                               Panel.ZIndex="1"
-                              Visibility="{Binding ElementName=btnEmployeeManagement,Path=Tag}">
+                              Visibility="{Binding ElementName=btnEmployeeManagement,Path=Tag}"
+                              Grid.Column="1"
+                              Margin="144,0,0,0">
                             <Path Fill="White"
                                   Stretch="Fill"
                                   Data="M0 20.7C15 20 26.5 12 27 0V87.6C26 75 15.1 67.5 0 67V24Z" />
@@ -304,7 +313,9 @@
                                 Uid="6"
                                 FontSize="{Binding IsEmployeeManagement}"
                                 Cursor="Hand"
-                                Style="{StaticResource menuButton}">
+                                Style="{StaticResource menuButton}"
+                                Grid.ColumnSpan="2"
+                                Margin="25,20,0,20">
                             <StackPanel Orientation="Horizontal">
                                 <icon:PackIconMaterial Kind="HumanQueue"
                                                        Style="{StaticResource menuButtonIcon}" />
@@ -326,9 +337,35 @@
                 </StackPanel>
                 <StackPanel VerticalAlignment="Bottom"
                             Margin="25 0 0 40">
-                    <local:MenuButton Title="Logout"
-                                      Icon="Logout"
-                                      Cursor="Hand" />
+                    <!--Logout-->
+                    <Grid Margin="0,-17">
+                        <Grid HorizontalAlignment="Right"
+                              Width="20"
+                              Height="85"
+                              Panel.ZIndex="1"
+                              Visibility="{Binding ElementName=btnLogout,Path=Tag}">
+                            <Path Fill="White"
+                                  Stretch="Fill"
+                                  Data="M0 20.7C15 20 26.5 12 27 0V87.6C26 75 15.1 67.5 0 67V24Z" />
+                        </Grid>
+                        <Button x:Name="btnLogout"
+                                Panel.ZIndex="2"
+                                Cursor="Hand"
+                                Style="{StaticResource menuButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <icon:PackIconMaterial Kind="Logout"
+                                                       Style="{StaticResource menuButtonIcon}" />
+                                <TextBlock Text="Logout"
+                                           Style="{StaticResource menuButtonText}" />
+                            </StackPanel>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding LogoutCommand}"
+                                                           CommandParameter="{Binding ElementName=MainAdminWindow}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Grid>
                 </StackPanel>
             </Grid>
         </Border>
@@ -456,6 +493,6 @@
             <ContentControl x:Name="Pages"
                             Content="{Binding CurrentView}" />
         </Grid>
-        
+
     </Grid>
 </Window>
