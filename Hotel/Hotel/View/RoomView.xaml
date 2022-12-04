@@ -6,45 +6,65 @@
              xmlns:local="clr-namespace:Hotel.View"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             
              mc:Ignorable="d"
              d:DesignHeight="450"
+
              d:DesignWidth="800"
              Style="{StaticResource Page_Style}">
     <Grid Background="White">
         <!--Chia khung-->
+
         <Grid.RowDefinitions>
             <RowDefinition Height="45" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        
+        
         <!--Color Zone-->
-        <materialDesign:ColorZone Grid.Row="0"
-                                  Height="45"
-                                  Mode="PrimaryMid"
-                                  Padding="0 6 0 0"
-                                  Background="Transparent">
-            <DockPanel>
-                <StackPanel Orientation="Horizontal"
-                            materialDesign:RippleAssist.IsCentered="True">
-                    <!--Search box-->
-                    <materialDesign:ColorZone Mode="Standard"
-                                              Padding="8 0 8 0"
-                                              CornerRadius="5"
-                                              Panel.ZIndex="1"
-                                              Margin="16 0 0 0"
-                                              materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
 
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Button Grid.Column="0"
+        <Grid Grid.Row="0"  >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <materialDesign:ColorZone Grid.Column="0"
+                                  Height="45"
+         Mode="PrimaryMid"
+         Padding="0 6 0 0"
+         Background="Transparent"                        >
+                <DockPanel>
+                    <StackPanel
+                    Grid.Column="0"
+                    Orientation="Horizontal"
+                    materialDesign:RippleAssist.IsCentered="True">
+                        <!--Search box-->
+                        <materialDesign:ColorZone
+                        Mode="Standard"
+                        Padding="8 0 8 0"
+                        CornerRadius="5"
+                        Panel.ZIndex="1"
+                        Margin="16 0 0 0"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition
+                                    Width="Auto" />
+
+                                    <ColumnDefinition
+                                    Width="208" />
+
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0"
                                     Grid.Row="0"
-                                    Style="{DynamicResource MaterialDesignToolButton}">
-                                <materialDesign:PackIcon Kind="AccountSearch"
-                                                         Opacity=".56" />
-                            </Button>
-                            <TextBox Grid.Column="1"
+                                Style="{DynamicResource MaterialDesignToolButton}">
+                                    <materialDesign:PackIcon
+                                    Kind="AccountSearch"
+                                    Opacity=".56" />
+                                </Button>
+                                <TextBox Grid.Column="1"
+
                                      x:Name="txtSearch"
                                      FontSize="16"
                                      Margin="8 0 0 0"
@@ -52,27 +72,100 @@
                                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                      BorderThickness="0"
                                      MinWidth="200"
-                                     VerticalAlignment="Center" />
 
-                        </Grid>
-                    </materialDesign:ColorZone>
-                    <!--Button Search-->
-                    <Button VerticalAlignment="Center"
+                                     VerticalAlignment="Center"/>
+
+                            </Grid>
+                        </materialDesign:ColorZone>
+                        <!--Button Search-->
+                        <Button VerticalAlignment="Center" 
+
                             Padding="0"
                             Margin="0 0 0 8"
                             Width="55"
                             Height="30"
                             Background="Transparent"
-                            BorderThickness="0">
-                        <materialDesign:PackIcon Kind="Send"
-                                                 Width="30"
-                                                 Height="30"
-                                                 Foreground="Black"
-                                                 Opacity="0.7" />
-                    </Button>
-                </StackPanel>
-            </DockPanel>
-        </materialDesign:ColorZone>
+
+                            BorderThickness="0"                         
+                            >
+                            <materialDesign:PackIcon Kind="Send" Width="30"
+                                         Height="30" 
+                                         Foreground="Black" Opacity="0.7" />
+                        </Button>
+                    </StackPanel>
+
+                </DockPanel>
+
+            </materialDesign:ColorZone>
+            <Grid Grid.Column="1"
+                  HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock FontWeight="Bold"
+                           Text="Trạng thái"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="10">
+
+                    </TextBlock>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <RadioButton Content="Tất cả"
+                Style="{StaticResource MaterialDesignRadioButton}"
+                    Margin="10">
+                        
+                    </RadioButton>
+
+                </Grid>
+                <Grid Grid.Column="2">
+                    <RadioButton Content="Trống"
+                Style="{StaticResource MaterialDesignRadioButton}"
+                   Margin="10" >
+              
+                    </RadioButton>
+
+                </Grid>
+                <Grid Grid.Column="3">
+                    <RadioButton Content="Đã đặt"
+                Style="{StaticResource MaterialDesignRadioButton}"
+                   Margin="10" >
+                        
+                    </RadioButton>
+
+                </Grid>
+                <Grid Grid.Column="4">
+                    <RadioButton Content="Tu sửa"
+                Style="{StaticResource MaterialDesignRadioButton}"
+                   Margin="10" >
+                       
+                    </RadioButton>
+
+                </Grid>
+            </Grid>
+            
+            <Grid Grid.Column="2"
+                  Margin="10">
+                <ComboBox Name="cbType"
+                              Grid.Column="2"
+                              materialDesign:HintAssist.Hint="Sắp xếp"
+                          Width="80"
+                          HorizontalAlignment="Right">
+                    <ComboBoxItem Content="Tầng"/>
+                    <ComboBoxItem Content="Loại phòng"/>
+                </ComboBox>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1">
+            
+        </Grid>
+
+
         <!--Hiện thông tin phòng-->
         <Grid Grid.Row="1">
             <ScrollViewer>
