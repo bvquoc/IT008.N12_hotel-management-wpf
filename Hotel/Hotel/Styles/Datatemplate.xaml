@@ -3,5 +3,7 @@
                     xmlns:vm="clr-namespace:Hotel.ViewModel"
                     xmlns:view="clr-namespace:Hotel.View">
 
-
+    <DataTemplate DataType="{x:Type vm:AddEmployeeViewModel}">
+        <view:AddEmployee />
+    </DataTemplate>
 </ResourceDictionary>
