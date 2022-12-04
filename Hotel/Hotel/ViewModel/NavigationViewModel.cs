@@ -82,9 +82,12 @@ namespace Hotel.ViewModel
 
         public NavigationViewModel()
         {
-            LogoutCommand = new RelayCommand<Button>((parameter) => true, (parameter) =>
+            LogoutCommand = new RelayCommand<Window>((parameter) => true, (parameter) =>
             {
-                //Logout
+                parameter.Hide();
+                Login login = new Login();
+                login.ShowDialog();
+                parameter.Close();
             });
 
             GetUidCommand = new RelayCommand<Button>((parameter) => true, (parameter) => uid = parameter.Uid);
