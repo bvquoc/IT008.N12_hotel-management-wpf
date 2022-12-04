@@ -66,65 +66,26 @@ namespace Hotel.ViewModel
         public double IsEmployeeManagement
         {
             get { return _isEmployeeManagement; }
-            set { _isEmployeeManagement = value; }
+            set { _isEmployeeManagement = value; OnPropertyChanged(); }
         }
-
-        public void Init()
-        {
-            IsHome = FontBase;
-            IsReservation = FontBase;
-            IsCustomer = FontBase;
-            IsRoomManagement = FontBase;
-            IsBill = FontBase;
-            IsServiceManagement = FontBase;
-
-            switch (uid)
-            {
-                case "0":
-                    IsHome = FontBase + 1;
-                    CurrentView = new RoomView();
-                    break;
-                case "1":
-                    IsReservation = FontBase + 1;
-                    CurrentView = new ReservationBookView();
-                    break;
-                case "2":
-                    IsCustomer = FontBase + 1;
-                    CurrentView = new CustomerManagementView();
-                    break;
-                case "3":
-                    IsRoomManagement = FontBase + 1;
-                    CurrentView = new RoomManagementView();
-                    break;
-                case "4":
-                    IsBill = FontBase + 1;
-                    CurrentView = new BillView();
-                    break;
-                case "5":
-                    IsServiceManagement = FontBase + 1;
-                    CurrentView = new ServiceManagementView();
-                    break;
-                case "6":
-                    IsEmployeeManagement = FontBase + 1;
-                    CurrentView = new EmployeeManagementView();
-                    break;
-                default:
-                    break;
-            }
-        }
-
         private object _currentView;
         public object CurrentView
         {
             get { return _currentView; }
             set { _currentView = value; OnPropertyChanged(); }
         }
+
+        public ICommand LogoutCommand { get; set; }
         public ICommand GetUidCommand { get; set; }
         public ICommand MakeNavigation { get; set; }
         private string uid = "0";
 
         public NavigationViewModel()
         {
+            LogoutCommand = new RelayCommand<Button>((parameter) => true, (parameter) =>
+            {
+                //Logout
+            });
 
             GetUidCommand = new RelayCommand<Button>((parameter) => true, (parameter) => uid = parameter.Uid);
 
@@ -136,6 +97,7 @@ namespace Hotel.ViewModel
                 IsRoomManagement = FontBase;
                 IsBill = FontBase;
                 IsServiceManagement = FontBase;
+                IsEmployeeManagement = FontBase;
 
                 switch (uid)
                 {

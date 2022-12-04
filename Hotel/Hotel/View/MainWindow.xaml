@@ -326,9 +326,35 @@
                 </StackPanel>
                 <StackPanel VerticalAlignment="Bottom"
                             Margin="25 0 0 40">
-                    <local:MenuButton Title="Logout"
-                                      Icon="Logout"
-                                      Cursor="Hand" />
+                    <!--Logout-->
+                    <Grid Margin="0,-17">
+                        <Grid HorizontalAlignment="Right"
+                              Width="20"
+                              Height="85"
+                              Panel.ZIndex="1"
+                              Visibility="{Binding ElementName=btnLogout,Path=Tag}">
+                            <Path Fill="White"
+                                  Stretch="Fill"
+                                  Data="M0 20.7C15 20 26.5 12 27 0V87.6C26 75 15.1 67.5 0 67V24Z" />
+                        </Grid>
+                        <Button x:Name="btnLogout"
+                                Panel.ZIndex="2"
+                                Cursor="Hand"
+                                Style="{StaticResource menuButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <icon:PackIconMaterial Kind="Logout"
+                                                       Style="{StaticResource menuButtonIcon}" />
+                                <TextBlock Text="Logout"
+                                           Style="{StaticResource menuButtonText}" />
+                            </StackPanel>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding LogoutCommand}"
+                                                           CommandParameter="{Binding ElementName=btnLogout}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Grid>
                 </StackPanel>
             </Grid>
         </Border>
