@@ -10,25 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Hotel.View
 {
     /// <summary>
-    /// Interaction logic for EmployeeManagementView.xaml
+    /// Interaction logic for AddEmployee.xaml
     /// </summary>
-    public partial class EmployeeManagementView : UserControl
+    public partial class AddEmployee : Window
     {
-        public EmployeeManagementView()
+        public AddEmployee()
         {
             InitializeComponent();
-        }
-
-        private void btnAddClick(object sender, RoutedEventArgs e)
-        {
-            AddEmployee add =new AddEmployee();
-            add.ShowDialog();
         }
     }
 }

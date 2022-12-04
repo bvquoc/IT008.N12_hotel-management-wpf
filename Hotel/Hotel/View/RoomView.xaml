@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Hotel.View"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
              d:DesignHeight="450"
@@ -35,6 +36,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition
                                     Width="Auto" />
+                                
                                 <ColumnDefinition
                                     Width="*" /> 
                             </Grid.ColumnDefinitions>
@@ -75,7 +77,36 @@
         </materialDesign:ColorZone>
         <!--Hiện thông tin phòng-->
         <Grid Grid.Row="1">
-            
+            <ScrollViewer>
+                <ScrollViewer.Resources>
+                    <sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">12</sys:Double>
+                </ScrollViewer.Resources>
+                <StackPanel>
+                    <ListView x:Name="lvPhong"
+                              Width="800"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                              ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                        <ListView.Template>
+                            <ControlTemplate>
+                                <ItemsPresenter />
+                            </ControlTemplate>
+                        </ListView.Template>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </ScrollViewer>
         </Grid>
     </Grid>
 </UserControl>
