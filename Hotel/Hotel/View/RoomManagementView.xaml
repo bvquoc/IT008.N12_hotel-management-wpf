@@ -5,9 +5,85 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Hotel.View"
              mc:Ignorable="d"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"        
              d:DesignHeight="450"
              d:DesignWidth="800">
-    <Grid Background="Yellow">
+    <Grid Background="Transparent">
+        <!--Chia khung-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!--Color Zone-->
+        <materialDesign:ColorZone Grid.Row="0" Height="45"
+         Mode="PrimaryMid"
+         Padding="0 6 0 0"
+         Background="Transparent"                        >
+            <DockPanel>
+                <StackPanel
+                    Orientation="Horizontal"
+                    materialDesign:RippleAssist.IsCentered="True">
+                    <!--Search box-->
+                    <materialDesign:ColorZone
+                        Mode="Standard"
+                        Padding="8 0 8 0"
+                        CornerRadius="5"
+                        Panel.ZIndex="1"
+                        Margin="16 0 0 0"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    Width="Auto" />
+                                <ColumnDefinition
+                                    Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0"
+                                    Grid.Row="0"
+                                Style="{DynamicResource MaterialDesignToolButton}">
+                                <materialDesign:PackIcon
+                                    Kind="AccountSearch"
+                                    Opacity=".56" />
+                            </Button>
+                            <TextBox Grid.Column="1"
+                                     x:Name="txtSearch"
+                                     FontSize="16"
+                                     Margin="8 0 0 0"
+                                     materialDesign:HintAssist.Hint="Nhập số phòng cần tìm"
+                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                     BorderThickness="0"
+                                     MinWidth="200"
+                                     VerticalAlignment="Center"/>
 
+                        </Grid>
+                    </materialDesign:ColorZone>
+                    <!--Button Search-->
+                    <Button VerticalAlignment="Center" 
+                            Padding="0"
+                            Margin="0 0 0 8"
+                            Width="55"
+                            Height="30"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            >
+                        <materialDesign:PackIcon Kind="Send" Width="30"
+                                         Height="30" 
+                                         Foreground="Black" Opacity="0.7" />
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+        </materialDesign:ColorZone>
+        <Button HorizontalAlignment="Right"
+                x:Name="btnAddRoom"
+                Width="120"
+                Height="30"
+                Margin="0 0 40 0"
+                Foreground="Black"
+                Content="Sửa phòng"
+                Background="#ffffb3"
+                VerticalAlignment="Center"
+                materialDesign:ButtonAssist.CornerRadius="10">
+        </Button>
+        
     </Grid>
 </UserControl>

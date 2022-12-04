@@ -16,9 +16,9 @@ using System.Windows.Shapes;
 namespace Hotel.View
 {
     /// <summary>
-    /// Interaction logic for PhongView.xaml
+    /// Interaction logic for RoomView.xaml
     /// </summary>
-    public partial class RoomView : Page
+    public partial class RoomView : UserControl
     {
         public RoomView()
         {
