@@ -116,12 +116,11 @@
             <Border Height="auto"
                     Width="auto"
                     Panel.ZIndex="1"
-                    Grid.Column="1"
                     Grid.Row="1"
                     CornerRadius="20"
                     BorderBrush="Transparent"
                     BorderThickness="10"
-                    Margin="70,158,470,102"
+                    Margin="65,115,475,145"
                     Background="#99c2ff"
                     Opacity="0.9">
                 <StackPanel Width="auto"
