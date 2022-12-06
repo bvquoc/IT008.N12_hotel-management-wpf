@@ -17,9 +17,9 @@ namespace Hotel.ViewModel
 
         public LoginViewModel()
         {
-            Login = new RelayCommand<Login>((parameter) => true, (parameter) => EnterLogin(parameter));
+            Login = new RelayCommand<LoginView>((parameter) => true, (parameter) => EnterLogin(parameter));
         }
-        private void EnterLogin(Login parameter)
+        private void EnterLogin(LoginView parameter)
         {
             parameter.Hide();
             MainWindow mainWindow = new MainWindow();

@@ -85,7 +85,7 @@ namespace Hotel.ViewModel
             LogoutCommand = new RelayCommand<Window>((parameter) => true, (parameter) =>
             {
                 parameter.Hide();
-                Login login = new Login();
+                LoginView login = new LoginView();
                 login.ShowDialog();
                 parameter.Close();
             });
