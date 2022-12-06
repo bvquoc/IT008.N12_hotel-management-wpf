@@ -76,7 +76,7 @@
         <Setter Property="Foreground"
                 Value="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" />
         <Setter Property="FontSize"
-                Value="13" />
+                Value="15" />
         <Setter Property="FontWeight"
                 Value="Light" />
         <Setter Property="VerticalAlignment"
