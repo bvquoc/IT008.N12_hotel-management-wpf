@@ -22,7 +22,6 @@
     </Window.DataContext>
 
     <Border CornerRadius="10"
-            BorderBrush="#99c2ff"
             BorderThickness="5">
         <Border.Background>
             <ImageBrush ImageSource="/Images/BackgroundLogin.jpg"
