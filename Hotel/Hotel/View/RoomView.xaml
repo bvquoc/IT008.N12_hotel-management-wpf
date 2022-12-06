@@ -170,7 +170,8 @@
                     <ListView x:Name="lvPhong"
                               Width="800"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                              ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                              >
                         <ListView.Template>
                             <ControlTemplate>
                                 <ItemsPresenter />
@@ -186,10 +187,24 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
-
+                                    
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Số phòng"
+                                                Width="100"
+                                                DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Header="Tình trạng"
+                                                Width="100"
+                                                DisplayMemberBinding="{Binding Status}"/>
+                                <GridViewColumn Header="Loại phòng"
+                                                Width="100"
+                                                DisplayMemberBinding="{Binding Description}"/>
+
+                            </GridView>
+                        </ListView.View>
                     </ListView>
                 </StackPanel>
             </ScrollViewer>
