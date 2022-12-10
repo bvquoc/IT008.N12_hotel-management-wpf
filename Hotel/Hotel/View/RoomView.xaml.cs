@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Collections.Generic;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Hotel.View
 {
@@ -84,7 +72,8 @@ namespace Hotel.View
         }
         public class Phong
         {
-            public Phong(string name, string description, string status)            {
+            public Phong(string name, string description, string status)
+            {
                 Name = name;
                 Description = description;
                 Status = status;

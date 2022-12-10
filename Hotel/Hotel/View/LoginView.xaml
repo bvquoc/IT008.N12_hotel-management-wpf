@@ -18,7 +18,7 @@
         AllowsTransparency="True"
         MouseDown="Window_MouseDown">
     <Window.DataContext>
-        <mv:LoginViewModel/>
+        <mv:LoginViewModel />
     </Window.DataContext>
 
     <Border CornerRadius="10"

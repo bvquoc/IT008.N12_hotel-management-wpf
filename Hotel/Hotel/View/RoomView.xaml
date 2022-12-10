@@ -85,7 +85,7 @@
                     </StackPanel>
 
                 </DockPanel>
-            <!--Ô trạng thái-->
+                <!--Ô trạng thái-->
             </materialDesign:ColorZone>
             <Grid Grid.Column="1"
                   HorizontalAlignment="Center">
@@ -161,13 +161,15 @@
 
 
         <!--Hiện thông tin phòng-->
-        <Grid Grid.Row="1" Grid.Column="0"
+        <Grid Grid.Row="1"
+              Grid.Column="0"
               Width="auto"
               HorizontalAlignment="Center">
             <ScrollViewer>
-                
+
                 <StackPanel>
-                    <ItemsControl x:Name="lvRoom" ItemsSource="{Binding Phong}">
+                    <ItemsControl x:Name="lvRoom"
+                                  ItemsSource="{Binding Phong}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Grid Width="170"
@@ -177,47 +179,65 @@
                                       Margin="10">
                                     <Grid.Style>
                                         <Style TargetType="Grid">
-                                            <Setter Property="Background" Value="#99ff99"/>
+                                            <Setter Property="Background"
+                                                    Value="#99ff99" />
                                             <Style.Triggers>
                                                 <DataTrigger Binding="{Binding Status}"
                                                              Value="Đã đặt">
-                                                    <Setter Property="Background" Value="#ffff99">
+                                                    <Setter Property="Background"
+                                                            Value="#ffff99">
                                                     </Setter>
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding Status}"
                                                              Value="Tu Sửa">
-                                                    <Setter Property="Background" Value="#ffcc99" >
+                                                    <Setter Property="Background"
+                                                            Value="#ffcc99">
                                                     </Setter>
                                                 </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
                                     </Grid.Style>
                                     <Grid.Clip>
-                                        <RectangleGeometry Rect="0,0,170,100" RadiusX="10" RadiusY="10"/>
+                                        <RectangleGeometry Rect="0,0,170,100"
+                                                           RadiusX="10"
+                                                           RadiusY="10" />
                                     </Grid.Clip>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="40" />
                                         <RowDefinition></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Grid Grid.Row="0">
-                                        <TextBlock Text="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Center"
-                                                        Margin="18 0 0 0" FontSize="15" Foreground="Red" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding Description}" HorizontalAlignment="Right" VerticalAlignment="Center"
-                                                        Margin="0 0 9 0" FontSize="11" Foreground="Red"/>
+                                        <TextBlock Text="{Binding Name}"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   Margin="18 0 0 0"
+                                                   FontSize="15"
+                                                   Foreground="Red"
+                                                   FontWeight="Bold" />
+                                        <TextBlock Text="{Binding Description}"
+                                                   HorizontalAlignment="Right"
+                                                   VerticalAlignment="Center"
+                                                   Margin="0 0 9 0"
+                                                   FontSize="11"
+                                                   Foreground="Red" />
 
                                     </Grid>
-                                    <Grid Grid.Row="1"  >
+                                    <Grid Grid.Row="1">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="45"></ColumnDefinition>
                                             <ColumnDefinition></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
 
                                         <Grid Grid.Column="1">
-                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
-                                                            FontSize="20" Foreground="Red" FontWeight="Bold">
+                                            <TextBlock HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       FontSize="20"
+                                                       Foreground="Red"
+                                                       FontWeight="Bold">
                                                 <TextBlock.Style>
                                                     <Style TargetType="TextBlock">
-                                                        <Setter Property="Text" Value="{Binding Status}"/>                                              
+                                                        <Setter Property="Text"
+                                                                Value="{Binding Status}" />
                                                     </Style>
                                                 </TextBlock.Style>
                                             </TextBlock>
@@ -225,11 +245,11 @@
                                     </Grid>
                                 </Grid>
                             </DataTemplate>
-                            
+
                         </ItemsControl.ItemTemplate>
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel/>
+                                <WrapPanel />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                     </ItemsControl>
