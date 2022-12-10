@@ -81,6 +81,8 @@
                 Value="Light" />
         <Setter Property="VerticalAlignment"
                 Value="Center" />
+        <Setter Property="FontFamily"
+                Value="Montserrat"/>
     </Style>
 
 </ResourceDictionary>
