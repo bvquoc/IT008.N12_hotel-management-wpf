@@ -9,8 +9,9 @@
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800"
-             Style="{StaticResource Page_Style}">
-    <UserControl.Resources>       
+             Style="{StaticResource Page_Style}"
+             >
+    <UserControl.Resources>
         <Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}">
             <Setter Property="OverridesDefaultStyle" Value="true"/>
 
