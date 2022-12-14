@@ -211,7 +211,7 @@
 
                 <StackPanel>
                     <ItemsControl x:Name="lvRoom"
-                                  ItemsSource="{Binding Phong}">
+                                  ItemsSource="{Binding Rooms}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Grid Width="170"
