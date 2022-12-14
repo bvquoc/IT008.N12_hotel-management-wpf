@@ -91,10 +91,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Exceptions\ReservationConflictException.cs" />
+    <Compile Include="Model\CustomerModel.cs" />
+    <Compile Include="Model\EmployeeModel.cs" />
+    <Compile Include="Model\ReservationBookModel.cs" />
+    <Compile Include="Model\ReservationModel.cs" />
+    <Compile Include="Model\RoomModel.cs" />
     <Compile Include="ViewModel\AddEmployeeViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\NavigationViewModel.cs" />
+    <Compile Include="ViewModel\RoomListViewModel.cs" />
+    <Compile Include="ViewModel\RoomViewModel.cs" />
     <Compile Include="View\AddEmployee.xaml.cs">
       <DependentUpon>AddEmployee.xaml</DependentUpon>
     </Compile>
@@ -122,6 +130,10 @@
     <Compile Include="View\ServiceManagementView.xaml.cs">
       <DependentUpon>ServiceManagementView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Styles\ScrollBarStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -213,9 +225,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\BackgroundLogin.jpg" />
     <Resource Include="Images\KeyLogin.png" />
