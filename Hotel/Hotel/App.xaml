@@ -15,7 +15,6 @@
                 <ResourceDictionary Source="/Styles/MenuButtonStyles.xaml" />
                 <ResourceDictionary Source="/Styles/Page.xaml" />
                 <ResourceDictionary Source="/Styles/Datatemplate.xaml" />
-         
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

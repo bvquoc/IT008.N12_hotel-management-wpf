@@ -82,7 +82,7 @@
         <Setter Property="VerticalAlignment"
                 Value="Center" />
         <Setter Property="FontFamily"
-                Value="Montserrat"/>
+                Value="Montserrat" />
     </Style>
 
 </ResourceDictionary>
