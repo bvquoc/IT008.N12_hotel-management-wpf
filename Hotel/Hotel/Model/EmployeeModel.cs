@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hotel.Model
 {
-    internal class EmployeeModel
+    public class EmployeeModel
     {
     }
 }

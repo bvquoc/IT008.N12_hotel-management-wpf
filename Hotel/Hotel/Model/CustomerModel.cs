@@ -8,5 +8,6 @@ namespace Hotel.Model
 {
     public class CustomerModel
     {
+        
     }
 }
