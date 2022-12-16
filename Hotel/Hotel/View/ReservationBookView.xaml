@@ -4,11 +4,278 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Hotel.View"
+                     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
-             d:DesignHeight="450"
-             d:DesignWidth="800"
+             d:DesignHeight="700"
+             d:DesignWidth="805"
              Style="{StaticResource Page_Style}">
-    <Grid Background="Black">
+    <!--<UserControl.Resources>
+        <Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}">
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
 
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Border x:Name="rectangle"
+                                SnapsToDevicePixels="True"
+                                Background="#999999"
+                                CornerRadius="3"
+                                Height="{TemplateBinding Height}"
+                                Width="{TemplateBinding Width}"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type ScrollBar}">
+            <Setter Property="Width" Value="25"/>
+            <Setter Property="Margin" Value="0 0 0 0" />
+            <Setter Property="MinWidth" Value="{Binding Width, RelativeSource={RelativeSource Self}}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ScrollBar}">
+                        <Grid x:Name="Bg" SnapsToDevicePixels="true" Background="Transparent">
+                            <Border Padding="0 4">
+                                <Track x:Name="PART_Track"
+                                               IsDirectionReversed="true"
+                                               Width="12"
+                                               HorizontalAlignment="Center">
+                                    <Track.Thumb>
+                                        <Thumb Style="{StaticResource ScrollBarThumb}" />
+                                    </Track.Thumb>
+                                </Track>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>-->
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="400"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Margin="0,0,0,0"
+              >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="250"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"  
+                  HorizontalAlignment="Stretch"
+                  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock FontSize="30"
+                       FontWeight="Bold"
+                       Text="Thông tin phòng"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Center"
+                       Margin="0 30 0 0"
+                       Grid.Row="0"
+                       >
+                </TextBlock>
+                <Grid Grid.Row="1"
+                      HorizontalAlignment="Center">
+                    <Grid Height="40" Width="150" VerticalAlignment="Top" HorizontalAlignment="Left"
+                        Margin="10 30 0 0"
+                      >
+                        <materialDesign:PackIcon Kind="CalendarToday" Height="25" Width="25" VerticalAlignment="Bottom"/>
+                        <DatePicker Margin="30 0 0 0" x:Name="dtpNgayBD"
+                                        
+                            materialDesign:HintAssist.Hint="Ngày bắt đầu"
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                    </Grid>
+                    <Grid Height="40" Width="150" VerticalAlignment="Top" HorizontalAlignment="Right"
+                        Margin="200 30 10 0"
+                      >
+                        <materialDesign:PackIcon Kind="ClockOutline" Height="25" Width="25" VerticalAlignment="Bottom"/>
+                        <materialDesign:TimePicker x:Name="tpGioBD"
+                                      Margin="30 0 0 0"
+                                      Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
+                                      materialDesign:HintAssist.Hint="Giờ bắt đầu" />
+                    </Grid>
+                    <Grid Height="40" Width="150" VerticalAlignment="Top" HorizontalAlignment="Left"
+                        Margin="10 100 0 0"
+                      >
+                        <materialDesign:PackIcon Kind="CalendarToday" Height="25" Width="25" VerticalAlignment="Bottom"/>
+                        <DatePicker Margin="30 0 0 0" x:Name="dtpNgayKT"
+                            materialDesign:HintAssist.Hint="Ngày kết thúc"
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                    </Grid>
+                    <Grid Height="40" Width="150" VerticalAlignment="Top" HorizontalAlignment="Right"
+                        Margin="0 100 10 0"
+                      >
+                        <materialDesign:PackIcon Kind="ClockOutline" Height="25" Width="25" VerticalAlignment="Bottom"/>
+                        <materialDesign:TimePicker x:Name="tpGioKT"
+                                      Margin="30 0 0 0"
+                                      Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
+                                      materialDesign:HintAssist.Hint="Giờ kết thúc" />
+                    </Grid>
+                </Grid>
+               
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid Height="1" Width="300" Background="Black" Opacity="0.5"/>
+            </Grid>
+            <Grid Grid.Row="2" HorizontalAlignment="Center"
+                  VerticalAlignment="Top">
+                <StackPanel  Orientation="Vertical"
+                        >
+                    <TextBlock FontSize="30" FontWeight="Bold" Text="Thông tin khách hàng" Margin="0 65 0 0"
+                           VerticalAlignment="Top" HorizontalAlignment="Center"></TextBlock>
+                    <Grid Height="25" Width="213" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 20 0 0">
+                        <materialDesign:PackIcon Kind="AccountBox" Height="25" Width="25"/>
+                        <TextBox x:Name="txbHoTen" Margin="30 0 0 0" materialDesign:HintAssist.Hint="Nhập họ tên khách hàng"/>
+                    </Grid>
+                    <Grid Height="25" Width="213" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 20 0 0">
+                        <materialDesign:PackIcon Kind="CardAccountDetailsOutline" Height="25" Width="25"/>
+                        <TextBox x:Name="txbCCCD" MaxLength="12" Margin="30 0 0 0" materialDesign:HintAssist.Hint="Nhập CCCD"/>
+                    </Grid>
+                    <Grid Height="25" Width="213" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 20 0 0">
+                        <materialDesign:PackIcon Kind="Phone" Height="25" Width="25"/>
+                        <TextBox x:Name="txbSDT" Margin="30 0 0 0" MaxLength="10" materialDesign:HintAssist.Hint="Nhập SDT"/>
+                    </Grid>
+                    <Grid Height="25" Width="213" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 20 0 0">
+                        <materialDesign:PackIcon Kind="MapMarkerRadiusOutline" Height="25" Width="25"/>
+                        <TextBox x:Name="txbDiaChi" Margin="30 0 0 0" materialDesign:HintAssist.Hint="Nhập địa chỉ"/>
+                    </Grid>
+                    <Grid Height="25" Width="213" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 20 0 0">
+                        <materialDesign:PackIcon Kind="GenderTransgender" Height="25" Width="25"/>
+                        <ComboBox x:Name="cbGioiTinh" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="30 0 0 0"
+                                    Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                    materialDesign:HintAssist.Hint="Giới tính"
+                                    Height="25" Padding="5" Width="180">
+                            <ComboBoxItem Content="Nam" />
+                            <ComboBoxItem Content="Nữ" />
+                        </ComboBox>
+                    </Grid>
+                    
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.Resources>
+                    <Style TargetType="Button"
+                                   BasedOn="{StaticResource MaterialDesignRaisedDarkButton}">
+                        <Setter Property="VerticalAlignment"
+                                        Value="Top" />
+                        <Setter Property="HorizontalAlignment"
+                                        Value="Right" />
+                        <Setter Property="Width"
+                                        Value="90" />
+                        <Setter Property="Height"
+                                        Value="30" />
+                    </Style>
+                </Grid.Resources>
+                <Button Content="Hủy"
+                                materialDesign:ButtonAssist.CornerRadius="8"
+                                Margin="0 10 30 10"
+                                Command="{Binding CloseCommand}"
+                                CommandParameter="{Binding ElementName=addEmployee}"
+                                Background="OrangeRed"
+                                BorderBrush="Transparent" />
+                <Button Content="Lưu"
+                                Margin="0 10 -130 10"
+                                materialDesign:ButtonAssist.CornerRadius="8"
+                                Command="{Binding EditCustomerCommand}"
+                                CommandParameter="{Binding ElementName=SuaKH}" />
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid Height="500" Background="Black" Opacity="0.5" Width="1"/>
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="Danh sách phòng trống" FontSize="30" FontWeight="Bold"
+                               Margin="0 30 0 0"
+                           HorizontalAlignment="Center"/>
+                <Grid Background="#FFFCFC" Height="180" Width="300" Margin="12 10  0 24"
+                        HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <Grid.Clip>
+                        <RectangleGeometry Rect="0,0,300,180" RadiusX="10" RadiusY="10"/>
+                    </Grid.Clip>
+                    <ListView x:Name="lvPhongTrong" >
+                        <ListView.View>
+                            <GridView>
+                                <GridView.ColumnHeaderContainerStyle>
+                                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                                        <Setter Property="Background" Value="#C4C4C4" />
+                                        <Setter Property="Foreground" Value="Black" />
+                                        <Setter Property="FontWeight" Value="Bold" />
+                                    </Style>
+                                </GridView.ColumnHeaderContainerStyle>
+                                <GridViewColumn  Header="Số phòng"  Width="65" DisplayMemberBinding="{Binding Path = SoPhong }" />
+                                <GridViewColumn Header="Loại phòng" Width="100" DisplayMemberBinding="{Binding  Path= TenLoaiPhong }"  />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </StackPanel>
+            <StackPanel Grid.Row="1">
+                <TextBlock Text="Phòng đã chọn" FontSize="30" FontWeight="Bold"
+                               Margin="0 20 0 0"
+                           HorizontalAlignment="Center"/>
+                <Grid Background="#FFFCFC" Height="180" Width="300" Margin="12 10  0 24"
+                        HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <Grid.Clip>
+                        <RectangleGeometry Rect="0,0,300,180" RadiusX="10" RadiusY="10"/>
+                    </Grid.Clip>
+                    <ListView x:Name="lvPhongDaChon" >
+                        <ListView.View>
+                            <GridView>
+                                <GridView.ColumnHeaderContainerStyle>
+                                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                                        <Setter Property="Background" Value="#C4C4C4" />
+                                        <Setter Property="Foreground" Value="Black" />
+                                        <Setter Property="FontWeight" Value="Bold" />
+                                    </Style>
+                                </GridView.ColumnHeaderContainerStyle>
+                                <GridViewColumn  Header="Số phòng"  Width="65" DisplayMemberBinding="{Binding Path = SoPhong }" />
+                                <GridViewColumn Width="60" Header="Số người">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox
+                                                        Text="{Binding SoNguoiO}"
+                                                        materialDesign:HintAssist.Hint="Nhập số người ở">
+                                            </TextBox>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn  Header="Ngày BD"  Width="90" DisplayMemberBinding="{Binding NgayBD }" />
+                                <GridViewColumn  Header="Ngày KT"  Width="90" DisplayMemberBinding="{Binding NgayKT}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+                <Grid Background="Transparent"
+                          >
+                    <Grid.Resources>
+                        <Style TargetType="Button"
+                                   BasedOn="{StaticResource MaterialDesignRaisedDarkButton}">
+                            <Setter Property="VerticalAlignment"
+                                        Value="Bottom" />
+                            <Setter Property="HorizontalAlignment"
+                                        Value="Right" />
+                            <Setter Property="Width"
+                                        Value="90" />
+                            <Setter Property="Height"
+                                        Value="30" />
+                        </Style>
+                    </Grid.Resources>
+                    
+                    
+                </Grid>
+            </StackPanel>
+            
+        </Grid>
     </Grid>
 </UserControl>
