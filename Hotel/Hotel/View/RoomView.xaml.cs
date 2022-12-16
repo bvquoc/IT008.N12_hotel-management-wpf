@@ -14,6 +14,9 @@ namespace Hotel.View
             InitializeComponent();
 
             DataContext = new RoomListViewModel();
+            // trong xaml phần hiện thông tin phòng
+            // để ItemsSource là Rooms
+            // các binding là Name, Description, Status
         }     
     }
 }
