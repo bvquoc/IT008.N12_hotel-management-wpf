@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Hotel.ViewModel
@@ -24,6 +25,7 @@ namespace Hotel.ViewModel
         {
             ShowMessage = new RelayCommand<RoomView>((parameter) => true, (parameter) =>
             {
+                MessageBox.Show("aaasccc");
             });
 
 
@@ -92,8 +94,9 @@ namespace Hotel.ViewModel
             RoomList.Add(new Phong() { Name = "B205", Description = "Thường", Status = "Tu Sửa" });
         }
     }
-    public class Phong
+    public class Phong : BaseViewModel
     {
+        public ICommand ShowMessage { get; set; }
         public Phong(string name, string description, string status)
         {
             Name = name;
@@ -102,7 +105,10 @@ namespace Hotel.ViewModel
         }
         public Phong()
         {
-
+            ShowMessage = new RelayCommand<RoomView>((parameter) => true, (parameter) =>
+            {
+                MessageBox.Show("aaaaaaaaa");
+            });
         }
         public string Name { get; set; }
         public string Description { get; set; }
