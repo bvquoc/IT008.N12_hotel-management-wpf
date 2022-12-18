@@ -60,7 +60,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="400" />
+            <ColumnDefinition Width="430" />
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0"
               Margin="0,0,0,0">
@@ -281,7 +281,7 @@
                            HorizontalAlignment="Center" />
                 <Grid Background="#FFFCFC"
                       Height="180"
-                      Width="300"
+                      Width="240"
                       Margin="12 10  0 24"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Bottom">
@@ -339,17 +339,19 @@
                            HorizontalAlignment="Center" />
                 <Grid Background="#FFFCFC"
                       Height="180"
-                      Width="300"
+                      Width="390"
                       Margin="12 10  0 24"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Bottom">
                     <Grid.Clip>
-                        <RectangleGeometry Rect="0,0,300,180"
+                        <RectangleGeometry Rect="0,0,390,180"
                                            RadiusX="10"
                                            RadiusY="10" />
                     </Grid.Clip>
                     <ListView x:Name="lvPhongDaChon"
-                              ItemsSource="{Binding Rooms}">
+                              ItemsSource="{Binding Rooms}"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                              ScrollViewer.VerticalScrollBarVisibility="Auto">
                         <ListView.View>
                             <GridView>
                                 <GridView.ColumnHeaderContainerStyle>
@@ -365,12 +367,12 @@
                                 <GridViewColumn  Header="Số phòng"
                                                  Width="65"
                                                  DisplayMemberBinding="{Binding Path = Name }" />
-                                <GridViewColumn Width="60"
+                                <GridViewColumn Width="70"
                                                 Header="Số người">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBox Text="{Binding SoNguoiO}"
-                                                     materialDesign:HintAssist.Hint="Nhập số người ở">
+                                                     materialDesign:HintAssist.Hint="Số người ở" Margin="-11,0,0,0">
                                             </TextBox>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
