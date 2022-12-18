@@ -183,6 +183,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Margin="10"
+                                        Command="{Binding ShowMessage}"
                                         ToolTip="Resource name: MaterialDesignRaisedAccentButton">
                                     <Button.Style>
                                         <Style TargetType="Button"

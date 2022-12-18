@@ -12,106 +12,77 @@ namespace Hotel.ViewModel
 {
     internal class RoomViewModel : BaseViewModel
     {
-        private ObservableCollection<Phong> _roomList;
-        public ObservableCollection<Phong> RoomList
+        private ObservableCollection<RoomVM> _roomList;
+        public ObservableCollection<RoomVM> RoomList
         {
             get { return _roomList; }
             set { _roomList = value; OnPropertyChanged(); }
         }
-
-        public ICommand ShowMessage { get; set; }
-
         public RoomViewModel()
         {
-            ShowMessage = new RelayCommand<RoomView>((parameter) => true, (parameter) =>
-            {
-                MessageBox.Show("aaasccc");
-            });
-
-
-
-            RoomList = new ObservableCollection<Phong>();
+            RoomList = new ObservableCollection<RoomVM>();
             LoadDemo();
         }
 
         public void LoadDemo()
         {
-            RoomList.Add(new Phong() { Name = "B101", Description = "Thường", Status = "Trống" });
-            RoomList.Add(new Phong() { Name = "B102", Description = "Vip", Status = "Đã đặt" });
-            RoomList.Add(new Phong() { Name = "B103", Description = "Thường", Status = "Tu Sua" });
-            RoomList.Add(new Phong() { Name = "B104", Description = "Thường", Status = "Trống" });
-            RoomList.Add(new Phong() { Name = "B105", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B106", Description = "Thường", Status = "Đã đặt" });
-            RoomList.Add(new Phong() { Name = "B107", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B108", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B109", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B201", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B202", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B203", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B204", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B205", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B101", Description = "Thường", Status = "Trống" });
-            RoomList.Add(new Phong() { Name = "B102", Description = "Vip", Status = "Đã đặt" });
-            RoomList.Add(new Phong() { Name = "B103", Description = "Thường", Status = "Tu Sua" });
-            RoomList.Add(new Phong() { Name = "B104", Description = "Thường", Status = "Trống" });
-            RoomList.Add(new Phong() { Name = "B105", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B106", Description = "Thường", Status = "Đã đặt" });
-            RoomList.Add(new Phong() { Name = "B107", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B108", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B109", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B201", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B202", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B203", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B204", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B205", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B101", Description = "Thường", Status = "Trống" });
-            RoomList.Add(new Phong() { Name = "B102", Description = "Vip", Status = "Đã đặt" });
-            RoomList.Add(new Phong() { Name = "B103", Description = "Thường", Status = "Tu Sua" });
-            RoomList.Add(new Phong() { Name = "B104", Description = "Thường", Status = "Trống" });
-            RoomList.Add(new Phong() { Name = "B105", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B106", Description = "Thường", Status = "Đã đặt" });
-            RoomList.Add(new Phong() { Name = "B107", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B108", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B109", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B201", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B202", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B203", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B204", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B205", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B101", Description = "Thường", Status = "Trống" });
-            RoomList.Add(new Phong() { Name = "B102", Description = "Vip", Status = "Đã đặt" });
-            RoomList.Add(new Phong() { Name = "B103", Description = "Thường", Status = "Tu Sua" });
-            RoomList.Add(new Phong() { Name = "B104", Description = "Thường", Status = "Trống" });
-            RoomList.Add(new Phong() { Name = "B105", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B106", Description = "Thường", Status = "Đã đặt" });
-            RoomList.Add(new Phong() { Name = "B107", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B108", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B109", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B201", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B202", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B203", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B204", Description = "Thường", Status = "Tu Sửa" });
-            RoomList.Add(new Phong() { Name = "B205", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B101", Description = "Thường", Status = "Trống" });
+            RoomList.Add(new RoomVM() { Name = "B102", Description = "Vip", Status = "Đã đặt" });
+            RoomList.Add(new RoomVM() { Name = "B103", Description = "Thường", Status = "Tu Sua" });
+            RoomList.Add(new RoomVM() { Name = "B104", Description = "Thường", Status = "Trống" });
+            RoomList.Add(new RoomVM() { Name = "B105", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B106", Description = "Thường", Status = "Đã đặt" });
+            RoomList.Add(new RoomVM() { Name = "B107", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B108", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B109", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B201", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B202", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B203", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B204", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B205", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B101", Description = "Thường", Status = "Trống" });
+            RoomList.Add(new RoomVM() { Name = "B102", Description = "Vip", Status = "Đã đặt" });
+            RoomList.Add(new RoomVM() { Name = "B103", Description = "Thường", Status = "Tu Sua" });
+            RoomList.Add(new RoomVM() { Name = "B104", Description = "Thường", Status = "Trống" });
+            RoomList.Add(new RoomVM() { Name = "B105", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B106", Description = "Thường", Status = "Đã đặt" });
+            RoomList.Add(new RoomVM() { Name = "B107", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B108", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B109", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B201", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B202", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B203", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B204", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B205", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B101", Description = "Thường", Status = "Trống" });
+            RoomList.Add(new RoomVM() { Name = "B102", Description = "Vip", Status = "Đã đặt" });
+            RoomList.Add(new RoomVM() { Name = "B103", Description = "Thường", Status = "Tu Sua" });
+            RoomList.Add(new RoomVM() { Name = "B104", Description = "Thường", Status = "Trống" });
+            RoomList.Add(new RoomVM() { Name = "B105", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B106", Description = "Thường", Status = "Đã đặt" });
+            RoomList.Add(new RoomVM() { Name = "B107", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B108", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B109", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B201", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B202", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B203", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B204", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B205", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B101", Description = "Thường", Status = "Trống" });
+            RoomList.Add(new RoomVM() { Name = "B102", Description = "Vip", Status = "Đã đặt" });
+            RoomList.Add(new RoomVM() { Name = "B103", Description = "Thường", Status = "Tu Sua" });
+            RoomList.Add(new RoomVM() { Name = "B104", Description = "Thường", Status = "Trống" });
+            RoomList.Add(new RoomVM() { Name = "B105", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B106", Description = "Thường", Status = "Đã đặt" });
+            RoomList.Add(new RoomVM() { Name = "B107", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B108", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B109", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B201", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B202", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B203", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B204", Description = "Thường", Status = "Tu Sửa" });
+            RoomList.Add(new RoomVM() { Name = "B205", Description = "Thường", Status = "Tu Sửa" });
         }
     }
-    public class Phong : BaseViewModel
-    {
-        public ICommand ShowMessage { get; set; }
-        public Phong(string name, string description, string status)
-        {
-            Name = name;
-            Description = description;
-            Status = status;
-        }
-        public Phong()
-        {
-            ShowMessage = new RelayCommand<RoomView>((parameter) => true, (parameter) =>
-            {
-                MessageBox.Show("aaaaaaaaa");
-            });
-        }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Status { get; set; }
-    }
+
 }
