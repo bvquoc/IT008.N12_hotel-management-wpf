@@ -178,13 +178,29 @@
                                   ItemsSource="{Binding RoomList}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Button Width="170"
+                                <Button x:Name="ButtonRoom" Width="170"
                                         Height="100"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Margin="10"
                                         Command="{Binding ShowMessage}"
-                                        ToolTip="Resource name: MaterialDesignRaisedAccentButton">
+                                        ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                                        RenderTransformOrigin="0.5,0.5"
+                                        >
+                                    <Button.Resources>
+                                        <Style x:Key="ScaleStyle" TargetType="Grid">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Grid.ZIndex" Value="1"/>
+                                                    <Setter Property="RenderTransform">
+                                                        <Setter.Value>
+                                                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Resources>
                                     <Button.Style>
                                         <Style TargetType="Button"
                                                BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
@@ -203,12 +219,32 @@
                                                             Value="#ffcc99">
                                                     </Setter>
                                                 </DataTrigger>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Width" Value="180"/>
+                                                    <Setter Property="Height" Value="110"/>
+                                                </Trigger>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Grid.ZIndex" Value="1"/>
+                                                    <Setter Property="RenderTransform">
+                                                        <Setter.Value>
+                                                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Trigger>
                                             </Style.Triggers>
                                         </Style>
+                                        
                                     </Button.Style>
 
-                                    <Grid Width="150"
-                                          Height="90">
+                                    <Grid Margin="-20 0 0 0"
+                                          Width="170"
+                                          Height="100"
+                                          x:Name="gridName"
+                                          Background="Transparent"
+                                          Style="{StaticResource ScaleStyle}"
+                                          RenderTransformOrigin="0.5,0.5"
+                                          >
+                                        
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="55" />
                                             <RowDefinition></RowDefinition>
@@ -253,7 +289,6 @@
                                                 </TextBlock>
                                             </Grid>
                                         </Grid>
-
                                     </Grid>
                                 </Button>
                             </DataTemplate>
