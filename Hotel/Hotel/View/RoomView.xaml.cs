@@ -12,5 +12,7 @@ namespace Hotel.View
         {
             InitializeComponent();
         }
+
+      
     }
 }
