@@ -87,6 +87,7 @@
                 Background="#ffffb3"
                 VerticalAlignment="Center"
                 materialDesign:ButtonAssist.CornerRadius="10"
+                Click="btnAddServiceClick"
                 >
         </Button>
         <Grid Grid.Row="1">
