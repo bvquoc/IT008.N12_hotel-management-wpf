@@ -15,47 +15,6 @@
     <UserControl.DataContext>
         <vm:ReservationBookViewModel />
     </UserControl.DataContext>
-    <!--<UserControl.Resources>
-        <Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}">
-            <Setter Property="OverridesDefaultStyle" Value="true"/>
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Thumb}">
-                        <Border x:Name="rectangle"
-                                SnapsToDevicePixels="True"
-                                Background="#999999"
-                                CornerRadius="3"
-                                Height="{TemplateBinding Height}"
-                                Width="{TemplateBinding Width}"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style TargetType="{x:Type ScrollBar}">
-            <Setter Property="Width" Value="25"/>
-            <Setter Property="Margin" Value="0 0 0 0" />
-            <Setter Property="MinWidth" Value="{Binding Width, RelativeSource={RelativeSource Self}}"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ScrollBar}">
-                        <Grid x:Name="Bg" SnapsToDevicePixels="true" Background="Transparent">
-                            <Border Padding="0 4">
-                                <Track x:Name="PART_Track"
-                                               IsDirectionReversed="true"
-                                               Width="12"
-                                               HorizontalAlignment="Center">
-                                    <Track.Thumb>
-                                        <Thumb Style="{StaticResource ScrollBarThumb}" />
-                                    </Track.Thumb>
-                                </Track>
-                            </Border>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </UserControl.Resources>-->
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -286,7 +245,7 @@
                       HorizontalAlignment="Center"
                       VerticalAlignment="Bottom">
                     <Grid.Clip>
-                        <RectangleGeometry Rect="0,0,300,180"
+                        <RectangleGeometry Rect="0,0,240,180"
                                            RadiusX="10"
                                            RadiusY="10" />
                     </Grid.Clip>
