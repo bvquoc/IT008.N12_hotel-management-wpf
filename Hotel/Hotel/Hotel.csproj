@@ -98,6 +98,8 @@
     <Compile Include="ViewModel\ReservationBookViewModel.cs" />
     <Compile Include="ViewModel\RoomViewModel.cs" />
     <Compile Include="ViewModel\RoomVM.cs" />
+    <Compile Include="ViewModel\ServicesViewModel.cs" />
+    <Compile Include="ViewModel\ServiceVM.cs" />
     <Compile Include="View\AddEmployee.xaml.cs">
       <DependentUpon>AddEmployee.xaml</DependentUpon>
     </Compile>
