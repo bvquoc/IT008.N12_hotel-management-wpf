@@ -103,6 +103,9 @@
     <Compile Include="View\AddEmployee.xaml.cs">
       <DependentUpon>AddEmployee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AddService.xaml.cs">
+      <DependentUpon>AddService.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\BillView.xaml.cs">
       <DependentUpon>BillView.xaml</DependentUpon>
     </Compile>
@@ -127,6 +130,10 @@
     <Compile Include="View\ServiceManagementView.xaml.cs">
       <DependentUpon>ServiceManagementView.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\AddService.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

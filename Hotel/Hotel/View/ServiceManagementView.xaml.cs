@@ -11,5 +11,11 @@ namespace Hotel.View
         {
             InitializeComponent();
         }
+
+        private void btnAddServiceClick(object sender, System.Windows.RoutedEventArgs e)
+        {
+            AddService adds=new AddService();
+            adds.ShowDialog();
+        }
     }
 }
