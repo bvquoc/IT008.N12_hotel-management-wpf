@@ -116,7 +116,8 @@
                     <RadioButton Content="Tất cả"
                                  Style="{StaticResource MaterialDesignRadioButton}"
                                  Margin="10"
-                                 GroupName="Status">
+                                 GroupName="Status"
+                                 IsChecked="True">
 
                     </RadioButton>
 
