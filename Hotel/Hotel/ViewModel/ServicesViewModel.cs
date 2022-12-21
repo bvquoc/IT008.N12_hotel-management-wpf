@@ -1,4 +1,5 @@
-﻿using Hotel.View;
+﻿using Hotel.Model;
+using Hotel.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,9 +22,18 @@ namespace Hotel.ViewModel
         public ServiceViewModel()
         {
             ServiceList = new ObservableCollection<ServiceVM>();
-            LoadDemo();
+            //LoadDemo();
+            LoadAllSV();
         }
-
+        public void LoadAllSV()
+        {
+            using (var db = new QLYHOTELEntities())
+            {
+                var select = from s in db.DICHVUs select s;
+                foreach (var service in select)
+                    ServiceList.Add(new ServiceVM() { ID = service.MADV.ToString(), Name = service.TENDV.ToString(), Price = service.DONGIA.Value });
+            }
+        }
         public void LoadDemo()
         {
             ServiceList.Add(new ServiceVM() { ID = "B101", Name = "Mì", Price = 1003340 });

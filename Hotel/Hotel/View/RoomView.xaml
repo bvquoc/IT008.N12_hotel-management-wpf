@@ -178,23 +178,27 @@
                                   ItemsSource="{Binding RoomList}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Button x:Name="ButtonRoom" Width="170"
+                                <Button x:Name="ButtonRoom"
+                                        Width="170"
                                         Height="100"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Margin="10"
                                         Command="{Binding ShowMessage}"
                                         ToolTip="Resource name: MaterialDesignRaisedAccentButton"
-                                        RenderTransformOrigin="0.5,0.5"
-                                        >
+                                        RenderTransformOrigin="0.5,0.5">
                                     <Button.Resources>
-                                        <Style x:Key="ScaleStyle" TargetType="Grid">
+                                        <Style x:Key="ScaleStyle"
+                                               TargetType="Grid">
                                             <Style.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Grid.ZIndex" Value="1"/>
+                                                <Trigger Property="IsMouseOver"
+                                                         Value="True">
+                                                    <Setter Property="Grid.ZIndex"
+                                                            Value="1" />
                                                     <Setter Property="RenderTransform">
                                                         <Setter.Value>
-                                                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                                                            <ScaleTransform ScaleX="1.1"
+                                                                            ScaleY="1.1" />
                                                         </Setter.Value>
                                                     </Setter>
                                                 </Trigger>
@@ -214,26 +218,32 @@
                                                     </Setter>
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding Status}"
-                                                             Value="Tu Sửa">
+                                                             Value="Tu sửa">
                                                     <Setter Property="Background"
                                                             Value="#ffcc99">
                                                     </Setter>
                                                 </DataTrigger>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Width" Value="180"/>
-                                                    <Setter Property="Height" Value="110"/>
+                                                <Trigger Property="IsMouseOver"
+                                                         Value="True">
+                                                    <Setter Property="Width"
+                                                            Value="180" />
+                                                    <Setter Property="Height"
+                                                            Value="110" />
                                                 </Trigger>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Grid.ZIndex" Value="1"/>
+                                                <Trigger Property="IsMouseOver"
+                                                         Value="True">
+                                                    <Setter Property="Grid.ZIndex"
+                                                            Value="1" />
                                                     <Setter Property="RenderTransform">
                                                         <Setter.Value>
-                                                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                                                            <ScaleTransform ScaleX="1.1"
+                                                                            ScaleY="1.1" />
                                                         </Setter.Value>
                                                     </Setter>
                                                 </Trigger>
                                             </Style.Triggers>
                                         </Style>
-                                        
+
                                     </Button.Style>
 
                                     <Grid Margin="-20 0 0 0"
@@ -242,9 +252,8 @@
                                           x:Name="gridName"
                                           Background="Transparent"
                                           Style="{StaticResource ScaleStyle}"
-                                          RenderTransformOrigin="0.5,0.5"
-                                          >
-                                        
+                                          RenderTransformOrigin="0.5,0.5">
+
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="55" />
                                             <RowDefinition></RowDefinition>
