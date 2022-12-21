@@ -116,6 +116,12 @@
                                                 Value="Bold" />
                                     <Setter Property="FontSize"
                                             Value="20"/>
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="TextElement.Foreground" Value="Black"/>
+                                        </Trigger>
+                                    </Style.Triggers>
                                 </Style>
                             </GridView.ColumnHeaderContainerStyle>
                             <GridViewColumn  Header="Mã dịch vụ"

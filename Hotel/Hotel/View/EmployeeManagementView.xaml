@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:Hotel.View"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
-             d:DesignHeight="450"
-             d:DesignWidth="800"
+             d:DesignHeight="700"
+             d:DesignWidth="805"
              Style="{StaticResource Page_Style}">
     <Grid Background="Transparent">
         <!--Chia khung-->
@@ -83,5 +83,98 @@
                 materialDesign:ButtonAssist.CornerRadius="10"
                 Click="btnAddClick">
         </Button>
+        <Grid Grid.Row="1">
+            <Grid HorizontalAlignment="Center"
+                  VerticalAlignment="Top"
+                  Width="700"
+                  Height="450"
+                  Margin="0 40 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="174*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.Clip>
+                    <RectangleGeometry Rect="0 0 700 450"
+                                       RadiusX="10"
+                                       RadiusY="10"/>
+                </Grid.Clip>
+                <ListView x:Name="lvSer"
+                          ItemsSource="{Binding ServiceList}"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2"
+                          >
+                    <ListView.View>
+                        <GridView>
+                            <GridView.ColumnHeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Background"
+                                                Value="#C4C4C4" />
+                                    <Setter Property="Foreground"
+                                                Value="Black" />
+                                    <Setter Property="FontWeight"
+                                                Value="Bold" />
+                                    <Setter Property="FontSize"
+                                            Value="18"/>
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="TextElement.Foreground" Value="Black"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </GridView.ColumnHeaderContainerStyle>
+                            <GridViewColumn  Header="Mã nhân viên"
+                                             Width="150">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path = ID }"                                                  
+                                                   Margin="40 0 0 0"></TextBlock>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Tên nhân viên"
+                                                Width="180"
+                                                >
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path = Name }"
+                                                   Margin="40 0 0 0"></TextBlock>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Tài khoản"
+                                                Width="150"
+                                                >
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path = Price }" 
+                                                   ></TextBlock>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Mật khẩu"
+                                                Width="120"
+                                                >
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path = Price }" 
+                                                    ></TextBlock>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Lương"
+                                                Width="100"
+                                                >
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path = Price }" 
+                                                    ></TextBlock>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>
