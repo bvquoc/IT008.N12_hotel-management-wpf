@@ -104,6 +104,11 @@
                 <ListView x:Name="lvSer"
                           ItemsSource="{Binding ServiceList}"
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
                     <ListView.View>
                         <GridView>
                             <GridView.ColumnHeaderContainerStyle>
@@ -150,11 +155,16 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Path = Price }" 
-                                                   FontSize="20"></TextBlock>
+                                                   FontSize="20"
+                                                   HorizontalAlignment="Right"
+                                                   TextAlignment="Right"
+                                                   Margin="0 0 20 0"></TextBlock>
                                     </DataTemplate>
+                                    
                                 </GridViewColumn.CellTemplate>
+                                
                             </GridViewColumn>
-                            <GridViewColumn Width="100"
+                            <GridViewColumn Width="90"
                                                 Header="Xóa">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
@@ -166,7 +176,8 @@
                                                     ToolTip="Icon"
                                                     Background="#99ff99"
                                                     Command="{Binding ChoseRoom}" 
-                                                Margin="25 0 0 0"/>
+                                                Margin="25 0 0 0"
+                                                HorizontalAlignment="Left"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>

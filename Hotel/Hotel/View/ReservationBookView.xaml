@@ -239,7 +239,7 @@
                            Margin="0 30 0 0"
                            HorizontalAlignment="Center" />
                 <Grid Background="#FFFCFC"
-                      Height="180"
+                      Height="200"
                       Width="240"
                       Margin="12 10  0 24"
                       HorizontalAlignment="Center"
@@ -303,7 +303,7 @@
                            Margin="0 20 0 0"
                            HorizontalAlignment="Center" />
                 <Grid Background="#FFFCFC"
-                      Height="180"
+                      Height="200"
                       Width="390"
                       Margin="12 10  0 24"
                       HorizontalAlignment="Center"
