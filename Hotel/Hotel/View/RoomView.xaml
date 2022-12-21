@@ -116,7 +116,9 @@
                     <RadioButton Content="Tất cả"
                                  Style="{StaticResource MaterialDesignRadioButton}"
                                  Margin="10"
-                                 GroupName="Status">
+                                 GroupName="Status"
+                                 IsChecked="True"
+                                 Command="{Binding btnAll}">
 
                     </RadioButton>
 
@@ -125,7 +127,8 @@
                     <RadioButton Content="Trống"
                                  Style="{StaticResource MaterialDesignRadioButton}"
                                  Margin="10"
-                                 GroupName="Status">
+                                 GroupName="Status"
+                                 Command="{Binding btnAvailabel}">
 
                     </RadioButton>
 
@@ -134,7 +137,8 @@
                     <RadioButton Content="Đã đặt"
                                  Style="{StaticResource MaterialDesignRadioButton}"
                                  Margin="10"
-                                 GroupName="Status">
+                                 GroupName="Status"
+                                 Command="{Binding btnOrdered}">
 
                     </RadioButton>
 
@@ -143,7 +147,8 @@
                     <RadioButton Content="Tu sửa"
                                  Style="{StaticResource MaterialDesignRadioButton}"
                                  Margin="10"
-                                 GroupName="Status">
+                                 GroupName="Status"
+                                 Command="{Binding btnRepair}">
 
                     </RadioButton>
 

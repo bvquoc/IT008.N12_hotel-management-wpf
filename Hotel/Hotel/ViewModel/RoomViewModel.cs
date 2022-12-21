@@ -13,84 +13,81 @@ namespace Hotel.ViewModel
 {
     internal class RoomViewModel : BaseViewModel
     {
+        private ObservableCollection<RoomVM> _roomListdb;
         private ObservableCollection<RoomVM> _roomList;
         public ObservableCollection<RoomVM> RoomList
         {
             get { return _roomList; }
             set { _roomList = value; OnPropertyChanged(); }
         }
+        public ICommand btnAll { get; set; }
+        public ICommand btnAvailabel { get; set; }
+        public ICommand btnOrdered { get; set; }
+        public ICommand btnRepair { get; set; }
         public RoomViewModel()
         {
             RoomList = new ObservableCollection<RoomVM>();
-            LoadAllRoom();
-        }
 
-        public void LoadAllRoom()
+            btnAll = new RelayCommand<object>((p) => true, (p) =>
+            {
+                LoadAllRoom();
+            });
+            btnAvailabel = new RelayCommand<object>((p) => true, (p) =>
+            {
+                LoadAvailabel();
+            });
+            btnOrdered = new RelayCommand<object>((p) => true, (p) =>
+            {
+                LoadOrdered();
+            });
+            btnRepair = new RelayCommand<object>((p) => true, (p) =>
+            {
+                LoadRepair();
+            });
+            LoadDbRoom();
+        }
+        public void LoadDbRoom()
         {
+            _roomListdb = new ObservableCollection<RoomVM>();
             using (var db = new QLYHOTELEntities())
             {
                 var select = from s in db.PHONGs select s;
                 foreach (var room in select)
+                {
+                    _roomListdb.Add(new RoomVM() { Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = room.TRANGTHAI.ToString() });
                     RoomList.Add(new RoomVM() { Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = room.TRANGTHAI.ToString() });
+                }
             }
-
-
-            //RoomList.Add(new RoomVM() { Name = "B101", Description = "Thường", Status = "Trống" });
-            //RoomList.Add(new RoomVM() { Name = "B102", Description = "Vip", Status = "Đã đặt" });
-            //RoomList.Add(new RoomVM() { Name = "B103", Description = "Thường", Status = "Tu Sua" });
-            //RoomList.Add(new RoomVM() { Name = "B104", Description = "Thường", Status = "Trống" });
-            //RoomList.Add(new RoomVM() { Name = "B105", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B106", Description = "Thường", Status = "Đã đặt" });
-            //RoomList.Add(new RoomVM() { Name = "B107", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B108", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B109", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B201", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B202", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B203", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B204", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B205", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B101", Description = "Thường", Status = "Trống" });
-            //RoomList.Add(new RoomVM() { Name = "B102", Description = "Vip", Status = "Đã đặt" });
-            //RoomList.Add(new RoomVM() { Name = "B103", Description = "Thường", Status = "Tu Sua" });
-            //RoomList.Add(new RoomVM() { Name = "B104", Description = "Thường", Status = "Trống" });
-            //RoomList.Add(new RoomVM() { Name = "B105", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B106", Description = "Thường", Status = "Đã đặt" });
-            //RoomList.Add(new RoomVM() { Name = "B107", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B108", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B109", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B201", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B202", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B203", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B204", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B205", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B101", Description = "Thường", Status = "Trống" });
-            //RoomList.Add(new RoomVM() { Name = "B102", Description = "Vip", Status = "Đã đặt" });
-            //RoomList.Add(new RoomVM() { Name = "B103", Description = "Thường", Status = "Tu Sua" });
-            //RoomList.Add(new RoomVM() { Name = "B104", Description = "Thường", Status = "Trống" });
-            //RoomList.Add(new RoomVM() { Name = "B105", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B106", Description = "Thường", Status = "Đã đặt" });
-            //RoomList.Add(new RoomVM() { Name = "B107", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B108", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B109", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B201", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B202", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B203", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B204", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B205", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B101", Description = "Thường", Status = "Trống" });
-            //RoomList.Add(new RoomVM() { Name = "B102", Description = "Vip", Status = "Đã đặt" });
-            //RoomList.Add(new RoomVM() { Name = "B103", Description = "Thường", Status = "Tu Sua" });
-            //RoomList.Add(new RoomVM() { Name = "B104", Description = "Thường", Status = "Trống" });
-            //RoomList.Add(new RoomVM() { Name = "B105", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B106", Description = "Thường", Status = "Đã đặt" });
-            //RoomList.Add(new RoomVM() { Name = "B107", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B108", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B109", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B201", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B202", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B203", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B204", Description = "Thường", Status = "Tu Sửa" });
-            //RoomList.Add(new RoomVM() { Name = "B205", Description = "Thường", Status = "Tu Sửa" });
+        }
+        public void LoadAllRoom()
+        {
+            RoomList.Clear();
+            foreach (var room in _roomListdb)
+                RoomList.Add(room);
+        }
+        public void LoadAvailabel()
+        {
+            RoomList.Clear();
+            RoomList.Clear();
+            foreach (var room in _roomListdb)
+                if (room.Status == "Trống")
+                    RoomList.Add(room);
+        }
+        public void LoadOrdered()
+        {
+            RoomList.Clear();
+            RoomList.Clear();
+            foreach (var room in _roomListdb)
+                if (room.Status == "Đã đặt")
+                    RoomList.Add(room);
+        }
+        public void LoadRepair()
+        {
+            RoomList.Clear();
+            RoomList.Clear();
+            foreach (var room in _roomListdb)
+                if (room.Status == "Tu sửa")
+                    RoomList.Add(room);
         }
     }
 
