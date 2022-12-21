@@ -157,7 +157,8 @@
                                FontFamily="Montserrat"
                                FontWeight="Medium"
                                Margin="10,15,10,0" />
-                    <PasswordBox x:Name="txtPass"
+                    <Grid>
+                        <PasswordBox x:Name="txtPass"
                                  FontSize="15"
                                  FontFamily="Montserrat"
                                  FontWeight="Medium"
@@ -169,12 +170,15 @@
                                  Height="28"
                                  VerticalContentAlignment="Center"
                                  Margin="10,5,10,10">
-                        <PasswordBox.Background>
-                            <ImageBrush ImageSource="/Images/KeyLogin.png"
+                            <PasswordBox.Background>
+                                <ImageBrush ImageSource="/Images/KeyLogin.png"
                                         Stretch="None"
                                         AlignmentX="Left" />
-                        </PasswordBox.Background>
-                    </PasswordBox>
+                            </PasswordBox.Background>
+                        </PasswordBox>
+                    </Grid>
+                    
+
                     <Button x:Name="btnLogin"
                             BorderThickness="0"
                             Content="Đăng nhập"
@@ -183,7 +187,7 @@
                             FontFamily="Montserrat"
                             Cursor="Hand"
                             Grid.Column="2"
-                            Margin="0,35,0,0"
+                            Margin="0,15,0,0"
                             Command="{Binding Login}"
                             CommandParameter="{Binding ElementName=LoginWD}">
                         <Button.Style>
