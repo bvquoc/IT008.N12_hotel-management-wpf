@@ -25,8 +25,8 @@ namespace Hotel.ViewModel
         public ServiceVM(string id, string name, int price)
         {
             Name = name;
-            ID=id;
-            price =price;
+            ID = id;
+            Price = price;
         }
     }
 }
