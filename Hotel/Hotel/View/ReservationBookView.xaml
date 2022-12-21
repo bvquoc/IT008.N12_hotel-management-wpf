@@ -262,6 +262,12 @@
                                                 Value="Black" />
                                         <Setter Property="FontWeight"
                                                 Value="Bold" />
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter Property="TextElement.Foreground" Value="Black"/>
+                                            </Trigger>
+                                        </Style.Triggers>
                                     </Style>
                                 </GridView.ColumnHeaderContainerStyle>
                                 <GridViewColumn  Header="Số phòng"
@@ -321,6 +327,12 @@
                                                 Value="Black" />
                                         <Setter Property="FontWeight"
                                                 Value="Bold" />
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter Property="TextElement.Foreground" Value="Black"/>
+                                            </Trigger>
+                                        </Style.Triggers>
                                     </Style>
                                 </GridView.ColumnHeaderContainerStyle>
                                 <GridViewColumn  Header="Số phòng"
