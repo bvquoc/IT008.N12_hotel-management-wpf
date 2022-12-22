@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Hotel.ViewModel
@@ -20,10 +21,17 @@ namespace Hotel.ViewModel
             get { return _roomList; }
             set { _roomList = value; OnPropertyChanged(); }
         }
+        private ComboBoxItem _sortRoom;
+        public ComboBoxItem SortRoom
+        {
+            get { return _sortRoom; }
+            set { _sortRoom = value; OnPropertyChanged(); }
+        }
         public ICommand btnAll { get; set; }
         public ICommand btnAvailabel { get; set; }
         public ICommand btnOrdered { get; set; }
         public ICommand btnRepair { get; set; }
+        public ICommand sortRoom { get; set; }
         public RoomViewModel()
         {
             RoomList = new ObservableCollection<RoomVM>();
@@ -43,6 +51,31 @@ namespace Hotel.ViewModel
             btnRepair = new RelayCommand<object>((p) => true, (p) =>
             {
                 LoadRepair();
+            });
+            sortRoom = new RelayCommand<object>((p) => true, (p) =>
+            {
+                if ((string)SortRoom.Content == "Tầng")
+                {
+                    _roomListdb = new ObservableCollection<RoomVM>(_roomListdb.OrderBy(i =>
+                    {
+                        if (i.Name.Substring(0, 1) == "V")
+                            return i.Name;
+                        else
+                            return i.Name.Substring(1);
+                    }));
+                    RoomList = new ObservableCollection<RoomVM>(RoomList.OrderBy(i =>
+                    {
+                        if (i.Name.Substring(0, 1) == "V")
+                            return i.Name;
+                        else
+                            return i.Name.Substring(1);
+                    }));
+                }
+                if ((string)SortRoom.Content == "Loại phòng")
+                {
+                    _roomListdb = new ObservableCollection<RoomVM>(_roomListdb.OrderBy(i => i.Description));
+                    RoomList = new ObservableCollection<RoomVM>(RoomList.OrderBy(i => i.Description));
+                }
             });
             LoadDbRoom();
         }
