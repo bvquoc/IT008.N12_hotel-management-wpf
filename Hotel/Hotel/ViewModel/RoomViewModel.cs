@@ -3,11 +3,13 @@ using Hotel.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace Hotel.ViewModel
@@ -25,8 +27,32 @@ namespace Hotel.ViewModel
         public ComboBoxItem SortRoom
         {
             get { return _sortRoom; }
-            set { _sortRoom = value; OnPropertyChanged(); }
+            set
+            {
+                _sortRoom = value;
+                OnPropertyChanged();
+            }
         }
+        private string _textToFilter;
+
+        public string TextToFilter
+        {
+            get { return _textToFilter; }
+            set
+            {
+                _textToFilter = value;
+                OnPropertyChanged();
+                RoomCollection.Filter = FilterByName;
+            }
+        }
+        private ICollectionView _roomCollection;
+
+        public ICollectionView RoomCollection
+        {
+            get { return _roomCollection; }
+            set { _roomCollection = value; OnPropertyChanged(); }
+        }
+
         public ICommand btnAll { get; set; }
         public ICommand btnAvailabel { get; set; }
         public ICommand btnOrdered { get; set; }
@@ -35,7 +61,6 @@ namespace Hotel.ViewModel
         public RoomViewModel()
         {
             RoomList = new ObservableCollection<RoomVM>();
-
             btnAll = new RelayCommand<object>((p) => true, (p) =>
             {
                 LoadAllRoom();
@@ -64,8 +89,20 @@ namespace Hotel.ViewModel
                     _roomListdb = new ObservableCollection<RoomVM>(_roomListdb.OrderBy(i => i.Description));
                     RoomList = new ObservableCollection<RoomVM>(RoomList.OrderBy(i => i.Description));
                 }
+                RoomCollection = CollectionViewSource.GetDefaultView(RoomList);
             });
             LoadDbRoom();
+            RoomCollection = CollectionViewSource.GetDefaultView(RoomList);
+
+        }
+        private bool FilterByName(object emp)
+        {
+            if (!string.IsNullOrEmpty(TextToFilter))
+            {
+                var empDetail = emp as RoomVM;
+                return empDetail != null && empDetail.Name.IndexOf(TextToFilter, StringComparison.OrdinalIgnoreCase) >= 0;
+            }
+            return true;
         }
         public void sortFloordb()
         {
