@@ -162,7 +162,13 @@
                           Grid.Column="2"
                           materialDesign:HintAssist.Hint="Sắp xếp"
                           Width="80"
-                          HorizontalAlignment="Right">
+                          HorizontalAlignment="Right"
+                          SelectedItem="{Binding SortRoom, Mode=OneWayToSource}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding sortRoom}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                     <ComboBoxItem Content="Tầng" />
                     <ComboBoxItem Content="Loại phòng" />
                 </ComboBox>
