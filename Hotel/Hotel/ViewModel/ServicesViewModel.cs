@@ -3,10 +3,12 @@ using Hotel.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace Hotel.ViewModel
@@ -19,11 +21,40 @@ namespace Hotel.ViewModel
             get { return _ServiceList; }
             set { _ServiceList = value; OnPropertyChanged(); }
         }
+        private string _textToFilterSV;
+
+        public string TextToFilterSV
+        {
+            get { return _textToFilterSV; }
+            set
+            {
+                _textToFilterSV = value;
+                OnPropertyChanged();
+                ServiecCollection.Filter = FilterByName;
+            }
+        }
+        private ICollectionView _serviecCollection;
+
+        public ICollectionView ServiecCollection
+        {
+            get { return _serviecCollection; }
+            set { _serviecCollection = value; OnPropertyChanged(); }
+        }
         public ServiceViewModel()
         {
             ServiceList = new ObservableCollection<ServiceVM>();
             //LoadDemo();
             LoadAllSV();
+            ServiecCollection = CollectionViewSource.GetDefaultView(ServiceList);
+        }
+        private bool FilterByName(object emp)
+        {
+            if (!string.IsNullOrEmpty(TextToFilterSV))
+            {
+                var empDetail = emp as ServiceVM;
+                return empDetail != null && empDetail.Name.IndexOf(TextToFilterSV, StringComparison.OrdinalIgnoreCase) >= 0;
+            }
+            return true;
         }
         public void LoadAllSV()
         {
