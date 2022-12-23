@@ -56,20 +56,17 @@ namespace Hotel.ViewModel
             {
                 if ((string)SortRoom.Content == "Tầng")
                 {
-                    _roomListdb = new ObservableCollection<RoomVM>(_roomListdb.OrderBy(i =>
-                    {
-                        if (i.Name.Substring(0, 1) == "V")
-                            return i.Name;
-                        else
-                            return i.Name.Substring(1);
-                    }));
-                    RoomList = new ObservableCollection<RoomVM>(RoomList.OrderBy(i =>
-                    {
-                        if (i.Name.Substring(0, 1) == "V")
-                            return i.Name;
-                        else
-                            return i.Name.Substring(1);
-                    }));
+                    var list = new List<RoomVM>(_roomList);
+                    _roomList.Clear();
+                    list.Sort((x, y) => compareFloor(x, y));
+                    _roomList = new ObservableCollection<RoomVM>(list);
+                    list.Clear();
+
+                    list = new List<RoomVM>(RoomList);
+                    RoomList.Clear();
+                    list.Sort((x, y) => compareFloor(x, y));
+                    RoomList = new ObservableCollection<RoomVM>(list);
+                    list.Clear();
                 }
                 if ((string)SortRoom.Content == "Loại phòng")
                 {
@@ -78,6 +75,16 @@ namespace Hotel.ViewModel
                 }
             });
             LoadDbRoom();
+        }
+        public int compareFloor(RoomVM x, RoomVM y)
+        {
+            if (x.Name.Substring(1, 1) == y.Name.Substring(1, 1))
+            {
+                if (x.Name.Substring(0, 1) == y.Name.Substring(0, 1))
+                    return x.Name.CompareTo(y.Name);
+                return x.Name.Substring(0, 1).CompareTo(y.Name.Substring(0, 1));
+            }
+            return x.Name.Substring(1, 1).CompareTo(y.Name.Substring(1, 1));
         }
         public void LoadDbRoom()
         {
@@ -101,7 +108,6 @@ namespace Hotel.ViewModel
         public void LoadAvailabel()
         {
             RoomList.Clear();
-            RoomList.Clear();
             foreach (var room in _roomListdb)
                 if (room.Status == "Trống")
                     RoomList.Add(room);
@@ -109,14 +115,12 @@ namespace Hotel.ViewModel
         public void LoadOrdered()
         {
             RoomList.Clear();
-            RoomList.Clear();
             foreach (var room in _roomListdb)
                 if (room.Status == "Đã đặt")
                     RoomList.Add(room);
         }
         public void LoadRepair()
         {
-            RoomList.Clear();
             RoomList.Clear();
             foreach (var room in _roomListdb)
                 if (room.Status == "Tu sửa")
