@@ -56,17 +56,8 @@ namespace Hotel.ViewModel
             {
                 if ((string)SortRoom.Content == "Tầng")
                 {
-                    var list = new List<RoomVM>(_roomList);
-                    _roomList.Clear();
-                    list.Sort((x, y) => compareFloor(x, y));
-                    _roomList = new ObservableCollection<RoomVM>(list);
-                    list.Clear();
-
-                    list = new List<RoomVM>(RoomList);
-                    RoomList.Clear();
-                    list.Sort((x, y) => compareFloor(x, y));
-                    RoomList = new ObservableCollection<RoomVM>(list);
-                    list.Clear();
+                    sortFloordb();
+                    sortFloor();
                 }
                 if ((string)SortRoom.Content == "Loại phòng")
                 {
@@ -75,6 +66,22 @@ namespace Hotel.ViewModel
                 }
             });
             LoadDbRoom();
+        }
+        public void sortFloordb()
+        {
+            var list = new List<RoomVM>(_roomListdb);
+            _roomListdb.Clear();
+            list.Sort((x, y) => compareFloor(x, y));
+            _roomListdb = new ObservableCollection<RoomVM>(list);
+            list.Clear();
+        }
+        public void sortFloor()
+        {
+            var list = new List<RoomVM>(RoomList);
+            RoomList.Clear();
+            list.Sort((x, y) => compareFloor(x, y));
+            RoomList = new ObservableCollection<RoomVM>(list);
+            list.Clear();
         }
         public int compareFloor(RoomVM x, RoomVM y)
         {
@@ -98,6 +105,8 @@ namespace Hotel.ViewModel
                     RoomList.Add(new RoomVM() { Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = room.TRANGTHAI.ToString() });
                 }
             }
+            sortFloordb();
+            sortFloor();
         }
         public void LoadAllRoom()
         {
