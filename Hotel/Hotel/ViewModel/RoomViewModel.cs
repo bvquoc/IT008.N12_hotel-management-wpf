@@ -93,7 +93,6 @@ namespace Hotel.ViewModel
             });
             LoadDbRoom();
             RoomCollection = CollectionViewSource.GetDefaultView(RoomList);
-
         }
         private bool FilterByName(object emp)
         {
