@@ -71,7 +71,8 @@
                                          materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                          BorderThickness="0"
                                          MinWidth="200"
-                                         VerticalAlignment="Center" />
+                                         VerticalAlignment="Center"
+                                         Text="{Binding TextToFilter, UpdateSourceTrigger=PropertyChanged}" />
 
                             </Grid>
                         </materialDesign:ColorZone>
@@ -187,7 +188,7 @@
             <ScrollViewer>
                 <StackPanel>
                     <ItemsControl x:Name="lvRoom"
-                                  ItemsSource="{Binding RoomList}">
+                                  ItemsSource="{Binding RoomCollection}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Button x:Name="ButtonRoom"
