@@ -40,8 +40,15 @@ namespace Hotel.ViewModel
             get { return _serviecCollection; }
             set { _serviecCollection = value; OnPropertyChanged(); }
         }
+        public ICommand LoadAddService { get; set; }
         public ServiceViewModel()
         {
+            LoadAddService = new RelayCommand<object>((p) => true, (p) =>
+            {
+                AddService addService = new AddService();
+                addService.ShowDialog();
+                LoadAllSV();
+            });
             LoadAllSV();
         }
         private bool FilterByName(object emp)
@@ -55,7 +62,10 @@ namespace Hotel.ViewModel
         }
         public void LoadAllSV()
         {
-            ServiceList = new ObservableCollection<ServiceVM>();
+            if (ServiceList != null)
+                ServiceList.Clear();
+            else
+                ServiceList = new ObservableCollection<ServiceVM>();
             using (var db = new QLYHOTELEntities())
             {
                 var select = from s in db.DICHVUs select s;
@@ -64,19 +74,5 @@ namespace Hotel.ViewModel
             }
             ServiecCollection = CollectionViewSource.GetDefaultView(ServiceList);
         }
-        public void LoadDemo()
-        {
-            ServiceList.Add(new ServiceVM() { ID = "B101", Name = "Mì", Price = 1003340 });
-            ServiceList.Add(new ServiceVM() { ID = "B102", Name = "Bánh", Price = 10000 });
-            ServiceList.Add(new ServiceVM() { ID = "B103", Name = "Buffe", Price = 10000 });
-            ServiceList.Add(new ServiceVM() { ID = "B104", Name = "Hồ bơi", Price = 10000 });
-            ServiceList.Add(new ServiceVM() { ID = "B105", Name = "Karaoke", Price = 10000 });
-            ServiceList.Add(new ServiceVM() { ID = "B106", Name = "Massage", Price = 10000 });
-            ServiceList.Add(new ServiceVM() { ID = "B107", Name = "18+", Price = 10000 });
-            ServiceList.Add(new ServiceVM() { ID = "B108", Name = "Cinema", Price = 10000 });
-            ServiceList.Add(new ServiceVM() { ID = "B109", Name = "Video game", Price = 10000 });
-
-        }
     }
-
 }

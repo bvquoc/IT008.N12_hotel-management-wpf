@@ -121,7 +121,9 @@
                         BorderBrush="Transparent" />
                 <Button Content="Lưu"
                         Margin="0 0 10 10"
-                        materialDesign:ButtonAssist.CornerRadius="8" />
+                        materialDesign:ButtonAssist.CornerRadius="8"
+                        Command="{Binding SaveCommand}"
+                        CommandParameter="{Binding ElementName=addService}" />
             </Grid>
         </StackPanel>
     </Border>

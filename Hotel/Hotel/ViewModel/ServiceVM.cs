@@ -12,14 +12,15 @@ namespace Hotel.ViewModel
 {
     internal class ServiceVM : BaseViewModel
     {
-        public ICommand DeleteService { get; set; }
         public string ID { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
         public ICommand ShowMessage { get; set; }
+        public ICommand DeleteService { get; set; }
         public ServiceVM()
         {
-            DeleteService = new RelayCommand<ServiceViewModel>((p) => true, (p) => deleteService(p));
+            //(p) => deleteService(p)
+            DeleteService = new RelayCommand<ServiceManagementView>((p) => true, (p) => deleteService(p));
             ShowMessage = new RelayCommand<RoomView>((parameter) => true, (parameter) =>
             {
                 MessageBox.Show(this.ID);
@@ -31,15 +32,18 @@ namespace Hotel.ViewModel
             ID = id;
             Price = price;
         }
-        public void deleteService(ServiceViewModel p)
+        public void deleteService(ServiceManagementView p)
         {
             using (var db = new QLYHOTELEntities())
             {
-                var delete = (from d in db.DICHVUs where d.MADV == Int32.Parse(this.ID) select d).Single();
+                int id = Int32.Parse(this.ID);
+                var delete = (from d in db.DICHVUs where d.MADV == id select d).Single();
                 db.DICHVUs.Remove(delete);
                 db.SaveChanges();
-                p.LoadAllSV();
             }
+            //Update data
+            ServiceViewModel serviceViewModel = new ServiceViewModel();
+            p.DataContext = serviceViewModel;
         }
     }
 }
