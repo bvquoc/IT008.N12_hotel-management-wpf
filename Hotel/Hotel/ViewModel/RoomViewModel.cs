@@ -90,6 +90,7 @@ namespace Hotel.ViewModel
                     RoomList = new ObservableCollection<RoomVM>(RoomList.OrderBy(i => i.Description));
                 }
                 RoomCollection = CollectionViewSource.GetDefaultView(RoomList);
+                RoomCollection.Filter = FilterByName;
             });
             LoadDbRoom();
             RoomCollection = CollectionViewSource.GetDefaultView(RoomList);
