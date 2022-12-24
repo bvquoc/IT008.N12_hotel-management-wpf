@@ -40,12 +40,16 @@ namespace Hotel.ViewModel
             get { return _serviecCollection; }
             set { _serviecCollection = value; OnPropertyChanged(); }
         }
+        public ICommand LoadAddService { get; set; }
         public ServiceViewModel()
         {
-            ServiceList = new ObservableCollection<ServiceVM>();
-            //LoadDemo();
+            LoadAddService = new RelayCommand<object>((p) => true, (p) =>
+            {
+                AddService addService = new AddService();
+                addService.ShowDialog();
+                LoadAllSV();
+            });
             LoadAllSV();
-            ServiecCollection = CollectionViewSource.GetDefaultView(ServiceList);
         }
         private bool FilterByName(object emp)
         {
@@ -58,26 +62,17 @@ namespace Hotel.ViewModel
         }
         public void LoadAllSV()
         {
+            if (ServiceList != null)
+                ServiceList.Clear();
+            else
+                ServiceList = new ObservableCollection<ServiceVM>();
             using (var db = new QLYHOTELEntities())
             {
                 var select = from s in db.DICHVUs select s;
                 foreach (var service in select)
                     ServiceList.Add(new ServiceVM() { ID = service.MADV.ToString(), Name = service.TENDV.ToString(), Price = service.DONGIA.Value });
             }
-        }
-        public void LoadDemo()
-        {
-            ServiceList.Add(new ServiceVM() { ID = "B101", Name = "Mì", Price = 1003340 });
-            ServiceList.Add(new ServiceVM() { ID = "B102", Name = "Bánh", Price = 10000 });
-            ServiceList.Add(new ServiceVM() { ID = "B103", Name = "Buffe", Price = 10000 });
-            ServiceList.Add(new ServiceVM() { ID = "B104", Name = "Hồ bơi", Price = 10000 });
-            ServiceList.Add(new ServiceVM() { ID = "B105", Name = "Karaoke", Price = 10000 });
-            ServiceList.Add(new ServiceVM() { ID = "B106", Name = "Massage", Price = 10000 });
-            ServiceList.Add(new ServiceVM() { ID = "B107", Name = "18+", Price = 10000 });
-            ServiceList.Add(new ServiceVM() { ID = "B108", Name = "Cinema", Price = 10000 });
-            ServiceList.Add(new ServiceVM() { ID = "B109", Name = "Video game", Price = 10000 });
-
+            ServiecCollection = CollectionViewSource.GetDefaultView(ServiceList);
         }
     }
-
 }
