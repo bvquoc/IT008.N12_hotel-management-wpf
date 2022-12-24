@@ -135,6 +135,8 @@
     </Compile>
     <Compile Include="ViewModel\AddEmployeeViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\RoomManagementViewModel.cs" />
+    <Compile Include="ViewModel\RoomManagementVM.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\NavigationViewModel.cs" />
     <Compile Include="ViewModel\ReservationBookViewModel.cs" />
