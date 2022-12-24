@@ -1,4 +1,5 @@
 ﻿<UserControl x:Class="Hotel.View.ServiceManagementView"
+             x:Name="ServiceV"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -178,8 +179,9 @@
                                                 Content="{materialDesign:PackIcon Kind=Delete}"
                                                 ToolTip="Icon"
                                                 Background="#99ff99"
-                                                Command="{Binding ChoseRoom}"
-                                                Margin="25 0 0 0"
+                                                Command="{Binding DeleteService}"
+                                                CommandParameter="{Binding ElementName=ServiceV}"
+                                                Margin="15 0 0 0"
                                                 HorizontalAlignment="Left" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
