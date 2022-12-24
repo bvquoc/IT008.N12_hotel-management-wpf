@@ -5,10 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Hotel.View"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:vm="clr-namespace:Hotel.ViewModel"
              mc:Ignorable="d"
              d:DesignHeight="700"
              d:DesignWidth="805"
              Style="{StaticResource Page_Style}">
+    <UserControl.DataContext>
+        <vm:EmployeeViewModel>
+            
+        </vm:EmployeeViewModel>
+    </UserControl.DataContext>
+    
     <Grid Background="Transparent">
         <!--Chia khung-->
         <Grid.RowDefinitions>
@@ -99,9 +106,15 @@
                                        RadiusY="10"/>
                 </Grid.Clip>
                 <ListView x:Name="lvSer"
-                          ItemsSource="{Binding ServiceList}"
+                          ItemsSource="{Binding EmployeeCollection}"
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2"
                           >
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment"
+                                    Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
                     <ListView.View>
                         <GridView>
                             <GridView.ColumnHeaderContainerStyle>
@@ -122,22 +135,46 @@
                                     </Style.Triggers>
                                 </Style>
                             </GridView.ColumnHeaderContainerStyle>
-                            <GridViewColumn  Header="Mã nhân viên"
-                                             Width="150">
+                            <GridViewColumn  Header="Mã"
+                                             Width="80">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Path = ID }"                                                  
-                                                   Margin="40 0 0 0"></TextBlock>
+                                        
+                                        <Grid>
+                                            <TextBlock Text="{Binding Path = ID }"  
+                                                   FontSize="20"
+                                                   Margin="10 0 0 0"></TextBlock>
+                                            <Grid Width="25"
+                                                  Height="25"
+                                                  >
+                                                <materialDesign:PackIcon Height="25"
+                                                                         Width="25">
+                                                    <materialDesign:PackIcon.Style>
+                                                        <Style   TargetType="materialDesign:PackIcon">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Path = Type}" Value ="1">
+                                                                    <Setter Property="Kind" Value="AccountStar"/>
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding Path = Type}" Value ="2">
+                                                                    <Setter Property="Kind" Value="Account"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </materialDesign:PackIcon.Style>
+                                                </materialDesign:PackIcon>
+                                            </Grid>
+                                        </Grid>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
                             <GridViewColumn Header="Tên nhân viên"
-                                                Width="180"
+                                                Width="200"
                                                 >
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Path = Name }"
-                                                   Margin="40 0 0 0"></TextBlock>
+                                                   FontSize="20"
+                                                   Margin="10 0 0 0"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -146,28 +183,31 @@
                                                 >
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Path = Price }" 
-                                                   ></TextBlock>
+                                        <TextBlock Text="{Binding Path = User }" 
+                                                   FontSize="20"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
                             <GridViewColumn Header="Mật khẩu"
-                                                Width="120"
+                                                Width="150"
                                                 >
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Path = Price }" 
-                                                    ></TextBlock>
+                                        <TextBlock Text="{Binding Path = Pass }" 
+                                                    FontSize="20"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
                             <GridViewColumn Header="Lương"
-                                                Width="100"
+                                                Width="120"
                                                 >
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Path = Price }" 
-                                                    ></TextBlock>
+                                        <TextBlock Text="{Binding Path = Salary }" 
+                                                    HorizontalAlignment="Right"
+                                                   TextAlignment="Right"
+                                                   FontSize="20"
+                                                   Margin="0 0 20 0"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
