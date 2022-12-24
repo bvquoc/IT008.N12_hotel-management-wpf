@@ -19,7 +19,7 @@ namespace Hotel.ViewModel
         public ICommand ShowMessage { get; set; }
         public ServiceVM()
         {
-            DeleteService = new RelayCommand<ServiceViewModel>((p) => true, (p) => deleteService());
+            DeleteService = new RelayCommand<ServiceViewModel>((p) => true, (p) => deleteService(p));
             ShowMessage = new RelayCommand<RoomView>((parameter) => true, (parameter) =>
             {
                 MessageBox.Show(this.ID);
