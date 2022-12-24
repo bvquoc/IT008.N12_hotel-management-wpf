@@ -167,6 +167,9 @@
     <Compile Include="View\ReservationBookView.xaml.cs">
       <DependentUpon>ReservationBookView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\RoomDetail.xaml.cs">
+      <DependentUpon>RoomDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\RoomManagementView.xaml.cs">
       <DependentUpon>RoomManagementView.xaml</DependentUpon>
     </Compile>
@@ -221,6 +224,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ReservationBookView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RoomDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
