@@ -113,7 +113,7 @@
                             <ComboBox HorizontalAlignment="Center" VerticalAlignment="Bottom"
                                         Style="{StaticResource MaterialDesignOutlinedComboBox}"
                                         Text="" x:Name="cbDonDep"
-                                        Height="38" Padding="7" SelectionChanged="cbDonDep_SelectionChanged"
+                                        Height="38" Padding="7"
                                         Width="200" >
                                 <ComboBoxItem Content="Đã dọn dẹp" />
                                 <ComboBoxItem Content="Chưa dọn dẹp" />
