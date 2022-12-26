@@ -218,7 +218,7 @@
                         Margin="0 10 -130 10"
                         materialDesign:ButtonAssist.CornerRadius="8"
                         Command="{Binding EditCustomerCommand}"
-                        CommandParameter="{Binding ElementName=SuaKH}" />
+                        CommandParameter="{Binding ElementName=ReservationView}" />
             </Grid>
         </Grid>
         <Grid Grid.Column="1">
@@ -262,10 +262,13 @@
                                                 Value="Black" />
                                         <Setter Property="FontWeight"
                                                 Value="Bold" />
-                                        <Setter Property="IsEnabled" Value="False"/>
+                                        <Setter Property="IsEnabled"
+                                                Value="False" />
                                         <Style.Triggers>
-                                            <Trigger Property="IsEnabled" Value="False">
-                                                <Setter Property="TextElement.Foreground" Value="Black"/>
+                                            <Trigger Property="IsEnabled"
+                                                     Value="False">
+                                                <Setter Property="TextElement.Foreground"
+                                                        Value="Black" />
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
@@ -327,10 +330,13 @@
                                                 Value="Black" />
                                         <Setter Property="FontWeight"
                                                 Value="Bold" />
-                                        <Setter Property="IsEnabled" Value="False"/>
+                                        <Setter Property="IsEnabled"
+                                                Value="False" />
                                         <Style.Triggers>
-                                            <Trigger Property="IsEnabled" Value="False">
-                                                <Setter Property="TextElement.Foreground" Value="Black"/>
+                                            <Trigger Property="IsEnabled"
+                                                     Value="False">
+                                                <Setter Property="TextElement.Foreground"
+                                                        Value="Black" />
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
@@ -342,8 +348,9 @@
                                                 Header="Số người">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBox Text="{Binding SoNguoiO}"
-                                                     materialDesign:HintAssist.Hint="Số người ở" Margin="-11,0,0,0">
+                                            <TextBox Text="{Binding SoNguoiO, Mode=TwoWay}"
+                                                     materialDesign:HintAssist.Hint="Số người ở"
+                                                     Margin="-11,0,0,0">
                                             </TextBox>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
