@@ -1,5 +1,6 @@
 ﻿using Hotel.Model;
 using Hotel.View;
+using Microsoft.Xaml.Behaviors.Core;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,14 +14,14 @@ namespace Hotel.ViewModel
 {
     internal class ReservationBookViewModel : BaseViewModel
     {
-        private ObservableCollection<RoomVM> _rooms;
+        private static ObservableCollection<RoomVM> _rooms;
         public ObservableCollection<RoomVM> Rooms
         {
             get { return _rooms; }
             set { _rooms = value; OnPropertyChanged(); }
         }
-        private ObservableCollection<RoomViewModel> _selectedRooms;
-        public ObservableCollection<RoomViewModel> SelectedRooms
+        private ObservableCollection<RoomVM> _selectedRooms;
+        public ObservableCollection<RoomVM> SelectedRooms
         {
             get { return _selectedRooms; }
             set { _selectedRooms = value; OnPropertyChanged(); }
@@ -51,15 +52,31 @@ namespace Hotel.ViewModel
             get { return _timeEnd; }
             set { _timeEnd = value; OnPropertyChanged(); LoadRoom(); }
         }
+        private RoomVM _selectedRoom;
+
+        public RoomVM SelectedRoom
+        {
+            get { return _selectedRoom; }
+            set { _selectedRoom = value; OnPropertyChanged(); addRoom(); }
+        }
+        private RoomVM _selectedReservate;
+
+        public RoomVM SelectedReservate
+        {
+            get { return _selectedReservate; }
+            set { _selectedReservate = value; OnPropertyChanged(); RemoveReservate(); }
+        }
 
 
+        public ICommand DeleteSelected { get; set; }
         public ICommand EditCustomerCommand { get; set; }
 
         public ReservationBookViewModel()
         {
             EditCustomerCommand = new RelayCommand<ReservationBookView>((p) => true, (p) => saveReservate(p));
-
+            DeleteSelected = new RelayCommand<object>((p) => true, (p) => deleteSelected());
             Rooms = new ObservableCollection<RoomVM>();
+            SelectedRooms = new ObservableCollection<RoomVM>();
 
             DateStart = DateTime.Now;
             DateEnd = DateTime.Now;
@@ -78,19 +95,60 @@ namespace Hotel.ViewModel
                 var select = from s in db.PHONGs select s;
                 foreach (var room in select)
                 {
-                    if (room.DATs.Count == 0)
-                        Rooms.Add(new RoomVM() { Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = room.TRANGTHAI.ToString() });
-                    else
-                        foreach (var dat in room.DATs)
+                    bool ok = true;
+                    foreach (var dat in room.DATs)
+                    {
+                        if (DateTime.Compare(dat.NGAYTRA.Value, start) >= 0 &&
+                            DateTime.Compare(dat.NGAYDAT.Value, end) <= 0)
                         {
-                            if (DateTime.Compare(dat.NGAYTRA.Value, start) >= 0 &&
-                                DateTime.Compare(dat.NGAYDAT.Value, end) <= 0)
-                                break;
-                            Rooms.Add(new RoomVM() { Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = room.TRANGTHAI.ToString() });
+                            ok = false;
+                            break;
                         }
+                    }
 
+                    if (ok)
+                    {
+                        foreach (var sele in SelectedRooms)
+                        {
+                            if (sele.ID != room.MAPHONG) continue;
+                            if (DateTime.Compare(sele.DateEnd, start) >= 0 &&
+                            DateTime.Compare(sele.DateStart, end) <= 0)
+                            {
+                                ok = false;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (ok)
+                        Rooms.Add(new RoomVM() { ID = room.MAPHONG, Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = room.TRANGTHAI.ToString() });
                 }
             }
+        }
+        private void addRoom()
+        {
+            if (SelectedRoom == null) return;
+            SelectedRooms.Add(new RoomVM()
+            {
+                ID = SelectedRoom.ID,
+                Name = SelectedRoom.Name,
+                Description = SelectedRoom.Description,
+                Status = SelectedRoom.Status,
+                NumPeo = SelectedRoom.NumPeo,
+                DateStart = new DateTime(DateStart.Year, DateStart.Month, DateStart.Day, TimeStart.Hour, TimeStart.Minute, TimeStart.Second),
+                DateEnd = new DateTime(DateEnd.Year, DateEnd.Month, DateEnd.Day, TimeEnd.Hour, TimeEnd.Minute, TimeEnd.Second)
+            });
+            Rooms.Remove(SelectedRoom);
+            SelectedRoom = null;
+        }
+        private void RemoveReservate()
+        {
+            if (SelectedReservate == null) return;
+            MessageBox.Show(SelectedReservate.NumPeo.ToString());
+        }
+        private void deleteSelected()
+        {
+
         }
         private void saveReservate(ReservationBookView p)
         {

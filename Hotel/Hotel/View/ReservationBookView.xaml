@@ -254,6 +254,7 @@
                                            RadiusY="10" />
                     </Grid.Clip>
                     <ListView x:Name="lvPhongTrong"
+                              SelectedItem="{Binding SelectedRoom}"
                               ItemsSource="{Binding Rooms}"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                         <ListView.View>
@@ -293,9 +294,7 @@
                                                     Padding="0"
                                                     Content="{materialDesign:PackIcon YinYang}"
                                                     ToolTip="Icon"
-                                                    Background="#99ff99"
-                                                    Command="{Binding ChoseRoom}"
-                                                    CommandParameter="{Binding ElementName=ReservationView}" />
+                                                    Background="#99ff99" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -322,7 +321,9 @@
                                            RadiusY="10" />
                     </Grid.Clip>
                     <ListView x:Name="lvPhongDaChon"
-                              ItemsSource="{Binding Rooms}"
+                              ItemsSource="{Binding SelectedRooms}"
+                              MouseDoubleClick="{Binding DeleteSelected}"
+                              SelectedItem="{Binding SelectedReservate}"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                               ScrollViewer.VerticalScrollBarVisibility="Auto">
                         <ListView.View>
@@ -353,7 +354,7 @@
                                                 Header="Số người">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBox Text="{Binding SoNguoiO, Mode=TwoWay}"
+                                            <TextBox Text="{Binding NumPeo, Mode=TwoWay}"
                                                      materialDesign:HintAssist.Hint="Số người ở"
                                                      Margin="-11,0,0,0">
                                             </TextBox>
@@ -362,10 +363,10 @@
                                 </GridViewColumn>
                                 <GridViewColumn  Header="Ngày BD"
                                                  Width="90"
-                                                 DisplayMemberBinding="{Binding NgayBD }" />
+                                                 DisplayMemberBinding="{Binding DateStart }" />
                                 <GridViewColumn  Header="Ngày KT"
                                                  Width="90"
-                                                 DisplayMemberBinding="{Binding NgayKT}" />
+                                                 DisplayMemberBinding="{Binding DateEnd}" />
                                 <GridViewColumn Width="54"
                                                 Header="Xóa">
                                     <GridViewColumn.CellTemplate>
@@ -376,8 +377,7 @@
                                                     Padding="0"
                                                     Content="{materialDesign:PackIcon WheelchairAccessibility}"
                                                     ToolTip="Icon"
-                                                    Background="OrangeRed"
-                                                    Command="{Binding DeleteRoom}" />
+                                                    Background="OrangeRed" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>

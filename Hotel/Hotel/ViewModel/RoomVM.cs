@@ -12,32 +12,34 @@ namespace Hotel.ViewModel
 {
     internal class RoomVM : BaseViewModel
     {
+        public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Status { get; set; }
+        public int NumPeo { get; set; }
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
         public ICommand ShowMessage { get; set; }
-        public ICommand ChoseRoom { get; set; }
         public RoomVM()
         {
             ShowMessage = new RelayCommand<RoomView>((parameter) => true, (parameter) =>
             {
                 MessageBox.Show(this.Name);
             });
-            ChoseRoom = new RelayCommand<ReservationBookView>((p) => true, (p) => choseRoom(p));
         }
         private void choseRoom(ReservationBookView p)
         {
-
+            p.tpGioBD.Text = "asdj";
         }
-        public RoomVM(string name, string description, string status, DateTime dateStart, DateTime dateEnd)
+        public RoomVM(string name, string description, string status, DateTime dateStart, DateTime dateEnd, int numPeo, int iD)
         {
             Name = name;
             Description = description;
             Status = status;
             DateStart = dateStart;
             DateEnd = dateEnd;
+            NumPeo = numPeo;
+            ID = iD;
         }
     }
 }
