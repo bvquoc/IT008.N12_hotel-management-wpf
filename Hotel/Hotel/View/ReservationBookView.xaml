@@ -57,6 +57,7 @@
                         <DatePicker Margin="30 0 0 0"
                                     x:Name="dtpNgayBD"
                                     materialDesign:HintAssist.Hint="Ngày bắt đầu"
+                                    SelectedDate="{Binding DateStart}"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                     </Grid>
                     <Grid Height="40"
@@ -70,6 +71,7 @@
                                                  VerticalAlignment="Bottom" />
                         <materialDesign:TimePicker x:Name="tpGioBD"
                                                    Margin="30 0 0 0"
+                                                   SelectedTime="{Binding TimeStart}"
                                                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
                                                    materialDesign:HintAssist.Hint="Giờ bắt đầu" />
                     </Grid>
@@ -84,6 +86,7 @@
                                                  VerticalAlignment="Bottom" />
                         <DatePicker Margin="30 0 0 0"
                                     x:Name="dtpNgayKT"
+                                    SelectedDate="{Binding DateEnd}"
                                     materialDesign:HintAssist.Hint="Ngày kết thúc"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                     </Grid>
@@ -98,6 +101,7 @@
                                                  VerticalAlignment="Bottom" />
                         <materialDesign:TimePicker x:Name="tpGioKT"
                                                    Margin="30 0 0 0"
+                                                   SelectedTime="{Binding TimeEnd}"
                                                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
                                                    materialDesign:HintAssist.Hint="Giờ kết thúc" />
                     </Grid>
@@ -290,7 +294,8 @@
                                                     Content="{materialDesign:PackIcon YinYang}"
                                                     ToolTip="Icon"
                                                     Background="#99ff99"
-                                                    Command="{Binding ChoseRoom}" />
+                                                    Command="{Binding ChoseRoom}"
+                                                    CommandParameter="{Binding ElementName=ReservationView}" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>

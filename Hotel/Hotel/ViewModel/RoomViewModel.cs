@@ -133,6 +133,7 @@ namespace Hotel.ViewModel
         public void LoadDbRoom()
         {
             _roomListdb = new ObservableCollection<RoomVM>();
+            RoomList.Clear();
             using (var db = new QLYHOTELEntities())
             {
                 var select = from s in db.PHONGs select s;
