@@ -19,13 +19,9 @@ namespace Hotel.ViewModel
         public int NumPeo { get; set; }
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
-        public ICommand ShowMessage { get; set; }
         public RoomVM()
         {
-            ShowMessage = new RelayCommand<RoomView>((parameter) => true, (parameter) =>
-            {
-                MessageBox.Show(this.Name);
-            });
+
         }
         private void choseRoom(ReservationBookView p)
         {

@@ -214,14 +214,14 @@
                 <Button Content="Hủy"
                         materialDesign:ButtonAssist.CornerRadius="8"
                         Margin="0 10 30 10"
-                        Command="{Binding CloseCommand}"
-                        CommandParameter="{Binding ElementName=addEmployee}"
+                        Command="{Binding CancelReservate}"
+                        CommandParameter="{Binding ElementName=ReservationView}"
                         Background="OrangeRed"
                         BorderBrush="Transparent" />
                 <Button Content="Lưu"
                         Margin="0 10 -130 10"
                         materialDesign:ButtonAssist.CornerRadius="8"
-                        Command="{Binding EditCustomerCommand}"
+                        Command="{Binding SaveReservate}"
                         CommandParameter="{Binding ElementName=ReservationView}" />
             </Grid>
         </Grid>
@@ -254,7 +254,6 @@
                                            RadiusY="10" />
                     </Grid.Clip>
                     <ListView x:Name="lvPhongTrong"
-                              SelectedItem="{Binding SelectedRoom}"
                               ItemsSource="{Binding Rooms}"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                         <ListView.View>
@@ -294,7 +293,9 @@
                                                     Padding="0"
                                                     Content="{materialDesign:PackIcon YinYang}"
                                                     ToolTip="Icon"
-                                                    Background="#99ff99" />
+                                                    Background="#99ff99"
+                                                    Command="{Binding ElementName=lvPhongTrong, Path=DataContext.ChoseRoom}"
+                                                    CommandParameter="{Binding}" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -322,8 +323,6 @@
                     </Grid.Clip>
                     <ListView x:Name="lvPhongDaChon"
                               ItemsSource="{Binding SelectedRooms}"
-                              MouseDoubleClick="{Binding DeleteSelected}"
-                              SelectedItem="{Binding SelectedReservate}"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                               ScrollViewer.VerticalScrollBarVisibility="Auto">
                         <ListView.View>
@@ -377,6 +376,8 @@
                                                     Padding="0"
                                                     Content="{materialDesign:PackIcon WheelchairAccessibility}"
                                                     ToolTip="Icon"
+                                                    Command="{Binding ElementName=lvPhongDaChon, Path=DataContext.DeleteSelected}"
+                                                    CommandParameter="{Binding}"
                                                     Background="OrangeRed" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>

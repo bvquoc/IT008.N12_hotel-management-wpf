@@ -1,5 +1,6 @@
 ﻿using Hotel.Model;
 using Hotel.View;
+using MahApps.Metro.Behaviors;
 using Microsoft.Xaml.Behaviors.Core;
 using System;
 using System.Collections.Generic;
@@ -52,29 +53,18 @@ namespace Hotel.ViewModel
             get { return _timeEnd; }
             set { _timeEnd = value; OnPropertyChanged(); LoadRoom(); }
         }
-        private RoomVM _selectedRoom;
-
-        public RoomVM SelectedRoom
-        {
-            get { return _selectedRoom; }
-            set { _selectedRoom = value; OnPropertyChanged(); addRoom(); }
-        }
-        private RoomVM _selectedReservate;
-
-        public RoomVM SelectedReservate
-        {
-            get { return _selectedReservate; }
-            set { _selectedReservate = value; OnPropertyChanged(); RemoveReservate(); }
-        }
-
-
+        public ICommand ChoseRoom { get; set; }
         public ICommand DeleteSelected { get; set; }
         public ICommand EditCustomerCommand { get; set; }
-
+        public ICommand CancelReservate { get; set; }
+        public ICommand SaveReservate { get; set; }
         public ReservationBookViewModel()
         {
             EditCustomerCommand = new RelayCommand<ReservationBookView>((p) => true, (p) => saveReservate(p));
-            DeleteSelected = new RelayCommand<object>((p) => true, (p) => deleteSelected());
+            ChoseRoom = new RelayCommand<object>((p) => true, (p) => addRoom(p));
+            DeleteSelected = new RelayCommand<object>((p) => true, (p) => deleteSelected(p));
+            CancelReservate = new RelayCommand<ReservationBookView>((p) => true, (p) => Reload(p));
+            SaveReservate = new RelayCommand<ReservationBookView>((p) => true, (p) => Save(p));
             Rooms = new ObservableCollection<RoomVM>();
             SelectedRooms = new ObservableCollection<RoomVM>();
 
@@ -125,10 +115,11 @@ namespace Hotel.ViewModel
                 }
             }
         }
-        private void addRoom()
+        private void addRoom(object p)
         {
+            var SelectedRoom = (RoomVM)p;
             if (SelectedRoom == null) return;
-            SelectedRooms.Add(new RoomVM()
+            SelectedRooms.Insert(0, new RoomVM()
             {
                 ID = SelectedRoom.ID,
                 Name = SelectedRoom.Name,
@@ -139,16 +130,19 @@ namespace Hotel.ViewModel
                 DateEnd = new DateTime(DateEnd.Year, DateEnd.Month, DateEnd.Day, TimeEnd.Hour, TimeEnd.Minute, TimeEnd.Second)
             });
             Rooms.Remove(SelectedRoom);
-            SelectedRoom = null;
         }
-        private void RemoveReservate()
+        private void deleteSelected(object p)
         {
-            if (SelectedReservate == null) return;
-            MessageBox.Show(SelectedReservate.NumPeo.ToString());
-        }
-        private void deleteSelected()
-        {
+            try
+            {
+                var room = (RoomVM)p;
+                SelectedRooms.Remove(room);
+                LoadRoom();
+            }
+            catch (Exception ex)
+            {
 
+            }
         }
         private void saveReservate(ReservationBookView p)
         {
@@ -172,6 +166,14 @@ namespace Hotel.ViewModel
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+        private void Reload(ReservationBookView p)
+        {
+            p.DataContext = new ReservationBookViewModel();
+        }
+        private void Save(ReservationBookView p)
+        {
+
         }
     }
 }
