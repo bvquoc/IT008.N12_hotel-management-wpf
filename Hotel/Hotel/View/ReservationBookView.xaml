@@ -57,6 +57,7 @@
                         <DatePicker Margin="30 0 0 0"
                                     x:Name="dtpNgayBD"
                                     materialDesign:HintAssist.Hint="Ngày bắt đầu"
+                                    SelectedDate="{Binding DateStart}"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                     </Grid>
                     <Grid Height="40"
@@ -70,6 +71,7 @@
                                                  VerticalAlignment="Bottom" />
                         <materialDesign:TimePicker x:Name="tpGioBD"
                                                    Margin="30 0 0 0"
+                                                   SelectedTime="{Binding TimeStart}"
                                                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
                                                    materialDesign:HintAssist.Hint="Giờ bắt đầu" />
                     </Grid>
@@ -84,6 +86,7 @@
                                                  VerticalAlignment="Bottom" />
                         <DatePicker Margin="30 0 0 0"
                                     x:Name="dtpNgayKT"
+                                    SelectedDate="{Binding DateEnd}"
                                     materialDesign:HintAssist.Hint="Ngày kết thúc"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                     </Grid>
@@ -98,6 +101,7 @@
                                                  VerticalAlignment="Bottom" />
                         <materialDesign:TimePicker x:Name="tpGioKT"
                                                    Margin="30 0 0 0"
+                                                   SelectedTime="{Binding TimeEnd}"
                                                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
                                                    materialDesign:HintAssist.Hint="Giờ kết thúc" />
                     </Grid>
@@ -210,15 +214,15 @@
                 <Button Content="Hủy"
                         materialDesign:ButtonAssist.CornerRadius="8"
                         Margin="0 10 30 10"
-                        Command="{Binding CloseCommand}"
-                        CommandParameter="{Binding ElementName=addEmployee}"
+                        Command="{Binding CancelReservate}"
+                        CommandParameter="{Binding ElementName=ReservationView}"
                         Background="OrangeRed"
                         BorderBrush="Transparent" />
                 <Button Content="Lưu"
                         Margin="0 10 -130 10"
                         materialDesign:ButtonAssist.CornerRadius="8"
-                        Command="{Binding EditCustomerCommand}"
-                        CommandParameter="{Binding ElementName=SuaKH}" />
+                        Command="{Binding SaveReservate}"
+                        CommandParameter="{Binding ElementName=ReservationView}" />
             </Grid>
         </Grid>
         <Grid Grid.Column="1">
@@ -262,10 +266,13 @@
                                                 Value="Black" />
                                         <Setter Property="FontWeight"
                                                 Value="Bold" />
-                                        <Setter Property="IsEnabled" Value="False"/>
+                                        <Setter Property="IsEnabled"
+                                                Value="False" />
                                         <Style.Triggers>
-                                            <Trigger Property="IsEnabled" Value="False">
-                                                <Setter Property="TextElement.Foreground" Value="Black"/>
+                                            <Trigger Property="IsEnabled"
+                                                     Value="False">
+                                                <Setter Property="TextElement.Foreground"
+                                                        Value="Black" />
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
@@ -287,7 +294,8 @@
                                                     Content="{materialDesign:PackIcon YinYang}"
                                                     ToolTip="Icon"
                                                     Background="#99ff99"
-                                                    Command="{Binding ChoseRoom}" />
+                                                    Command="{Binding ElementName=lvPhongTrong, Path=DataContext.ChoseRoom}"
+                                                    CommandParameter="{Binding}" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -314,7 +322,7 @@
                                            RadiusY="10" />
                     </Grid.Clip>
                     <ListView x:Name="lvPhongDaChon"
-                              ItemsSource="{Binding Rooms}"
+                              ItemsSource="{Binding SelectedRooms}"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                               ScrollViewer.VerticalScrollBarVisibility="Auto">
                         <ListView.View>
@@ -327,10 +335,13 @@
                                                 Value="Black" />
                                         <Setter Property="FontWeight"
                                                 Value="Bold" />
-                                        <Setter Property="IsEnabled" Value="False"/>
+                                        <Setter Property="IsEnabled"
+                                                Value="False" />
                                         <Style.Triggers>
-                                            <Trigger Property="IsEnabled" Value="False">
-                                                <Setter Property="TextElement.Foreground" Value="Black"/>
+                                            <Trigger Property="IsEnabled"
+                                                     Value="False">
+                                                <Setter Property="TextElement.Foreground"
+                                                        Value="Black" />
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
@@ -342,18 +353,19 @@
                                                 Header="Số người">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBox Text="{Binding SoNguoiO}"
-                                                     materialDesign:HintAssist.Hint="Số người ở" Margin="-11,0,0,0">
+                                            <TextBox Text="{Binding NumPeo, Mode=TwoWay}"
+                                                     materialDesign:HintAssist.Hint="Số người ở"
+                                                     Margin="-11,0,0,0">
                                             </TextBox>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
                                 <GridViewColumn  Header="Ngày BD"
                                                  Width="90"
-                                                 DisplayMemberBinding="{Binding NgayBD }" />
+                                                 DisplayMemberBinding="{Binding DateStart }" />
                                 <GridViewColumn  Header="Ngày KT"
                                                  Width="90"
-                                                 DisplayMemberBinding="{Binding NgayKT}" />
+                                                 DisplayMemberBinding="{Binding DateEnd}" />
                                 <GridViewColumn Width="54"
                                                 Header="Xóa">
                                     <GridViewColumn.CellTemplate>
@@ -364,8 +376,9 @@
                                                     Padding="0"
                                                     Content="{materialDesign:PackIcon WheelchairAccessibility}"
                                                     ToolTip="Icon"
-                                                    Background="OrangeRed"
-                                                    Command="{Binding DeleteRoom}" />
+                                                    Command="{Binding ElementName=lvPhongDaChon, Path=DataContext.DeleteSelected}"
+                                                    CommandParameter="{Binding}"
+                                                    Background="OrangeRed" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>

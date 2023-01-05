@@ -58,25 +58,15 @@ namespace Hotel.ViewModel
         public ICommand btnOrdered { get; set; }
         public ICommand btnRepair { get; set; }
         public ICommand sortRoom { get; set; }
+        public ICommand choseRoom { get; set; }
         public RoomViewModel()
         {
             RoomList = new ObservableCollection<RoomVM>();
-            btnAll = new RelayCommand<object>((p) => true, (p) =>
-            {
-                LoadAllRoom();
-            });
-            btnAvailabel = new RelayCommand<object>((p) => true, (p) =>
-            {
-                LoadAvailabel();
-            });
-            btnOrdered = new RelayCommand<object>((p) => true, (p) =>
-            {
-                LoadOrdered();
-            });
-            btnRepair = new RelayCommand<object>((p) => true, (p) =>
-            {
-                LoadRepair();
-            });
+            btnAll = new RelayCommand<object>((p) => true, (p) => LoadAllRoom());
+            btnAvailabel = new RelayCommand<object>((p) => true, (p) => LoadAvailabel());
+            btnOrdered = new RelayCommand<object>((p) => true, (p) => LoadOrdered());
+            btnRepair = new RelayCommand<object>((p) => true, (p) => LoadRepair());
+            choseRoom = new RelayCommand<object>((p) => true, (p) => ViewDetailRoom(p));
             sortRoom = new RelayCommand<object>((p) => true, (p) =>
             {
                 if ((string)SortRoom.Content == "Tầng")
@@ -133,6 +123,7 @@ namespace Hotel.ViewModel
         public void LoadDbRoom()
         {
             _roomListdb = new ObservableCollection<RoomVM>();
+            RoomList.Clear();
             using (var db = new QLYHOTELEntities())
             {
                 var select = from s in db.PHONGs select s;
@@ -171,6 +162,11 @@ namespace Hotel.ViewModel
             foreach (var room in _roomListdb)
                 if (room.Status == "Tu sửa")
                     RoomList.Add(room);
+        }
+        private void ViewDetailRoom(object p)
+        {
+            var room = (RoomVM)p;
+            MessageBox.Show(room.Name);
         }
     }
 
