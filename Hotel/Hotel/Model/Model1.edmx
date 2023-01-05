@@ -27,6 +27,7 @@
           <Property Name="SONG" Type="int" />
           <Property Name="NGAYDAT" Type="smalldatetime" />
           <Property Name="NGAYTRA" Type="smalldatetime" />
+          <Property Name="THANHTOAN" Type="bit" />
         </EntityType>
         <EntityType Name="DICHVU">
           <Key>
@@ -209,6 +210,7 @@
           <NavigationProperty Name="KHACH" Relationship="Self.DA_KH" FromRole="DAT" ToRole="KHACH" />
           <NavigationProperty Name="NHANVIEN" Relationship="Self.DA_NV" FromRole="DAT" ToRole="NHANVIEN" />
           <NavigationProperty Name="PHONG" Relationship="Self.DA_PH" FromRole="DAT" ToRole="PHONG" />
+          <Property Name="THANHTOAN" Type="Boolean" />
         </EntityType>
         <EntityType Name="DICHVU">
           <Key>
@@ -384,6 +386,7 @@
           <EntitySetMapping Name="DATs">
             <EntityTypeMapping TypeName="QLYHOTELModel.DAT">
               <MappingFragment StoreEntitySet="DAT">
+                <ScalarProperty Name="THANHTOAN" ColumnName="THANHTOAN" />
                 <ScalarProperty Name="MADAT" ColumnName="MADAT" />
                 <ScalarProperty Name="MANV" ColumnName="MANV" />
                 <ScalarProperty Name="MAKH" ColumnName="MAKH" />
