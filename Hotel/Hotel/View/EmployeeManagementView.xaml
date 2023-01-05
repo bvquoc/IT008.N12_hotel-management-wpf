@@ -12,10 +12,10 @@
              Style="{StaticResource Page_Style}">
     <UserControl.DataContext>
         <vm:EmployeeViewModel>
-            
+
         </vm:EmployeeViewModel>
     </UserControl.DataContext>
-    
+
     <Grid Background="Transparent">
         <!--Chia khung-->
         <Grid.RowDefinitions>
@@ -53,11 +53,12 @@
                                      x:Name="txtSearch"
                                      FontSize="16"
                                      Margin="8 0 0 0"
-                                     materialDesign:HintAssist.Hint="Nhập mã số nhân viên cần tìm"
+                                     materialDesign:HintAssist.Hint="Nhập họ tên nhân viên cần tìm"
                                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                      BorderThickness="0"
                                      MinWidth="200"
-                                     VerticalAlignment="Center" />
+                                     VerticalAlignment="Center"
+                                     Text="{Binding TextToFilterE, UpdateSourceTrigger=PropertyChanged}" />
 
                         </Grid>
                     </materialDesign:ColorZone>
@@ -97,18 +98,18 @@
                   Height="450"
                   Margin="0 40 0 0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="174*"/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="174*" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.Clip>
                     <RectangleGeometry Rect="0 0 700 450"
                                        RadiusX="10"
-                                       RadiusY="10"/>
+                                       RadiusY="10" />
                 </Grid.Clip>
                 <ListView x:Name="lvSer"
                           ItemsSource="{Binding EmployeeCollection}"
-                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2"
-                          >
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          Grid.ColumnSpan="2">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment"
@@ -120,17 +121,20 @@
                             <GridView.ColumnHeaderContainerStyle>
                                 <Style TargetType="{x:Type GridViewColumnHeader}">
                                     <Setter Property="Background"
-                                                Value="#C4C4C4" />
+                                            Value="#C4C4C4" />
                                     <Setter Property="Foreground"
-                                                Value="Black" />
+                                            Value="Black" />
                                     <Setter Property="FontWeight"
-                                                Value="Bold" />
+                                            Value="Bold" />
                                     <Setter Property="FontSize"
-                                            Value="18"/>
-                                    <Setter Property="IsEnabled" Value="False"/>
+                                            Value="18" />
+                                    <Setter Property="IsEnabled"
+                                            Value="False" />
                                     <Style.Triggers>
-                                        <Trigger Property="IsEnabled" Value="False">
-                                            <Setter Property="TextElement.Foreground" Value="Black"/>
+                                        <Trigger Property="IsEnabled"
+                                                 Value="False">
+                                            <Setter Property="TextElement.Foreground"
+                                                    Value="Black" />
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -139,24 +143,27 @@
                                              Width="80">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        
+
                                         <Grid>
-                                            <TextBlock Text="{Binding Path = ID }"  
-                                                   FontSize="20"
-                                                   Margin="10 0 0 0"></TextBlock>
+                                            <TextBlock Text="{Binding Path = ID }"
+                                                       FontSize="20"
+                                                       Margin="10 0 0 0"></TextBlock>
                                             <Grid Width="25"
-                                                  Height="25"
-                                                  >
+                                                  Height="25">
                                                 <materialDesign:PackIcon Height="25"
                                                                          Width="25">
                                                     <materialDesign:PackIcon.Style>
                                                         <Style   TargetType="materialDesign:PackIcon">
                                                             <Style.Triggers>
-                                                                <DataTrigger Binding="{Binding Path = Type}" Value ="1">
-                                                                    <Setter Property="Kind" Value="AccountStar"/>
+                                                                <DataTrigger Binding="{Binding Path = Type}"
+                                                                             Value="1">
+                                                                    <Setter Property="Kind"
+                                                                            Value="AccountStar" />
                                                                 </DataTrigger>
-                                                                <DataTrigger Binding="{Binding Path = Type}" Value ="2">
-                                                                    <Setter Property="Kind" Value="Account"/>
+                                                                <DataTrigger Binding="{Binding Path = Type}"
+                                                                             Value="2">
+                                                                    <Setter Property="Kind"
+                                                                            Value="Account" />
                                                                 </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
@@ -168,8 +175,7 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
                             <GridViewColumn Header="Tên nhân viên"
-                                                Width="200"
-                                                >
+                                            Width="200">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Path = Name }"
@@ -179,32 +185,29 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
                             <GridViewColumn Header="Tài khoản"
-                                                Width="150"
-                                                >
+                                            Width="150">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Path = User }" 
+                                        <TextBlock Text="{Binding Path = User }"
                                                    FontSize="20"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
                             <GridViewColumn Header="Mật khẩu"
-                                                Width="150"
-                                                >
+                                            Width="150">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Path = Pass }" 
-                                                    FontSize="20"></TextBlock>
+                                        <TextBlock Text="{Binding Path = Pass }"
+                                                   FontSize="20"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
                             <GridViewColumn Header="Lương"
-                                                Width="120"
-                                                >
+                                            Width="120">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Path = Salary }" 
-                                                    HorizontalAlignment="Right"
+                                        <TextBlock Text="{Binding Path = Salary }"
+                                                   HorizontalAlignment="Right"
                                                    TextAlignment="Right"
                                                    FontSize="20"
                                                    Margin="0 0 20 0"></TextBlock>

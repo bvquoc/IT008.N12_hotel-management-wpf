@@ -15,13 +15,10 @@ namespace Hotel.ViewModel
         public string Status { get; set; }
         public int Price { get; set; }
         public string Type { get; set; }
-        public ICommand ShowMessage { get; set; }
+        public ICommand Edit { get; set; }
         public RoomManagementVM()
         {
-            ShowMessage = new RelayCommand<RoomView>((parameter) => true, (parameter) =>
-            {
-                MessageBox.Show(this.ID);
-            });
+            Edit = new RelayCommand<RoomManagementView>((p) => true, (p) => editRoom(p));
         }
         public RoomManagementVM(string id, string status, int price, string type)
         {
@@ -29,6 +26,10 @@ namespace Hotel.ViewModel
             Type = type;
             Status = status;
             Price = price;
+        }
+        private void editRoom(RoomManagementView p)
+        {
+
         }
     }
 }
