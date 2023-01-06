@@ -91,6 +91,7 @@
                 </Grid>
 
                 <TextBox x:Name="_Price"
+                         PreviewTextInput="PreviewTextInput"
                          Grid.Column="2"
                          materialDesign:HintAssist.Hint="Đơn giá"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
