@@ -21,14 +21,14 @@ namespace Hotel.ViewModel
             get { return _RoomManagementList; }
             set { _RoomManagementList = value; OnPropertyChanged(); }
         }
-        private string _textToFilterSV;
+        private string _textToFilterR;
 
-        public string TextToFilterSV
+        public string TextToFilterR
         {
-            get { return _textToFilterSV; }
+            get { return _textToFilterR; }
             set
             {
-                _textToFilterSV = value;
+                _textToFilterR = value;
                 OnPropertyChanged();
                 RoomManagementCollection.Filter = FilterByName;
             }
@@ -40,32 +40,39 @@ namespace Hotel.ViewModel
             get { return _RoomManagementCollection; }
             set { _RoomManagementCollection = value; OnPropertyChanged(); }
         }
+        public ICommand AddRoom { get; set; }
         public RoomManagementViewModel()
         {
-            RoomManagementList = new ObservableCollection<RoomManagementVM>();
-            //LoadDemo();
+            AddRoom = new RelayCommand<RoomManagementView>((p) => true, (p) => addRoom(p));
             LoadAllSV();
-            RoomManagementCollection = CollectionViewSource.GetDefaultView(RoomManagementList);
         }
         private bool FilterByName(object emp)
         {
-            if (!string.IsNullOrEmpty(TextToFilterSV))
+            if (!string.IsNullOrEmpty(TextToFilterR))
             {
                 var empDetail = emp as RoomManagementVM;
-                return empDetail != null && empDetail.ID.IndexOf(TextToFilterSV, StringComparison.OrdinalIgnoreCase) >= 0;
+                return empDetail != null && empDetail.ID.IndexOf(TextToFilterR, StringComparison.OrdinalIgnoreCase) >= 0;
             }
             return true;
         }
         public void LoadAllSV()
         {
+            if (RoomManagementList != null)
+                RoomManagementList.Clear();
+            else
+                RoomManagementList = new ObservableCollection<RoomManagementVM>();
             using (var db = new QLYHOTELEntities())
             {
                 var select = from s in db.PHONGs select s;
                 foreach (var RoomManagement in select)
-                    RoomManagementList.Add(new RoomManagementVM() { ID = RoomManagement.TENPHONG.ToString(), Status = RoomManagement.TRANGTHAI.ToString(), Type = RoomManagement.LOAIPHONG.ToString(),Price=RoomManagement.DONGIA.Value });
+                    RoomManagementList.Add(new RoomManagementVM() { ID = RoomManagement.TENPHONG.ToString(), Status = RoomManagement.TRANGTHAI.ToString(), Type = RoomManagement.LOAIPHONG.ToString(), Price = RoomManagement.DONGIA.Value });
             }
+            RoomManagementCollection = CollectionViewSource.GetDefaultView(RoomManagementList);
         }
-      
+        private void addRoom(RoomManagementView p)
+        {
+
+        }
     }
 
 }

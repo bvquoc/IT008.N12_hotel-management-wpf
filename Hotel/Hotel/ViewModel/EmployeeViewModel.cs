@@ -21,14 +21,14 @@ namespace Hotel.ViewModel
             get { return _EmployeeList; }
             set { _EmployeeList = value; OnPropertyChanged(); }
         }
-        private string _textToFilterSV;
+        private string _textToFilterE;
 
-        public string TextToFilterSV
+        public string TextToFilterE
         {
-            get { return _textToFilterSV; }
+            get { return _textToFilterE; }
             set
             {
-                _textToFilterSV = value;
+                _textToFilterE = value;
                 OnPropertyChanged();
                 EmployeeCollection.Filter = FilterByName;
             }
@@ -42,30 +42,32 @@ namespace Hotel.ViewModel
         }
         public EmployeeViewModel()
         {
-            EmployeeList = new ObservableCollection<EmployeeVM>();
-            //LoadDemo();
             LoadAllSV();
-            EmployeeCollection = CollectionViewSource.GetDefaultView(EmployeeList);
         }
         private bool FilterByName(object emp)
         {
-            if (!string.IsNullOrEmpty(TextToFilterSV))
+            if (!string.IsNullOrEmpty(TextToFilterE))
             {
                 var empDetail = emp as EmployeeVM;
-                return empDetail != null && empDetail.Name.IndexOf(TextToFilterSV, StringComparison.OrdinalIgnoreCase) >= 0;
+                return empDetail != null && empDetail.Name.IndexOf(TextToFilterE, StringComparison.OrdinalIgnoreCase) >= 0;
             }
             return true;
         }
         public void LoadAllSV()
         {
+            if (EmployeeList != null)
+                EmployeeList.Clear();
+            else
+                EmployeeList = new ObservableCollection<EmployeeVM>();
             using (var db = new QLYHOTELEntities())
             {
                 var select = from s in db.NHANVIENs select s;
                 foreach (var Employee in select)
-                    EmployeeList.Add(new EmployeeVM() { ID = Employee.MANV.ToString(), Name = Employee.TENNV.ToString(), Salary = Employee.LUONG.Value, User=Employee.TAIKHOAN.ToString(),Pass=Employee.MATKHAU.ToString(), Type=Employee.LOAINV.ToString() });
+                    EmployeeList.Add(new EmployeeVM() { ID = Employee.MANV.ToString(), Name = Employee.TENNV.ToString(), Salary = Employee.LUONG.Value, User = Employee.TAIKHOAN.ToString(), Pass = Employee.MATKHAU.ToString(), Type = Employee.LOAINV.ToString() });
             }
+            EmployeeCollection = CollectionViewSource.GetDefaultView(EmployeeList);
         }
-      
+
     }
 
 }

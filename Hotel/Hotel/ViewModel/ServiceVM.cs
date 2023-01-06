@@ -15,16 +15,10 @@ namespace Hotel.ViewModel
         public string ID { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
-        public ICommand ShowMessage { get; set; }
         public ICommand DeleteService { get; set; }
         public ServiceVM()
         {
-            //(p) => deleteService(p)
             DeleteService = new RelayCommand<ServiceManagementView>((p) => true, (p) => deleteService(p));
-            ShowMessage = new RelayCommand<RoomView>((parameter) => true, (parameter) =>
-            {
-                MessageBox.Show(this.ID);
-            });
         }
         public ServiceVM(string id, string name, int price)
         {
