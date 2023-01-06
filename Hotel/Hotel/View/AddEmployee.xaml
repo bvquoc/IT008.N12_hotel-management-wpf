@@ -114,6 +114,7 @@
                         </Grid>
 
                         <TextBox x:Name="_CCCD"
+                                 PreviewTextInput="PreviewTextInput"
                                  Grid.Column="2"
                                  materialDesign:HintAssist.Hint="Căn cước công dân"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -183,6 +184,7 @@
                         </Grid>
 
                         <TextBox x:Name="_SDT"
+                                 PreviewTextInput="PreviewTextInput"
                                  Grid.Column="2"
                                  materialDesign:HintAssist.Hint="Số điện thoại"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
