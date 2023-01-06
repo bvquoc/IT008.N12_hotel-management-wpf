@@ -5,30 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hotel.View"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             
         mc:Ignorable="d"
         WindowStyle="None"
-        AllowsTransparency="True" 
+        AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
-        Title="DialogCustomize" Height="180" Width="400">
+        Title="DialogCustomize"
+        Height="180"
+        Width="400">
 
     <Window.Clip>
-        <RectangleGeometry Rect="0,0,400,180" RadiusX="10" RadiusY="10"/>
+        <RectangleGeometry Rect="0,0,400,180"
+                           RadiusX="10"
+                           RadiusY="10" />
     </Window.Clip>
-    <Border BorderThickness="1" BorderBrush="#FF807D7D" CornerRadius="10">
+    <Border BorderThickness="1"
+            BorderBrush="#FF807D7D"
+            CornerRadius="10">
         <Grid>
             <Grid.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFBBEDBA" Offset="1"/>
-                    <GradientStop Color="#FF58E856" Offset="0"/>
+                <LinearGradientBrush EndPoint="0.5,1"
+                                     StartPoint="0.5,0">
+                    <GradientStop Color="#FFBBEDBA"
+                                  Offset="1" />
+                    <GradientStop Color="#FF58E856"
+                                  Offset="0" />
                 </LinearGradientBrush>
             </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="26"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0"
-              >
+            <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition Width="25" />
@@ -36,28 +43,29 @@
                     <ColumnDefinition Width="25" />
                     <ColumnDefinition Width="10" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Thông báo" Margin="10 5 0 0"
+                <TextBlock Text="Thông báo"
+                           Margin="10 5 0 0"
                            FontFamily="Monsterra"
                            FontWeight="Bold"
                            FontSize="15"></TextBlock>
                 <Button x:Name="btnMinimize"
-                    BorderThickness="0"
-                    Content="-"
-                    Foreground="White"
-                    FontSize="16"
-                    FontFamily="Montserrat"
-                    Cursor="Hand"
-                    Grid.Column="1"
-                    Click="btnMinimize_Click">
+                        BorderThickness="0"
+                        Content="-"
+                        Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="1"
+                        Click="btnMinimize_Click">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background"
-                                Value=" DarkGreen" />
+                                    Value=" DarkGreen" />
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver"
-                                     Value="True">
+                                         Value="True">
                                     <Setter Property="Background"
-                                        Value="#0066ff" />
+                                            Value="#0066ff" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -65,35 +73,35 @@
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Width="18"
-                                Height="18"
-                                CornerRadius="9"
-                                Background="{TemplateBinding Background}">
+                                    Height="18"
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center"
-                                              HorizontalAlignment="Center" />
+                                                  HorizontalAlignment="Center" />
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
                 <Button x:Name="btnClose"
-                    BorderThickness="0"
-                    Content="X"
-                    Foreground="White"
-                    FontSize="16"
-                    FontFamily="Montserrat"
-                    Cursor="Hand"
-                    Grid.Column="2"
-                    Click="btnOK_Click"
-                    Height="22"
-                    VerticalAlignment="Center">
+                        BorderThickness="0"
+                        Content="X"
+                        Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="2"
+                        Click="btnOK_Click"
+                        Height="22"
+                        VerticalAlignment="Center">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background"
-                                Value="DarkGreen" />
+                                    Value="DarkGreen" />
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver"
-                                     Value="True">
+                                         Value="True">
                                     <Setter Property="Background"
-                                        Value="OrangeRed" />
+                                            Value="OrangeRed" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -101,16 +109,16 @@
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Width="18"
-                                Height="18"
-                                CornerRadius="9"
-                                Background="{TemplateBinding Background}">
+                                    Height="18"
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center"
-                                              HorizontalAlignment="Center" />
+                                                  HorizontalAlignment="Center" />
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-         
+
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
@@ -118,14 +126,28 @@
                     <RowDefinition Height="50"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <TextBlock x:Name="txblMess" FontSize="12" TextAlignment="Center" VerticalAlignment="Center" FontWeight="DemiBold" TextWrapping="WrapWithOverflow"></TextBlock>
+                    <TextBlock x:Name="txblMess"
+                               FontSize="13"
+                               TextAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontWeight="DemiBold"
+                               TextWrapping="WrapWithOverflow"></TextBlock>
                 </Grid>
                 <Grid Grid.Row="1">
-                    
-                    <Button x:Name="btnOK" Width="70" Height="30" Background="#FF49886C" Content="OK"
-                        HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" Click="btnOK_Click" >
+
+                    <Button x:Name="btnOK"
+                            Width="70"
+                            Height="30"
+                            Background="#FF49886C"
+                            Content="OK"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="12"
+                            Click="btnOK_Click">
                         <Button.Clip>
-                            <RectangleGeometry Rect="0,0,70,30" RadiusX="10" RadiusY="10"/>
+                            <RectangleGeometry Rect="0,0,70,30"
+                                               RadiusX="10"
+                                               RadiusY="10" />
                         </Button.Clip>
                     </Button>
                 </Grid>

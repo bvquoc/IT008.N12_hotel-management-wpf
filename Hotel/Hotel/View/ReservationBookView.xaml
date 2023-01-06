@@ -293,9 +293,10 @@
                                                     Height="25"
                                                     BorderThickness="0"
                                                     Padding="0"
-                                                    Content="{materialDesign:PackIcon YinYang}"
+                                                    Content="{materialDesign:PackIcon Kind=Plus}"
+                                                    HorizontalAlignment="Center"
                                                     ToolTip="Icon"
-                                                    Background="#99ff99"
+                                                    Background="Green"
                                                     Command="{Binding ElementName=lvPhongTrong, Path=DataContext.ChoseRoom}"
                                                     CommandParameter="{Binding}" />
                                         </DataTemplate>
@@ -377,7 +378,8 @@
                                                     Height="25"
                                                     BorderThickness="0"
                                                     Padding="0"
-                                                    Content="{materialDesign:PackIcon WheelchairAccessibility}"
+                                                    HorizontalAlignment="Center"
+                                                    Content="{materialDesign:PackIcon Minus}"
                                                     ToolTip="Icon"
                                                     Command="{Binding ElementName=lvPhongDaChon, Path=DataContext.DeleteSelected}"
                                                     CommandParameter="{Binding}"
