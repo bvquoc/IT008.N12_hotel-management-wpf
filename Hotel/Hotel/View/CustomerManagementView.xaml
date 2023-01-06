@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Hotel.View"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-            
+            Loaded="Load"
              mc:Ignorable="d"
              d:DesignHeight="700"
              d:DesignWidth="805"
@@ -138,7 +138,7 @@
 
                                     </Button.Style>
                                     <Button.Background>
-                                        <SolidColorBrush Color="#99ff99" Opacity="0.1"></SolidColorBrush>
+                                        <SolidColorBrush Color="#70c2b4" Opacity="0.3"></SolidColorBrush>
                                     </Button.Background>
                                     
 
