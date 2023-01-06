@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using System.Text.RegularExpressions;
 
 namespace Hotel.View
 {
@@ -25,6 +26,12 @@ namespace Hotel.View
             _Password.Password = passtxt.Text;
             passtxt.Visibility = Visibility.Collapsed;
             _Password.Visibility = Visibility.Visible;
+        }
+
+        private void PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

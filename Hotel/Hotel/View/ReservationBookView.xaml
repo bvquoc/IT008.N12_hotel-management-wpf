@@ -144,6 +144,7 @@
                                                  Height="25"
                                                  Width="25" />
                         <TextBox x:Name="txbCCCD"
+                                 PreviewTextInput="PreviewTextInput"
                                  MaxLength="12"
                                  Margin="30 0 0 0"
                                  materialDesign:HintAssist.Hint="Nhập CCCD" />
@@ -157,6 +158,7 @@
                                                  Height="25"
                                                  Width="25" />
                         <TextBox x:Name="txbSDT"
+                                 PreviewTextInput="PreviewTextInput"
                                  Margin="30 0 0 0"
                                  MaxLength="10"
                                  materialDesign:HintAssist.Hint="Nhập SDT" />
@@ -354,6 +356,7 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBox Text="{Binding NumPeo, Mode=TwoWay}"
+                                                     PreviewTextInput="PreviewTextInput"
                                                      materialDesign:HintAssist.Hint="Số người ở"
                                                      Margin="-11,0,0,0">
                                             </TextBox>
