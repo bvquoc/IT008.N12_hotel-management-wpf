@@ -14,58 +14,62 @@ namespace Hotel.View
         public CustomerManagementView()
         {
             InitializeComponent();
-            cus = new List<Cu>();
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nam"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            cus.Add(new Cu() { CCCD="123456789101", DiaChi="asd", Name="Khoi dep trai vcl", SDT="1234567891", Sex="Nữ"});
-            this.DataContext = cus;
+            
         }
 
+        private void Load(object sender, System.Windows.RoutedEventArgs e)
+        {
+            cus = new List<Cu>();
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nam" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            cus.Add(new Cu() { CCCD = "123456789101", DiaChi = "asd", Name = "Khoi dep trai vcl", SDT = "1234567891", Sex = "Nữ" });
+            this.DataContext = cus;
+        }
     }
     public class Cu
     {

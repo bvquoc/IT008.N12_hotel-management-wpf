@@ -68,9 +68,14 @@
                 Grid.Column="1"
                 Grid.RowSpan="3"
                 CornerRadius="20"
-                Background="#99c2ff"
                 Panel.ZIndex="1"
                 Margin="-55,0,0,0">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF89AEB2" Offset="0.667"/>
+                    <GradientStop Color="#FF4B6AE3" Offset="0"/>
+                </LinearGradientBrush>
+            </Border.Background>
             <Grid>
                 <!--Menu Buttons-->
                 <!--MouseLeftButtonDown="Phong_Click"-->

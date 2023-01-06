@@ -75,10 +75,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Expression.Blend.Sdk.1.0.2\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -159,6 +161,9 @@
     <Compile Include="View\CustomerManagementView.xaml.cs">
       <DependentUpon>CustomerManagementView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DialogCustomize.xaml.cs">
+      <DependentUpon>DialogCustomize.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\EmployeeManagementView.xaml.cs">
       <DependentUpon>EmployeeManagementView.xaml</DependentUpon>
     </Compile>
@@ -181,6 +186,10 @@
       <DependentUpon>ServiceManagementView.xaml</DependentUpon>
     </Compile>
     <Page Include="View\AddService.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DialogCustomize.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
