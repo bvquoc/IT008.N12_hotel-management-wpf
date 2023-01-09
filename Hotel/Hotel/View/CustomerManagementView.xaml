@@ -4,12 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Hotel.View"
+             xmlns:vm="clr-namespace:Hotel.ViewModel"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-            Loaded="Load"
              mc:Ignorable="d"
              d:DesignHeight="700"
              d:DesignWidth="805"
              Style="{StaticResource Page_Style}">
+    <UserControl.DataContext>
+        <vm:CustomerManagementViewModel />
+    </UserControl.DataContext>
+
     <Grid Background="Transparent">
         <!--Chia khung-->
         <Grid.RowDefinitions>
@@ -47,11 +51,12 @@
                                      x:Name="txtSearch"
                                      FontSize="16"
                                      Margin="8 0 0 0"
-                                     materialDesign:HintAssist.Hint="Nhập mã số khách hàng cần tìm"
+                                     materialDesign:HintAssist.Hint="Nhập tên khách hàng cần tìm"
                                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                      BorderThickness="0"
                                      MinWidth="200"
-                                     VerticalAlignment="Center" />
+                                     VerticalAlignment="Center"
+                                     Text="{Binding TextToFilterCu, UpdateSourceTrigger=PropertyChanged}" />
 
                         </Grid>
                     </materialDesign:ColorZone>
@@ -79,7 +84,7 @@
             <ScrollViewer>
                 <StackPanel>
                     <ItemsControl x:Name="lvRoom"
-                                  ItemsSource="{Binding}">
+                                  ItemsSource="{Binding CustomerCollection}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Button x:Name="ButtonRoom"
@@ -88,8 +93,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Margin="15"
-                                        RenderTransformOrigin="0.5,0.5"
-                                        >
+                                        RenderTransformOrigin="0.5,0.5">
                                     <Button.Resources>
                                         <Style x:Key="ScaleStyle"
                                                TargetType="Grid">
@@ -111,10 +115,10 @@
                                     <Button.Style>
                                         <Style TargetType="Button"
                                                BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
-                                            
-                                            
+
+
                                             <Style.Triggers>
-                                                
+
                                                 <Trigger Property="IsMouseOver"
                                                          Value="True">
                                                     <Setter Property="Width"
@@ -138,9 +142,10 @@
 
                                     </Button.Style>
                                     <Button.Background>
-                                        <SolidColorBrush Color="#70c2b4" Opacity="0.3"></SolidColorBrush>
+                                        <SolidColorBrush Color="#70c2b4"
+                                                         Opacity="0.3"></SolidColorBrush>
                                     </Button.Background>
-                                    
+
 
                                     <Grid Margin="-10 0 0 0"
                                           Width="300"
@@ -151,23 +156,25 @@
                                           RenderTransformOrigin="0.5,0.5">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="85"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <Grid Grid.Column="0"
-                                              >
-                                            <materialDesign:PackIcon
-                                                Width="75"
-                                                Height="75"
-                                                Margin="10 0 0 0"
-                                                VerticalAlignment="Center">
+                                        <Grid Grid.Column="0">
+                                            <materialDesign:PackIcon Width="75"
+                                                                     Height="75"
+                                                                     Margin="10 0 0 0"
+                                                                     VerticalAlignment="Center">
                                                 <materialDesign:PackIcon.Style>
                                                     <Style TargetType="materialDesign:PackIcon">
                                                         <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Sex}" Value="Nam">
-                                                                <Setter Property="Kind" Value="FaceMan"></Setter>
+                                                            <DataTrigger Binding="{Binding Sex}"
+                                                                         Value="Nam">
+                                                                <Setter Property="Kind"
+                                                                        Value="FaceMan"></Setter>
                                                             </DataTrigger>
-                                                            <DataTrigger Binding="{Binding Sex}" Value="Nữ">
-                                                                <Setter Property="Kind" Value="FaceWoman"></Setter>
+                                                            <DataTrigger Binding="{Binding Sex}"
+                                                                         Value="Nữ">
+                                                                <Setter Property="Kind"
+                                                                        Value="FaceWoman"></Setter>
                                                             </DataTrigger>
                                                         </Style.Triggers>
                                                     </Style>
@@ -178,14 +185,22 @@
                                                     Margin="0 0 0 0"
                                                     VerticalAlignment="Center"
                                                     HorizontalAlignment="Center">
-                                            <TextBlock x:Name="Ten" Text="{Binding Name}" FontFamily="Montserrat"></TextBlock>
-                                            
-                                            <TextBlock x:Name="CCCD" Text="{Binding CCCD}" FontFamily="Montserrat"></TextBlock>
-                                            
-                                            <TextBlock x:Name="SDT" Text="{Binding SDT}" FontFamily="Montserrat"></TextBlock>
-                                            
-                                            <TextBlock x:Name="DiaChi" Text="{Binding DiaChi}" FontFamily="Montserrat"></TextBlock>
-                                            
+                                            <TextBlock x:Name="Ten"
+                                                       Text="{Binding Name}"
+                                                       FontFamily="Montserrat"></TextBlock>
+
+                                            <TextBlock x:Name="CCCD"
+                                                       Text="{Binding CCCD}"
+                                                       FontFamily="Montserrat"></TextBlock>
+
+                                            <TextBlock x:Name="SDT"
+                                                       Text="{Binding SDT}"
+                                                       FontFamily="Montserrat"></TextBlock>
+
+                                            <TextBlock x:Name="DiaChi"
+                                                       Text="{Binding DiaChi}"
+                                                       FontFamily="Montserrat"></TextBlock>
+
                                         </StackPanel>
                                     </Grid>
                                 </Button>

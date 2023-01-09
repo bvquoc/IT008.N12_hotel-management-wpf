@@ -9,14 +9,14 @@ namespace Hotel.View
     public partial class CustomerManagementView : UserControl
     {
 
-        public List<Cu> cus;
 
         public CustomerManagementView()
         {
             InitializeComponent();
-            
+
         }
 
+        public List<Cu> cus;
         private void Load(object sender, System.Windows.RoutedEventArgs e)
         {
             cus = new List<Cu>();

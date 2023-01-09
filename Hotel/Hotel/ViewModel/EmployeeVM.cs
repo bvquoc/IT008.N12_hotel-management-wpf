@@ -25,7 +25,7 @@ namespace Hotel.ViewModel
                 MessageBox.Show(this.ID);
             });
         }
-        public EmployeeVM(string id, string name,string user, string pass, int salary, string type)
+        public EmployeeVM(string id, string name, string user, string pass, int salary, string type)
         {
             Name = name;
             ID = id;
