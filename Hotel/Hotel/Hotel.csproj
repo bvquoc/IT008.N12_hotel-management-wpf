@@ -138,6 +138,8 @@
     <Compile Include="ViewModel\AddEmployeeViewModel.cs" />
     <Compile Include="ViewModel\AddServiceViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\CustomerManagementViewModel.cs" />
+    <Compile Include="ViewModel\CustomerManagementVM.cs" />
     <Compile Include="ViewModel\RoomManagementViewModel.cs" />
     <Compile Include="ViewModel\RoomManagementVM.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
