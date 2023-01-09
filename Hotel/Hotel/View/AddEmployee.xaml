@@ -311,8 +311,8 @@
                         <Button Content="Lưu"
                                 Margin="0 0 10 10"
                                 materialDesign:ButtonAssist.CornerRadius="8"
-                                Command="{Binding EditCustomerCommand}"
-                                CommandParameter="{Binding ElementName=SuaKH}" />
+                                Command="{Binding SaveCustomerCommand}"
+                                CommandParameter="{Binding ElementName=addEmployee}" />
                     </Grid>
                 </Grid>
             </Grid>
