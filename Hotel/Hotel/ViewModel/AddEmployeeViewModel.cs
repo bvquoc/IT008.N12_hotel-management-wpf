@@ -72,8 +72,10 @@ namespace Hotel.ViewModel
                     db.NHANVIENs.Add(employee);
                     db.SaveChanges();
                 }
+                //System.Threading.Thread.Sleep(2000);
                 new DialogCustomize("Thêm thành công!").ShowDialog();
                 //Refresh
+                Refresh(p);
             }
             catch (Exception ex)
             {
@@ -99,7 +101,17 @@ namespace Hotel.ViewModel
         }
         private bool checkSDT(string number)
         {
-            return !(number.Length == 10);
+            return !(number.Length >= 9 && number.Length <= 12);
+        }
+        private void Refresh(AddEmployee p)
+        {
+            p._Name.Text = "";
+            p._CCCD.Text = "";
+            p._BirthDay.Text = "";
+            p.cbType.SelectedIndex = -1;
+            p._SDT.Text = "";
+            p._Account.Text = "";
+            p._Password.Password = "";
         }
     }
 }
