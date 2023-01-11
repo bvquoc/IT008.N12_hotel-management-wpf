@@ -65,7 +65,8 @@
                                    Text="Thêm nhân viên"
                                    VerticalAlignment="Top"
                                    FontWeight="Bold"
-                                   FontSize="20">
+                                   FontSize="20"
+                                   >
                         </TextBlock>
                     </Border>
                     <Grid Grid.Row="1">

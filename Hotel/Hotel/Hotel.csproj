@@ -281,6 +281,53 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Resource Include="Fonts\Mali-Bold.ttf" />
+    <Resource Include="Fonts\Mali-BoldItalic.ttf" />
+    <Resource Include="Fonts\Mali-ExtraLight.ttf" />
+    <Resource Include="Fonts\Mali-ExtraLightItalic.ttf" />
+    <Resource Include="Fonts\Mali-Italic.ttf" />
+    <Resource Include="Fonts\Mali-Light.ttf" />
+    <Resource Include="Fonts\Mali-LightItalic.ttf" />
+    <Resource Include="Fonts\Mali-Medium.ttf" />
+    <Resource Include="Fonts\Mali-MediumItalic.ttf" />
+    <Resource Include="Fonts\Mali-Regular.ttf" />
+    <Resource Include="Fonts\Mali-SemiBold.ttf" />
+    <Resource Include="Fonts\Mali-SemiBoldItalic.ttf" />
+    <Resource Include="Fonts\Lato-Black.ttf" />
+    <Resource Include="Fonts\Lato-BlackItalic.ttf" />
+    <Resource Include="Fonts\Lato-Bold.ttf" />
+    <Resource Include="Fonts\Lato-BoldItalic.ttf" />
+    <Resource Include="Fonts\Lato-Italic.ttf" />
+    <Resource Include="Fonts\Lato-Light.ttf" />
+    <Resource Include="Fonts\Lato-LightItalic.ttf" />
+    <Resource Include="Fonts\Lato-Regular.ttf" />
+    <Resource Include="Fonts\Lato-Thin.ttf" />
+    <Resource Include="Fonts\Lato-ThinItalic.ttf" />
+    <Resource Include="Fonts\Oswald-Bold.ttf" />
+    <Resource Include="Fonts\Oswald-ExtraLight.ttf" />
+    <Resource Include="Fonts\Oswald-Light.ttf" />
+    <Resource Include="Fonts\Oswald-Medium.ttf" />
+    <Resource Include="Fonts\Oswald-Regular.ttf" />
+    <Resource Include="Fonts\Oswald-SemiBold.ttf" />
+    <Resource Include="Fonts\Pacifico-Regular.ttf" />
+    <Resource Include="Fonts\Quicksand-Bold.ttf" />
+    <Resource Include="Fonts\Quicksand-Light.ttf" />
+    <Resource Include="Fonts\Quicksand-Medium.ttf" />
+    <Resource Include="Fonts\Quicksand-Regular.ttf" />
+    <Resource Include="Fonts\Quicksand-SemiBold.ttf" />
+    <Resource Include="Fonts\Coiny-Regular.ttf" />
+    <Resource Include="Fonts\Vollkorn-Black.ttf" />
+    <Resource Include="Fonts\Vollkorn-BlackItalic.ttf" />
+    <Resource Include="Fonts\Vollkorn-Bold.ttf" />
+    <Resource Include="Fonts\Vollkorn-BoldItalic.ttf" />
+    <Resource Include="Fonts\Vollkorn-ExtraBold.ttf" />
+    <Resource Include="Fonts\Vollkorn-ExtraBoldItalic.ttf" />
+    <Resource Include="Fonts\Vollkorn-Italic.ttf" />
+    <Resource Include="Fonts\Vollkorn-Medium.ttf" />
+    <Resource Include="Fonts\Vollkorn-MediumItalic.ttf" />
+    <Resource Include="Fonts\Vollkorn-Regular.ttf" />
+    <Resource Include="Fonts\Vollkorn-SemiBold.ttf" />
+    <Resource Include="Fonts\Vollkorn-SemiBoldItalic.ttf" />
     <None Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
