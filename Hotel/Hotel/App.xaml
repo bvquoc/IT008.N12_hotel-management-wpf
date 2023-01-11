@@ -15,6 +15,14 @@
                 <ResourceDictionary Source="/Styles/MenuButtonStyles.xaml" />
                 <ResourceDictionary Source="/Styles/Page.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <FontFamily x:Key="Mali">pack://application:,,,/Fonts/#Mali</FontFamily>
+            <FontFamily x:Key="Lato">pack://application:,,,/Fonts/#Lato</FontFamily>
+            <FontFamily x:Key="Oswald">pack://application:,,,/Fonts/#Oswald</FontFamily>
+            <FontFamily x:Key="Pacifico">pack://application:,,,/Fonts/#Pacifico</FontFamily>
+            <FontFamily x:Key="Quicksand">pack://application:,,,/Fonts/#Quicksand</FontFamily>
+            <FontFamily x:Key="Coiny">pack://application:,,,/Fonts/#Coiny</FontFamily>
+            <FontFamily x:Key="Vollkorn">pack://application:,,,/Fonts/#Vollkorn</FontFamily>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

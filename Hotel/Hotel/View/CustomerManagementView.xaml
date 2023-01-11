@@ -48,8 +48,9 @@
                                                          Opacity=".56" />
                             </Button>
                             <TextBox Grid.Column="1"
+                                     FontFamily="{StaticResource Vollkorn}"
                                      x:Name="txtSearch"
-                                     FontSize="16"
+                                     FontSize="18"
                                      Margin="8 0 0 0"
                                      materialDesign:HintAssist.Hint="Nhập tên khách hàng cần tìm"
                                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
@@ -182,9 +183,9 @@
                                             </materialDesign:PackIcon>
                                         </Grid>
                                         <StackPanel Grid.Column="1"
-                                                    Margin="0 0 0 0"
+                                                    Margin="30 0 0 0"
                                                     VerticalAlignment="Center"
-                                                    HorizontalAlignment="Center">
+                                                    >
                                             <TextBlock x:Name="Ten"
                                                        Text="{Binding Name}"
                                                        FontFamily="Montserrat"></TextBlock>
