@@ -19,7 +19,7 @@
         WindowStartupLocation="CenterScreen"
         Panel.ZIndex="999"
         Name="MainAdminWindow">
-    
+
     <Window.DataContext>
         <mv:NavigationViewModel />
     </Window.DataContext>
@@ -73,9 +73,12 @@
                 Panel.ZIndex="1"
                 Margin="-55,0,0,0">
             <Border.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF89AEB2" Offset="0.667"/>
-                    <GradientStop Color="#FF4B6AE3" Offset="0"/>
+                <LinearGradientBrush EndPoint="0.5,1"
+                                     StartPoint="0.5,0">
+                    <GradientStop Color="#FF89AEB2"
+                                  Offset="0.667" />
+                    <GradientStop Color="#FF4B6AE3"
+                                  Offset="0" />
                 </LinearGradientBrush>
             </Border.Background>
             <Grid>
@@ -386,6 +389,41 @@
                 <ColumnDefinition Width="25" />
                 <ColumnDefinition Width="10" />
             </Grid.ColumnDefinitions>
+            <!--notification-->
+            <Button x:Name="Notification"
+                    Width="25"
+                    Height="20"
+                    HorizontalAlignment="Right"
+                    Margin="0 0 15 0"
+                    BorderThickness="0"
+                    Cursor="Hand"
+                    Command="{Binding GetNotification}">
+                <Image Source="{Binding Notification}" />
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background"
+                                Value="Transparent" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="LightGray" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="20"
+                                Height="20"
+                                CornerRadius="9"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
 
             <Button x:Name="btnMinimize"
                     BorderThickness="0"
