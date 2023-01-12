@@ -344,10 +344,11 @@
   <ItemGroup>
     <Resource Include="Images\BackgroundLogin.jpg" />
     <Resource Include="Images\KeyLogin.png" />
-    <Resource Include="Images\t.txt" />
     <Resource Include="Images\UserLogin.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Active.png" />
+    <Resource Include="Images\Bell.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>

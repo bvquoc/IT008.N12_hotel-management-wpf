@@ -143,8 +143,7 @@
 
                                     </Button.Style>
                                     <Button.Background>
-                                        <SolidColorBrush Color="#70c2b4"
-                                                         Opacity="0.3"></SolidColorBrush>
+                                        <SolidColorBrush Color="#70c2b4" />
                                     </Button.Background>
 
 
@@ -184,8 +183,7 @@
                                         </Grid>
                                         <StackPanel Grid.Column="1"
                                                     Margin="30 0 0 0"
-                                                    VerticalAlignment="Center"
-                                                    >
+                                                    VerticalAlignment="Center">
                                             <TextBlock x:Name="Ten"
                                                        Text="{Binding Name}"
                                                        FontFamily="Montserrat"></TextBlock>
