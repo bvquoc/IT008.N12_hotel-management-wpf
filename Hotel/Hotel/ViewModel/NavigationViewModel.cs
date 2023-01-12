@@ -78,6 +78,13 @@ namespace Hotel.ViewModel
             get { return _notification; }
             set { _notification = value; OnPropertyChanged(); }
         }
+        private string _visNotify;
+
+        public string VisNotify
+        {
+            get { return _visNotify; }
+            set { _visNotify = value; OnPropertyChanged(); }
+        }
 
         public ICommand LogoutCommand { get; set; }
         public ICommand GetUidCommand { get; set; }
@@ -104,6 +111,7 @@ namespace Hotel.ViewModel
 
             //testc bell
             Notification = bell;
+            VisNotify = "Hidden";
         }
         private void makeNavigation(Button parameter)
         {
@@ -162,6 +170,10 @@ namespace Hotel.ViewModel
                 Notification = bellActive;
             else
                 Notification = bell;
+            if (VisNotify == "Hidden")
+                VisNotify = "Visible";
+            else
+                VisNotify = "Hidden";
         }
     }
 }

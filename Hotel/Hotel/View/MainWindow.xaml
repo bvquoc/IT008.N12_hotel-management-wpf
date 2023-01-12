@@ -17,7 +17,7 @@
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Panel.ZIndex="999"
+        Panel.ZIndex="10"
         Name="MainAdminWindow">
 
     <Window.DataContext>
@@ -536,8 +536,20 @@
               Grid.Column="2"
               Margin="10">
             <ContentControl x:Name="Pages"
-                            Content="{Binding CurrentView}" />
+                            Content="{Binding CurrentView}"
+                            Grid.ColumnSpan="2" />
+            <Border Width="350"
+                    Height="500"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Margin="0 5 80 0"
+                    Panel.ZIndex="1"
+                    Background="LightGray"
+                    Visibility="{Binding VisNotify}"
+                    CornerRadius="10">
+                <Label Content="List view ??"
+                       FontSize="70" />
+            </Border>
         </Grid>
-
     </Grid>
 </Window>
