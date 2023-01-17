@@ -4,16 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        
         xmlns:local="clr-namespace:Hotel.View"
+        xmlns:vm="clr-namespace:Hotel.ViewModel"
         mc:Ignorable="d"
-        Title="RoomDetail" Height="600" Width="650"
-         Background="Transparent"
+        Title="RoomDetail"
+        Height="600"
+        Width="650"
+        Background="Transparent"
         WindowStyle="None"
         ResizeMode="NoResize"
         AllowsTransparency="True"
         x:Name="roomDetail"
         WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <vm:RoomDetailViewModel />
+    </Window.DataContext>
+
     <Border BorderBrush="DarkGray"
             BorderThickness="1"
             CornerRadius="10"
@@ -34,7 +41,7 @@
             </StackPanel.Resources>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="250"></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
@@ -48,7 +55,7 @@
                                Height="40"
                                FontSize="30"
                                FontWeight="Bold"
-                               Foreground="Black"/>
+                               Foreground="Black" />
                 </Border>
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
@@ -57,106 +64,258 @@
                         <RowDefinition Height="50"></RowDefinition>
                         <RowDefinition Height="50"></RowDefinition>
                         <RowDefinition Height="50"></RowDefinition>
-                        
+
                     </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center"
+                    <StackPanel Grid.Row="0"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
                                 Margin="0 10 0 0">
-                        <materialDesign:PackIcon Kind="AccountBox" Width="35" Height="35"
-                                                 Margin="20 0 0 0"/>
-                        <TextBlock x:Name="txblTenKH"  FontSize="20" VerticalAlignment="Center" Margin="10 0 0 0"></TextBlock>
+                        <materialDesign:PackIcon Kind="AccountBox"
+                                                 Width="35"
+                                                 Height="35"
+                                                 Margin="20 0 0 0" />
+                        <TextBlock x:Name="txblTenKH"
+                                   FontSize="20"
+                                   VerticalAlignment="Center"
+                                   Margin="10 0 0 0"></TextBlock>
                     </StackPanel>
-                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center"
+                    <StackPanel Grid.Row="1"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
                                 Margin="0 10 0 0">
-                        <materialDesign:PackIcon Kind="CardAccountDetails" Width="35" Height="35"
-                                                 Margin="20 0 0 0"/>
-                        <TextBlock x:Name="txblCCCD"  FontSize="20" VerticalAlignment="Center" Margin="10 0 0 0"></TextBlock>
+                        <materialDesign:PackIcon Kind="CardAccountDetails"
+                                                 Width="35"
+                                                 Height="35"
+                                                 Margin="20 0 0 0" />
+                        <TextBlock x:Name="txblCCCD"
+                                   FontSize="20"
+                                   VerticalAlignment="Center"
+                                   Margin="10 0 0 0"></TextBlock>
                     </StackPanel>
-                    <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center"
+                    <StackPanel Grid.Row="2"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
                                 Margin="0 10 0 0">
-                        <materialDesign:PackIcon Kind="CalendarRange" Width="35" Height="35"
-                                                 Margin="20 0 0 0"/>
-                        <TextBlock x:Name="txblNgayDen"  FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"></TextBlock>
+                        <materialDesign:PackIcon Kind="CalendarRange"
+                                                 Width="35"
+                                                 Height="35"
+                                                 Margin="20 0 0 0" />
+                        <TextBlock x:Name="txblNgayDen"
+                                   FontSize="15"
+                                   VerticalAlignment="Center"
+                                   Margin="10 0 0 0"></TextBlock>
                     </StackPanel>
-                    <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center"
+                    <StackPanel Grid.Row="3"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
                                 Margin="0 10 0 0">
-                        <materialDesign:PackIcon Kind="CalendarToday" Width="35" Height="35"
-                                                 Margin="20 0 0 0"/>
-                        <TextBlock x:Name="txbNgayTra"  FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"></TextBlock>
+                        <materialDesign:PackIcon Kind="CalendarToday"
+                                                 Width="35"
+                                                 Height="35"
+                                                 Margin="20 0 0 0" />
+                        <TextBlock x:Name="txbNgayTra"
+                                   FontSize="15"
+                                   VerticalAlignment="Center"
+                                   Margin="10 0 0 0"></TextBlock>
                     </StackPanel>
-                    <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center"
+                    <StackPanel Grid.Row="4"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
                                 Margin="0 10 0 0">
-                        <materialDesign:PackIcon Kind="AccountMultiplePlus" Width="35" Height="35"
-                                                 Margin="20 0 0 0"/>
-                        <TextBlock x:Name="txblSoNguoi"  FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"></TextBlock>
-                        <TextBlock Text="người" FontSize="20" VerticalAlignment="Center" Margin="15 0 0 0"></TextBlock>
+                        <materialDesign:PackIcon Kind="AccountMultiplePlus"
+                                                 Width="35"
+                                                 Height="35"
+                                                 Margin="20 0 0 0" />
+                        <TextBlock x:Name="txblSoNguoi"
+                                   FontSize="15"
+                                   VerticalAlignment="Center"
+                                   Margin="10 0 0 0"></TextBlock>
+                        <TextBlock Text="người"
+                                   FontSize="20"
+                                   VerticalAlignment="Center"
+                                   Margin="15 0 0 0"></TextBlock>
                     </StackPanel>
                 </Grid>
-                <Grid Grid.Row="3">
-                    <Grid Width="338" Height="185">
+                <Grid Grid.Row="2">
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Visibility"
+                                    Value="Visible" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=btnAccept, Path=Content}"
+                                             Value="Thanh toán">
+                                    <Setter Property="Visibility"
+                                            Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <Grid Width="338"
+                          Height="185">
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <TextBlock FontSize="20" Text="Cập nhật tình trạng phòng"
-                                               HorizontalAlignment="Center" Margin="0 0 0 0" 
-                                       VerticalAlignment="Top"/>
-                            <Border Margin="0 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                                            Height="38"  Width="200"  BorderBrush="Black" BorderThickness="1" CornerRadius="4">
-                            <TextBlock Height="19" x:Name="cbTinhTrang" Margin="10 0 0 0" ></TextBlock>
+                            <TextBlock FontSize="20"
+                                       Text="Cập nhật tình trạng phòng"
+                                       HorizontalAlignment="Center"
+                                       Margin="0 0 0 0"
+                                       VerticalAlignment="Top" />
+                            <Border Margin="0 0 0 0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Bottom"
+                                    Height="38"
+                                    Width="200"
+                                    BorderBrush="Black"
+                                    BorderThickness="1"
+                                    CornerRadius="4">
+                                <TextBlock Height="19"
+                                           x:Name="cbTinhTrang"
+                                           Margin="10 0 0 0"></TextBlock>
                             </Border>
                         </Grid>
                         <Grid Grid.Row="1">
-                            <TextBlock FontSize="20" Text="Cập nhật tình trạng dọn dẹp"
-                                               HorizontalAlignment="Center"
-                                       VerticalAlignment="Top"/>
-                            <ComboBox HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                                        Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                                        Text="" x:Name="cbDonDep"
-                                        Height="38" Padding="7"
-                                        Width="200" >
+                            <TextBlock FontSize="20"
+                                       Text="Cập nhật tình trạng dọn dẹp"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Top" />
+                            <ComboBox HorizontalAlignment="Center"
+                                      VerticalAlignment="Bottom"
+                                      Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                      Text=""
+                                      x:Name="cbDonDep"
+                                      Height="38"
+                                      Padding="7"
+                                      Width="200">
                                 <ComboBoxItem Content="Đã dọn dẹp" />
                                 <ComboBoxItem Content="Chưa dọn dẹp" />
                                 <ComboBoxItem  Content="Sửa chữa" />
                             </ComboBox>
                         </Grid>
-                        
+
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2"
+                      Width="500"
+                      Height="225">
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Visibility"
+                                    Value="Hidden" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=btnAccept, Path=Content}"
+                                             Value="Thanh toán">
+                                    <Setter Property="Visibility"
+                                            Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <Grid.Clip>
+                        <RectangleGeometry Rect="0 0 500 225"
+                                           RadiusX="10"
+                                           RadiusY="10" />
+                    </Grid.Clip>
+                    <Grid>
+                        <ListView x:Name="lvDV"
+                                  ItemsSource="{Binding ListDV}"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment"
+                                            Value="Stretch" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.View>
+                                <GridView>
+                                    <GridView.ColumnHeaderContainerStyle>
+                                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                                            <Setter Property="Background"
+                                                    Value="#C4C4C4" />
+                                            <Setter Property="Foreground"
+                                                    Value="Black" />
+                                            <Setter Property="FontWeight"
+                                                    Value="Bold" />
+                                        </Style>
+                                    </GridView.ColumnHeaderContainerStyle>
+                                    <GridViewColumn  Header="Dịch vụ"
+                                                     Width="230">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Name}"
+                                                           FontSize="20"
+                                                           Margin="10 0 0 0" />
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header="SL"
+                                                    Width="50">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding SoLuong}"
+                                                           FontSize="15"
+                                                           TextAlignment="Center" />
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header="Thành tiền"
+                                                    Width="200">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding ThanhTien , StringFormat={}{0:N0}}"
+                                                           FontSize="15"
+                                                           TextAlignment="Right"
+                                                           Margin="0 0 65 0" />
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
                     </Grid>
                 </Grid>
                 <Grid Background="Transparent"
-                          Grid.Row="4">
+                      Grid.Row="3">
                     <Grid.Resources>
                         <Style TargetType="Button"
-                                   BasedOn="{StaticResource MaterialDesignRaisedDarkButton}">
+                               BasedOn="{StaticResource MaterialDesignRaisedDarkButton}">
                             <Setter Property="VerticalAlignment"
-                                        Value="Bottom" />
+                                    Value="Bottom" />
                             <Setter Property="HorizontalAlignment"
-                                        Value="Right" />
+                                    Value="Right" />
                             <Setter Property="Width"
-                                        Value="90" />
+                                    Value="90" />
                             <Setter Property="Height"
-                                        Value="40" />
+                                    Value="40" />
                         </Style>
                     </Grid.Resources>
-                    <Button Content="Hủy"
+                    <Button x:Name="btnCancel"
+                            Content="Hủy"
                             FontSize="20"
-                                materialDesign:ButtonAssist.CornerRadius="8"
-                                Margin="0,0,130,-60"
-                           
-                                Background="OrangeRed"
-                                BorderBrush="Transparent" />
-                    <Button Content="Lưu"
+                            materialDesign:ButtonAssist.CornerRadius="8"
+                            Margin="0,0,130,-60"
+                            Background="OrangeRed"
+                            BorderBrush="Transparent" />
+                    <Button x:Name="btnSave"
+                            Content="Lưu"
                             FontSize="20"
-                                Margin="0,0,21,-60"
-                                materialDesign:ButtonAssist.CornerRadius="8"
-                               />
-                    <Button Content="Nhận phòng"
+                            Margin="0,0,21,-60"
+                            materialDesign:ButtonAssist.CornerRadius="8" />
+                    <Button x:Name="btnAccept"
+                            Content="Thanh toán"
                             FontSize="20"
-                                Width="auto"
-                                Margin="0,0,240,-60"
-                                Background="Lime"
-                                materialDesign:ButtonAssist.CornerRadius="8"
-                              />
+                            Width="auto"
+                            Margin="0,0,240,-60"
+                            Background="Lime"
+                            Command="{Binding DoSomeThing}"
+                            CommandParameter="{Binding ElementName=roomDetail}"
+                            materialDesign:ButtonAssist.CornerRadius="8" />
                 </Grid>
             </Grid>
         </StackPanel>

@@ -166,7 +166,7 @@ namespace Hotel.ViewModel
         private void ViewDetailRoom(object p)
         {
             var room = (RoomVM)p;
-            MessageBox.Show(room.Name);
+            new RoomDetail().ShowDialog();
         }
     }
 
