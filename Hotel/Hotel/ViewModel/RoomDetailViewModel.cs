@@ -38,6 +38,7 @@ namespace Hotel.ViewModel
         }
         public void MakeSome(RoomDetail p)
         {
+            MessageBox.Show("OK");
             p.btnAccept.Content = p.btnAccept.Content == "Thanh toán" ? "Nhận phòng" : "Thanh toán";
         }
     }

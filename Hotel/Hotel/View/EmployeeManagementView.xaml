@@ -206,7 +206,7 @@
                                             Width="120">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Path = Salary }"
+                                        <TextBlock Text="{Binding Path = Salary, StringFormat={}{0:N0} }"
                                                    HorizontalAlignment="Right"
                                                    TextAlignment="Right"
                                                    FontSize="20"
