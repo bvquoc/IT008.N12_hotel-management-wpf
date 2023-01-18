@@ -83,7 +83,6 @@ namespace Hotel.ViewModel
                 RoomCollection.Filter = FilterByName;
             });
             LoadDbRoom();
-            RoomCollection = CollectionViewSource.GetDefaultView(RoomList);
         }
         private bool FilterByName(object emp)
         {
@@ -122,6 +121,7 @@ namespace Hotel.ViewModel
         }
         public void LoadDbRoom()
         {
+            var TimeNow = DateTime.Now;
             _roomListdb = new ObservableCollection<RoomVM>();
             RoomList.Clear();
             using (var db = new QLYHOTELEntities())
@@ -129,12 +129,24 @@ namespace Hotel.ViewModel
                 var select = from s in db.PHONGs select s;
                 foreach (var room in select)
                 {
-                    _roomListdb.Add(new RoomVM() { Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = room.TRANGTHAI.ToString() });
-                    RoomList.Add(new RoomVM() { Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = room.TRANGTHAI.ToString() });
+                    string StatusRoom = "Trống";
+                    foreach (var info in room.DATs)
+                    {
+                        if ((info.NGAYDAT.Value - TimeNow).TotalMinutes <= 15 && (info.NGAYTRA.Value - TimeNow).TotalMilliseconds > 0)
+                            StatusRoom = info.TRANGTHAI;
+                        if (info.TRANGTHAI == "Đang sử dụng")
+                        {
+                            StatusRoom = info.TRANGTHAI;
+                            break;
+                        }
+                    }
+                    _roomListdb.Add(new RoomVM() { ID = room.MAPHONG, Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = StatusRoom });
+                    RoomList.Add(new RoomVM() { ID = room.MAPHONG, Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = StatusRoom });
                 }
             }
             sortFloordb();
             sortFloor();
+            RoomCollection = CollectionViewSource.GetDefaultView(RoomList);
         }
         public void LoadAllRoom()
         {
@@ -169,5 +181,4 @@ namespace Hotel.ViewModel
             new RoomDetail().ShowDialog();
         }
     }
-
 }

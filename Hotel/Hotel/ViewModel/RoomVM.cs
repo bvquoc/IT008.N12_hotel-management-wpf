@@ -27,15 +27,6 @@ namespace Hotel.ViewModel
         {
             p.tpGioBD.Text = "asdj";
         }
-        public RoomVM(string name, string description, string status, DateTime dateStart, DateTime dateEnd, int numPeo, int iD)
-        {
-            Name = name;
-            Description = description;
-            Status = status;
-            DateStart = dateStart;
-            DateEnd = dateEnd;
-            NumPeo = numPeo;
-            ID = iD;
-        }
+
     }
 }

@@ -124,7 +124,8 @@ namespace Hotel.ViewModel
             DateTime end = new DateTime(DateEnd.Year, DateEnd.Month, DateEnd.Day, TimeEnd.Hour, TimeEnd.Minute, TimeEnd.Second);
 
             Rooms.Clear();
-            if (DateTime.Compare(start, end) >= 0 || DateTime.Compare(start, DateTime.Now) < 0)
+            if (DateTime.Compare(start, end) >= 0 ||
+                DateTime.Compare(start, DateTime.Now) < 0)
                 return;
             using (var db = new QLYHOTELEntities())
             {
@@ -236,6 +237,7 @@ namespace Hotel.ViewModel
                     info.SONG = room.NumPeo;
                     info.NGAYDAT = room.DateStart;
                     info.NGAYTRA = room.DateEnd;
+                    info.TRANGTHAI = "Đã đặt";
                     db.DATs.Add(info);
                     db.SaveChanges();
                 }

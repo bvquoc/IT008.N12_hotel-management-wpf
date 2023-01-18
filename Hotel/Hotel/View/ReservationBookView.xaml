@@ -69,7 +69,8 @@
                                                  Height="25"
                                                  Width="25"
                                                  VerticalAlignment="Bottom" />
-                        <materialDesign:TimePicker x:Name="tpGioBD"
+                        <materialDesign:TimePicker Is24Hours="True"
+                                                   x:Name="tpGioBD"
                                                    Margin="30 0 0 0"
                                                    SelectedTime="{Binding TimeStart}"
                                                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
@@ -99,7 +100,8 @@
                                                  Height="25"
                                                  Width="25"
                                                  VerticalAlignment="Bottom" />
-                        <materialDesign:TimePicker x:Name="tpGioKT"
+                        <materialDesign:TimePicker Is24Hours="True"
+                                                   x:Name="tpGioKT"
                                                    Margin="30 0 0 0"
                                                    SelectedTime="{Binding TimeEnd}"
                                                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
