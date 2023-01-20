@@ -12,6 +12,10 @@ namespace Hotel.View
         {
             InitializeComponent();
         }
+        public MainWindow(int MaNV)
+        {
+            InitializeComponent();
+        }
 
         bool isMaximize = false;
         bool isClick = false;
