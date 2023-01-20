@@ -68,8 +68,8 @@ namespace Hotel.ViewModel
             }
 
             MainWindow mainWindow = new MainWindow(MaNV);
-            mainWindow.ShowDialog();
             cur.Close();
+            mainWindow.ShowDialog();
         }
 
     }
