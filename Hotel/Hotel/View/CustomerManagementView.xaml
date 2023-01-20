@@ -176,6 +176,11 @@
                                                                 <Setter Property="Kind"
                                                                         Value="FaceWoman"></Setter>
                                                             </DataTrigger>
+                                                            <DataTrigger Binding="{Binding Sex}"
+                                                                         Value="Khác">
+                                                                <Setter Property="Kind"
+                                                                        Value="FaceMan"></Setter>
+                                                            </DataTrigger>
                                                         </Style.Triggers>
                                                     </Style>
                                                 </materialDesign:PackIcon.Style>
