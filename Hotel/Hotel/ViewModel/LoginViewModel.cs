@@ -13,6 +13,7 @@ namespace Hotel.ViewModel
     internal class LoginViewModel : BaseViewModel
     {
         public int MaNV { get; set; }
+        public int LoaiNV { get; set; }
         public ICommand Login { get; set; }
 
         private bool handleLogin(string username, string password)
@@ -32,6 +33,7 @@ namespace Hotel.ViewModel
                 if (item.username == username && item.password == password)
                 {
                     MaNV = item.MaNV;
+                    LoaiNV = item.LoaiNV;
                     //MessageBox.Show(MaNV.ToString());
                     return true;
                 }
@@ -44,6 +46,7 @@ namespace Hotel.ViewModel
         public LoginViewModel()
         {
             MaNV = -1;
+            LoaiNV = -1;
             Login = new RelayCommand<LoginView>((parameter) => true, (parameter) => EnterLogin(parameter));
         }
         private void EnterLogin(LoginView cur)
@@ -65,7 +68,7 @@ namespace Hotel.ViewModel
                 return;
             }
 
-            MainWindow mainWindow = new MainWindow(MaNV);
+            MainWindow mainWindow = new MainWindow(MaNV, LoaiNV);
             cur.Hide();
             mainWindow.Show();
             cur.Close();

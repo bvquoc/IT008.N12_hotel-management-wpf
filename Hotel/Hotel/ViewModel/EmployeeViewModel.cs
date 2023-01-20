@@ -63,7 +63,7 @@ namespace Hotel.ViewModel
             {
                 var select = from s in db.NHANVIENs select s;
                 foreach (var Employee in select)
-                    EmployeeList.Add(new EmployeeVM() { ID = Employee.MANV.ToString(), Name = Employee.TENNV.ToString(), Salary = Employee.LUONG.Value, User = Employee.TAIKHOAN.ToString(), Pass = Employee.MATKHAU.ToString(), Type = Employee.LOAINV.ToString() });
+                    EmployeeList.Add(new EmployeeVM(Employee.MANV.ToString(), Employee.TENNV.ToString(), Employee.TAIKHOAN.ToString(), Employee.MATKHAU.ToString(), (int)Employee.LUONG, (int) Employee.LOAINV));
             }
             EmployeeCollection = CollectionViewSource.GetDefaultView(EmployeeList);
         }

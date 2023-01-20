@@ -9,13 +9,17 @@ namespace Hotel.ViewModel
     internal class LoginVM
     {
         public int MaNV { get; set; }
+
+        public int LoaiNV { get; set; }
         public string username { get; set; }
         public string password { get; set; }
         public LoginVM() { }    
-        public LoginVM(string _username, string _password, int _MaNV) {
+        public LoginVM(string _username, string _password, int _MaNV, int loaiNV = -1)
+        {
             this.username = _username;
             this.password = _password;
             this.MaNV = _MaNV;
+            this.LoaiNV = loaiNV;
         }
     }
 }

@@ -8,12 +8,16 @@ namespace Hotel.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        public int MaNV { get; set; }
+        public int LoaiNV { get; set; }
         public MainWindow()
         {
             InitializeComponent();
         }
-        public MainWindow(int MaNV)
+        public MainWindow(int MaNV, int LoaiNV)
         {
+            this.MaNV = MaNV;
+            this.LoaiNV = LoaiNV;
             InitializeComponent();
         }
 
