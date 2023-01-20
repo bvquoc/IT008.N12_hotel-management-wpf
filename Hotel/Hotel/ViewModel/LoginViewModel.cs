@@ -12,7 +12,6 @@ namespace Hotel.ViewModel
 {
     internal class LoginViewModel : BaseViewModel
     {
-        public bool IsLoggedIn { get; set; }
         public int MaNV { get; set; }
         public ICommand Login { get; set; }
 
@@ -44,7 +43,6 @@ namespace Hotel.ViewModel
 
         public LoginViewModel()
         {
-            IsLoggedIn = false;
             MaNV = -1;
             Login = new RelayCommand<LoginView>((parameter) => true, (parameter) => EnterLogin(parameter));
         }
@@ -68,8 +66,9 @@ namespace Hotel.ViewModel
             }
 
             MainWindow mainWindow = new MainWindow(MaNV);
+            cur.Hide();
+            mainWindow.Show();
             cur.Close();
-            mainWindow.ShowDialog();
         }
 
     }
