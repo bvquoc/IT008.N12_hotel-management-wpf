@@ -88,7 +88,8 @@
                 <StackPanel Margin="0 160 0 0">
 
                     <!--Phòng-->
-                    <Grid Margin="0,-17">
+                    <Grid Margin="0,-17"
+                          x:Name="menuRoom">
                         <Grid HorizontalAlignment="Right"
                               Width="20"
                               Height="85"
@@ -124,7 +125,8 @@
                     </Grid>
 
                     <!--Đặt phòng-->
-                    <Grid Margin="0,-17">
+                    <Grid Margin="0,-17"
+                          x:Name="menuReservate">
                         <Grid HorizontalAlignment="Right"
                               Width="20"
                               Height="85"
@@ -159,7 +161,8 @@
                         </Button>
                     </Grid>
                     <!--Quản lý khách hàng-->
-                    <Grid Margin="0,-17">
+                    <Grid Margin="0,-17"
+                          x:Name="menuCustomer">
                         <Grid HorizontalAlignment="Right"
                               Width="20"
                               Height="85"
@@ -197,7 +200,8 @@
                         </Button>
                     </Grid>
                     <!--Quản lý phòng-->
-                    <Grid Margin="0,-17">
+                    <Grid Margin="0,-17"
+                          x:Name="menuRoomManage">
                         <Grid HorizontalAlignment="Right"
                               Width="20"
                               Height="85"
@@ -231,8 +235,9 @@
                             </i:Interaction.Triggers>
                         </Button>
                     </Grid>
-
-                    <Grid Margin="0,-17">
+                    <!--Quản lý hóa đơn-->
+                    <Grid Margin="0,-17"
+                          x:Name="menuBill">
                         <Grid HorizontalAlignment="Right"
                               Width="20"
                               Height="85"
@@ -267,7 +272,8 @@
                         </Button>
                     </Grid>
                     <!--Quản lý dịch vụ-->
-                    <Grid Margin="0,-17">
+                    <Grid Margin="0,-17"
+                          Name="menuService">
                         <Grid HorizontalAlignment="Right"
                               Width="20"
                               Height="85"
@@ -302,7 +308,8 @@
                         </Button>
                     </Grid>
                     <!--Quản lý nhân viên-->
-                    <Grid Margin="0,-17">
+                    <Grid Margin="0,-17"
+                          x:Name="menuEmployee">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="111*" />
                             <ColumnDefinition Width="164*" />

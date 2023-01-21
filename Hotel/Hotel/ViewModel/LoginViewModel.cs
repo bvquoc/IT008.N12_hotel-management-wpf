@@ -7,11 +7,13 @@ using System.Windows;
 using System.Linq;
 using System.Windows.Data;
 using System.Windows.Input;
+using System;
 
 namespace Hotel.ViewModel
 {
     internal class LoginViewModel : BaseViewModel
     {
+        private ObservableCollection<LoginVM> staffAcountList = new ObservableCollection<LoginVM>();
         public int MaNV { get; set; }
         public int LoaiNV { get; set; }
         public ICommand Login { get; set; }
@@ -19,22 +21,13 @@ namespace Hotel.ViewModel
         private bool handleLogin(string username, string password)
         {
             //MessageBox.Show(username + "\n" + password);
-
-            ObservableCollection<LoginVM> staffAcountList = new ObservableCollection<LoginVM>();
-            using (var db = new QLYHOTELEntities())
-            {
-                var select = from s in db.NHANVIENs select s;
-                foreach (var item in select)
-                    staffAcountList.Add(new LoginVM(item.TAIKHOAN, item.MATKHAU, item.MANV));
-            }
-
             foreach (var item in staffAcountList)
             {
                 if (item.username == username && item.password == password)
                 {
                     MaNV = item.MaNV;
                     LoaiNV = item.LoaiNV;
-                    //MessageBox.Show(MaNV.ToString());
+                    //MessageBox.Show(LoaiNV.ToString());
                     return true;
                 }
             }
@@ -42,9 +35,25 @@ namespace Hotel.ViewModel
             return false;
         }
 
-
+        private void LoadDB()
+        {
+            try
+            {
+                using (var db = new QLYHOTELEntities())
+                {
+                    var select = from s in db.NHANVIENs select s;
+                    foreach (var item in select)
+                        staffAcountList.Add(new LoginVM(item.TAIKHOAN, item.MATKHAU, item.MANV, (int)item.LOAINV));
+                }
+            }
+            catch (Exception ex)
+            {
+                new DialogCustomize("Mất kết nối cơ sở dữ liệu!").ShowDialog();
+            }
+        }
         public LoginViewModel()
         {
+            LoadDB();
             MaNV = -1;
             LoaiNV = -1;
             Login = new RelayCommand<LoginView>((parameter) => true, (parameter) => EnterLogin(parameter));
@@ -55,7 +64,8 @@ namespace Hotel.ViewModel
             string password = cur.txtPass.Password.ToString();
 
 
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password)) {
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
                 (new DialogCustomize("Vui lòng điền tên đăng nhập & mật khẩu!")).ShowDialog();
                 return;
             }

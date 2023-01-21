@@ -23,10 +23,5 @@ namespace Hotel.ViewModel
         {
 
         }
-        private void choseRoom(ReservationBookView p)
-        {
-            p.tpGioBD.Text = "asdj";
-        }
-
     }
 }
