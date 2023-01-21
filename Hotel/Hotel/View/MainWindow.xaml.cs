@@ -16,13 +16,17 @@ namespace Hotel.View
         }
         public MainWindow(int MaNV, int LoaiNV)
         {
+            InitializeComponent();
             this.MaNV = MaNV;
             this.LoaiNV = LoaiNV;
-            InitializeComponent();
+            if (LoaiNV > 1)
+            {
+                this.menuEmployee.Visibility = Visibility.Collapsed;
+                //...
+            }
         }
 
         bool isMaximize = false;
-        bool isClick = false;
         private void Border_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.ClickCount == 2)
