@@ -365,7 +365,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <icon:PackIconMaterial Kind="Logout"
                                                        Style="{StaticResource menuButtonIcon}" />
-                                <TextBlock Text="Logout"
+                                <TextBlock Text="Đăng xuất"
                                            Style="{StaticResource menuButtonText}" />
                             </StackPanel>
                             <i:Interaction.Triggers>

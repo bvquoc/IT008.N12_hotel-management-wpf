@@ -201,6 +201,7 @@
                                   Width="180">
                             <ComboBoxItem Content="Nam" />
                             <ComboBoxItem Content="Nữ" />
+                            <ComboBoxItem Content="Khác" />
                         </ComboBox>
                     </Grid>
 

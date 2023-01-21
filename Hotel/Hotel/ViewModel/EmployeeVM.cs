@@ -16,7 +16,9 @@ namespace Hotel.ViewModel
         public int Salary { get; set; }
         public string User { get; set; }
         public string Pass { get; set; }
-        public string Type { get; set; }
+        public int Type { get; set; }
+
+        public string Position { get; set; }
         public ICommand ShowMessage { get; set; }
         public EmployeeVM()
         {
@@ -25,7 +27,7 @@ namespace Hotel.ViewModel
                 MessageBox.Show(this.ID);
             });
         }
-        public EmployeeVM(string id, string name, string user, string pass, int salary, string type)
+        public EmployeeVM(string id, string name, string user, string pass, int salary, int type)
         {
             Name = name;
             ID = id;
@@ -33,6 +35,7 @@ namespace Hotel.ViewModel
             User = user;
             Pass = pass;
             Type = type;
+            Position = (type == 0 ? "Chủ khách sạn" : (type == 1 ? "Quản lí" : "Nhân viên"));
         }
     }
 }

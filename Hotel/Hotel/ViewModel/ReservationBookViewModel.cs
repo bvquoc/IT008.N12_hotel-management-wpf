@@ -195,8 +195,10 @@ namespace Hotel.ViewModel
                             SDT = p.SDT;
                             if (p.GIOITINH == "Nam")
                                 Sex = 0;
-                            else
+                            else if (p.GIOITINH == "Nữ")
                                 Sex = 1;
+                            else
+                                Sex = 2;
                             return;
                         }
                     }
@@ -252,7 +254,10 @@ namespace Hotel.ViewModel
             cus.TENKH = Name;
             cus.SDT = SDT;
             cus.DCHI = DiaChi;
-            cus.GIOITINH = (Sex == 0 ? "Nam" : "Nữ");
+            cus.GIOITINH = "Khác";
+            if (Sex == 0) cus.GIOITINH = "Nam";
+            if (Sex == 1) cus.GIOITINH = "Nữ";
+
             if (_idCus == -1)
             {
                 using (var db = new QLYHOTELEntities())
