@@ -132,7 +132,7 @@ namespace Hotel.ViewModel
                     string StatusRoom = "Trống";
                     foreach (var info in room.DATs)
                     {
-                        if ((info.NGAYDAT.Value - TimeNow).TotalMinutes <= 15 && (info.NGAYTRA.Value - TimeNow).TotalMilliseconds > 0)
+                        if ((info.NGAYDAT.Value - TimeNow).TotalMinutes <= 25 && (info.NGAYTRA.Value - TimeNow).TotalMilliseconds > 0)
                             StatusRoom = info.TRANGTHAI;
                         if (info.TRANGTHAI == "Đang sử dụng")
                         {

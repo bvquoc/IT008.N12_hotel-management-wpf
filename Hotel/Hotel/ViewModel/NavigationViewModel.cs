@@ -1,7 +1,9 @@
 ﻿using Hotel.View;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace Hotel.ViewModel
 {
@@ -11,6 +13,7 @@ namespace Hotel.ViewModel
         private double _isHome;
         private string bell = "/Images/Bell.png";
         private string bellActive = "/Images/Active.png";
+        private readonly DispatcherTimer _timer;
 
         public double IsHome
         {
@@ -112,6 +115,11 @@ namespace Hotel.ViewModel
             //testc bell
             Notification = bell;
             VisNotify = "Hidden";
+
+            //timer
+            _timer = new DispatcherTimer { Interval = TimeSpan.FromMinutes(5) };
+            _timer.Start();
+            _timer.Tick += (o, e) => checkNotify();
         }
         private void makeNavigation(Button parameter)
         {
@@ -174,6 +182,14 @@ namespace Hotel.ViewModel
                 VisNotify = "Visible";
             else
                 VisNotify = "Hidden";
+        }
+        private void checkNotify()
+        {
+            if (IsHome == FontBase + 1)
+            {
+                CurrentView = new RoomView();
+                //continue
+            }
         }
     }
 }
