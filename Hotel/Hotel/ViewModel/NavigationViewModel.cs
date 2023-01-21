@@ -1,5 +1,6 @@
 ﻿using Hotel.View;
 using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -14,6 +15,14 @@ namespace Hotel.ViewModel
         private string bell = "/Images/Bell.png";
         private string bellActive = "/Images/Active.png";
         private readonly DispatcherTimer _timer;
+
+        private ObservableCollection<demoNotify> _lvNotify;
+
+        public ObservableCollection<demoNotify> LvNotify
+        {
+            get { return _lvNotify; }
+            set { _lvNotify = value; OnPropertyChanged(); }
+        }
 
         public double IsHome
         {
@@ -93,6 +102,7 @@ namespace Hotel.ViewModel
         public ICommand GetUidCommand { get; set; }
         public ICommand MakeNavigation { get; set; }
         public ICommand GetNotification { get; set; }
+        public ICommand ChoseNotify { get; set; }
         private string uid = "0";
 
         public NavigationViewModel()
@@ -101,6 +111,7 @@ namespace Hotel.ViewModel
             GetUidCommand = new RelayCommand<Button>((parameter) => true, (parameter) => uid = parameter.Uid);
             MakeNavigation = new RelayCommand<Button>((parameter) => true, (parameter) => makeNavigation(parameter));
             GetNotification = new RelayCommand<object>((parameter) => true, (parameter) => readNotification());
+            ChoseNotify = new RelayCommand<object>((parameter) => true, (parameter) => choseNotify(parameter));
 
             IsHome = FontBase + 1;
             IsReservation = FontBase;
@@ -120,6 +131,17 @@ namespace Hotel.ViewModel
             _timer = new DispatcherTimer { Interval = TimeSpan.FromMinutes(5) };
             _timer.Start();
             _timer.Tick += (o, e) => checkNotify();
+
+
+            //demo líst notify
+            LvNotify = new ObservableCollection<demoNotify>();
+            LvNotify.Add(new demoNotify() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
+            LvNotify.Add(new demoNotify() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán" });
+            LvNotify.Add(new demoNotify() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
+            LvNotify.Add(new demoNotify() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán" });
+            LvNotify.Add(new demoNotify() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
+            LvNotify.Add(new demoNotify() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
+            LvNotify.Add(new demoNotify() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán" });
         }
         private void makeNavigation(Button parameter)
         {
@@ -190,6 +212,21 @@ namespace Hotel.ViewModel
                 CurrentView = new RoomView();
                 //continue
             }
+        }
+        private void choseNotify(object ob)
+        {
+            //demo
+        }
+    }
+    public class demoNotify
+    {
+        public int ID { get; set; }
+        public string RoomName { get; set; }
+        public string CustomerName { get; set; }
+        public string Status { get; set; }
+        public demoNotify()
+        {
+
         }
     }
 }
