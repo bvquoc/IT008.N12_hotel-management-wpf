@@ -1,10 +1,12 @@
-﻿using Hotel.View;
+﻿using Hotel.Model;
+using Hotel.View;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
+using System.Linq;
 
 namespace Hotel.ViewModel
 {
@@ -16,9 +18,9 @@ namespace Hotel.ViewModel
         private string bellActive = "/Images/Active.png";
         private readonly DispatcherTimer _timer;
 
-        private ObservableCollection<demoNotify> _lvNotify;
+        private ObservableCollection<BillVM> _lvNotify;
 
-        public ObservableCollection<demoNotify> LvNotify
+        public ObservableCollection<BillVM> LvNotify
         {
             get { return _lvNotify; }
             set { _lvNotify = value; OnPropertyChanged(); }
@@ -134,14 +136,7 @@ namespace Hotel.ViewModel
 
 
             //demo líst notify
-            LvNotify = new ObservableCollection<demoNotify>();
-            LvNotify.Add(new demoNotify() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
-            LvNotify.Add(new demoNotify() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán" });
-            LvNotify.Add(new demoNotify() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
-            LvNotify.Add(new demoNotify() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán" });
-            LvNotify.Add(new demoNotify() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
-            LvNotify.Add(new demoNotify() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
-            LvNotify.Add(new demoNotify() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán" });
+            loadDbNotify();
         }
         private void makeNavigation(Button parameter)
         {
@@ -215,17 +210,40 @@ namespace Hotel.ViewModel
         }
         private void choseNotify(object ob)
         {
-            //demo
+            BillVM bill = (BillVM)ob;
         }
-    }
-    public class demoNotify
-    {
-        public int ID { get; set; }
-        public string RoomName { get; set; }
-        public string CustomerName { get; set; }
-        public string Status { get; set; }
-        public demoNotify()
+        private void loadDbNotify()
         {
+            var TimeNow = DateTime.Now;
+            LvNotify = new ObservableCollection<BillVM>();
+
+            using (var db = new QLYHOTELEntities())
+            {
+                var select = from s in db.PHONGs select s;
+                foreach (var room in select)
+                {
+                    foreach (var info in room.DATs)
+                    {
+                        if (info.TRANGTHAI == "Đang sử dụng" && (info.NGAYTRA.Value - TimeNow).TotalMilliseconds <= 30)
+                        {
+                            LvNotify.Add(new BillVM() { ID = info.MADAT, RoomName = info.PHONG.TENPHONG, CustomerName = info.KHACH.TENKH, StaffName = info.NHANVIEN.TENNV, Status = info.TRANGTHAI });
+                            //Notification = bellActive;
+                        }
+                        if (info.TRANGTHAI == "Đã Thanh Toán")
+                            LvNotify.Add(new BillVM() { ID = info.MADAT, RoomName = info.PHONG.TENPHONG, CustomerName = info.KHACH.TENKH, StaffName = info.NHANVIEN.TENNV, Status = info.TRANGTHAI });
+                    }
+                }
+            }
+
+
+
+            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
+            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán" });
+            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
+            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán" });
+            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
+            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
+            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán" });
 
         }
     }

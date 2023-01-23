@@ -28,6 +28,7 @@ namespace Hotel.Model
         public Nullable<System.DateTime> NGAYDAT { get; set; }
         public Nullable<System.DateTime> NGAYTRA { get; set; }
         public string TRANGTHAI { get; set; }
+        public Nullable<int> THANHTIEN { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CUNGCAP> CUNGCAPs { get; set; }

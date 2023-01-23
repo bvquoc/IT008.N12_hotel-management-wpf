@@ -160,7 +160,7 @@
                                                                      Margin="10 0 0 0"
                                                                      VerticalAlignment="Center"
                                                                      Kind="Dollar">
-                                                
+
                                             </materialDesign:PackIcon>
                                         </Grid>
                                         <StackPanel Grid.Column="1"
@@ -179,7 +179,7 @@
                                                        FontFamily="Montserrat"></TextBlock>
 
                                             <TextBlock x:Name="Total"
-                                                       Text="{Binding Total}"
+                                                       Text="{Binding Total, StringFormat={}{0:N0}}"
                                                        FontFamily="Montserrat"></TextBlock>
 
                                         </StackPanel>
