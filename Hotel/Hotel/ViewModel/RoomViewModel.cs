@@ -134,11 +134,8 @@ namespace Hotel.ViewModel
                     {
                         if ((info.NGAYDAT.Value - TimeNow).TotalMinutes <= 25 && (info.NGAYTRA.Value - TimeNow).TotalMilliseconds > 0)
                             StatusRoom = info.TRANGTHAI;
-                        if (info.TRANGTHAI == "Đang sử dụng")
-                        {
-                            StatusRoom = info.TRANGTHAI;
+                        if (StatusRoom == "Đang sử dụng")
                             break;
-                        }
                     }
                     _roomListdb.Add(new RoomVM() { ID = room.MAPHONG, Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = StatusRoom });
                     RoomList.Add(new RoomVM() { ID = room.MAPHONG, Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = StatusRoom });

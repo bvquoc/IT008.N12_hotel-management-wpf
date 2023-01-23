@@ -28,6 +28,7 @@
           <Property Name="NGAYDAT" Type="smalldatetime" />
           <Property Name="NGAYTRA" Type="smalldatetime" />
           <Property Name="TRANGTHAI" Type="nvarchar" MaxLength="100" />
+          <Property Name="THANHTIEN" Type="int" />
         </EntityType>
         <EntityType Name="DICHVU">
           <Key>
@@ -312,6 +313,7 @@
           <Property Name="NGAYDAT" Type="DateTime" Precision="0" />
           <Property Name="NGAYTRA" Type="DateTime" Precision="0" />
           <Property Name="TRANGTHAI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="THANHTIEN" Type="Int32" />
           <NavigationProperty Name="CUNGCAPs" Relationship="QLYHOTELModel.CC_MD" FromRole="DAT" ToRole="CUNGCAP" />
           <NavigationProperty Name="KHACH" Relationship="QLYHOTELModel.DA_KH" FromRole="DAT" ToRole="KHACH" />
           <NavigationProperty Name="NHANVIEN" Relationship="QLYHOTELModel.DA_NV" FromRole="DAT" ToRole="NHANVIEN" />
@@ -365,7 +367,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -434,6 +436,7 @@
           <EntitySetMapping Name="DATs">
             <EntityTypeMapping TypeName="QLYHOTELModel.DAT">
               <MappingFragment StoreEntitySet="DAT">
+                <ScalarProperty Name="THANHTIEN" ColumnName="THANHTIEN" />
                 <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
                 <ScalarProperty Name="NGAYTRA" ColumnName="NGAYTRA" />
                 <ScalarProperty Name="NGAYDAT" ColumnName="NGAYDAT" />

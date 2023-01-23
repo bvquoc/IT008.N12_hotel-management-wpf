@@ -594,12 +594,12 @@
                                                 <Style TargetType="Button"
                                                        BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
                                                     <Setter Property="Background"
-                                                            Value="#F1F1F1" />
+                                                            Value="#FFFBEE" />
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding Status}"
                                                                      Value="Đã Thanh Toán">
                                                             <Setter Property="Background"
-                                                                    Value="#FFFBEE">
+                                                                    Value="#F1F1F1">
                                                             </Setter>
                                                         </DataTrigger>
                                                         <Trigger Property="IsMouseOver"
@@ -634,9 +634,11 @@
                                                     <RowDefinition Height="auto"></RowDefinition>
                                                 </Grid.RowDefinitions>
                                                 <Grid Grid.Row="0">
+                                                    <TextBlock Text="#"
+                                                               Margin="20 0 0 0" />
                                                     <TextBlock Text="{Binding ID}"
                                                                VerticalAlignment="Center"
-                                                               Margin="20 0 0 0"
+                                                               Margin="28 0 0 0"
                                                                FontSize="13"
                                                                Foreground="Black" />
                                                 </Grid>

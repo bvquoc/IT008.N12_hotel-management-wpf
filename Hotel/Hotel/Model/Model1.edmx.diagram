@@ -12,7 +12,7 @@
         <EntityTypeShape EntityType="QLYHOTELModel.PHONG" Width="1.5" PointX="3.75" PointY="7.875" IsExpanded="true" />
         <AssociationConnector Association="QLYHOTELModel.CC_DV" ManuallyRouted="false" />
         <AssociationConnector Association="QLYHOTELModel.CC_NV" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="QLYHOTELModel.DAT" Width="1.5" PointX="6" PointY="3.75" />
+        <EntityTypeShape EntityType="QLYHOTELModel.DAT" Width="1.5" PointX="6" PointY="3.625" />
         <AssociationConnector Association="QLYHOTELModel.CC_MD" />
         <AssociationConnector Association="QLYHOTELModel.DA_KH" />
         <AssociationConnector Association="QLYHOTELModel.DA_NV" />
