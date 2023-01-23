@@ -22,6 +22,8 @@
             <FontFamily x:Key="Quicksand">pack://application:,,,/Fonts/#Quicksand</FontFamily>
             <FontFamily x:Key="Coiny">pack://application:,,,/Fonts/#Coiny</FontFamily>
             <FontFamily x:Key="Vollkorn">pack://application:,,,/Fonts/#Vollkorn</FontFamily>
+            <FontFamily x:Key="HinaMincho">pack://application:,,,/Fonts/#Hina Mincho</FontFamily>
+            
             
         </ResourceDictionary>
     </Application.Resources>

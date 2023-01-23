@@ -157,6 +157,9 @@
     <Compile Include="View\AddService.xaml.cs">
       <DependentUpon>AddService.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\BillDetail.xaml.cs">
+      <DependentUpon>BillDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\BillView.xaml.cs">
       <DependentUpon>BillView.xaml</DependentUpon>
     </Compile>
@@ -188,6 +191,10 @@
       <DependentUpon>ServiceManagementView.xaml</DependentUpon>
     </Compile>
     <Page Include="View\AddService.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BillDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -328,6 +335,7 @@
     <Resource Include="Fonts\Vollkorn-Regular.ttf" />
     <Resource Include="Fonts\Vollkorn-SemiBold.ttf" />
     <Resource Include="Fonts\Vollkorn-SemiBoldItalic.ttf" />
+    <Resource Include="Fonts\HinaMincho-Regular.ttf" />
     <None Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
@@ -348,6 +356,9 @@
     <Resource Include="Images\UserLogin.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="View\HotelLogoWhite.png" />
+    <Resource Include="Images\HotelLogoBlack.png" />
+    <Resource Include="Images\HotelLogoWhite.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
