@@ -140,6 +140,8 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CustomerManagementViewModel.cs" />
     <Compile Include="ViewModel\CustomerManagementVM.cs" />
+    <Compile Include="ViewModel\LoginVM.cs" />
+    <Compile Include="ViewModel\RoomDetailViewModel.cs" />
     <Compile Include="ViewModel\RoomManagementViewModel.cs" />
     <Compile Include="ViewModel\RoomManagementVM.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
@@ -352,13 +354,17 @@
   <ItemGroup>
     <Resource Include="Images\BackgroundLogin.jpg" />
     <Resource Include="Images\KeyLogin.png" />
-    <Resource Include="Images\t.txt" />
     <Resource Include="Images\UserLogin.png" />
   </ItemGroup>
   <ItemGroup>
+
     <Resource Include="View\HotelLogoWhite.png" />
     <Resource Include="Images\HotelLogoBlack.png" />
     <Resource Include="Images\HotelLogoWhite.png" />
+
+    <Resource Include="Images\Active.png" />
+    <Resource Include="Images\Bell.png" />
+
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>

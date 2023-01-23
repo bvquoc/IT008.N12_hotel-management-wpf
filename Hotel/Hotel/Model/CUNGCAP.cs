@@ -22,7 +22,7 @@ namespace Hotel.Model
         public Nullable<int> TONGTIEN { get; set; }
     
         public virtual DICHVU DICHVU { get; set; }
-        public virtual DAT DAT { get; set; }
         public virtual NHANVIEN NHANVIEN { get; set; }
+        public virtual DAT DAT { get; set; }
     }
 }

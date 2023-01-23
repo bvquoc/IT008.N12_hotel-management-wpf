@@ -69,7 +69,8 @@
                                                  Height="25"
                                                  Width="25"
                                                  VerticalAlignment="Bottom" />
-                        <materialDesign:TimePicker x:Name="tpGioBD"
+                        <materialDesign:TimePicker Is24Hours="True"
+                                                   x:Name="tpGioBD"
                                                    Margin="30 0 0 0"
                                                    SelectedTime="{Binding TimeStart}"
                                                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
@@ -99,7 +100,8 @@
                                                  Height="25"
                                                  Width="25"
                                                  VerticalAlignment="Bottom" />
-                        <materialDesign:TimePicker x:Name="tpGioKT"
+                        <materialDesign:TimePicker Is24Hours="True"
+                                                   x:Name="tpGioKT"
                                                    Margin="30 0 0 0"
                                                    SelectedTime="{Binding TimeEnd}"
                                                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
@@ -128,18 +130,6 @@
                           VerticalAlignment="Top"
                           HorizontalAlignment="Center"
                           Margin="0 20 0 0">
-                        <materialDesign:PackIcon Kind="AccountBox"
-                                                 Height="25"
-                                                 Width="25" />
-                        <TextBox x:Name="txbHoTen"
-                                 Margin="30 0 0 0"
-                                 materialDesign:HintAssist.Hint="Nhập họ tên khách hàng" />
-                    </Grid>
-                    <Grid Height="25"
-                          Width="213"
-                          VerticalAlignment="Top"
-                          HorizontalAlignment="Center"
-                          Margin="0 20 0 0">
                         <materialDesign:PackIcon Kind="CardAccountDetailsOutline"
                                                  Height="25"
                                                  Width="25" />
@@ -147,7 +137,21 @@
                                  PreviewTextInput="PreviewTextInput"
                                  MaxLength="12"
                                  Margin="30 0 0 0"
+                                 Text="{Binding CCCD, UpdateSourceTrigger=PropertyChanged}"
                                  materialDesign:HintAssist.Hint="Nhập CCCD" />
+                    </Grid>
+                    <Grid Height="25"
+                          Width="213"
+                          VerticalAlignment="Top"
+                          HorizontalAlignment="Center"
+                          Margin="0 20 0 0">
+                        <materialDesign:PackIcon Kind="AccountBox"
+                                                 Height="25"
+                                                 Width="25" />
+                        <TextBox x:Name="txbHoTen"
+                                 Margin="30 0 0 0"
+                                 Text="{Binding Name}"
+                                 materialDesign:HintAssist.Hint="Nhập họ tên khách hàng" />
                     </Grid>
                     <Grid Height="25"
                           Width="213"
@@ -161,6 +165,7 @@
                                  PreviewTextInput="PreviewTextInput"
                                  Margin="30 0 0 0"
                                  MaxLength="10"
+                                 Text="{Binding SDT}"
                                  materialDesign:HintAssist.Hint="Nhập SDT" />
                     </Grid>
                     <Grid Height="25"
@@ -173,6 +178,7 @@
                                                  Width="25" />
                         <TextBox x:Name="txbDiaChi"
                                  Margin="30 0 0 0"
+                                 Text="{Binding DiaChi}"
                                  materialDesign:HintAssist.Hint="Nhập địa chỉ" />
                     </Grid>
                     <Grid Height="25"
@@ -191,9 +197,11 @@
                                   materialDesign:HintAssist.Hint="Giới tính"
                                   Height="25"
                                   Padding="5"
+                                  SelectedIndex="{Binding Sex}"
                                   Width="180">
                             <ComboBoxItem Content="Nam" />
                             <ComboBoxItem Content="Nữ" />
+                            <ComboBoxItem Content="Khác" />
                         </ComboBox>
                     </Grid>
 

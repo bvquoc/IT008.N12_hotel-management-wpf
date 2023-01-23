@@ -8,13 +8,25 @@ namespace Hotel.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        public int MaNV { get; set; }
+        public int LoaiNV { get; set; }
         public MainWindow()
         {
             InitializeComponent();
         }
+        public MainWindow(int MaNV, int LoaiNV)
+        {
+            InitializeComponent();
+            this.MaNV = MaNV;
+            this.LoaiNV = LoaiNV;
+            if (LoaiNV > 1)
+            {
+                this.menuEmployee.Visibility = Visibility.Collapsed;
+                //...
+            }
+        }
 
         bool isMaximize = false;
-        bool isClick = false;
         private void Border_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.ClickCount == 2)

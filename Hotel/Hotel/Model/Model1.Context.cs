@@ -26,10 +26,10 @@ namespace Hotel.Model
         }
     
         public virtual DbSet<CUNGCAP> CUNGCAPs { get; set; }
-        public virtual DbSet<DAT> DATs { get; set; }
         public virtual DbSet<DICHVU> DICHVUs { get; set; }
         public virtual DbSet<KHACH> KHACHes { get; set; }
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<PHONG> PHONGs { get; set; }
+        public virtual DbSet<DAT> DATs { get; set; }
     }
 }

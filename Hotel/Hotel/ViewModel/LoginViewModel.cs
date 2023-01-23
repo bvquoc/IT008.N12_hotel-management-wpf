@@ -1,25 +1,88 @@
 ﻿
+using Hotel.Model;
 using Hotel.View;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using System.Windows;
+using System.Linq;
+using System.Windows.Data;
 using System.Windows.Input;
+using System;
 
 namespace Hotel.ViewModel
 {
     internal class LoginViewModel : BaseViewModel
     {
+        private ObservableCollection<LoginVM> staffAcountList = new ObservableCollection<LoginVM>();
+        public int MaNV { get; set; }
+        public int LoaiNV { get; set; }
         public ICommand Login { get; set; }
 
+        private bool handleLogin(string username, string password)
+        {
+            //MessageBox.Show(username + "\n" + password);
+            foreach (var item in staffAcountList)
+            {
+                if (item.username == username && item.password == password)
+                {
+                    MaNV = item.MaNV;
+                    LoaiNV = item.LoaiNV;
+                    //MessageBox.Show(LoaiNV.ToString());
+                    return true;
+                }
+            }
 
+            return false;
+        }
+
+        private void LoadDB()
+        {
+            try
+            {
+                using (var db = new QLYHOTELEntities())
+                {
+                    var select = from s in db.NHANVIENs select s;
+                    foreach (var item in select)
+                        staffAcountList.Add(new LoginVM(item.TAIKHOAN, item.MATKHAU, item.MANV, (int)item.LOAINV));
+                }
+            }
+            catch (Exception ex)
+            {
+                new DialogCustomize("Mất kết nối cơ sở dữ liệu!").ShowDialog();
+            }
+        }
         public LoginViewModel()
         {
+            LoadDB();
+            MaNV = -1;
+            LoaiNV = -1;
             Login = new RelayCommand<LoginView>((parameter) => true, (parameter) => EnterLogin(parameter));
         }
-        private void EnterLogin(LoginView parameter)
+        private void EnterLogin(LoginView cur)
         {
-            parameter.Hide();
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.ShowDialog();
-            parameter.Close();
-            /// alo lao
+            string username = cur.txtUser.Text;
+            string password = cur.txtPass.Password.ToString();
+
+
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
+                (new DialogCustomize("Vui lòng điền tên đăng nhập & mật khẩu!")).ShowDialog();
+                return;
+            }
+
+
+            if (!handleLogin(username, password))
+            {
+                DialogCustomize tmp = new DialogCustomize("Sai thông tin đăng nhập!");
+                tmp.ShowDialog();
+                return;
+            }
+
+            MainWindow mainWindow = new MainWindow(MaNV, LoaiNV);
+            cur.Hide();
+            mainWindow.Show();
+            cur.Close();
         }
+
     }
 }

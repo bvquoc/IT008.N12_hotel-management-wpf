@@ -193,11 +193,11 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Mật khẩu"
+                            <GridViewColumn Header="Chức vụ"
                                             Width="150">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Path = Pass }"
+                                        <TextBlock Text="{Binding Path = Position }"
                                                    FontSize="20"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -206,7 +206,7 @@
                                             Width="120">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Path = Salary }"
+                                        <TextBlock Text="{Binding Path = Salary, StringFormat={}{0:N0} }"
                                                    HorizontalAlignment="Right"
                                                    TextAlignment="Right"
                                                    FontSize="20"

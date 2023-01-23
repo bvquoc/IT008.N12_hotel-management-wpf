@@ -6,18 +6,18 @@
     <edmx:Diagrams>
       <Diagram DiagramId="ce4a64a1a1224d71aa1b1b7e9f2fedb0" Name="Diagram1">
         <EntityTypeShape EntityType="QLYHOTELModel.CUNGCAP" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLYHOTELModel.DAT" Width="1.5" PointX="6" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QLYHOTELModel.DICHVU" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QLYHOTELModel.KHACH" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLYHOTELModel.NHANVIEN" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLYHOTELModel.PHONG" Width="1.5" PointX="3.75" PointY="7.875" IsExpanded="true" />
         <AssociationConnector Association="QLYHOTELModel.CC_DV" ManuallyRouted="false" />
-        <AssociationConnector Association="QLYHOTELModel.CC_MD" ManuallyRouted="false" />
         <AssociationConnector Association="QLYHOTELModel.CC_NV" ManuallyRouted="false" />
-        <AssociationConnector Association="QLYHOTELModel.DA_KH" ManuallyRouted="false" />
-        <AssociationConnector Association="QLYHOTELModel.DA_NV" ManuallyRouted="false" />
-        <AssociationConnector Association="QLYHOTELModel.DA_PH" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="QLYHOTELModel.DAT" Width="1.5" PointX="6" PointY="3.75" />
+        <AssociationConnector Association="QLYHOTELModel.CC_MD" />
+        <AssociationConnector Association="QLYHOTELModel.DA_KH" />
+        <AssociationConnector Association="QLYHOTELModel.DA_NV" />
+        <AssociationConnector Association="QLYHOTELModel.DA_PH" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
