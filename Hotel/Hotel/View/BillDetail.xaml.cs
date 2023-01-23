@@ -39,5 +39,11 @@ namespace Hotel.View
                 this.IsEnabled = true;
             }
         }
+
+        private void MoveWindow(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                this.DragMove();
+        }
     }
 }
