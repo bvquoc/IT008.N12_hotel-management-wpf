@@ -68,6 +68,7 @@
                                          FontSize="16"
                                          Margin="8 0 0 0"
                                          materialDesign:HintAssist.Hint="Tìm phòng"
+                                         FontFamily="{StaticResource Vollkorn}"
                                          materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                          BorderThickness="0"
                                          MinWidth="200"
@@ -107,6 +108,7 @@
                 <Grid Grid.Column="0">
                     <TextBlock FontWeight="Bold"
                                Text="Trạng thái"
+                               FontFamily="{StaticResource Quicksand}"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                Margin="10">
@@ -115,6 +117,7 @@
                 </Grid>
                 <Grid Grid.Column="1">
                     <RadioButton Content="Tất cả"
+                                 FontFamily="{StaticResource Quicksand}"
                                  Style="{StaticResource MaterialDesignRadioButton}"
                                  Margin="10"
                                  GroupName="Status"
@@ -127,6 +130,7 @@
                 </Grid>
                 <Grid Grid.Column="2">
                     <RadioButton Content="Trống"
+                                 FontFamily="{StaticResource Quicksand}"
                                  Style="{StaticResource MaterialDesignRadioButton}"
                                  Margin="10"
                                  GroupName="Status"
@@ -137,6 +141,7 @@
                 </Grid>
                 <Grid Grid.Column="3">
                     <RadioButton Content="Đã đặt"
+                                 FontFamily="{StaticResource Quicksand}"
                                  Style="{StaticResource MaterialDesignRadioButton}"
                                  Margin="10"
                                  GroupName="Status"
@@ -147,6 +152,7 @@
                 </Grid>
                 <Grid Grid.Column="4">
                     <RadioButton Content="Tu sửa"
+                                 FontFamily="{StaticResource Quicksand}"
                                  Style="{StaticResource MaterialDesignRadioButton}"
                                  Margin="10"
                                  GroupName="Status"
@@ -163,6 +169,7 @@
                           Grid.Column="2"
                           materialDesign:HintAssist.Hint="Sắp xếp"
                           Width="80"
+                          FontFamily="{StaticResource Quicksand}"
                           HorizontalAlignment="Right"
                           SelectedItem="{Binding SortRoom, Mode=OneWayToSource}">
                     <i:Interaction.Triggers>

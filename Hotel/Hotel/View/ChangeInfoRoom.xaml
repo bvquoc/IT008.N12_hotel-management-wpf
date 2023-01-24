@@ -1,0 +1,157 @@
+﻿<Window x:Class="Hotel.View.ChangeInfoRoom"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hotel.View"
+        xmlns:vm="clr-namespace:Hotel.ViewModel"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Width="400"
+        Height="240"
+        Title="ChangeInfoRoom"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        x:Name="changeInfoRoom">
+    <Border BorderBrush="DarkGray"
+            BorderThickness="1"
+            CornerRadius="10"
+            Background="White">
+        <StackPanel Height="auto"
+                    Background="Transparent">
+            <StackPanel.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="VerticalAlignment"
+                            Value="Center" />
+                    <Setter Property="HorizontalAlignment"
+                            Value="Right" />
+                    <Setter Property="Margin"
+                            Value="0 10 10 0" />
+                    <Setter Property="FontSize"
+                            Value="15" />
+                </Style>
+                <Style TargetType="TextBox"
+                       BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+                    <Setter Property="Margin"
+                            Value="5 2 20 10" />
+                    <Setter Property="VerticalAlignment"
+                            Value="Center" />
+                </Style>
+            </StackPanel.Resources>
+            <Border     Height="50"
+                        BorderBrush="Black"
+                        BorderThickness="0 0 0 1">
+                <TextBlock HorizontalAlignment="Center"
+                           Text="Sửa thông tin phòng"
+                           FontFamily="{StaticResource Pacifico}"
+                           VerticalAlignment="Top"
+                           FontWeight="Bold"
+                           FontSize="20">
+                </TextBlock>
+            </Border>
+
+            <Grid Background="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="12" />
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="320" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Bottom">
+                    <materialDesign:PackIcon Kind="GuestRoom"
+                                             Width="25"
+                                             Height="25" />
+                </Grid>
+
+                <TextBox x:Name="_Name"
+                         Grid.Column="2"
+                         materialDesign:HintAssist.Hint="Tên phòng"
+                         FontFamily="{StaticResource Vollkorn}"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         VerticalAlignment="Center">
+                </TextBox>
+            </Grid>
+            <Grid Background="Transparent"
+                  >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="12" />
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="320" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Bottom">
+                    <materialDesign:PackIcon Kind="Seedling"
+                                             Width="25"
+                                             Height="25" />
+                </Grid>
+
+                <ComboBox x:Name="_Type"
+                         Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                         Grid.Column="2"
+                         FontFamily="{StaticResource Vollkorn}"
+                         materialDesign:HintAssist.Hint="Loại phòng"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center">
+                    <ComboBoxItem Content="VIP"/>
+                    <ComboBoxItem Content="Thường"/>
+                </ComboBox>
+            </Grid>
+            <Grid Background="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="12" />
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="320" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Bottom">
+                    <materialDesign:PackIcon Kind="Cash"
+                                             Width="25"
+                                             Height="25" />
+                </Grid>
+
+                <TextBox x:Name="_Price"
+                         PreviewTextInput="PreviewTextInput"
+                         Grid.Column="2"
+                         FontFamily="{StaticResource Vollkorn}"
+                         materialDesign:HintAssist.Hint="Đơn giá"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         VerticalAlignment="Center">
+                </TextBox>
+            </Grid>
+            <Grid Background="Transparent"
+                  Margin="0 30 0 0">
+                <Grid.Resources>
+                    <Style TargetType="Button"
+                           BasedOn="{StaticResource MaterialDesignRaisedDarkButton}">
+                        <Setter Property="VerticalAlignment"
+                                Value="Bottom" />
+                        <Setter Property="HorizontalAlignment"
+                                Value="Right" />
+                        <Setter Property="Width"
+                                Value="90" />
+                        <Setter Property="Height"
+                                Value="30" />
+                    </Style>
+                </Grid.Resources>
+                <Button Content="Hủy"
+                        FontFamily="{StaticResource Oswald}"
+                        materialDesign:ButtonAssist.CornerRadius="8"
+                        Margin="0 0 110 10"                       
+                        Background="OrangeRed"
+                        BorderBrush="Transparent" />
+                <Button Content="Lưu"
+                        FontFamily="{StaticResource Oswald}"
+                        Margin="0 0 10 10"
+                        materialDesign:ButtonAssist.CornerRadius="8"
+                        />
+            </Grid>
+        </StackPanel>
+    </Border>
+
+</Window>
