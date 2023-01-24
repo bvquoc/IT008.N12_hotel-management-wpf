@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="AddEmployee"
-        Height="480"
+        Height="520"
         Width="650"
         Background="Transparent"
         WindowStyle="None"
@@ -54,6 +54,7 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
+                        <RowDefinition Height="*"/>
                         <RowDefinition Height="12" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
@@ -63,6 +64,7 @@
                             BorderThickness="0 0 0 1">
                         <TextBlock HorizontalAlignment="Center"
                                    Text="Thêm nhân viên"
+                                   FontFamily="{StaticResource Pacifico}"
                                    VerticalAlignment="Top"
                                    FontWeight="Bold"
                                    FontSize="20"
@@ -71,6 +73,7 @@
                     </Border>
                     <Grid Grid.Row="1">
                         <TextBlock Text="Thông tin cơ bản"
+                                   FontFamily="{StaticResource Mali}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
                                    FontWeight="Bold"
@@ -94,6 +97,7 @@
 
                         <TextBox x:Name="_Name"
                                  Grid.Column="2"
+                                 FontFamily="{StaticResource Vollkorn}"
                                  materialDesign:HintAssist.Hint="Họ và tên"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                  VerticalAlignment="Center">
@@ -117,6 +121,8 @@
                         <TextBox x:Name="_CCCD"
                                  PreviewTextInput="PreviewTextInput"
                                  Grid.Column="2"
+                                 FontFamily="{StaticResource Vollkorn}"
+                                 
                                  materialDesign:HintAssist.Hint="Căn cước công dân"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                  VerticalAlignment="Center">
@@ -142,6 +148,8 @@
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                     HorizontalAlignment="Left"
                                     Width="400"
+                                    FontFamily="{StaticResource Vollkorn}"
+                                 
                                     Grid.ColumnSpan="2" />
                     </Grid>
                     <Grid Background="Transparent"
@@ -162,6 +170,8 @@
                                                      Height="25" />
                         </Grid>
                         <ComboBox Name="cbType"
+                                  FontFamily="{StaticResource Vollkorn}"
+                                 
                                   Grid.Column="2"
                                   materialDesign:HintAssist.Hint="Loại nhân viên">
                             <ComboBoxItem Content="Quản lý" />
@@ -185,9 +195,36 @@
                         </Grid>
 
                         <TextBox x:Name="_SDT"
+                                 FontFamily="{StaticResource Vollkorn}"
+                                 
                                  PreviewTextInput="PreviewTextInput"
                                  Grid.Column="2"
                                  materialDesign:HintAssist.Hint="Số điện thoại"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 VerticalAlignment="Center">
+                        </TextBox>
+                    </Grid>
+                    <Grid Background="Transparent"
+                          Grid.Row="7">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="400" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Bottom">
+                            <materialDesign:PackIcon Kind="Money"
+                                                     Width="25"
+                                                     Height="25" />
+                        </Grid>
+
+                        <TextBox x:Name="Salary"
+                                 FontFamily="{StaticResource Vollkorn}"
+                                 
+                                 PreviewTextInput="PreviewTextInput"
+                                 Grid.Column="2"
+                                 materialDesign:HintAssist.Hint="Lương"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                  VerticalAlignment="Center">
                         </TextBox>
@@ -208,6 +245,8 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <TextBlock Text="Tài khoản đăng nhập"
+                                   FontFamily="{StaticResource Mali}"
+                                 
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
                                    FontWeight="Bold"
@@ -230,6 +269,8 @@
 
                         <TextBox x:Name="_Account"
                                  Grid.Column="2"
+                                 FontFamily="{StaticResource Vollkorn}"
+                                 
                                  materialDesign:HintAssist.Hint="Tài khoản"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                  VerticalAlignment="Center">
@@ -251,12 +292,16 @@
                         </Grid>
                         <Grid Grid.Column="2">
                             <PasswordBox x:Name="_Password"
+                                         FontFamily="{StaticResource Vollkorn}"
+                                 
                                          materialDesign:HintAssist.Hint="Mật khẩu"
                                          Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
                                          VerticalAlignment="Center">
                             </PasswordBox>
                             <TextBox x:Name="passtxt"
                                      Visibility="Collapsed"
+                                     FontFamily="{StaticResource Vollkorn}"
+                                 
                                      materialDesign:HintAssist.Hint="Mật khẩu"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      VerticalAlignment="Center">
@@ -305,12 +350,16 @@
                         <Button Content="Hủy"
                                 materialDesign:ButtonAssist.CornerRadius="8"
                                 Margin="0 0 110 10"
+                                FontFamily="{StaticResource Oswald}"
+                                 
                                 Command="{Binding CloseCommand}"
                                 CommandParameter="{Binding ElementName=addEmployee}"
                                 Background="OrangeRed"
                                 BorderBrush="Transparent" />
                         <Button Content="Lưu"
                                 Margin="0 0 10 10"
+                                FontFamily="{StaticResource Oswald}"
+                                 
                                 materialDesign:ButtonAssist.CornerRadius="8"
                                 Command="{Binding SaveCustomerCommand}"
                                 CommandParameter="{Binding ElementName=addEmployee}" />

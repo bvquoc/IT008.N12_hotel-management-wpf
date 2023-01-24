@@ -109,6 +109,8 @@
                                 <icon:PackIconMaterial Kind="HomeOutline"
                                                        Style="{StaticResource menuButtonIcon}" />
                                 <TextBlock Text="Phòng"
+                                           FontFamily="{StaticResource Vollkorn}"
+                                 
                                            Style="{StaticResource menuButtonText}" />
                             </StackPanel>
                             <i:Interaction.Triggers>
@@ -146,6 +148,8 @@
                                 <icon:PackIconMaterial Kind="ChartTimelineVariantShimmer"
                                                        Style="{StaticResource menuButtonIcon}" />
                                 <TextBlock Text="Đặt phòng"
+                                           FontFamily="{StaticResource Vollkorn}"
+                                 
                                            Style="{StaticResource menuButtonText}" />
                             </StackPanel>
                             <i:Interaction.Triggers>
@@ -185,6 +189,8 @@
                                 <icon:PackIconMaterial Kind="AccountMultipleOutline"
                                                        Style="{StaticResource menuButtonIcon}" />
                                 <TextBlock Text="Quản lý khách hàng"
+                                           FontFamily="{StaticResource Vollkorn}"
+                                 
                                            Style="{StaticResource menuButtonText}" />
                             </StackPanel>
                             <i:Interaction.Triggers>
@@ -221,6 +227,8 @@
                                 <icon:PackIconMaterial Kind="CabinAFrame"
                                                        Style="{StaticResource menuButtonIcon}" />
                                 <TextBlock Text="Quản lý phòng"
+                                           FontFamily="{StaticResource Vollkorn}"
+                                 
                                            Style="{StaticResource menuButtonText}" />
                             </StackPanel>
                             <i:Interaction.Triggers>
@@ -257,6 +265,8 @@
                                 <icon:PackIconMaterial Kind="CurrencyUsd"
                                                        Style="{StaticResource menuButtonIcon}" />
                                 <TextBlock Text="Hóa đơn"
+                                           FontFamily="{StaticResource Vollkorn}"
+                                 
                                            Style="{StaticResource menuButtonText}" />
                             </StackPanel>
                             <i:Interaction.Triggers>
@@ -293,6 +303,8 @@
                                 <icon:PackIconMaterial Kind="RoomService"
                                                        Style="{StaticResource menuButtonIcon}" />
                                 <TextBlock Text="Quản lý dịch vụ"
+                                           FontFamily="{StaticResource Vollkorn}"
+                                 
                                            Style="{StaticResource menuButtonText}" />
                             </StackPanel>
                             <i:Interaction.Triggers>
@@ -337,6 +349,8 @@
                                 <icon:PackIconMaterial Kind="HumanQueue"
                                                        Style="{StaticResource menuButtonIcon}" />
                                 <TextBlock Text="Quản lý nhân viên"
+                                           FontFamily="{StaticResource Vollkorn}"
+                                 
                                            Style="{StaticResource menuButtonText}" />
                             </StackPanel>
                             <i:Interaction.Triggers>
@@ -373,6 +387,8 @@
                                 <icon:PackIconMaterial Kind="Logout"
                                                        Style="{StaticResource menuButtonIcon}" />
                                 <TextBlock Text="Đăng xuất"
+                                           FontFamily="{StaticResource Vollkorn}"
+                                 
                                            Style="{StaticResource menuButtonText}" />
                             </StackPanel>
                             <i:Interaction.Triggers>

@@ -49,6 +49,7 @@
                         BorderThickness="0 0 0 1">
                 <TextBlock HorizontalAlignment="Center"
                            Text="Thêm dịch vụ"
+                           FontFamily="{StaticResource Pacifico}"
                            VerticalAlignment="Top"
                            FontWeight="Bold"
                            FontSize="20">
@@ -72,6 +73,7 @@
                 <TextBox x:Name="_Name"
                          Grid.Column="2"
                          materialDesign:HintAssist.Hint="Tên dịch vụ"
+                         FontFamily="{StaticResource Vollkorn}"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          VerticalAlignment="Center">
                 </TextBox>
@@ -93,6 +95,7 @@
                 <TextBox x:Name="_Price"
                          PreviewTextInput="PreviewTextInput"
                          Grid.Column="2"
+                         FontFamily="{StaticResource Vollkorn}"
                          materialDesign:HintAssist.Hint="Đơn giá"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          VerticalAlignment="Center">
@@ -114,6 +117,7 @@
                     </Style>
                 </Grid.Resources>
                 <Button Content="Hủy"
+                        FontFamily="{StaticResource Oswald}"
                         materialDesign:ButtonAssist.CornerRadius="8"
                         Margin="0 0 110 10"
                         Command="{Binding CloseCommand}"
@@ -121,6 +125,7 @@
                         Background="OrangeRed"
                         BorderBrush="Transparent" />
                 <Button Content="Lưu"
+                        FontFamily="{StaticResource Oswald}"
                         Margin="0 0 10 10"
                         materialDesign:ButtonAssist.CornerRadius="8"
                         Command="{Binding SaveCommand}"

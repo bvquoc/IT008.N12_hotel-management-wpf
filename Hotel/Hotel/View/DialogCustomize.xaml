@@ -44,8 +44,8 @@
                     <ColumnDefinition Width="10" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Thông báo"
-                           Margin="10 5 0 0"
-                           FontFamily="Monsterra"
+                           Margin="10,5,0,-13"
+                           FontFamily="{StaticResource Pacifico}"
                            FontWeight="Bold"
                            FontSize="15"></TextBlock>
                 <Button x:Name="btnMinimize"
@@ -140,9 +140,11 @@
                             Height="30"
                             Background="#FF49886C"
                             Content="OK"
+                            FontFamily="{StaticResource Oswald}"
+                                 
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            FontSize="12"
+                            FontSize="15"
                             Click="btnOK_Click">
                         <Button.Clip>
                             <RectangleGeometry Rect="0,0,70,30"
