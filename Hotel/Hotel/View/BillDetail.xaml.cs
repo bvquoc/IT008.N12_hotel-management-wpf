@@ -45,5 +45,10 @@ namespace Hotel.View
             if (e.LeftButton == MouseButtonState.Pressed)
                 this.DragMove();
         }
+
+        private void Button_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

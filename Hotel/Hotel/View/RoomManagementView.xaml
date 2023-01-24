@@ -49,6 +49,7 @@
                             </Button>
                             <TextBox Grid.Column="1"
                                      x:Name="txtSearch"
+                                     FontFamily="{StaticResource Vollkorn}"
                                      FontSize="16"
                                      Margin="8 0 0 0"
                                      materialDesign:HintAssist.Hint="Nhập số phòng cần tìm"
@@ -79,6 +80,7 @@
         </materialDesign:ColorZone>
         <Button HorizontalAlignment="Right"
                 x:Name="btnAddRoom"
+                FontFamily="{StaticResource Oswald}"
                 Width="120"
                 Height="30"
                 Margin="0 0 40 0"
@@ -121,6 +123,8 @@
                                 <Style TargetType="{x:Type GridViewColumnHeader}">
                                     <Setter Property="Background"
                                             Value="#C4C4C4" />
+                                    <Setter Property="FontFamily"
+                                            Value="{StaticResource Mali}"/>
                                     <Setter Property="Foreground"
                                             Value="Black" />
                                     <Setter Property="FontWeight"
@@ -146,6 +150,7 @@
                                         <Grid>
                                             <TextBlock Text="{Binding Path = ID }"
                                                        FontSize="20"
+                                                       FontFamily="{StaticResource HinaMincho}"
                                                        Margin="10 0 0 0"></TextBlock>
 
                                         </Grid>
@@ -158,6 +163,7 @@
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Path = Type }"
                                                    FontSize="20"
+                                                   FontFamily="{StaticResource HinaMincho}"
                                                    Margin="10 0 0 0"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -167,6 +173,7 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Path = Status }"
+                                                   FontFamily="{StaticResource HinaMincho}"
                                                    FontSize="20"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -179,6 +186,7 @@
                                         <TextBlock Text="{Binding Path = Price, StringFormat={}{0:N0} }"
                                                    HorizontalAlignment="Right"
                                                    TextAlignment="Right"
+                                                   FontFamily="{StaticResource HinaMincho}"
                                                    FontSize="20"
                                                    Margin="0 0 20 0"></TextBlock>
                                     </DataTemplate>

@@ -38,10 +38,12 @@
                 <TextBlock FontSize="30"
                            FontWeight="Bold"
                            Text="Thông tin phòng"
+                           FontFamily="{StaticResource Pacifico}"
+                                 
                            VerticalAlignment="Top"
                            HorizontalAlignment="Center"
-                           Margin="0 30 0 0"
-                           Grid.Row="0">
+                           Margin="0,12,0,0"
+                           Grid.Row="0" Height="58">
                 </TextBlock>
                 <Grid Grid.Row="1"
                       HorizontalAlignment="Center">
@@ -56,6 +58,8 @@
                                                  VerticalAlignment="Bottom" />
                         <DatePicker Margin="30 0 0 0"
                                     x:Name="dtpNgayBD"
+                                    FontFamily="{StaticResource Vollkorn}"
+                                    FontSize="14"
                                     materialDesign:HintAssist.Hint="Ngày bắt đầu"
                                     SelectedDate="{Binding DateStart}"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
@@ -72,6 +76,8 @@
                         <materialDesign:TimePicker Is24Hours="True"
                                                    x:Name="tpGioBD"
                                                    Margin="30 0 0 0"
+                                                   FontFamily="{StaticResource Vollkorn}"
+                                                    FontSize="14"
                                                    SelectedTime="{Binding TimeStart}"
                                                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
                                                    materialDesign:HintAssist.Hint="Giờ bắt đầu" />
@@ -87,6 +93,8 @@
                                                  VerticalAlignment="Bottom" />
                         <DatePicker Margin="30 0 0 0"
                                     x:Name="dtpNgayKT"
+                                    FontFamily="{StaticResource Vollkorn}"
+                                    FontSize="14"
                                     SelectedDate="{Binding DateEnd}"
                                     materialDesign:HintAssist.Hint="Ngày kết thúc"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
@@ -101,6 +109,8 @@
                                                  Width="25"
                                                  VerticalAlignment="Bottom" />
                         <materialDesign:TimePicker Is24Hours="True"
+                                                   FontFamily="{StaticResource Vollkorn}"
+                                                    FontSize="14"
                                                    x:Name="tpGioKT"
                                                    Margin="30 0 0 0"
                                                    SelectedTime="{Binding TimeEnd}"
@@ -122,6 +132,8 @@
                     <TextBlock FontSize="30"
                                FontWeight="Bold"
                                Text="Thông tin khách hàng"
+                               FontFamily="{StaticResource Pacifico}"
+                                 
                                Margin="0 65 0 0"
                                VerticalAlignment="Top"
                                HorizontalAlignment="Center"></TextBlock>
@@ -136,6 +148,7 @@
                         <TextBox x:Name="txbCCCD"
                                  PreviewTextInput="PreviewTextInput"
                                  MaxLength="12"
+                                 FontFamily="{StaticResource Vollkorn}"
                                  Margin="30 0 0 0"
                                  Text="{Binding CCCD, UpdateSourceTrigger=PropertyChanged}"
                                  materialDesign:HintAssist.Hint="Nhập CCCD" />
@@ -150,6 +163,7 @@
                                                  Width="25" />
                         <TextBox x:Name="txbHoTen"
                                  Margin="30 0 0 0"
+                                 FontFamily="{StaticResource Vollkorn}"
                                  Text="{Binding Name}"
                                  materialDesign:HintAssist.Hint="Nhập họ tên khách hàng" />
                     </Grid>
@@ -165,6 +179,7 @@
                                  PreviewTextInput="PreviewTextInput"
                                  Margin="30 0 0 0"
                                  MaxLength="10"
+                                 FontFamily="{StaticResource Vollkorn}"
                                  Text="{Binding SDT}"
                                  materialDesign:HintAssist.Hint="Nhập SDT" />
                     </Grid>
@@ -178,6 +193,7 @@
                                                  Width="25" />
                         <TextBox x:Name="txbDiaChi"
                                  Margin="30 0 0 0"
+                                 FontFamily="{StaticResource Vollkorn}"
                                  Text="{Binding DiaChi}"
                                  materialDesign:HintAssist.Hint="Nhập địa chỉ" />
                     </Grid>
@@ -190,6 +206,7 @@
                                                  Height="25"
                                                  Width="25" />
                         <ComboBox x:Name="cbGioiTinh"
+                                  FontFamily="{StaticResource Vollkorn}"
                                   HorizontalAlignment="Right"
                                   VerticalAlignment="Bottom"
                                   Margin="30 0 0 0"
@@ -248,6 +265,8 @@
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0">
                 <TextBlock Text="Danh sách phòng trống"
+                           FontFamily="{StaticResource Pacifico}"
+                                 
                            FontSize="30"
                            FontWeight="Bold"
                            Margin="0 30 0 0"
@@ -272,6 +291,8 @@
                                     <Style TargetType="{x:Type GridViewColumnHeader}">
                                         <Setter Property="Background"
                                                 Value="#C4C4C4" />
+                                        <Setter Property="FontFamily"
+                                                Value="{StaticResource Mali}"/>
                                         <Setter Property="Foreground"
                                                 Value="Black" />
                                         <Setter Property="FontWeight"
@@ -317,6 +338,9 @@
             </StackPanel>
             <StackPanel Grid.Row="1">
                 <TextBlock Text="Phòng đã chọn"
+                           
+                           FontFamily="{StaticResource Pacifico}"
+                                 
                            FontSize="30"
                            FontWeight="Bold"
                            Margin="0 20 0 0"
@@ -342,6 +366,8 @@
                                     <Style TargetType="{x:Type GridViewColumnHeader}">
                                         <Setter Property="Background"
                                                 Value="#C4C4C4" />
+                                        <Setter Property="FontFamily"
+                                                Value="{StaticResource Mali}"/>
                                         <Setter Property="Foreground"
                                                 Value="Black" />
                                         <Setter Property="FontWeight"

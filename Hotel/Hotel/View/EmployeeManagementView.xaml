@@ -52,6 +52,8 @@
                             <TextBox Grid.Column="1"
                                      x:Name="txtSearch"
                                      FontSize="16"
+                                     FontFamily="{StaticResource Vollkorn}"
+                                 
                                      Margin="8 0 0 0"
                                      materialDesign:HintAssist.Hint="Nhập họ tên nhân viên cần tìm"
                                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
@@ -86,6 +88,8 @@
                 Margin="0 0 40 0"
                 Foreground="Black"
                 Content="Thêm nhân viên"
+                FontFamily="{StaticResource Oswald}"
+                                 
                 Background="#ffffb3"
                 VerticalAlignment="Center"
                 materialDesign:ButtonAssist.CornerRadius="10"
@@ -126,6 +130,8 @@
                                             Value="Black" />
                                     <Setter Property="FontWeight"
                                             Value="Bold" />
+                                    <Setter Property="FontFamily"
+                                            Value="{StaticResource Mali}"/>
                                     <Setter Property="FontSize"
                                             Value="18" />
                                     <Setter Property="IsEnabled"
@@ -147,6 +153,8 @@
                                         <Grid>
                                             <TextBlock Text="{Binding Path = ID }"
                                                        FontSize="20"
+                                                       FontFamily="{StaticResource HinaMincho}"
+                                 
                                                        Margin="10 0 0 0"></TextBlock>
                                             <Grid Width="25"
                                                   Height="25">
@@ -180,6 +188,8 @@
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Path = Name }"
                                                    FontSize="20"
+                                                   FontFamily="{StaticResource HinaMincho}"
+                                 
                                                    Margin="10 0 0 0"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -189,6 +199,8 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Path = User }"
+                                                   FontFamily="{StaticResource HinaMincho}"
+                                 
                                                    FontSize="20"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -198,6 +210,8 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Path = Position }"
+                                                   FontFamily="{StaticResource HinaMincho}"
+                                 
                                                    FontSize="20"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -210,6 +224,8 @@
                                                    HorizontalAlignment="Right"
                                                    TextAlignment="Right"
                                                    FontSize="20"
+                                                   FontFamily="{StaticResource HinaMincho}"
+                                 
                                                    Margin="0 0 20 0"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>

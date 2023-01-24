@@ -13,7 +13,7 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent">
-    
+
     <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10"
             Background="#f2f1e8">
         <ScrollViewer>
@@ -25,7 +25,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="120"/>
                         <RowDefinition Height="400"/>
-                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="300"/>
                     </Grid.RowDefinitions>
 
                     <StackPanel Orientation="Vertical" Margin="30,30,30,349" Grid.Row="0" Grid.RowSpan="2">
@@ -125,7 +125,7 @@
                         </ListView>
                     </StackPanel>
 
-                    <StackPanel Grid.Row="2" Margin="20,0,20,-38">
+                    <StackPanel Grid.Row="2" Margin="20,0,20,0" Height="300" VerticalAlignment="Top">
                         <Grid Margin="10 20 10 0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1.5*"/>
@@ -149,7 +149,7 @@
                                     <TextBlock Text="123 456 78" FontSize="15" Margin="5" FontWeight="DemiBold"
                                                FontFamily="{StaticResource HinaMincho}"/>
                                 </StackPanel>
-                                
+
                             </StackPanel>
                             <StackPanel Grid.Column="1">
                                 <TextBlock Text="$ 1,590.00" FontSize="25" Margin="5" HorizontalAlignment="Right" Foreground="#FF62013C" FontWeight="Bold"/>
@@ -163,11 +163,22 @@
                                 <TextBlock Text="Thank you!" VerticalAlignment="Center" FontSize="20" Margin="5" FontWeight="Light"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                                <TextBlock Text="name@email.com" VerticalAlignment="Center" FontSize="8" Margin="5" FontWeight="Light"/>
-                                <TextBlock Text="99 9999-9999" VerticalAlignment="Center" FontSize="8" Margin="5" FontWeight="Light"/>
-                                <TextBlock Text="website.com" VerticalAlignment="Center" FontSize="8" Margin="5" FontWeight="Light"/>
+                                <TextBlock Text="nnkhoi211003@email.com" VerticalAlignment="Center" FontSize="12" Margin="5" FontWeight="Light"
+                                           FontFamily="{StaticResource Vollkorn}"/>
+                                <TextBlock Text="0788595730" VerticalAlignment="Center" FontSize="12" Margin="5" FontWeight="Light"
+                                           FontFamily="{StaticResource Vollkorn}"/>
+                                <TextBlock Text="website.com" VerticalAlignment="Center" FontSize="12" Margin="5" FontWeight="Light"
+                                           FontFamily="{StaticResource Vollkorn}"/>
                             </StackPanel>
                         </Grid>
+                        <Button Content="OK"
+                                FontFamily="{StaticResource Oswald}"
+                                Margin="300 0 0 0"
+                                Height="25"
+                                Width="50"
+                                materialDesign:ButtonAssist.CornerRadius="8"
+                                Click="Button_Close"
+                                Background="BlueViolet"/>
                     </StackPanel>
                 </Grid>
             </Grid>
