@@ -50,10 +50,11 @@
                         BorderThickness="0 0 0 1"
                         BorderBrush="Black">
                     <TextBlock Text="Chi tiết phòng"
+                               FontFamily="{StaticResource Pacifico}"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Bottom"
                                Height="40"
-                               FontSize="30"
+                               FontSize="20"
                                FontWeight="Bold"
                                Foreground="Black" />
                 </Border>
@@ -242,6 +243,8 @@
                                                     Value="Black" />
                                             <Setter Property="FontWeight"
                                                     Value="Bold" />
+                                            <Setter Property="FontFamily"
+                                                    Value="{StaticResource Mali}"/>
                                         </Style>
                                     </GridView.ColumnHeaderContainerStyle>
                                     <GridViewColumn  Header="Dịch vụ"
@@ -298,18 +301,21 @@
                     <Button x:Name="btnCancel"
                             Content="Hủy"
                             FontSize="20"
+                            FontFamily="{StaticResource Oswald}"
                             materialDesign:ButtonAssist.CornerRadius="8"
                             Margin="0,0,130,-60"
                             Background="OrangeRed"
                             BorderBrush="Transparent" Click="btnCancel_Click" />
                     <Button x:Name="btnSave"
                             Content="Lưu"
+                            FontFamily="{StaticResource Oswald}"
                             FontSize="20"
                             Margin="0,0,21,-60"
                             materialDesign:ButtonAssist.CornerRadius="8" />
                     <Button x:Name="btnAccept"
                             Content="Thanh toán"
                             FontSize="20"
+                            FontFamily="{StaticResource Oswald}"
                             Width="auto"
                             Margin="0,0,240,-60"
                             Background="Lime"
