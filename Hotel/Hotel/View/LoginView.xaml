@@ -133,7 +133,7 @@
                                FontWeight="Medium"
                                Margin="10,10,0,0"
                                Opacity="0.9" />
-                    <TextBox x:Name="txtUser"
+                    <TextBox x:Name="txtUser"                           
                              FontSize="15"
                              FontFamily="Montserrat"
                              FontWeight="Medium"

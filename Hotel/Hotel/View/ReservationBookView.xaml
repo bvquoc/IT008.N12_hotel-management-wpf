@@ -9,7 +9,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
              d:DesignHeight="700"
-             d:DesignWidth="805"
+             d:DesignWidth="850"
              Style="{StaticResource Page_Style}">
 
     <UserControl.DataContext>
@@ -19,7 +19,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="430" />
+            <ColumnDefinition Width="480" />
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0"
               Margin="0,0,0,0">
@@ -347,12 +347,12 @@
                            HorizontalAlignment="Center" />
                 <Grid Background="#FFFCFC"
                       Height="200"
-                      Width="390"
-                      Margin="12 10  0 24"
+                      Width="460"
+                      Margin="2 10  0 24"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Bottom">
                     <Grid.Clip>
-                        <RectangleGeometry Rect="0,0,390,180"
+                        <RectangleGeometry Rect="0,0,460,200"
                                            RadiusX="10"
                                            RadiusY="10" />
                     </Grid.Clip>
@@ -399,12 +399,12 @@
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
                                 <GridViewColumn  Header="Ngày BD"
-                                                 Width="90"
+                                                 Width="125"
                                                  DisplayMemberBinding="{Binding DateStart }" />
                                 <GridViewColumn  Header="Ngày KT"
-                                                 Width="90"
+                                                 Width="125"
                                                  DisplayMemberBinding="{Binding DateEnd}" />
-                                <GridViewColumn Width="54"
+                                <GridViewColumn Width="50"
                                                 Header="Xóa">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>

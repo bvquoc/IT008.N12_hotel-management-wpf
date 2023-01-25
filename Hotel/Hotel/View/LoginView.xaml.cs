@@ -11,6 +11,7 @@ namespace Hotel.View
         public LoginView()
         {
             InitializeComponent();
+            txtUser.Focus();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
