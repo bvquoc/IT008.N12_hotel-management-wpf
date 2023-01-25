@@ -4,12 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Xml.Linq;
 
 namespace Hotel.ViewModel
 {
@@ -41,9 +43,11 @@ namespace Hotel.ViewModel
             set { _RoomManagementCollection = value; OnPropertyChanged(); }
         }
         public ICommand AddRoom { get; set; }
+        public ICommand Edit { get; set; }
         public RoomManagementViewModel()
         {
             AddRoom = new RelayCommand<RoomManagementView>((p) => true, (p) => addRoom(p));
+            Edit = new RelayCommand<object>((p) => true, (p) => editroom(p));
             LoadAllSV();
         }
         private bool FilterByName(object emp)
@@ -51,7 +55,7 @@ namespace Hotel.ViewModel
             if (!string.IsNullOrEmpty(TextToFilterR))
             {
                 var empDetail = emp as RoomManagementVM;
-                return empDetail != null && empDetail.ID.IndexOf(TextToFilterR, StringComparison.OrdinalIgnoreCase) >= 0;
+                return empDetail != null && empDetail.Name.IndexOf(TextToFilterR, StringComparison.OrdinalIgnoreCase) >= 0;
             }
             return true;
         }
@@ -65,13 +69,25 @@ namespace Hotel.ViewModel
             {
                 var select = from s in db.PHONGs select s;
                 foreach (var RoomManagement in select)
-                    RoomManagementList.Add(new RoomManagementVM() { ID = RoomManagement.TENPHONG.ToString(), Status = RoomManagement.TRANGTHAI.ToString(), Type = RoomManagement.LOAIPHONG.ToString(), Price = RoomManagement.DONGIA.Value });
+                    RoomManagementList.Add(new RoomManagementVM() { ID = RoomManagement.MAPHONG, Name = RoomManagement.TENPHONG.ToString(), Status = RoomManagement.TRANGTHAI.ToString(), Type = RoomManagement.LOAIPHONG.ToString(), Price = RoomManagement.DONGIA.Value });
             }
             RoomManagementCollection = CollectionViewSource.GetDefaultView(RoomManagementList);
         }
         private void addRoom(RoomManagementView p)
         {
-            new DialogCustomize("Chưa nhập họ tên!").ShowDialog();
+            new AddRoom().ShowDialog();
+            LoadAllSV();
+        }
+        private void editroom(object p)
+        {
+            RoomManagementVM r = (RoomManagementVM)p;
+            ChangeInfoRoom infoRoom = new ChangeInfoRoom();
+            infoRoom.ID.Text = r.ID.ToString();
+            infoRoom._Name.Text = r.Name;
+            infoRoom._Price.Text = r.Price.ToString();
+            infoRoom._Type.SelectedIndex = (r.Type == "VIP" ? 0 : 1);
+            infoRoom.ShowDialog();
+            LoadAllSV();
         }
     }
 

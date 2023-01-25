@@ -130,7 +130,7 @@ namespace Hotel.ViewModel
             VisNotify = "Hidden";
 
             //timer
-            _timer = new DispatcherTimer { Interval = TimeSpan.FromMinutes(5) };
+            _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(5) };
             _timer.Start();
             _timer.Tick += (o, e) => checkNotify();
 
@@ -191,10 +191,6 @@ namespace Hotel.ViewModel
         }
         private void readNotification()
         {
-            if (Notification == bell)
-                Notification = bellActive;
-            else
-                Notification = bell;
             if (VisNotify == "Hidden")
                 VisNotify = "Visible";
             else
@@ -205,18 +201,38 @@ namespace Hotel.ViewModel
             if (IsHome == FontBase + 1)
             {
                 CurrentView = new RoomView();
-                //continue
             }
+            loadDbNotify();
         }
         private void choseNotify(object ob)
         {
             BillVM bill = (BillVM)ob;
+            if (bill.Status == "Đang sử dụng")
+            {
+                RoomDetail r = new RoomDetail();
+                using (var db = new QLYHOTELEntities())
+                {
+                    var select = (from i in db.DATs where i.MADAT == bill.ID select i).Single();
+                    r.idbook.Text = bill.ID.ToString();
+                    r.txblTenKH.Text = select.KHACH.TENKH;
+                    r.txblCCCD.Text = select.KHACH.CCCD;
+                    r.txblNgayDen.Text = select.NGAYDAT.Value.ToString();
+                    r.txbNgayTra.Text = select.NGAYTRA.Value.ToString();
+                    r.txblSoNguoi.Text = select.SONG.ToString();
+                    if (select.TRANGTHAI == "Đã đặt")
+                        r.btnAccept.Content = "Nhận phòng";
+                    else
+                        r.btnAccept.Content = "Thanh toán";
+                }
+                r.ShowDialog();
+                loadDbNotify();
+            }
         }
         private void loadDbNotify()
         {
+            Notification = bell;
             var TimeNow = DateTime.Now;
             LvNotify = new ObservableCollection<BillVM>();
-
             using (var db = new QLYHOTELEntities())
             {
                 var select = from s in db.PHONGs select s;
@@ -224,27 +240,23 @@ namespace Hotel.ViewModel
                 {
                     foreach (var info in room.DATs)
                     {
-                        if (info.TRANGTHAI == "Đang sử dụng" && (info.NGAYTRA.Value - TimeNow).TotalMilliseconds <= 30)
+                        if (info.TRANGTHAI == "Đã thanh toán")
+                            LvNotify.Add(new BillVM() { ID = info.MADAT, RoomName = info.PHONG.TENPHONG, CustomerName = info.KHACH.TENKH, StaffName = info.NHANVIEN.TENNV, Status = info.TRANGTHAI, Total = (int)info.THANHTIEN, DateEnd = (DateTime)info.NGAYTRA });
+                    }
+                }
+                LvNotify = new ObservableCollection<BillVM>(LvNotify.OrderByDescending(i => i.DateEnd));
+                foreach (var room in select)
+                {
+                    foreach (var info in room.DATs)
+                    {
+                        if (info.TRANGTHAI == "Đang sử dụng" && (info.NGAYTRA.Value - TimeNow).TotalMinutes <= 30)
                         {
-                            LvNotify.Add(new BillVM() { ID = info.MADAT, RoomName = info.PHONG.TENPHONG, CustomerName = info.KHACH.TENKH, StaffName = info.NHANVIEN.TENNV, Status = info.TRANGTHAI });
-                            //Notification = bellActive;
+                            LvNotify.Insert(0, new BillVM() { ID = info.MADAT, RoomName = info.PHONG.TENPHONG, CustomerName = info.KHACH.TENKH, StaffName = info.NHANVIEN.TENNV, Status = info.TRANGTHAI, DateEnd = (DateTime)info.NGAYTRA });
+                            Notification = bellActive;
                         }
-                        if (info.TRANGTHAI == "Đã Thanh Toán")
-                            LvNotify.Add(new BillVM() { ID = info.MADAT, RoomName = info.PHONG.TENPHONG, CustomerName = info.KHACH.TENKH, StaffName = info.NHANVIEN.TENNV, Status = info.TRANGTHAI });
                     }
                 }
             }
-
-
-
-            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
-            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán" });
-            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
-            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán" });
-            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
-            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
-            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán" });
-
         }
     }
 }

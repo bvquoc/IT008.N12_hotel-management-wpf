@@ -124,7 +124,7 @@
                                     <Setter Property="Background"
                                             Value="#C4C4C4" />
                                     <Setter Property="FontFamily"
-                                            Value="{StaticResource Mali}"/>
+                                            Value="{StaticResource Mali}" />
                                     <Setter Property="Foreground"
                                             Value="Black" />
                                     <Setter Property="FontWeight"
@@ -142,13 +142,13 @@
                                     </Style.Triggers>
                                 </Style>
                             </GridView.ColumnHeaderContainerStyle>
-                            <GridViewColumn  Header="Mã"
+                            <GridViewColumn  Header="Tên phòng"
                                              Width="120">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
 
                                         <Grid>
-                                            <TextBlock Text="{Binding Path = ID }"
+                                            <TextBlock Text="{Binding Path = Name }"
                                                        FontSize="20"
                                                        FontFamily="{StaticResource HinaMincho}"
                                                        Margin="10 0 0 0"></TextBlock>
@@ -202,8 +202,8 @@
                                                 Padding="0"
                                                 Content="{materialDesign:PackIcon Kind=Edit}"
                                                 ToolTip="Icon"
-                                                Command="{Binding Edit}"
-                                                CommandParameter="{Binding ElementName=RoomMgV}"
+                                                Command="{Binding ElementName=lvSer, Path=DataContext.Edit}"
+                                                CommandParameter="{Binding}"
                                                 Background="#99ff99" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>

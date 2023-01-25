@@ -53,7 +53,6 @@
                                      x:Name="txtSearch"
                                      FontSize="16"
                                      FontFamily="{StaticResource Vollkorn}"
-                                 
                                      Margin="8 0 0 0"
                                      materialDesign:HintAssist.Hint="Nhập họ tên nhân viên cần tìm"
                                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
@@ -89,7 +88,6 @@
                 Foreground="Black"
                 Content="Thêm nhân viên"
                 FontFamily="{StaticResource Oswald}"
-                                 
                 Background="#ffffb3"
                 VerticalAlignment="Center"
                 materialDesign:ButtonAssist.CornerRadius="10"
@@ -113,7 +111,8 @@
                 <ListView x:Name="lvSer"
                           ItemsSource="{Binding EmployeeCollection}"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                          Grid.ColumnSpan="2">
+                          Grid.ColumnSpan="2"
+                          SelectedItem="{Binding selectItem}">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment"
@@ -131,7 +130,7 @@
                                     <Setter Property="FontWeight"
                                             Value="Bold" />
                                     <Setter Property="FontFamily"
-                                            Value="{StaticResource Mali}"/>
+                                            Value="{StaticResource Mali}" />
                                     <Setter Property="FontSize"
                                             Value="18" />
                                     <Setter Property="IsEnabled"
@@ -154,7 +153,6 @@
                                             <TextBlock Text="{Binding Path = ID }"
                                                        FontSize="20"
                                                        FontFamily="{StaticResource HinaMincho}"
-                                 
                                                        Margin="10 0 0 0"></TextBlock>
                                             <Grid Width="25"
                                                   Height="25">
@@ -189,7 +187,6 @@
                                         <TextBlock Text="{Binding Path = Name }"
                                                    FontSize="20"
                                                    FontFamily="{StaticResource HinaMincho}"
-                                 
                                                    Margin="10 0 0 0"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -200,7 +197,6 @@
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Path = User }"
                                                    FontFamily="{StaticResource HinaMincho}"
-                                 
                                                    FontSize="20"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -211,7 +207,6 @@
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Path = Position }"
                                                    FontFamily="{StaticResource HinaMincho}"
-                                 
                                                    FontSize="20"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -225,7 +220,6 @@
                                                    TextAlignment="Right"
                                                    FontSize="20"
                                                    FontFamily="{StaticResource HinaMincho}"
-                                 
                                                    Margin="0 0 20 0"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>

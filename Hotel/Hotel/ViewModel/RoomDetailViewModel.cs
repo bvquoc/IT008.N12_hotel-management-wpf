@@ -1,4 +1,5 @@
-﻿using Hotel.View;
+﻿using Hotel.Model;
+using Hotel.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,7 +16,7 @@ namespace Hotel.ViewModel
     internal class RoomDetailViewModel : BaseViewModel
     {
         private ObservableCollection<dv> _listdv;
-
+        public int id;
         public ObservableCollection<dv> ListDV
         {
             get { return _listdv; }
@@ -38,8 +39,26 @@ namespace Hotel.ViewModel
         }
         public void MakeSome(RoomDetail p)
         {
-            MessageBox.Show("OK");
+
+            id = Int32.Parse(p.idbook.Text);
+            using (var db = new QLYHOTELEntities())
+            {
+                var select = (from i in db.DATs where i.MADAT == id select i).Single();
+                if (p.btnAccept.Content == "Nhận phòng")
+                {
+                    select.TRANGTHAI = "Đang sử dụng";
+                }
+                else
+                {
+                    select.TRANGTHAI = "Đã thanh toán";
+                    select.THANHTIEN = select.PHONG.DONGIA + ListDV.Sum(i => i.ThanhTien);
+                }
+                db.SaveChanges();
+            }
+
             p.btnAccept.Content = p.btnAccept.Content == "Thanh toán" ? "Nhận phòng" : "Thanh toán";
+            if (p.btnAccept.Content == "Nhận phòng")
+                p.Close();
         }
     }
     public class dv

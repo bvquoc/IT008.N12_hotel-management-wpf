@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,6 @@ namespace Hotel.View
         {
             InitializeComponent();
         }
-
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

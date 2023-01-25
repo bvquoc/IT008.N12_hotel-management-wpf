@@ -136,11 +136,15 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AddEmployeeViewModel.cs" />
+    <Compile Include="ViewModel\AddRoomViewModel.cs" />
     <Compile Include="ViewModel\AddServiceViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\BillViewModel.cs" />
     <Compile Include="ViewModel\BillVM.cs" />
+    <Compile Include="ViewModel\ChangeInfoRoomViewModel.cs" />
     <Compile Include="ViewModel\CustomerManagementViewModel.cs" />
     <Compile Include="ViewModel\CustomerManagementVM.cs" />
+    <Compile Include="ViewModel\EmployeeDetailViewModel.cs" />
     <Compile Include="ViewModel\LoginVM.cs" />
     <Compile Include="ViewModel\RoomDetailViewModel.cs" />
     <Compile Include="ViewModel\RoomManagementViewModel.cs" />

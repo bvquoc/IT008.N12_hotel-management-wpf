@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -130,15 +131,20 @@ namespace Hotel.ViewModel
                 foreach (var room in select)
                 {
                     string StatusRoom = "Trống";
+                    int iDBook = 0;
                     foreach (var info in room.DATs)
                     {
-                        if ((info.NGAYDAT.Value - TimeNow).TotalMinutes <= 25 && (info.NGAYTRA.Value - TimeNow).TotalMilliseconds > 0)
+                        if (info.TRANGTHAI == "Đã thanh toán") continue;
+                        if ((info.NGAYDAT.Value - TimeNow).TotalMinutes <= 20 && (info.NGAYTRA.Value - TimeNow).TotalMilliseconds > 0)
+                        {
                             StatusRoom = info.TRANGTHAI;
+                            iDBook = info.MADAT;
+                        }
                         if (StatusRoom == "Đang sử dụng")
                             break;
                     }
-                    _roomListdb.Add(new RoomVM() { ID = room.MAPHONG, Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = StatusRoom });
-                    RoomList.Add(new RoomVM() { ID = room.MAPHONG, Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = StatusRoom });
+                    _roomListdb.Add(new RoomVM() { ID = room.MAPHONG, Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = StatusRoom, IDBook = iDBook });
+                    RoomList.Add(new RoomVM() { ID = room.MAPHONG, Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = StatusRoom, IDBook = iDBook });
                 }
             }
             sortFloordb();
@@ -175,7 +181,27 @@ namespace Hotel.ViewModel
         private void ViewDetailRoom(object p)
         {
             var room = (RoomVM)p;
-            new RoomDetail().ShowDialog();
+            RoomDetail r = new RoomDetail();
+            if (room.Status != "Trống")
+            {
+                using (var db = new QLYHOTELEntities())
+                {
+                    var select = (from i in db.DATs where i.MADAT == room.IDBook select i).Single();
+                    r.idbook.Text = room.IDBook.ToString();
+                    r.txblTenKH.Text = select.KHACH.TENKH;
+                    r.txblCCCD.Text = select.KHACH.CCCD;
+                    r.txblNgayDen.Text = select.NGAYDAT.Value.ToString();
+                    r.txbNgayTra.Text = select.NGAYTRA.Value.ToString();
+                    r.txblSoNguoi.Text = select.SONG.ToString();
+                    if (select.TRANGTHAI == "Đã đặt")
+                        r.btnAccept.Content = "Nhận phòng";
+                    else
+                        r.btnAccept.Content = "Thanh toán";
+                }
+            }
+            else
+                r.btnAccept.Visibility = Visibility.Collapsed;
+            r.ShowDialog();
         }
     }
 }

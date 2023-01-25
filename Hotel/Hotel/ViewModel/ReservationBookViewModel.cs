@@ -135,6 +135,7 @@ namespace Hotel.ViewModel
                     bool ok = true;
                     foreach (var dat in room.DATs)
                     {
+                        if (dat.TRANGTHAI == "Đã thanh toán") continue;
                         if (DateTime.Compare(dat.NGAYTRA.Value, start) >= 0 &&
                             DateTime.Compare(dat.NGAYDAT.Value, end) <= 0)
                         {
@@ -142,7 +143,6 @@ namespace Hotel.ViewModel
                             break;
                         }
                     }
-
                     if (ok)
                     {
                         foreach (var sele in SelectedRooms)

@@ -50,6 +50,8 @@ namespace Hotel.ViewModel
 
                 if (p._Password.Password == "")
                     throw new Exception("Chưa nhập mật khẩu!");
+                if (p._Salary.Text == "")
+                    throw new Exception("Chưa nhập lương!");
                 employee.MATKHAU = p._Password.Password;
 
                 string LoaiNv = p.cbType.SelectionBoxItem.ToString();
@@ -66,7 +68,7 @@ namespace Hotel.ViewModel
                         break;
                 }
                 employee.SONGAYLV = 0;
-                employee.LUONG = 1;
+                employee.LUONG = Convert.ToInt32(p._Salary.Text);
                 using (var db = new QLYHOTELEntities())
                 {
                     db.NHANVIENs.Add(employee);
