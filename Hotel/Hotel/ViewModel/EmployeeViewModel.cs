@@ -21,8 +21,13 @@ namespace Hotel.ViewModel
             get { return _EmployeeList; }
             set { _EmployeeList = value; OnPropertyChanged(); }
         }
+        private EmployeeVM _selectItem;
+        public EmployeeVM selectItem
+        {
+            get => _selectItem;
+            set { _selectItem = value; OnPropertyChanged(); ViewDetail(); }
+        }
         private string _textToFilterE;
-
         public string TextToFilterE
         {
             get { return _textToFilterE; }
@@ -63,11 +68,31 @@ namespace Hotel.ViewModel
             {
                 var select = from s in db.NHANVIENs select s;
                 foreach (var Employee in select)
-                    EmployeeList.Add(new EmployeeVM(Employee.MANV.ToString(), Employee.TENNV.ToString(), Employee.TAIKHOAN.ToString(), Employee.MATKHAU.ToString(), (int)Employee.LUONG, (int) Employee.LOAINV));
+                    EmployeeList.Add(new EmployeeVM(Employee.MANV.ToString(), Employee.TENNV.ToString(), Employee.TAIKHOAN.ToString(), Employee.MATKHAU.ToString(), (int)Employee.LUONG, (int)Employee.LOAINV));
             }
             EmployeeCollection = CollectionViewSource.GetDefaultView(EmployeeList);
         }
-
+        public void ViewDetail()
+        {
+            if (selectItem == null) return;
+            EmployeeDetail detail = new EmployeeDetail();
+            int id = Convert.ToInt32(selectItem.ID);
+            using (var db = new QLYHOTELEntities())
+            {
+                var select = (from i in db.NHANVIENs where i.MANV == id select i).Single();
+                detail._ID.Text = id.ToString();
+                detail._Name.Text = select.TENNV;
+                detail._CCCD.Text = select.CCCD;
+                detail._BirthDay.SelectedDate = select.NGSINH.Value;
+                detail.cbType.SelectedIndex = Convert.ToInt32(select.LOAINV) - 1;
+                detail._SDT.Text = select.SDT;
+                detail._Salary.Text = select.LUONG.ToString();
+                detail._Account.Text = select.TAIKHOAN;
+                detail.passtxt.Text = select.MATKHAU;
+            }
+            detail.ShowDialog();
+            LoadAllSV();
+        }
     }
 
 }

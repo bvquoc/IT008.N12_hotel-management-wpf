@@ -144,6 +144,7 @@
     <Compile Include="ViewModel\ChangeInfoRoomViewModel.cs" />
     <Compile Include="ViewModel\CustomerManagementViewModel.cs" />
     <Compile Include="ViewModel\CustomerManagementVM.cs" />
+    <Compile Include="ViewModel\EmployeeDetailViewModel.cs" />
     <Compile Include="ViewModel\LoginVM.cs" />
     <Compile Include="ViewModel\RoomDetailViewModel.cs" />
     <Compile Include="ViewModel\RoomManagementViewModel.cs" />
