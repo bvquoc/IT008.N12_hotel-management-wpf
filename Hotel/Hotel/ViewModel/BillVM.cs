@@ -12,6 +12,7 @@ namespace Hotel.ViewModel
         public string RoomName { get; set; }
         public string CustomerName { get; set; }
         public string StaffName { get; set; }
+        public DateTime DateEnd { get; set; }
         public int Total { get; set; }
         public string Status { get; set; }
         public BillVM()

@@ -110,7 +110,6 @@
                                                        Style="{StaticResource menuButtonIcon}" />
                                 <TextBlock Text="Phòng"
                                            FontFamily="{StaticResource Vollkorn}"
-                                 
                                            Style="{StaticResource menuButtonText}" />
                             </StackPanel>
                             <i:Interaction.Triggers>
@@ -149,7 +148,6 @@
                                                        Style="{StaticResource menuButtonIcon}" />
                                 <TextBlock Text="Đặt phòng"
                                            FontFamily="{StaticResource Vollkorn}"
-                                 
                                            Style="{StaticResource menuButtonText}" />
                             </StackPanel>
                             <i:Interaction.Triggers>
@@ -190,7 +188,6 @@
                                                        Style="{StaticResource menuButtonIcon}" />
                                 <TextBlock Text="Quản lý khách hàng"
                                            FontFamily="{StaticResource Vollkorn}"
-                                 
                                            Style="{StaticResource menuButtonText}" />
                             </StackPanel>
                             <i:Interaction.Triggers>
@@ -228,7 +225,6 @@
                                                        Style="{StaticResource menuButtonIcon}" />
                                 <TextBlock Text="Quản lý phòng"
                                            FontFamily="{StaticResource Vollkorn}"
-                                 
                                            Style="{StaticResource menuButtonText}" />
                             </StackPanel>
                             <i:Interaction.Triggers>
@@ -266,7 +262,6 @@
                                                        Style="{StaticResource menuButtonIcon}" />
                                 <TextBlock Text="Hóa đơn"
                                            FontFamily="{StaticResource Vollkorn}"
-                                 
                                            Style="{StaticResource menuButtonText}" />
                             </StackPanel>
                             <i:Interaction.Triggers>
@@ -304,7 +299,6 @@
                                                        Style="{StaticResource menuButtonIcon}" />
                                 <TextBlock Text="Quản lý dịch vụ"
                                            FontFamily="{StaticResource Vollkorn}"
-                                 
                                            Style="{StaticResource menuButtonText}" />
                             </StackPanel>
                             <i:Interaction.Triggers>
@@ -350,7 +344,6 @@
                                                        Style="{StaticResource menuButtonIcon}" />
                                 <TextBlock Text="Quản lý nhân viên"
                                            FontFamily="{StaticResource Vollkorn}"
-                                 
                                            Style="{StaticResource menuButtonText}" />
                             </StackPanel>
                             <i:Interaction.Triggers>
@@ -388,7 +381,6 @@
                                                        Style="{StaticResource menuButtonIcon}" />
                                 <TextBlock Text="Đăng xuất"
                                            FontFamily="{StaticResource Vollkorn}"
-                                 
                                            Style="{StaticResource menuButtonText}" />
                             </StackPanel>
                             <i:Interaction.Triggers>
@@ -571,6 +563,7 @@
                     Visibility="{Binding VisNotify}"
                     CornerRadius="10">
                 <Grid Width="auto"
+                      Margin="0 15 0 0"
                       HorizontalAlignment="Center">
                     <ScrollViewer>
                         <StackPanel>
@@ -583,7 +576,7 @@
                                                 Height="100"
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center"
-                                                Margin="20 20 10 10"
+                                                Margin="20 5 10 10"
                                                 Command="{Binding ElementName=lvNotify, Path=DataContext.ChoseNotify}"
                                                 CommandParameter="{Binding}"
                                                 ToolTip="Resource name: MaterialDesignRaisedAccentButton"
@@ -637,13 +630,13 @@
                                                     </Style.Triggers>
                                                 </Style>
                                             </Button.Style>
-                                            <Grid Margin="0 5 0 0"
-                                                  Width="335"
+                                            <Grid Width="335"
                                                   Height="100"
                                                   Background="Transparent"
                                                   Style="{StaticResource ScaleStyle}"
                                                   RenderTransformOrigin="0.5,0.5">
                                                 <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"></RowDefinition>
                                                     <RowDefinition Height="auto"></RowDefinition>
                                                     <RowDefinition Height="auto"></RowDefinition>
                                                     <RowDefinition Height="auto"></RowDefinition>
@@ -673,6 +666,13 @@
                                                                Foreground="Black" />
                                                 </Grid>
                                                 <Grid Grid.Row="3">
+                                                    <TextBlock Text="{Binding DateEnd}"
+                                                               VerticalAlignment="Center"
+                                                               Margin="20 0 0 0"
+                                                               FontSize="13"
+                                                               Foreground="Black" />
+                                                </Grid>
+                                                <Grid Grid.Row="4">
                                                     <TextBlock Text="{Binding Status}"
                                                                VerticalAlignment="Center"
                                                                Margin="20 0 0 0"

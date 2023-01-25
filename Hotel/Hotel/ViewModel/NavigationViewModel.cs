@@ -130,7 +130,7 @@ namespace Hotel.ViewModel
             VisNotify = "Hidden";
 
             //timer
-            _timer = new DispatcherTimer { Interval = TimeSpan.FromMinutes(5) };
+            _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(5) };
             _timer.Start();
             _timer.Tick += (o, e) => checkNotify();
 
@@ -191,10 +191,6 @@ namespace Hotel.ViewModel
         }
         private void readNotification()
         {
-            if (Notification == bell)
-                Notification = bellActive;
-            else
-                Notification = bell;
             if (VisNotify == "Hidden")
                 VisNotify = "Visible";
             else
@@ -205,8 +201,8 @@ namespace Hotel.ViewModel
             if (IsHome == FontBase + 1)
             {
                 CurrentView = new RoomView();
-                //continue
             }
+            loadDbNotify();
         }
         private void choseNotify(object ob)
         {
@@ -214,8 +210,16 @@ namespace Hotel.ViewModel
         }
         private void loadDbNotify()
         {
+            Notification = bell;
             var TimeNow = DateTime.Now;
             LvNotify = new ObservableCollection<BillVM>();
+            LvNotify.Add(new BillVM() { ID = 1, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán", DateEnd = new DateTime(2015, 12, 25) });
+            LvNotify.Add(new BillVM() { ID = 2, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán", DateEnd = new DateTime(2015, 12, 27) });
+            LvNotify.Add(new BillVM() { ID = 3, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán", DateEnd = new DateTime(2011, 12, 25) });
+            LvNotify.Add(new BillVM() { ID = 4, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán", DateEnd = new DateTime(2017, 12, 25) });
+            LvNotify.Add(new BillVM() { ID = 5, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán", DateEnd = new DateTime(2015, 12, 24) });
+            LvNotify.Add(new BillVM() { ID = 6, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán", DateEnd = new DateTime(2015, 12, 20) });
+            LvNotify.Add(new BillVM() { ID = 7, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán", DateEnd = new DateTime(2016, 1, 1) });
 
             using (var db = new QLYHOTELEntities())
             {
@@ -224,27 +228,23 @@ namespace Hotel.ViewModel
                 {
                     foreach (var info in room.DATs)
                     {
-                        if (info.TRANGTHAI == "Đang sử dụng" && (info.NGAYTRA.Value - TimeNow).TotalMilliseconds <= 30)
-                        {
-                            LvNotify.Add(new BillVM() { ID = info.MADAT, RoomName = info.PHONG.TENPHONG, CustomerName = info.KHACH.TENKH, StaffName = info.NHANVIEN.TENNV, Status = info.TRANGTHAI });
-                            //Notification = bellActive;
-                        }
                         if (info.TRANGTHAI == "Đã Thanh Toán")
-                            LvNotify.Add(new BillVM() { ID = info.MADAT, RoomName = info.PHONG.TENPHONG, CustomerName = info.KHACH.TENKH, StaffName = info.NHANVIEN.TENNV, Status = info.TRANGTHAI });
+                            LvNotify.Add(new BillVM() { ID = info.MADAT, RoomName = info.PHONG.TENPHONG, CustomerName = info.KHACH.TENKH, StaffName = info.NHANVIEN.TENNV, Status = info.TRANGTHAI, Total = (int)info.THANHTIEN, DateEnd = (DateTime)info.NGAYTRA });
+                    }
+                }
+                LvNotify = new ObservableCollection<BillVM>(LvNotify.OrderByDescending(i => i.DateEnd));
+                foreach (var room in select)
+                {
+                    foreach (var info in room.DATs)
+                    {
+                        if (info.TRANGTHAI == "Đang sử dụng" && (info.NGAYTRA.Value - TimeNow).TotalMinutes <= 30)
+                        {
+                            LvNotify.Insert(0, new BillVM() { ID = info.MADAT, RoomName = info.PHONG.TENPHONG, CustomerName = info.KHACH.TENKH, StaffName = info.NHANVIEN.TENNV, Status = info.TRANGTHAI, DateEnd = (DateTime)info.NGAYTRA });
+                            Notification = bellActive;
+                        }
                     }
                 }
             }
-
-
-
-            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
-            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán" });
-            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
-            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán" });
-            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
-            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán" });
-            LvNotify.Add(new BillVM() { ID = 12, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán" });
-
         }
     }
 }

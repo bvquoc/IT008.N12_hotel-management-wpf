@@ -244,6 +244,12 @@
                                                             Value="#ffcc99">
                                                     </Setter>
                                                 </DataTrigger>
+                                                <DataTrigger Binding="{Binding Status}"
+                                                             Value="Đang sử dụng">
+                                                    <Setter Property="Background"
+                                                            Value="#004400">
+                                                    </Setter>
+                                                </DataTrigger>
                                                 <Trigger Property="IsMouseOver"
                                                          Value="True">
                                                     <Setter Property="Width"
@@ -299,7 +305,7 @@
                                         </Grid>
                                         <Grid Grid.Row="1">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="45"></ColumnDefinition>
+                                                <ColumnDefinition Width="10"></ColumnDefinition>
                                                 <ColumnDefinition></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
 

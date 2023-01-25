@@ -49,14 +49,25 @@
                 <Border Grid.Row="0"
                         BorderThickness="0 0 0 1"
                         BorderBrush="Black">
-                    <TextBlock Text="Chi tiết phòng"
-                               FontFamily="{StaticResource Pacifico}"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Bottom"
-                               Height="40"
-                               FontSize="20"
-                               FontWeight="Bold"
-                               Foreground="Black" />
+                    <Grid>
+                        <TextBlock Text="Chi tiết phòng #"
+                                   FontFamily="{StaticResource Pacifico}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Bottom"
+                                   Height="40"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   Foreground="Black" />
+                        <TextBlock x:Name="idbook"
+                                   Margin="140 0 0 0"
+                                   FontFamily="{StaticResource Pacifico}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Bottom"
+                                   Height="40"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   Foreground="Black" />
+                    </Grid>
                 </Border>
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
@@ -244,7 +255,7 @@
                                             <Setter Property="FontWeight"
                                                     Value="Bold" />
                                             <Setter Property="FontFamily"
-                                                    Value="{StaticResource Mali}"/>
+                                                    Value="{StaticResource Mali}" />
                                         </Style>
                                     </GridView.ColumnHeaderContainerStyle>
                                     <GridViewColumn  Header="Dịch vụ"
@@ -305,7 +316,8 @@
                             materialDesign:ButtonAssist.CornerRadius="8"
                             Margin="0,0,130,-60"
                             Background="OrangeRed"
-                            BorderBrush="Transparent" Click="btnCancel_Click" />
+                            BorderBrush="Transparent"
+                            Click="btnCancel_Click" />
                     <Button x:Name="btnSave"
                             Content="Lưu"
                             FontFamily="{StaticResource Oswald}"
@@ -313,7 +325,7 @@
                             Margin="0,0,21,-60"
                             materialDesign:ButtonAssist.CornerRadius="8" />
                     <Button x:Name="btnAccept"
-                            Content="Thanh toán"
+                            Content="Nhận phòng"
                             FontSize="20"
                             FontFamily="{StaticResource Oswald}"
                             Width="auto"
