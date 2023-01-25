@@ -606,7 +606,7 @@
                                                             Value="#FFFBEE" />
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding Status}"
-                                                                     Value="Đã Thanh Toán">
+                                                                     Value="Đã thanh toán">
                                                             <Setter Property="Background"
                                                                     Value="#F1F1F1">
                                                             </Setter>
@@ -683,7 +683,7 @@
                                                                         Value="Red" />
                                                                 <Style.Triggers>
                                                                     <DataTrigger Binding="{Binding Status}"
-                                                                                 Value="Đã Thanh Toán">
+                                                                                 Value="Đã thanh toán">
                                                                         <Setter Property="Foreground"
                                                                                 Value="Black" />
                                                                     </DataTrigger>

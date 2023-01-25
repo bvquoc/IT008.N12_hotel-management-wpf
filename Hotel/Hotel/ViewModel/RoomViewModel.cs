@@ -134,6 +134,7 @@ namespace Hotel.ViewModel
                     int iDBook = 0;
                     foreach (var info in room.DATs)
                     {
+                        if (info.TRANGTHAI == "Đã thanh toán") continue;
                         if ((info.NGAYDAT.Value - TimeNow).TotalMinutes <= 20 && (info.NGAYTRA.Value - TimeNow).TotalMilliseconds > 0)
                         {
                             StatusRoom = info.TRANGTHAI;

@@ -207,19 +207,40 @@ namespace Hotel.ViewModel
         private void choseNotify(object ob)
         {
             BillVM bill = (BillVM)ob;
+            if (bill.Status == "Đang sử dụng")
+            {
+                RoomDetail r = new RoomDetail();
+                using (var db = new QLYHOTELEntities())
+                {
+                    var select = (from i in db.DATs where i.MADAT == bill.ID select i).Single();
+                    r.idbook.Text = bill.ID.ToString();
+                    r.txblTenKH.Text = select.KHACH.TENKH;
+                    r.txblCCCD.Text = select.KHACH.CCCD;
+                    r.txblNgayDen.Text = select.NGAYDAT.Value.ToString();
+                    r.txbNgayTra.Text = select.NGAYTRA.Value.ToString();
+                    r.txblSoNguoi.Text = select.SONG.ToString();
+                    if (select.TRANGTHAI == "Đã đặt")
+                        r.btnAccept.Content = "Nhận phòng";
+                    else
+                        r.btnAccept.Content = "Thanh toán";
+
+                }
+                r.ShowDialog();
+                loadDbNotify();
+            }
         }
         private void loadDbNotify()
         {
             Notification = bell;
             var TimeNow = DateTime.Now;
             LvNotify = new ObservableCollection<BillVM>();
-            LvNotify.Add(new BillVM() { ID = 1, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán", DateEnd = new DateTime(2015, 12, 25) });
-            LvNotify.Add(new BillVM() { ID = 2, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán", DateEnd = new DateTime(2015, 12, 27) });
-            LvNotify.Add(new BillVM() { ID = 3, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán", DateEnd = new DateTime(2011, 12, 25) });
-            LvNotify.Add(new BillVM() { ID = 4, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán", DateEnd = new DateTime(2017, 12, 25) });
-            LvNotify.Add(new BillVM() { ID = 5, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán", DateEnd = new DateTime(2015, 12, 24) });
-            LvNotify.Add(new BillVM() { ID = 6, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa Thanh Toán", DateEnd = new DateTime(2015, 12, 20) });
-            LvNotify.Add(new BillVM() { ID = 7, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã Thanh Toán", DateEnd = new DateTime(2016, 1, 1) });
+            //LvNotify.Add(new BillVM() { ID = 1, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa thanh toán", DateEnd = new DateTime(2015, 12, 25) });
+            //LvNotify.Add(new BillVM() { ID = 2, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã thanh toán", DateEnd = new DateTime(2015, 12, 27) });
+            //LvNotify.Add(new BillVM() { ID = 3, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa thanh toán", DateEnd = new DateTime(2011, 12, 25) });
+            //LvNotify.Add(new BillVM() { ID = 4, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã thanh toán", DateEnd = new DateTime(2017, 12, 25) });
+            //LvNotify.Add(new BillVM() { ID = 5, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa thanh toán", DateEnd = new DateTime(2015, 12, 24) });
+            //LvNotify.Add(new BillVM() { ID = 6, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa thanh toán", DateEnd = new DateTime(2015, 12, 20) });
+            //LvNotify.Add(new BillVM() { ID = 7, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã thanh toán", DateEnd = new DateTime(2016, 1, 1) });
 
             using (var db = new QLYHOTELEntities())
             {
@@ -228,7 +249,7 @@ namespace Hotel.ViewModel
                 {
                     foreach (var info in room.DATs)
                     {
-                        if (info.TRANGTHAI == "Đã Thanh Toán")
+                        if (info.TRANGTHAI == "Đã thanh toán")
                             LvNotify.Add(new BillVM() { ID = info.MADAT, RoomName = info.PHONG.TENPHONG, CustomerName = info.KHACH.TENKH, StaffName = info.NHANVIEN.TENNV, Status = info.TRANGTHAI, Total = (int)info.THANHTIEN, DateEnd = (DateTime)info.NGAYTRA });
                     }
                 }

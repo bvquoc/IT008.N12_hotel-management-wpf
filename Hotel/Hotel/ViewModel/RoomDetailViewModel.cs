@@ -39,14 +39,24 @@ namespace Hotel.ViewModel
         }
         public void MakeSome(RoomDetail p)
         {
-            p.btnAccept.Content = p.btnAccept.Content == "Thanh toán" ? "Nhận phòng" : "Thanh toán";
+
             id = Int32.Parse(p.idbook.Text);
             using (var db = new QLYHOTELEntities())
             {
                 var select = (from i in db.DATs where i.MADAT == id select i).Single();
-                select.TRANGTHAI = "Đang sử dụng";
+                if (p.btnAccept.Content == "Nhận phòng")
+                {
+                    select.TRANGTHAI = "Đang sử dụng";
+                }
+                else
+                {
+                    select.TRANGTHAI = "Đã thanh toán";
+                    select.THANHTIEN = select.PHONG.DONGIA + ListDV.Sum(i => i.ThanhTien);
+                }
                 db.SaveChanges();
             }
+
+            p.btnAccept.Content = p.btnAccept.Content == "Thanh toán" ? "Nhận phòng" : "Thanh toán";
         }
     }
     public class dv
