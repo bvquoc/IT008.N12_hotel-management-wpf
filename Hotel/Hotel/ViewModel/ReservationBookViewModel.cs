@@ -143,7 +143,6 @@ namespace Hotel.ViewModel
                             break;
                         }
                     }
-
                     if (ok)
                     {
                         foreach (var sele in SelectedRooms)

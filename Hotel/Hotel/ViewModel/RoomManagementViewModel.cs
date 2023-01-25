@@ -71,7 +71,8 @@ namespace Hotel.ViewModel
         }
         private void addRoom(RoomManagementView p)
         {
-            new DialogCustomize("Chưa nhập họ tên!").ShowDialog();
+            new AddRoom().ShowDialog();
+            LoadAllSV();
         }
     }
 

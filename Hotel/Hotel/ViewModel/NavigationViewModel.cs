@@ -223,7 +223,6 @@ namespace Hotel.ViewModel
                         r.btnAccept.Content = "Nhận phòng";
                     else
                         r.btnAccept.Content = "Thanh toán";
-
                 }
                 r.ShowDialog();
                 loadDbNotify();
@@ -234,14 +233,6 @@ namespace Hotel.ViewModel
             Notification = bell;
             var TimeNow = DateTime.Now;
             LvNotify = new ObservableCollection<BillVM>();
-            //LvNotify.Add(new BillVM() { ID = 1, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa thanh toán", DateEnd = new DateTime(2015, 12, 25) });
-            //LvNotify.Add(new BillVM() { ID = 2, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã thanh toán", DateEnd = new DateTime(2015, 12, 27) });
-            //LvNotify.Add(new BillVM() { ID = 3, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa thanh toán", DateEnd = new DateTime(2011, 12, 25) });
-            //LvNotify.Add(new BillVM() { ID = 4, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã thanh toán", DateEnd = new DateTime(2017, 12, 25) });
-            //LvNotify.Add(new BillVM() { ID = 5, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa thanh toán", DateEnd = new DateTime(2015, 12, 24) });
-            //LvNotify.Add(new BillVM() { ID = 6, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Chưa thanh toán", DateEnd = new DateTime(2015, 12, 20) });
-            //LvNotify.Add(new BillVM() { ID = 7, CustomerName = "Nguyễn Văn A", RoomName = "P102", Status = "Đã thanh toán", DateEnd = new DateTime(2016, 1, 1) });
-
             using (var db = new QLYHOTELEntities())
             {
                 var select = from s in db.PHONGs select s;

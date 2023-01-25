@@ -57,6 +57,8 @@ namespace Hotel.ViewModel
             }
 
             p.btnAccept.Content = p.btnAccept.Content == "Thanh toán" ? "Nhận phòng" : "Thanh toán";
+            if (p.btnAccept.Content == "Nhận phòng")
+                p.Close();
         }
     }
     public class dv

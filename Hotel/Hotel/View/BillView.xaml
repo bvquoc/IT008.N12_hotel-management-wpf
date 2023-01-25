@@ -4,11 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Hotel.View"
+             xmlns:vm="clr-namespace:Hotel.ViewModel"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
              d:DesignHeight="700"
              d:DesignWidth="805"
              Style="{StaticResource Page_Style}">
+
+    <UserControl.DataContext>
+        <vm:BillViewModel />
+    </UserControl.DataContext>
+
     <Grid Background="Transparent">
         <!--Chia khung-->
         <Grid.RowDefinitions>
@@ -52,7 +58,7 @@
                                      BorderThickness="0"
                                      MinWidth="200"
                                      VerticalAlignment="Center"
-                                     Text="{Binding TextToFilterCu, UpdateSourceTrigger=PropertyChanged}" />
+                                     Text="{Binding TextToFilterBill, UpdateSourceTrigger=PropertyChanged}" />
 
                         </Grid>
                     </materialDesign:ColorZone>
@@ -79,8 +85,8 @@
               HorizontalAlignment="Center">
             <ScrollViewer>
                 <StackPanel>
-                    <ItemsControl x:Name="lvRoom"
-                                  ItemsSource="{Binding }">
+                    <ItemsControl x:Name="lvBill"
+                                  ItemsSource="{Binding ListBill}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Button x:Name="ButtonRoom"
@@ -90,7 +96,8 @@
                                         VerticalAlignment="Center"
                                         Margin="15"
                                         RenderTransformOrigin="0.5,0.5"
-                                        Click="OpenBillDetail">
+                                        Command="{Binding ElementName=lvBill, Path=DataContext.choseBill}"
+                                        CommandParameter="{Binding}">
                                     <Button.Resources>
                                         <Style x:Key="ScaleStyle"
                                                TargetType="Grid">
@@ -171,7 +178,7 @@
                                                        FontFamily="Montserrat"></TextBlock>
 
                                             <TextBlock x:Name="RoomID"
-                                                       Text="{Binding RoomID}"
+                                                       Text="{Binding RoomName}"
                                                        FontFamily="Montserrat"></TextBlock>
 
                                             <TextBlock x:Name="StaffName"
