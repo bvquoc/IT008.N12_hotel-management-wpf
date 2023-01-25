@@ -16,6 +16,11 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         x:Name="changeInfoRoom">
+
+    <Window.DataContext>
+        <vm:ChangeInfoRoomViewModel />
+    </Window.DataContext>
+
     <Border BorderBrush="DarkGray"
             BorderThickness="1"
             CornerRadius="10"
@@ -44,13 +49,23 @@
             <Border     Height="50"
                         BorderBrush="Black"
                         BorderThickness="0 0 0 1">
-                <TextBlock HorizontalAlignment="Center"
-                           Text="Sửa thông tin phòng"
-                           FontFamily="{StaticResource Pacifico}"
-                           VerticalAlignment="Top"
-                           FontWeight="Bold"
-                           FontSize="20">
-                </TextBlock>
+                <Grid>
+                    <TextBlock HorizontalAlignment="Center"
+                               Text="Sửa thông tin phòng #"
+                               FontFamily="{StaticResource Pacifico}"
+                               VerticalAlignment="Top"
+                               FontWeight="Bold"
+                               FontSize="20">
+                    </TextBlock>
+                    <TextBlock HorizontalAlignment="Center"
+                               x:Name="ID"
+                               Margin="200 10 0 0"
+                               FontFamily="{StaticResource Pacifico}"
+                               VerticalAlignment="Top"
+                               FontWeight="Bold"
+                               FontSize="20">
+                    </TextBlock>
+                </Grid>
             </Border>
 
             <Grid Background="Transparent">
@@ -75,8 +90,7 @@
                          VerticalAlignment="Center">
                 </TextBox>
             </Grid>
-            <Grid Background="Transparent"
-                  >
+            <Grid Background="Transparent">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="12" />
                     <ColumnDefinition Width="40" />
@@ -91,14 +105,14 @@
                 </Grid>
 
                 <ComboBox x:Name="_Type"
-                         Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                         Grid.Column="2"
-                         FontFamily="{StaticResource Vollkorn}"
-                         materialDesign:HintAssist.Hint="Loại phòng"
-                         HorizontalAlignment="Left"
-                         VerticalAlignment="Center">
-                    <ComboBoxItem Content="VIP"/>
-                    <ComboBoxItem Content="Thường"/>
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          Grid.Column="2"
+                          FontFamily="{StaticResource Vollkorn}"
+                          materialDesign:HintAssist.Hint="Loại phòng"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center">
+                    <ComboBoxItem Content="VIP" />
+                    <ComboBoxItem Content="Thường" />
                 </ComboBox>
             </Grid>
             <Grid Background="Transparent">
@@ -142,14 +156,17 @@
                 <Button Content="Hủy"
                         FontFamily="{StaticResource Oswald}"
                         materialDesign:ButtonAssist.CornerRadius="8"
-                        Margin="0 0 110 10"                       
+                        Margin="0 0 110 10"
                         Background="OrangeRed"
+                        Command="{Binding Cancel}"
+                        CommandParameter="{Binding ElementName=changeInfoRoom}"
                         BorderBrush="Transparent" />
                 <Button Content="Lưu"
                         FontFamily="{StaticResource Oswald}"
                         Margin="0 0 10 10"
-                        materialDesign:ButtonAssist.CornerRadius="8"
-                        />
+                        Command="{Binding Save}"
+                        CommandParameter="{Binding ElementName=changeInfoRoom}"
+                        materialDesign:ButtonAssist.CornerRadius="8" />
             </Grid>
         </StackPanel>
     </Border>
