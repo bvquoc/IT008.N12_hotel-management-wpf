@@ -16,6 +16,7 @@ namespace Hotel.ViewModel
         private ObservableCollection<LoginVM> staffAcountList = new ObservableCollection<LoginVM>();
         public int MaNV { get; set; }
         public int LoaiNV { get; set; }
+        public string TenNV { get; set; }
         public ICommand Login { get; set; }
 
         private bool handleLogin(string username, string password)
@@ -27,6 +28,7 @@ namespace Hotel.ViewModel
                 {
                     MaNV = item.MaNV;
                     LoaiNV = item.LoaiNV;
+                    TenNV = item.TenNV;
                     //MessageBox.Show(LoaiNV.ToString());
                     return true;
                 }
@@ -43,7 +45,7 @@ namespace Hotel.ViewModel
                 {
                     var select = from s in db.NHANVIENs select s;
                     foreach (var item in select)
-                        staffAcountList.Add(new LoginVM(item.TAIKHOAN, item.MATKHAU, item.MANV, (int)item.LOAINV));
+                        staffAcountList.Add(new LoginVM(item.TAIKHOAN, item.MATKHAU, item.MANV, (int)item.LOAINV, item.TENNV));
                 }
             }
             catch (Exception ex)
@@ -56,6 +58,7 @@ namespace Hotel.ViewModel
             LoadDB();
             MaNV = -1;
             LoaiNV = -1;
+            TenNV = "";
             Login = new RelayCommand<LoginView>((parameter) => true, (parameter) => EnterLogin(parameter));
         }
         private void EnterLogin(LoginView cur)
@@ -78,11 +81,10 @@ namespace Hotel.ViewModel
                 return;
             }
 
-            MainWindow mainWindow = new MainWindow(MaNV, LoaiNV);
+            MainWindow mainWindow = new MainWindow(MaNV, TenNV, LoaiNV);
             cur.Hide();
             mainWindow.Show();
             cur.Close();
         }
-
     }
 }

@@ -17,6 +17,7 @@ namespace Hotel.ViewModel
 {
     internal class RoomViewModel : BaseViewModel
     {
+        private int idnv;
         private ObservableCollection<RoomVM> _roomListdb;
         private ObservableCollection<RoomVM> _roomList;
         public ObservableCollection<RoomVM> RoomList
@@ -53,37 +54,39 @@ namespace Hotel.ViewModel
             get { return _roomCollection; }
             set { _roomCollection = value; OnPropertyChanged(); }
         }
-
+        public ICommand LoadIdStaff { get; set; }
         public ICommand btnAll { get; set; }
         public ICommand btnAvailabel { get; set; }
         public ICommand btnOrdered { get; set; }
         public ICommand btnRepair { get; set; }
         public ICommand sortRoom { get; set; }
         public ICommand choseRoom { get; set; }
+
         public RoomViewModel()
         {
             RoomList = new ObservableCollection<RoomVM>();
+            LoadIdStaff = new RelayCommand<UserControl>((p) => true, (p) => idnv = Convert.ToInt32(GetIdStaff(p)));
             btnAll = new RelayCommand<object>((p) => true, (p) => LoadAllRoom());
             btnAvailabel = new RelayCommand<object>((p) => true, (p) => LoadAvailabel());
             btnOrdered = new RelayCommand<object>((p) => true, (p) => LoadOrdered());
             btnRepair = new RelayCommand<object>((p) => true, (p) => LoadRepair());
             choseRoom = new RelayCommand<object>((p) => true, (p) => ViewDetailRoom(p));
-            sortRoom = new RelayCommand<object>((p) => true, (p) =>
-            {
-                if ((string)SortRoom.Content == "Tầng")
-                {
-                    sortFloordb();
-                    sortFloor();
-                }
-                if ((string)SortRoom.Content == "Loại phòng")
-                {
-                    _roomListdb = new ObservableCollection<RoomVM>(_roomListdb.OrderBy(i => i.Description));
-                    RoomList = new ObservableCollection<RoomVM>(RoomList.OrderBy(i => i.Description));
-                }
-                RoomCollection = CollectionViewSource.GetDefaultView(RoomList);
-                RoomCollection.Filter = FilterByName;
-            });
+            sortRoom = new RelayCommand<object>((p) => true, (p) => SortRoomF());
+
             LoadDbRoom();
+        }
+        private string GetIdStaff(UserControl p)
+        {
+            FrameworkElement window = GetParent(p);
+            var w = window as MainWindow;
+            return w._EID.Text;
+        }
+        FrameworkElement GetParent(UserControl p)
+        {
+            FrameworkElement parent = p;
+            while (parent.Parent != null)
+                parent = parent.Parent as FrameworkElement;
+            return parent;
         }
         private bool FilterByName(object emp)
         {
@@ -93,6 +96,21 @@ namespace Hotel.ViewModel
                 return empDetail != null && empDetail.Name.IndexOf(TextToFilter, StringComparison.OrdinalIgnoreCase) >= 0;
             }
             return true;
+        }
+        private void SortRoomF()
+        {
+            if ((string)SortRoom.Content == "Tầng")
+            {
+                sortFloordb();
+                sortFloor();
+            }
+            if ((string)SortRoom.Content == "Loại phòng")
+            {
+                _roomListdb = new ObservableCollection<RoomVM>(_roomListdb.OrderBy(i => i.Description));
+                RoomList = new ObservableCollection<RoomVM>(RoomList.OrderBy(i => i.Description));
+            }
+            RoomCollection = CollectionViewSource.GetDefaultView(RoomList);
+            RoomCollection.Filter = FilterByName;
         }
         public void sortFloordb()
         {
@@ -135,7 +153,7 @@ namespace Hotel.ViewModel
                     foreach (var info in room.DATs)
                     {
                         if (info.TRANGTHAI == "Đã thanh toán") continue;
-                        if ((info.NGAYDAT.Value - TimeNow).TotalMinutes <= 20 && (info.NGAYTRA.Value - TimeNow).TotalMilliseconds > 0)
+                        if ((info.NGAYDAT.Value - TimeNow).TotalMinutes <= 20)
                         {
                             StatusRoom = info.TRANGTHAI;
                             iDBook = info.MADAT;
@@ -193,6 +211,7 @@ namespace Hotel.ViewModel
                     r.txblNgayDen.Text = select.NGAYDAT.Value.ToString();
                     r.txbNgayTra.Text = select.NGAYTRA.Value.ToString();
                     r.txblSoNguoi.Text = select.SONG.ToString();
+                    r.Uid = idnv.ToString();
                     if (select.TRANGTHAI == "Đã đặt")
                         r.btnAccept.Content = "Nhận phòng";
                     else
@@ -200,7 +219,11 @@ namespace Hotel.ViewModel
                 }
             }
             else
+            {
                 r.btnAccept.Visibility = Visibility.Collapsed;
+                r.btnBookServiece.Visibility = Visibility.Collapsed;
+                r.idbook.Text = "0";
+            }
             r.ShowDialog();
         }
     }

@@ -15,43 +15,67 @@ namespace Hotel.ViewModel
 {
     internal class RoomDetailViewModel : BaseViewModel
     {
-        private ObservableCollection<dv> _listdv;
+        private ObservableCollection<ServiceVM> _listdv;
         public int id;
-        public ObservableCollection<dv> ListDV
+        public ObservableCollection<ServiceVM> ListDV
         {
             get { return _listdv; }
             set { _listdv = value; OnPropertyChanged(); }
         }
         public ICommand DoSomeThing { get; set; }
+        public ICommand BookService { get; set; }
+        public ICommand LoadIdRe { get; set; }
         public RoomDetailViewModel()
         {
             DoSomeThing = new RelayCommand<RoomDetail>((p) => true, (p) => MakeSome(p));
-
-            ListDV = new ObservableCollection<dv>();
-            ListDV.Add(new dv() { Name = ".....", SoLuong = 2, ThanhTien = 1000000 });
-            ListDV.Add(new dv() { Name = ".....", SoLuong = 2, ThanhTien = 1000000 });
-            ListDV.Add(new dv() { Name = ".....", SoLuong = 2, ThanhTien = 1000000 });
-            ListDV.Add(new dv() { Name = ".....", SoLuong = 2, ThanhTien = 1000000 });
-            ListDV.Add(new dv() { Name = ".....", SoLuong = 2, ThanhTien = 1000000 });
-            ListDV.Add(new dv() { Name = ".....", SoLuong = 2, ThanhTien = 1000000 });
-            ListDV.Add(new dv() { Name = ".....", SoLuong = 2, ThanhTien = 1000000 });
-            ListDV.Add(new dv() { Name = ".....", SoLuong = 2, ThanhTien = 1000000 });
+            BookService = new RelayCommand<RoomDetail>((p) => true, (p) => MakeService(p));
+            LoadIdRe = new RelayCommand<RoomDetail>((p) => true, (p) => Loaded(p));
+        }
+        private void Loaded(RoomDetail p)
+        {
+            id = Convert.ToInt32(p.idbook.Text);
+            if (p.btnAccept.Content == "Nhận phòng")
+                p.btnBookServiece.Visibility = Visibility.Collapsed;
+            loadDb();
+        }
+        private void loadDb()
+        {
+            ListDV = new ObservableCollection<ServiceVM>();
+            using (var db = new QLYHOTELEntities())
+            {
+                var select = from s in db.CUNGCAPs select s;
+                foreach (var p in select)
+                {
+                    if (p.MADAT == id)
+                        ListDV.Add(new ServiceVM() { ID = p.MADV.ToString(), Name = p.DICHVU.TENDV, NumSer = Convert.ToInt32(p.SOLUONG), Price = Convert.ToInt32(p.TONGTIEN), Total = Convert.ToInt32(p.TONGTIEN) });
+                }
+            }
+        }
+        private void MakeService(RoomDetail p)
+        {
+            BookService book = new BookService();
+            book.idbook.Text = p.idbook.Text;
+            book.Uid = p.Uid;
+            //p.Hide();
+            book.ShowDialog();
+            //p.ShowDialog();
+            loadDb();
         }
         public void MakeSome(RoomDetail p)
         {
-
-            id = Int32.Parse(p.idbook.Text);
+            id = Convert.ToInt16(p.idbook.Text);
             using (var db = new QLYHOTELEntities())
             {
                 var select = (from i in db.DATs where i.MADAT == id select i).Single();
                 if (p.btnAccept.Content == "Nhận phòng")
                 {
                     select.TRANGTHAI = "Đang sử dụng";
+                    p.btnBookServiece.Visibility = Visibility.Visible;
                 }
                 else
                 {
                     select.TRANGTHAI = "Đã thanh toán";
-                    select.THANHTIEN = select.PHONG.DONGIA + ListDV.Sum(i => i.ThanhTien);
+                    select.THANHTIEN = select.PHONG.DONGIA + ListDV.Sum(i => i.Total);
                 }
                 db.SaveChanges();
             }
@@ -59,16 +83,6 @@ namespace Hotel.ViewModel
             p.btnAccept.Content = p.btnAccept.Content == "Thanh toán" ? "Nhận phòng" : "Thanh toán";
             if (p.btnAccept.Content == "Nhận phòng")
                 p.Close();
-        }
-    }
-    public class dv
-    {
-        public string Name { get; set; }
-        public int SoLuong { get; set; }
-        public int ThanhTien { get; set; }
-        public dv()
-        {
-
         }
     }
 }

@@ -23,6 +23,14 @@
     <Window.DataContext>
         <mv:NavigationViewModel />
     </Window.DataContext>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadIdStaff}"
+                                   CommandParameter="{Binding ElementName=MainAdminWindow}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Grid>
         <!--Chia khung-->
         <Grid.ColumnDefinitions>
@@ -85,41 +93,44 @@
                 <!--Menu Buttons-->
                 <!--MouseLeftButtonDown="Phong_Click"-->
                 <!--MouseLeftButtonDown="DatPhong_Click"-->
-                <StackPanel >
+                <StackPanel>
                     <!--Logo nhân viên-->
-                    <StackPanel Height="160" Margin="57 0 0 0">
-                        <materialDesign:PackIcon Height="100" Width="100" Margin="-10 10 0 0"
+                    <StackPanel Height="160"
+                                Margin="15 0 0 0">
+                        <materialDesign:PackIcon x:Name="LogoStaff"
+                                                 Height="100"
+                                                 Width="100"
+                                                 Margin="-10 10 0 0"
                                                  HorizontalAlignment="Center"
-                                                 Kind="Account" Foreground="White">
+                                                 Foreground="White">
                             <materialDesign:PackIcon.Style>
                                 <Style   TargetType="materialDesign:PackIcon">
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Path = Type}"
-                                                                             Value="1">
+                                        <DataTrigger Binding="{Binding ElementName=LogoStaff, Path = Uid}"
+                                                     Value="1">
                                             <Setter Property="Kind"
-                                                                            Value="AccountStar" />
+                                                    Value="AccountStar" />
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding Path = Type}"
-                                                                             Value="2">
+                                        <DataTrigger Binding="{Binding ElementName=LogoStaff ,Path = Uid}"
+                                                     Value="2">
                                             <Setter Property="Kind"
-                                                                            Value="Account" />
+                                                    Value="Account" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </materialDesign:PackIcon.Style>
                         </materialDesign:PackIcon>
-                        
-                            <TextBlock Text="Nguyễn Nguyên Khôi" Foreground="White"
-                                           FontFamily="{StaticResource Vollkorn}"
-                                       HorizontalAlignment="Center"
-                                       Margin="-10 0 0 0"
-                                           Style="{StaticResource menuButtonText}"/>
-                            <TextBlock Text="#1" Foreground="White"
-                                       HorizontalAlignment="Center" Margin="-10 0 0 0"
-                                           FontFamily="{StaticResource Vollkorn}"
-                                           Style="{StaticResource menuButtonText}"/>
-                        
-                        
+
+                        <TextBlock x:Name="_EName"
+                                   Foreground="White"
+                                   FontFamily="{StaticResource Vollkorn}"
+                                   HorizontalAlignment="Center"
+                                   Margin="-10 0 0 0" />
+                        <TextBlock x:Name="_EID"
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"
+                                   Margin="-10 0 0 0"
+                                   FontFamily="{StaticResource Vollkorn}" />
                     </StackPanel>
                     <!--Phòng-->
                     <Grid Margin="0,-17"
