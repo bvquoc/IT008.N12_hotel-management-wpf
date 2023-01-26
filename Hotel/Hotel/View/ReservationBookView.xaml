@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:vm="clr-namespace:Hotel.ViewModel"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:local="clr-namespace:Hotel.View"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
@@ -15,6 +16,14 @@
     <UserControl.DataContext>
         <vm:ReservationBookViewModel />
     </UserControl.DataContext>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadIdStaff}"
+                                   CommandParameter="{Binding ElementName=ReservationView}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -39,11 +48,11 @@
                            FontWeight="Bold"
                            Text="Thông tin phòng"
                            FontFamily="{StaticResource Pacifico}"
-                                 
                            VerticalAlignment="Top"
                            HorizontalAlignment="Center"
                            Margin="0,12,0,0"
-                           Grid.Row="0" Height="58">
+                           Grid.Row="0"
+                           Height="58">
                 </TextBlock>
                 <Grid Grid.Row="1"
                       HorizontalAlignment="Center">
@@ -77,7 +86,7 @@
                                                    x:Name="tpGioBD"
                                                    Margin="30 0 0 0"
                                                    FontFamily="{StaticResource Vollkorn}"
-                                                    FontSize="14"
+                                                   FontSize="14"
                                                    SelectedTime="{Binding TimeStart}"
                                                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
                                                    materialDesign:HintAssist.Hint="Giờ bắt đầu" />
@@ -110,7 +119,7 @@
                                                  VerticalAlignment="Bottom" />
                         <materialDesign:TimePicker Is24Hours="True"
                                                    FontFamily="{StaticResource Vollkorn}"
-                                                    FontSize="14"
+                                                   FontSize="14"
                                                    x:Name="tpGioKT"
                                                    Margin="30 0 0 0"
                                                    SelectedTime="{Binding TimeEnd}"
@@ -133,7 +142,6 @@
                                FontWeight="Bold"
                                Text="Thông tin khách hàng"
                                FontFamily="{StaticResource Pacifico}"
-                                 
                                Margin="0 65 0 0"
                                VerticalAlignment="Top"
                                HorizontalAlignment="Center"></TextBlock>
@@ -266,7 +274,6 @@
             <StackPanel Grid.Row="0">
                 <TextBlock Text="Danh sách phòng trống"
                            FontFamily="{StaticResource Pacifico}"
-                                 
                            FontSize="30"
                            FontWeight="Bold"
                            Margin="0 30 0 0"
@@ -292,7 +299,7 @@
                                         <Setter Property="Background"
                                                 Value="#C4C4C4" />
                                         <Setter Property="FontFamily"
-                                                Value="{StaticResource Mali}"/>
+                                                Value="{StaticResource Mali}" />
                                         <Setter Property="Foreground"
                                                 Value="Black" />
                                         <Setter Property="FontWeight"
@@ -338,9 +345,7 @@
             </StackPanel>
             <StackPanel Grid.Row="1">
                 <TextBlock Text="Phòng đã chọn"
-                           
                            FontFamily="{StaticResource Pacifico}"
-                                 
                            FontSize="30"
                            FontWeight="Bold"
                            Margin="0 20 0 0"
@@ -367,7 +372,7 @@
                                         <Setter Property="Background"
                                                 Value="#C4C4C4" />
                                         <Setter Property="FontFamily"
-                                                Value="{StaticResource Mali}"/>
+                                                Value="{StaticResource Mali}" />
                                         <Setter Property="Foreground"
                                                 Value="Black" />
                                         <Setter Property="FontWeight"

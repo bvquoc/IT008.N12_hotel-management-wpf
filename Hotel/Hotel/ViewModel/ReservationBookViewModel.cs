@@ -1,20 +1,24 @@
 ﻿using Hotel.Model;
 using Hotel.View;
-using MahApps.Metro.Behaviors;
-using Microsoft.Xaml.Behaviors.Core;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
+
 
 namespace Hotel.ViewModel
 {
     internal class ReservationBookViewModel : BaseViewModel
     {
+        private int idnv;
         private static ObservableCollection<RoomVM> _rooms;
         public ObservableCollection<RoomVM> Rooms
         {
@@ -90,13 +94,14 @@ namespace Hotel.ViewModel
             set { _sex = value; OnPropertyChanged(); }
         }
 
-
+        public ICommand LoadIdStaff { get; set; }
         public ICommand ChoseRoom { get; set; }
         public ICommand DeleteSelected { get; set; }
         public ICommand CancelReservate { get; set; }
         public ICommand SaveReservate { get; set; }
         public ReservationBookViewModel()
         {
+            LoadIdStaff = new RelayCommand<UserControl>((p) => true, (p) => { idnv = Convert.ToInt32(GetIdStaff(p)); });
             ChoseRoom = new RelayCommand<object>((p) => true, (p) => addRoom(p));
             DeleteSelected = new RelayCommand<object>((p) => true, (p) => deleteSelected(p));
             CancelReservate = new RelayCommand<ReservationBookView>((p) => true, (p) => Reload(p));
@@ -109,6 +114,19 @@ namespace Hotel.ViewModel
             TimeEnd = DateTime.Now;
             clearInfo();
             LoadRoom();
+        }
+        private string GetIdStaff(UserControl p)
+        {
+            FrameworkElement window = GetParent(p);
+            var w = window as MainWindow;
+            return w._EID.Text;
+        }
+        FrameworkElement GetParent(UserControl p)
+        {
+            FrameworkElement parent = p;
+            while (parent.Parent != null)
+                parent = parent.Parent as FrameworkElement;
+            return parent;
         }
         private void clearInfo()
         {
@@ -227,14 +245,13 @@ namespace Hotel.ViewModel
         {
             if (!CheckInfo()) return;
             updateIdCus();
-            //mã nhân viên ?
             using (var db = new QLYHOTELEntities())
             {
                 foreach (var room in SelectedRooms)
                 {
                     var info = new DAT();
                     info.MAKH = _idCus;
-                    info.MANV = 1; // !!!!
+                    info.MANV = idnv;
                     info.MAPHONG = room.ID;
                     info.SONG = room.NumPeo;
                     info.NGAYDAT = room.DateStart;
