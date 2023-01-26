@@ -74,7 +74,7 @@
                             </TextBlock>
                             <TextBlock HorizontalAlignment="Center"
                                        x:Name="_ID"
-                                       Margin="200 0 0 0"
+                                       Margin="200 10 0 0"
                                        FontFamily="{StaticResource Pacifico}"
                                        VerticalAlignment="Top"
                                        FontWeight="Bold"
