@@ -20,7 +20,7 @@
             BorderThickness="1"
             CornerRadius="10"
             Background="#f2f1e8">
-        <ScrollViewer>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <Grid>
                 <Button HorizontalAlignment="Right"
                         Margin="10"
@@ -70,6 +70,12 @@
                                                Margin="5"
                                                FontWeight="DemiBold"
                                                FontFamily="{StaticResource HinaMincho}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Nhân viên:" FontSize="15" Margin="5"
+                                           FontFamily="{StaticResource HinaMincho}"/>
+                                    <TextBlock Text="Khôi đẹp trai" FontSize="15" Margin="5" FontWeight="DemiBold"
+                                           FontFamily="{StaticResource HinaMincho}"/>
                                 </StackPanel>
 
                             </StackPanel>
