@@ -46,6 +46,7 @@ namespace Hotel.ViewModel
         {
             BookService book = new BookService();
             book.idbook.Text = p.idbook.Text;
+            book.Uid = p.Uid;
             //p.Hide();
             book.ShowDialog();
             //p.ShowDialog();

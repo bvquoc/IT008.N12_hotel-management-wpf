@@ -14,7 +14,7 @@ namespace Hotel.ViewModel
 {
     internal class BookServiceViewModel : BaseViewModel
     {
-        private int id;
+        private int idnv;
         private ObservableCollection<ServiceVM> listSV;
 
         public ObservableCollection<ServiceVM> ListSV
@@ -37,7 +37,7 @@ namespace Hotel.ViewModel
         public ICommand Book { get; set; }
         public BookServiceViewModel()
         {
-            Load = new RelayCommand<BookService>((p) => true, (p) => { id = Convert.ToInt32(p.idbook.Text); });
+            Load = new RelayCommand<BookService>((p) => true, (p) => { idnv = Convert.ToInt32(p.Uid); });
             AddSV = new RelayCommand<object>((p) => true, (p) => addsv(p));
             RemoveSV = new RelayCommand<object>((p) => true, (p) => removesv(p));
             Cancel = new RelayCommand<BookService>((p) => true, (p) => cancel(p));
@@ -74,9 +74,9 @@ namespace Hotel.ViewModel
                     foreach (var i in ListSVBook)
                     {
                         CUNGCAP c = new CUNGCAP();
-                        c.MANV = 1; // ??
+                        c.MANV = idnv;
                         c.MADV = Convert.ToInt32(i.ID);
-                        c.MADAT = id;
+                        c.MADAT = Convert.ToInt32(p.idbook.Text);
                         c.SOLUONG = i.NumSer;
                         c.TONGTIEN = i.NumSer * i.Price;
                         db.CUNGCAPs.Add(c);

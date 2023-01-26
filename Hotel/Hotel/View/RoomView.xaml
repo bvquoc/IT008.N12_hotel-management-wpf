@@ -17,6 +17,13 @@
         <vm:RoomViewModel />
     </UserControl.DataContext>
 
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadIdStaff}"
+                                   CommandParameter="{Binding ElementName=RoomV}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Grid Background="White">
         <!--Chia khung-->
 
@@ -182,11 +189,6 @@
                 </ComboBox>
             </Grid>
         </Grid>
-        <Grid Grid.Column="1">
-
-        </Grid>
-
-
         <!--Hiện thông tin phòng-->
         <Grid Grid.Row="1"
               Grid.Column="0"
