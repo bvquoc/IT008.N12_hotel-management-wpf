@@ -334,6 +334,15 @@
                             Command="{Binding DoSomeThing}"
                             CommandParameter="{Binding ElementName=roomDetail}"
                             materialDesign:ButtonAssist.CornerRadius="8" />
+                    <Button x:Name="btnBookServiece"
+                            Content="Đặt dịch vụ"
+                            FontSize="20"
+                            FontFamily="{StaticResource Oswald}"
+                            Width="auto"
+                            Margin="0,0,380,-60"
+                            Background="Gray"
+                            materialDesign:ButtonAssist.CornerRadius="8" 
+                            Click="OpenNewWindow"/>
                 </Grid>
             </Grid>
         </StackPanel>
