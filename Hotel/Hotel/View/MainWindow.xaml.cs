@@ -9,12 +9,13 @@ namespace Hotel.View
     public partial class MainWindow : Window
     {
         public int MaNV { get; set; }
+        public string TenNV { get; set; }
         public int LoaiNV { get; set; }
         public MainWindow()
         {
             InitializeComponent();
         }
-        public MainWindow(int MaNV, int LoaiNV)
+        public MainWindow(int MaNV, string TenNV, int LoaiNV)
         {
             InitializeComponent();
             this.MaNV = MaNV;
@@ -24,6 +25,9 @@ namespace Hotel.View
                 this.menuEmployee.Visibility = Visibility.Collapsed;
                 //...
             }
+            _EID.Text = MaNV.ToString();
+            _EName.Text = TenNV.ToString();
+            LogoStaff.Uid = LoaiNV.ToString();
         }
 
         bool isMaximize = false;

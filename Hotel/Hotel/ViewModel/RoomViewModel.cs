@@ -200,7 +200,10 @@ namespace Hotel.ViewModel
                 }
             }
             else
+            {
                 r.btnAccept.Visibility = Visibility.Collapsed;
+                r.btnBookServiece.Visibility = Visibility.Collapsed;
+            }
             r.ShowDialog();
         }
     }

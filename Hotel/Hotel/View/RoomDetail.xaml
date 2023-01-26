@@ -272,7 +272,7 @@
                                                     Width="50">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding SoLuong}"
+                                                <TextBlock Text="{Binding NumSer}"
                                                            FontSize="15"
                                                            TextAlignment="Center" />
                                             </DataTemplate>
@@ -282,7 +282,7 @@
                                                     Width="200">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding ThanhTien , StringFormat={}{0:N0}}"
+                                                <TextBlock Text="{Binding Total , StringFormat={}{0:N0}}"
                                                            FontSize="15"
                                                            TextAlignment="Right"
                                                            Margin="0 0 65 0" />
@@ -341,8 +341,9 @@
                             Width="auto"
                             Margin="0,0,380,-60"
                             Background="Gray"
-                            materialDesign:ButtonAssist.CornerRadius="8" 
-                            Click="OpenNewWindow"/>
+                            Command="{Binding BookService}"
+                            CommandParameter="{Binding ElementName=roomDetail}"
+                            materialDesign:ButtonAssist.CornerRadius="8" />
                 </Grid>
             </Grid>
         </StackPanel>
