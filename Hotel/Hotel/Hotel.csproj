@@ -173,6 +173,9 @@
     <Compile Include="View\BillView.xaml.cs">
       <DependentUpon>BillView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\BookService.xaml.cs">
+      <DependentUpon>BookService.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ChangeInfoRoom.xaml.cs">
       <DependentUpon>ChangeInfoRoom.xaml</DependentUpon>
     </Compile>
@@ -215,6 +218,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\BillDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BookService.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -85,8 +85,42 @@
                 <!--Menu Buttons-->
                 <!--MouseLeftButtonDown="Phong_Click"-->
                 <!--MouseLeftButtonDown="DatPhong_Click"-->
-                <StackPanel Margin="0 160 0 0">
-
+                <StackPanel >
+                    <!--Logo nhân viên-->
+                    <StackPanel Height="160" Margin="57 0 0 0">
+                        <materialDesign:PackIcon Height="100" Width="100" Margin="-10 10 0 0"
+                                                 HorizontalAlignment="Center"
+                                                 Kind="Account" Foreground="White">
+                            <materialDesign:PackIcon.Style>
+                                <Style   TargetType="materialDesign:PackIcon">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path = Type}"
+                                                                             Value="1">
+                                            <Setter Property="Kind"
+                                                                            Value="AccountStar" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Path = Type}"
+                                                                             Value="2">
+                                            <Setter Property="Kind"
+                                                                            Value="Account" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </materialDesign:PackIcon.Style>
+                        </materialDesign:PackIcon>
+                        
+                            <TextBlock Text="Nguyễn Nguyên Khôi" Foreground="White"
+                                           FontFamily="{StaticResource Vollkorn}"
+                                       HorizontalAlignment="Center"
+                                       Margin="-10 0 0 0"
+                                           Style="{StaticResource menuButtonText}"/>
+                            <TextBlock Text="#1" Foreground="White"
+                                       HorizontalAlignment="Center" Margin="-10 0 0 0"
+                                           FontFamily="{StaticResource Vollkorn}"
+                                           Style="{StaticResource menuButtonText}"/>
+                        
+                        
+                    </StackPanel>
                     <!--Phòng-->
                     <Grid Margin="0,-17"
                           x:Name="menuRoom">
