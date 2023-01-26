@@ -24,10 +24,18 @@ namespace Hotel.ViewModel
         }
         public ICommand DoSomeThing { get; set; }
         public ICommand BookService { get; set; }
+        public ICommand LoadIdRe { get; set; }
         public RoomDetailViewModel()
         {
             DoSomeThing = new RelayCommand<RoomDetail>((p) => true, (p) => MakeSome(p));
             BookService = new RelayCommand<RoomDetail>((p) => true, (p) => MakeService(p));
+            LoadIdRe = new RelayCommand<RoomDetail>((p) => true, (p) => Loaded(p));
+        }
+        private void Loaded(RoomDetail p)
+        {
+            id = Convert.ToInt32(p.idbook.Text);
+            if (p.btnAccept.Content == "Nhận phòng")
+                p.btnBookServiece.Visibility = Visibility.Collapsed;
             loadDb();
         }
         private void loadDb()
@@ -38,7 +46,8 @@ namespace Hotel.ViewModel
                 var select = from s in db.CUNGCAPs select s;
                 foreach (var p in select)
                 {
-                    ListDV.Add(new ServiceVM() { ID = p.MADV.ToString(), Name = p.DICHVU.TENDV, NumSer = Convert.ToInt32(p.SOLUONG), Price = Convert.ToInt32(p.TONGTIEN), Total = Convert.ToInt32(p.TONGTIEN) });
+                    if (p.MADAT == id)
+                        ListDV.Add(new ServiceVM() { ID = p.MADV.ToString(), Name = p.DICHVU.TENDV, NumSer = Convert.ToInt32(p.SOLUONG), Price = Convert.ToInt32(p.TONGTIEN), Total = Convert.ToInt32(p.TONGTIEN) });
                 }
             }
         }
@@ -54,14 +63,14 @@ namespace Hotel.ViewModel
         }
         public void MakeSome(RoomDetail p)
         {
-
-            id = Int32.Parse(p.idbook.Text);
+            id = Convert.ToInt16(p.idbook.Text);
             using (var db = new QLYHOTELEntities())
             {
                 var select = (from i in db.DATs where i.MADAT == id select i).Single();
                 if (p.btnAccept.Content == "Nhận phòng")
                 {
                     select.TRANGTHAI = "Đang sử dụng";
+                    p.btnBookServiece.Visibility = Visibility.Visible;
                 }
                 else
                 {

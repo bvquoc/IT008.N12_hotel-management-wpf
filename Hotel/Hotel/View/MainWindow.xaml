@@ -23,6 +23,14 @@
     <Window.DataContext>
         <mv:NavigationViewModel />
     </Window.DataContext>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadIdStaff}"
+                                   CommandParameter="{Binding ElementName=MainAdminWindow}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Grid>
         <!--Chia khung-->
         <Grid.ColumnDefinitions>

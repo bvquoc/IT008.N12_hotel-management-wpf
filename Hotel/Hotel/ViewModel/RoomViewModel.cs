@@ -65,7 +65,7 @@ namespace Hotel.ViewModel
         public RoomViewModel()
         {
             RoomList = new ObservableCollection<RoomVM>();
-            LoadIdStaff = new RelayCommand<UserControl>((p) => true, (p) => { idnv = Convert.ToInt32(GetIdStaff(p)); });
+            LoadIdStaff = new RelayCommand<UserControl>((p) => true, (p) => idnv = Convert.ToInt32(GetIdStaff(p)));
             btnAll = new RelayCommand<object>((p) => true, (p) => LoadAllRoom());
             btnAvailabel = new RelayCommand<object>((p) => true, (p) => LoadAvailabel());
             btnOrdered = new RelayCommand<object>((p) => true, (p) => LoadOrdered());
@@ -153,7 +153,7 @@ namespace Hotel.ViewModel
                     foreach (var info in room.DATs)
                     {
                         if (info.TRANGTHAI == "Đã thanh toán") continue;
-                        if ((info.NGAYDAT.Value - TimeNow).TotalMinutes <= 20 && (info.NGAYTRA.Value - TimeNow).TotalMilliseconds > 0)
+                        if ((info.NGAYDAT.Value - TimeNow).TotalMinutes <= 20)
                         {
                             StatusRoom = info.TRANGTHAI;
                             iDBook = info.MADAT;
@@ -222,6 +222,7 @@ namespace Hotel.ViewModel
             {
                 r.btnAccept.Visibility = Visibility.Collapsed;
                 r.btnBookServiece.Visibility = Visibility.Collapsed;
+                r.idbook.Text = "0";
             }
             r.ShowDialog();
         }

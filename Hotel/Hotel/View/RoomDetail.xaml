@@ -6,6 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Hotel.View"
         xmlns:vm="clr-namespace:Hotel.ViewModel"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="RoomDetail"
         Height="600"
@@ -20,6 +21,13 @@
     <Window.DataContext>
         <vm:RoomDetailViewModel />
     </Window.DataContext>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadIdRe}"
+                                   CommandParameter="{Binding ElementName=roomDetail}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
     <Border BorderBrush="DarkGray"
             BorderThickness="1"
@@ -59,9 +67,9 @@
                                    FontWeight="Bold"
                                    Foreground="Black" />
                         <TextBlock x:Name="idbook"
-                                   Margin="140 0 0 0"
+                                   Margin="390 0 0 0"
                                    FontFamily="{StaticResource Pacifico}"
-                                   HorizontalAlignment="Center"
+                                   HorizontalAlignment="Left"
                                    VerticalAlignment="Bottom"
                                    Height="40"
                                    FontSize="20"
@@ -343,7 +351,8 @@
                             Background="Gray"
                             Command="{Binding BookService}"
                             CommandParameter="{Binding ElementName=roomDetail}"
-                            materialDesign:ButtonAssist.CornerRadius="8" />
+                            materialDesign:ButtonAssist.CornerRadius="8">
+                    </Button>
                 </Grid>
             </Grid>
         </StackPanel>

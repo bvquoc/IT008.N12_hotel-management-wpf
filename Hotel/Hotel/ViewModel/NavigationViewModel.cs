@@ -17,6 +17,7 @@ namespace Hotel.ViewModel
         private string bell = "/Images/Bell.png";
         private string bellActive = "/Images/Active.png";
         private readonly DispatcherTimer _timer;
+        private int idnv = 0;
 
         private ObservableCollection<BillVM> _lvNotify;
 
@@ -99,7 +100,7 @@ namespace Hotel.ViewModel
             get { return _visNotify; }
             set { _visNotify = value; OnPropertyChanged(); }
         }
-
+        public ICommand LoadIdStaff { get; set; }
         public ICommand LogoutCommand { get; set; }
         public ICommand GetUidCommand { get; set; }
         public ICommand MakeNavigation { get; set; }
@@ -109,6 +110,7 @@ namespace Hotel.ViewModel
 
         public NavigationViewModel()
         {
+            LoadIdStaff = new RelayCommand<MainWindow>((parameter) => true, (parameter) => { idnv = Convert.ToInt32(parameter._EID.Text); });
             LogoutCommand = new RelayCommand<Window>((parameter) => true, (parameter) => logout(parameter));
             GetUidCommand = new RelayCommand<Button>((parameter) => true, (parameter) => uid = parameter.Uid);
             MakeNavigation = new RelayCommand<Button>((parameter) => true, (parameter) => makeNavigation(parameter));
@@ -219,6 +221,7 @@ namespace Hotel.ViewModel
                     r.txblNgayDen.Text = select.NGAYDAT.Value.ToString();
                     r.txbNgayTra.Text = select.NGAYTRA.Value.ToString();
                     r.txblSoNguoi.Text = select.SONG.ToString();
+                    r.Uid = idnv.ToString();
                     if (select.TRANGTHAI == "Đã đặt")
                         r.btnAccept.Content = "Nhận phòng";
                     else

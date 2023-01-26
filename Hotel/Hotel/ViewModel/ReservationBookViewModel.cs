@@ -151,6 +151,7 @@ namespace Hotel.ViewModel
                 foreach (var room in select)
                 {
                     bool ok = true;
+                    if (room.TRANGTHAI == "Tu sửa") continue;
                     foreach (var dat in room.DATs)
                     {
                         if (dat.TRANGTHAI == "Đã thanh toán") continue;
