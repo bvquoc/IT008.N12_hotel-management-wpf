@@ -114,6 +114,7 @@ namespace Hotel.ViewModel
             p._SDT.Text = "";
             p._Account.Text = "";
             p._Password.Password = "";
+            p._Salary.Text = "";
         }
     }
 }

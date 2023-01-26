@@ -85,7 +85,7 @@ namespace Hotel.ViewModel
             infoRoom.ID.Text = r.ID.ToString();
             infoRoom._Name.Text = r.Name;
             infoRoom._Price.Text = r.Price.ToString();
-            infoRoom._Type.SelectedIndex = (r.Type == "VIP" ? 0 : 1);
+            infoRoom._Type.SelectedIndex = (r.Type == "Thường" ? 1 : 0);
             infoRoom.ShowDialog();
             LoadAllSV();
         }

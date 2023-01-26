@@ -1,4 +1,5 @@
 ﻿using Hotel.Model;
+using Hotel.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -6,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace Hotel.ViewModel
@@ -47,14 +49,18 @@ namespace Hotel.ViewModel
         private void ViewDetailBill(object p)
         {
             BillVM bill = (BillVM)p;
+            BillDetail detail = new BillDetail();
+            detail.ID.Text = bill.ID.ToString();
+            detail.Show();
         }
         private bool FilterByName(object emp)
         {
-            //if (!string.IsNullOrEmpty(TextToFilterBill))
-            //{
-            //    var empDetail = emp as BillVM;
-            //    return empDetail != null && empDetail.ID.IndexOf(TextToFilterBill, StringComparison.OrdinalIgnoreCase) >= 0;
-            //}
+            if (!string.IsNullOrEmpty(TextToFilterBill))
+            {
+                var empDetail = emp as BillVM;
+                string ID = empDetail.ID.ToString();
+                return empDetail != null && ID.IndexOf(TextToFilterBill, StringComparison.OrdinalIgnoreCase) >= 0;
+            }
             return true;
         }
         private void loadDbBill()
@@ -69,6 +75,7 @@ namespace Hotel.ViewModel
                         ListBill.Add(new BillVM() { ID = p.MADAT, RoomName = p.PHONG.TENPHONG, CustomerName = p.KHACH.TENKH, StaffName = p.NHANVIEN.TENNV, Status = p.TRANGTHAI, Total = (int)p.THANHTIEN, DateEnd = (DateTime)p.NGAYTRA });
                 }
             }
+            ServiecCollection = CollectionViewSource.GetDefaultView(ListBill);
         }
     }
 }

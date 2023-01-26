@@ -86,7 +86,7 @@
             <ScrollViewer>
                 <StackPanel>
                     <ItemsControl x:Name="lvBill"
-                                  ItemsSource="{Binding ListBill}">
+                                  ItemsSource="{Binding ServiecCollection}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Button x:Name="ButtonRoom"
