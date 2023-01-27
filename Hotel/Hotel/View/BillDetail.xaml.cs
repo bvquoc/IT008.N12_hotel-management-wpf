@@ -50,5 +50,21 @@ namespace Hotel.View
         {
             this.Close();
         }
+
+        private void instScroll_Loaded(object sender, RoutedEventArgs e)
+        {
+            listview.AddHandler(MouseWheelEvent, new RoutedEventHandler(MyMouseWheelH), true);
+        }
+        private void MyMouseWheelH(object sender, RoutedEventArgs e)
+        {
+
+            MouseWheelEventArgs eargs = (MouseWheelEventArgs)e;
+
+            double x = (double)eargs.Delta;
+
+            double y = instScroll.VerticalOffset;
+
+            instScroll.ScrollToVerticalOffset(y - x);
+        }
     }
 }
