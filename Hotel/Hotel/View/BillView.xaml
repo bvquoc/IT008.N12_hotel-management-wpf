@@ -141,6 +141,11 @@
                                                         </Setter.Value>
                                                     </Setter>
                                                 </Trigger>
+                                                <DataTrigger Binding="{Binding Status}"
+                                                             Value="Đã hủy">
+                                                    <Setter Property="Background"
+                                                            Value="#ffff66"></Setter>
+                                                </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
 
