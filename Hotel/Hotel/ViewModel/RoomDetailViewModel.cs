@@ -17,6 +17,7 @@ namespace Hotel.ViewModel
     {
         private ObservableCollection<ServiceVM> _listdv;
         public int id;
+        public int idnv;
         public ObservableCollection<ServiceVM> ListDV
         {
             get { return _listdv; }
@@ -63,7 +64,8 @@ namespace Hotel.ViewModel
         }
         public void MakeSome(RoomDetail p)
         {
-            id = Convert.ToInt16(p.idbook.Text);
+            string NameStaff;
+            int idStaff = Convert.ToInt32(p.Uid);
             using (var db = new QLYHOTELEntities())
             {
                 var select = (from i in db.DATs where i.MADAT == id select i).Single();
@@ -75,14 +77,25 @@ namespace Hotel.ViewModel
                 else
                 {
                     select.TRANGTHAI = "Đã thanh toán";
-                    select.THANHTIEN = select.PHONG.DONGIA + ListDV.Sum(i => i.Total);
+                    select.THANHTIEN = Convert.ToInt32(select.THANHTIEN) + ListDV.Sum(i => i.Total);
                 }
                 db.SaveChanges();
-            }
 
+                //get name staff
+                var staff = (from i in db.NHANVIENs where i.MANV == idStaff select i).Single();
+                NameStaff = staff.TENNV;
+            }
             p.btnAccept.Content = p.btnAccept.Content == "Thanh toán" ? "Nhận phòng" : "Thanh toán";
             if (p.btnAccept.Content == "Nhận phòng")
+            {
+                p.Hide();
+                BillDetail billDetail = new BillDetail();
+                billDetail.Uid = p.Uid; //id staff
+                billDetail.txbNhanvien.Text = NameStaff + " #" + p.Uid;
+                billDetail.ID.Text = id.ToString(); // id book
+                billDetail.Show();
                 p.Close();
+            }
         }
     }
 }

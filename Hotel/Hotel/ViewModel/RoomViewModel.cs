@@ -148,11 +148,17 @@ namespace Hotel.ViewModel
                 var select = from s in db.PHONGs select s;
                 foreach (var room in select)
                 {
-                    string StatusRoom = "Trống";
+                    string StatusRoom = room.TRANGTHAI;
                     int iDBook = 0;
                     foreach (var info in room.DATs)
                     {
-                        if (info.TRANGTHAI == "Đã thanh toán") continue;
+                        if (info.TRANGTHAI == "Đã thanh toán" || info.TRANGTHAI == "Tu sửa") continue;
+                        if ((TimeNow - info.NGAYTRA.Value).TotalMinutes > 0 && info.TRANGTHAI == "Đã đặt")
+                        {
+                            info.TRANGTHAI = "Đã thanh toán";
+                            db.SaveChanges();
+                            continue;
+                        }
                         if ((info.NGAYDAT.Value - TimeNow).TotalMinutes <= 20)
                         {
                             StatusRoom = info.TRANGTHAI;
@@ -161,8 +167,8 @@ namespace Hotel.ViewModel
                         if (StatusRoom == "Đang sử dụng")
                             break;
                     }
-                    _roomListdb.Add(new RoomVM() { ID = room.MAPHONG, Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = StatusRoom, IDBook = iDBook });
-                    RoomList.Add(new RoomVM() { ID = room.MAPHONG, Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = StatusRoom, IDBook = iDBook });
+                    _roomListdb.Add(new RoomVM() { ID = room.MAPHONG, Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = StatusRoom, IDBook = iDBook, Price = room.DONGIA.Value });
+                    RoomList.Add(new RoomVM() { ID = room.MAPHONG, Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = StatusRoom, IDBook = iDBook, Price = room.DONGIA.Value });
                 }
             }
             sortFloordb();
@@ -200,7 +206,7 @@ namespace Hotel.ViewModel
         {
             var room = (RoomVM)p;
             RoomDetail r = new RoomDetail();
-            if (room.Status != "Trống")
+            if (room.Status != "Trống" && room.Status != "Tu sửa")
             {
                 using (var db = new QLYHOTELEntities())
                 {

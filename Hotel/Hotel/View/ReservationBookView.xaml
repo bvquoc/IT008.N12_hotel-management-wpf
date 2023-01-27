@@ -405,10 +405,10 @@
                                 </GridViewColumn>
                                 <GridViewColumn  Header="Ngày BD"
                                                  Width="125"
-                                                 DisplayMemberBinding="{Binding DateStart }" />
+                                                 DisplayMemberBinding="{Binding DateStart, StringFormat={}{0:yy.MM.dd HH:mm} }" />
                                 <GridViewColumn  Header="Ngày KT"
                                                  Width="125"
-                                                 DisplayMemberBinding="{Binding DateEnd}" />
+                                                 DisplayMemberBinding="{Binding DateEnd, StringFormat={}{0:yy.MM.dd HH:mm}}" />
                                 <GridViewColumn Width="50"
                                                 Header="Xóa">
                                     <GridViewColumn.CellTemplate>
