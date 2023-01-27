@@ -79,7 +79,8 @@
                                    Foreground="Black" />
                     </Grid>
                 </Border>
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="1"
+                      Margin="80 0 0 0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"></RowDefinition>
                         <RowDefinition Height="50"></RowDefinition>
@@ -127,7 +128,7 @@
                                                  Height="35"
                                                  Margin="20 0 0 0" />
                         <TextBlock x:Name="txbPhoneNumber"
-                                   FontSize="15"
+                                   FontSize="20"
                                    VerticalAlignment="Center"
                                    Margin="10 0 0 0"></TextBlock>
                     </StackPanel>
@@ -141,7 +142,7 @@
                                                  Height="35"
                                                  Margin="20 0 0 0" />
                         <TextBlock x:Name="txbAddress"
-                                   FontSize="15"
+                                   FontSize="20"
                                    VerticalAlignment="Center"
                                    Margin="10 0 0 0"></TextBlock>
                     </StackPanel>
@@ -155,17 +156,17 @@
                                                  Height="35"
                                                  Margin="20 0 0 0" />
                         <TextBlock x:Name="txbSex"
-                                   FontSize="15"
+                                 FontSize="20"
                                    VerticalAlignment="Center"
                                    Margin="10 0 0 0"></TextBlock>
                     </StackPanel>
 
                 </Grid>
                 <Grid Grid.Row="2"
-                      Width="600"
+                      Width="610"
                       Height="225">
                     <Grid.Clip>
-                        <RectangleGeometry Rect="0 0 600 225"
+                        <RectangleGeometry Rect="0 0 610 225"
                                            RadiusX="10"
                                            RadiusY="10" />
                     </Grid.Clip>
@@ -180,6 +181,7 @@
                                 </Style>
                             </ListView.ItemContainerStyle>
                             <ListView.View>
+                                
                                 <GridView>
                                     <GridView.ColumnHeaderContainerStyle>
                                         <Style TargetType="{x:Type GridViewColumnHeader}">
@@ -191,6 +193,15 @@
                                                     Value="Bold" />
                                             <Setter Property="FontFamily"
                                                     Value="{StaticResource Mali}" />
+                                            <Setter Property="IsEnabled"
+                                            Value="False" />
+                                            <Style.Triggers>
+                                                <Trigger Property="IsEnabled"
+                                                 Value="False">
+                                                    <Setter Property="TextElement.Foreground"
+                                                    Value="Black" />
+                                                </Trigger>
+                                            </Style.Triggers>
                                         </Style>
                                     </GridView.ColumnHeaderContainerStyle>
                                     <GridViewColumn  Header="Tên phòng"
@@ -219,19 +230,19 @@
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding EndDate, StringFormat={}{0:yy.MM.dd HH:mm}}"
                                                            FontSize="15"
-                                                           TextAlignment="Right"
-                                                           Margin="0 0 65 0" />
+                                                           TextAlignment="Center"
+                                                           />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn Header="Tình trạng"
-                                                    Width="100">
+                                                    Width="110">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding Status}"
                                                            FontSize="15"
-                                                           TextAlignment="Right"
-                                                           Margin="0 0 65 0" />
+                                                           TextAlignment="Left"
+                                                           />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
