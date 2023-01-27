@@ -180,8 +180,14 @@
     <Compile Include="View\ChangeInfoRoom.xaml.cs">
       <DependentUpon>ChangeInfoRoom.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\CustomerDetail.xaml.cs">
+      <DependentUpon>CustomerDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CustomerManagementView.xaml.cs">
       <DependentUpon>CustomerManagementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DashBoardView.xaml.cs">
+      <DependentUpon>DashBoardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\DialogCustomize.xaml.cs">
       <DependentUpon>DialogCustomize.xaml</DependentUpon>
@@ -227,6 +233,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ChangeInfoRoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CustomerDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DashBoardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
