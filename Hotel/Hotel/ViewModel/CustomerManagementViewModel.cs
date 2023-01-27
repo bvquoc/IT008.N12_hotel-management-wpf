@@ -1,4 +1,5 @@
 ﻿using Hotel.Model;
+using Hotel.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Input;
 
 namespace Hotel.ViewModel
 {
@@ -35,9 +37,10 @@ namespace Hotel.ViewModel
             get { return _customerCollection; }
             set { _customerCollection = value; OnPropertyChanged(); }
         }
+        public ICommand GetDetail { get; set; }
         public CustomerManagementViewModel()
         {
-
+            GetDetail = new RelayCommand<object>((p) => true, p => ViewDetail(p));
             LoadDb();
         }
         private void LoadDb()
@@ -62,6 +65,18 @@ namespace Hotel.ViewModel
                 return empDetail != null && empDetail.Name.IndexOf(TextToFilterCu, StringComparison.OrdinalIgnoreCase) >= 0;
             }
             return true;
+        }
+        private void ViewDetail(object p)
+        {
+            var cus = (CustomerManagementVM)p;
+            CustomerDetail detail = new CustomerDetail();
+            detail.txblTenKH.Text = cus.Name;
+            detail.txblCCCD.Text = cus.CCCD;
+            detail.txbPhoneNumber.Text = cus.SDT;
+            detail.txbAddress.Text = cus.DiaChi;
+            detail.txbSex.Text = cus.Sex;
+            detail._IDCus.Text = cus.MaKh.ToString();
+            detail.Show();
         }
     }
 }

@@ -84,7 +84,7 @@
               HorizontalAlignment="Center">
             <ScrollViewer>
                 <StackPanel>
-                    <ItemsControl x:Name="lvRoom"
+                    <ItemsControl x:Name="lvCus"
                                   ItemsSource="{Binding CustomerCollection}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
@@ -94,7 +94,9 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Margin="15"
-                                        RenderTransformOrigin="0.5,0.5">
+                                        RenderTransformOrigin="0.5,0.5"
+                                        Command="{Binding ElementName=lvCus, Path=DataContext.GetDetail}"
+                                        CommandParameter="{Binding}">
                                     <Button.Resources>
                                         <Style x:Key="ScaleStyle"
                                                TargetType="Grid">
