@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="EmployeeDetail"
-        Height="520"
+        Height="560"
         Width="650"
         Background="Transparent"
         WindowStyle="None"
@@ -51,6 +51,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50" />
                         <RowDefinition Height="50" />
+                        <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
@@ -234,6 +235,30 @@
                                  VerticalAlignment="Center">
                         </TextBox>
                     </Grid>
+                    <Grid Background="Transparent"
+                          Grid.Row="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="400" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Bottom">
+                            <materialDesign:PackIcon Kind="Dollar"
+                                                     Width="25"
+                                                     Height="25" />
+                        </Grid>
+
+                        <TextBox x:Name="_TotalSalary"
+                                 FontFamily="{StaticResource Vollkorn}"
+                                 PreviewTextInput="PreviewTextInput"
+                                 Grid.Column="2"
+                                 materialDesign:HintAssist.Hint="Tổng lương"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 VerticalAlignment="Center">
+                        </TextBox>
+                    </Grid>
 
 
                 </Grid>
@@ -326,6 +351,13 @@
                                 CommandParameter="{Binding ElementName=employeeDetail}"
                                 FontFamily="{StaticResource Oswald}"
                                 Background="DarkCyan"
+                                BorderBrush="Transparent" />
+                        <Button Content="Thanh toán lương"
+                                materialDesign:ButtonAssist.CornerRadius="8"
+                                Margin="0 0 350 10"
+                                Width="130"
+                                FontFamily="{StaticResource Oswald}"
+                                Background="DarkKhaki"
                                 BorderBrush="Transparent" />
                         <Button Content="Hủy"
                                 materialDesign:ButtonAssist.CornerRadius="8"
