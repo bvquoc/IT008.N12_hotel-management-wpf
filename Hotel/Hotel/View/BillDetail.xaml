@@ -48,7 +48,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="120" />
                         <RowDefinition Height="170" />
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="300" />
                     </Grid.RowDefinitions>
 
@@ -72,8 +72,8 @@
                                 Margin="20 20 20 10">
                         <Grid HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0"
                                         Margin="10">
@@ -82,7 +82,7 @@
                                                FontSize="20"
                                                Margin="5"
                                                FontFamily="{StaticResource HinaMincho}" />
-                                    <TextBlock Text="04 Jul 2019"
+                                    <TextBlock x:Name="_date"
                                                FontSize="20"
                                                Margin="5"
                                                FontWeight="DemiBold"
@@ -163,30 +163,31 @@
                                 <RowDefinition Height="Auto"></RowDefinition>
                             </Grid.RowDefinitions>
                             <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                  ItemsSource="{ Binding ListSVbook}"
+                                      ItemsSource="{ Binding ListSVbook}"
                                       Grid.Row="0">
                                 <ListView.Resources>
                                     <Style TargetType="GridViewColumnHeader">
-                                        <Setter Property="Template" Value="{x:Null}" />
+                                        <Setter Property="Template"
+                                                Value="{x:Null}" />
                                         <!-- way better. -->
                                     </Style>
                                 </ListView.Resources>
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Width="219"
-                                            DisplayMemberBinding="{Binding Name}"/>
+                                                        DisplayMemberBinding="{Binding Name}" />
                                         <GridViewColumn Width="73"
-                                            DisplayMemberBinding="{Binding Price}"/>
+                                                        DisplayMemberBinding="{Binding Price, StringFormat={}{0:N0}}" />
                                         <GridViewColumn Width="73"
-                                            DisplayMemberBinding="{Binding NumSer}"/>
+                                                        DisplayMemberBinding="{Binding NumSer}" />
                                         <GridViewColumn Width="73"
-                                            DisplayMemberBinding="{Binding Total}"/>
+                                                        DisplayMemberBinding="{Binding Total, StringFormat={}{0:N0}}" />
                                     </GridView>
                                 </ListView.View>
 
                             </ListView>
                         </Grid>
-                        
+
                     </StackPanel>
                     <StackPanel Grid.Row="2"
                                 Margin="20 0 20 0">
@@ -196,24 +197,25 @@
                             </Grid.RowDefinitions>
                             <ListView ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                                       x:Name="listview"
-                                  ItemsSource="{ Binding ListSVbook}"
+                                      ItemsSource="{ Binding ListSVbook}"
                                       Grid.Row="0">
                                 <ListView.Resources>
                                     <Style TargetType="GridViewColumnHeader">
-                                        <Setter Property="Template" Value="{x:Null}" />
+                                        <Setter Property="Template"
+                                                Value="{x:Null}" />
                                         <!-- way better. -->
                                     </Style>
                                 </ListView.Resources>
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Width="219"
-                                            DisplayMemberBinding="{Binding Name}"/>
+                                                        DisplayMemberBinding="{Binding Name}" />
                                         <GridViewColumn Width="73"
-                                            DisplayMemberBinding="{Binding Price}"/>
+                                                        DisplayMemberBinding="{Binding Price, StringFormat={}{0:N0}}" />
                                         <GridViewColumn Width="73"
-                                            DisplayMemberBinding="{Binding NumSer}"/>
+                                                        DisplayMemberBinding="{Binding NumSer}" />
                                         <GridViewColumn Width="73"
-                                            DisplayMemberBinding="{Binding Total}"/>
+                                                        DisplayMemberBinding="{Binding Total, StringFormat={}{0:N0}}" />
                                     </GridView>
                                 </ListView.View>
 
@@ -275,12 +277,51 @@
 
                             </StackPanel>
                             <StackPanel Grid.Column="1">
-                                <TextBlock Text="$ 1,590.00"
-                                           FontSize="25"
-                                           Margin="5"
-                                           HorizontalAlignment="Right"
-                                           Foreground="#FF62013C"
-                                           FontWeight="Bold" />
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Right">
+                                    <TextBlock Text="{Binding TotalMoney, StringFormat={}{0:N0}}"
+                                               FontSize="25"
+                                               Margin="5"
+                                               HorizontalAlignment="Right"
+                                               Foreground="#FF62013C"
+                                               FontWeight="Bold" />
+                                    <TextBlock Text="$"
+                                               FontSize="25"
+                                               Margin="5"
+                                               HorizontalAlignment="Right"
+                                               Foreground="#FF62013C"
+                                               FontWeight="Bold" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Right">
+                                    <TextBlock Text="{Binding Deposits, StringFormat={}{0:N0}}"
+                                               FontSize="15"
+                                               Margin="5"
+                                               HorizontalAlignment="Right"
+                                               Foreground="#FF62013C"
+                                               FontWeight="Bold" />
+                                    <TextBlock Text="$"
+                                               FontSize="15"
+                                               Margin="5"
+                                               HorizontalAlignment="Right"
+                                               Foreground="#FF62013C"
+                                               FontWeight="Bold" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Right">
+                                    <TextBlock Text="{Binding MoneyPaid, StringFormat={}{0:N0}}"
+                                               FontSize="15"
+                                               Margin="5"
+                                               HorizontalAlignment="Right"
+                                               Foreground="#FF62013C"
+                                               FontWeight="Bold" />
+                                    <TextBlock Text="$"
+                                               FontSize="15"
+                                               Margin="5"
+                                               HorizontalAlignment="Right"
+                                               Foreground="#FF62013C"
+                                               FontWeight="Bold" />
+                                </StackPanel>
                             </StackPanel>
                         </Grid>
                         <Rectangle Fill="Black"

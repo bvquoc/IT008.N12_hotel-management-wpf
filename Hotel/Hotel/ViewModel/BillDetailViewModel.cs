@@ -17,6 +17,24 @@ namespace Hotel.ViewModel
         private int idbook;
         private ObservableCollection<ServiceVM> listSVbook;
 
+        private int totalMoney;
+        public int TotalMoney
+        {
+            get { return totalMoney; }
+            set { totalMoney = value; OnPropertyChanged(); }
+        }
+        private int deposits;
+        public int Deposits
+        {
+            get { return deposits; }
+            set { deposits = value; OnPropertyChanged(); }
+        }
+        private int moneyPaid;
+        public int MoneyPaid
+        {
+            get { return moneyPaid; }
+            set { moneyPaid = value; OnPropertyChanged(); }
+        }
         public ObservableCollection<ServiceVM> ListSVbook
         {
             get { return listSVbook; }
@@ -36,37 +54,29 @@ namespace Hotel.ViewModel
 
             idbook = Convert.ToInt32(p.ID.Text);
 
-
+            int Tongtien = 0;
+            int RoomMoney = 0;
             using (var db = new QLYHOTELEntities())
             {
                 var select = (from i in db.DATs where i.MADAT == idbook select i).Single();
                 if (p.txbNhanvien.Text == "")
                     p.txbNhanvien.Text = select.NHANVIEN.TENNV + " #" + select.MANV.ToString();
-
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
-
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
-
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
-
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
-                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
+                foreach (var item in select.CUNGCAPs)
+                {
+                    ListSVbook.Add(new ServiceVM() { Name = item.DICHVU.TENDV, Price = (int)item.DICHVU.DONGIA, NumSer = (int)item.SOLUONG, Total = (int)item.TONGTIEN });
+                    Tongtien += (int)item.TONGTIEN;
+                }
+                int NumTime = Convert.ToInt32((select.NGAYTRA.Value - select.NGAYDAT.Value).TotalHours);
+                RoomMoney = NumTime * select.PHONG.DONGIA.Value;
+                Tongtien += RoomMoney;
+                ListSVbook.Add(new ServiceVM() { Name = "Tiền phòng", Price = (int)select.PHONG.DONGIA, NumSer = 1, Total = RoomMoney });
+                select.THANHTIEN = Tongtien;
+                db.SaveChanges();
+                p._date.Text = select.NGAYTRA.Value.ToString();
             }
+            TotalMoney = Tongtien;
+            Deposits = -RoomMoney / 2;
+            MoneyPaid = Tongtien - (RoomMoney / 2);
         }
     }
 }

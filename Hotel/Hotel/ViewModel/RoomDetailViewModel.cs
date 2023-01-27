@@ -78,7 +78,6 @@ namespace Hotel.ViewModel
                 else
                 {
                     select.TRANGTHAI = "Đã thanh toán";
-                    select.THANHTIEN = Convert.ToInt32(select.THANHTIEN) + ListDV.Sum(i => i.Total);
                 }
                 db.SaveChanges();
 
@@ -107,6 +106,7 @@ namespace Hotel.ViewModel
                 select.TRANGTHAI = p.cbTrangthai.SelectionBoxItem.ToString();
                 db.SaveChanges();
             }
+            p.Close();
         }
     }
 }

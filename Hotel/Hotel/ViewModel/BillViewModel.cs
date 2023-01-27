@@ -49,10 +49,19 @@ namespace Hotel.ViewModel
         private void ViewDetailBill(object p)
         {
             BillVM bill = (BillVM)p;
-            BillDetail detail = new BillDetail();
-            detail.ID.Text = bill.ID.ToString();
-            detail.Uid = "0";
-            detail.Show();
+            using (var db = new QLYHOTELEntities())
+            {
+                var select = (from i in db.DATs where i.MADAT == bill.ID select i).Single();
+                if (select.TRANGTHAI == "Đã hủy")
+                    new DialogCustomize("Đơn đặt phòng đã bị hủy!").ShowDialog();
+                else
+                {
+                    BillDetail detail = new BillDetail();
+                    detail.ID.Text = bill.ID.ToString();
+                    detail.Uid = "0";
+                    detail.Show();
+                }
+            }
         }
         private bool FilterByName(object emp)
         {
@@ -72,7 +81,7 @@ namespace Hotel.ViewModel
                 var select = from s in db.DATs select s;
                 foreach (var p in select)
                 {
-                    if (p.TRANGTHAI == "Đã thanh toán")
+                    if (p.TRANGTHAI == "Đã thanh toán" || p.TRANGTHAI == "Đã hủy")
                         ListBill.Add(new BillVM() { ID = p.MADAT, RoomName = p.PHONG.TENPHONG, CustomerName = p.KHACH.TENKH, StaffName = p.NHANVIEN.TENNV, Status = p.TRANGTHAI, Total = (int)p.THANHTIEN, DateEnd = (DateTime)p.NGAYTRA });
                 }
             }

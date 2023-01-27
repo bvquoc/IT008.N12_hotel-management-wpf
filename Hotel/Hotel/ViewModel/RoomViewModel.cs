@@ -152,11 +152,10 @@ namespace Hotel.ViewModel
                     int iDBook = 0;
                     foreach (var info in room.DATs)
                     {
-                        if (info.TRANGTHAI == "Đã thanh toán" || info.TRANGTHAI == "Tu sửa") continue;
+                        if (info.TRANGTHAI == "Đã thanh toán" || info.TRANGTHAI == "Tu sửa" || info.TRANGTHAI == "Đã hủy") continue;
                         if ((TimeNow - info.NGAYTRA.Value).TotalMinutes > 0 && info.TRANGTHAI == "Đã đặt")
                         {
-                            info.TRANGTHAI = "Đã thanh toán";
-                            db.SaveChanges();
+                            info.TRANGTHAI = "Đã hủy";
                             continue;
                         }
                         if ((info.NGAYDAT.Value - TimeNow).TotalMinutes <= 20)
@@ -170,6 +169,7 @@ namespace Hotel.ViewModel
                     _roomListdb.Add(new RoomVM() { ID = room.MAPHONG, Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = StatusRoom, IDBook = iDBook, Price = room.DONGIA.Value });
                     RoomList.Add(new RoomVM() { ID = room.MAPHONG, Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = StatusRoom, IDBook = iDBook, Price = room.DONGIA.Value });
                 }
+                db.SaveChanges();
             }
             sortFloordb();
             sortFloor();
