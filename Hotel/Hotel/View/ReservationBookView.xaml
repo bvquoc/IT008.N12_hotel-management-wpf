@@ -250,10 +250,12 @@
                         materialDesign:ButtonAssist.CornerRadius="8"
                         Margin="0 10 30 10"
                         Command="{Binding CancelReservate}"
+                        FontFamily="{StaticResource Oswald}"
                         CommandParameter="{Binding ElementName=ReservationView}"
                         Background="OrangeRed"
                         BorderBrush="Transparent" />
                 <Button Content="Lưu"
+                        FontFamily="{StaticResource Oswald}"
                         Margin="0 10 -130 10"
                         materialDesign:ButtonAssist.CornerRadius="8"
                         Command="{Binding SaveReservate}"
@@ -323,7 +325,7 @@
                                                 DisplayMemberBinding="{Binding  Path = Description }" />
                                 <GridViewColumn Width="54"
                                                 Header="Thêm">
-                                    <GridViewColumn.CellTemplate>
+                                    <GridViewColumn.CellTemplate>   
                                         <DataTemplate>
                                             <Button Width="25"
                                                     Height="25"
@@ -365,6 +367,12 @@
                               ItemsSource="{Binding SelectedRooms}"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                               ScrollViewer.VerticalScrollBarVisibility="Auto">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment"
+                                    Value="Stretch" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView>
                                 <GridView.ColumnHeaderContainerStyle>
@@ -405,10 +413,24 @@
                                 </GridViewColumn>
                                 <GridViewColumn  Header="Ngày BD"
                                                  Width="125"
-                                                 DisplayMemberBinding="{Binding DateStart, StringFormat={}{0:yy.MM.dd HH:mm} }" />
+                                                 >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding DateStart, StringFormat={}{0:yy.MM.dd HH:mm} }"
+                                                       TextAlignment="Center"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                                 <GridViewColumn  Header="Ngày KT"
                                                  Width="125"
-                                                 DisplayMemberBinding="{Binding DateEnd, StringFormat={}{0:yy.MM.dd HH:mm}}" />
+                                                 >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding DateEnd, StringFormat={}{0:yy.MM.dd HH:mm} }"
+                                                       TextAlignment="Center"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                                 <GridViewColumn Width="50"
                                                 Header="Xóa">
                                     <GridViewColumn.CellTemplate>

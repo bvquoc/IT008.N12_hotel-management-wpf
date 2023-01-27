@@ -48,6 +48,24 @@ namespace Hotel.ViewModel
                 ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
                 ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
                 ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
+
+                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
+                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
+                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
+                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
+                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
+
+                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
+                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
+                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
+                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
+                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
+
+                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
+                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
+                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
+                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
+                ListSVbook.Add(new ServiceVM() { Name = "Thịt chó", Price = 90000, NumSer = 3, Total = 210000 });
             }
         }
     }
