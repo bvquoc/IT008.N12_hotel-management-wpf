@@ -12,6 +12,7 @@ namespace Hotel.ViewModel
 {
     internal class NavigationViewModel : BaseViewModel
     {
+        private int secondReset = 2;
         private double FontBase = 12;
         private double _isHome;
         private string bell = "/Images/Bell.png";
@@ -132,7 +133,7 @@ namespace Hotel.ViewModel
             VisNotify = "Hidden";
 
             //timer
-            _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(5) };
+            _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(secondReset) };
             _timer.Start();
             _timer.Tick += (o, e) => checkNotify();
 
