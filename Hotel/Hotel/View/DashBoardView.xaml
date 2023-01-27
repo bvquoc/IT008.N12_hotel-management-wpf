@@ -5,11 +5,101 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hotel.View"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              x:Name="DashBoard"
              Style="{StaticResource Page_Style}">
-    <Grid>
-            
+    <Grid Background="White">
+        <StackPanel>
+            <WrapPanel HorizontalAlignment="Center">
+                <Border BorderBrush="White" BorderThickness="5" Margin="20 0" CornerRadius="15">
+                    <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth0" UniformCornerRadius="15" BorderThickness="5"
+                         BorderBrush="White" Width="110" Height="130" Background="#F6F6F8">
+                        <StackPanel Margin="10">
+                            <materialDesign:PackIcon Kind="AttachMoney" Foreground="#e6e600" />
+                            <TextBlock FontSize="12" Text="Doanh thu" Margin="0 10 0 0"/>
+                            <TextBlock FontWeight="SemiBold" FontSize="25" Text="280"  />
+                            <TextBlock FontSize="12" Text="triệu/tháng" />
+                        </StackPanel>
+                    </materialDesign:Card>
+                </Border>
+                <Border BorderBrush="White" BorderThickness="5" Margin="20 0" CornerRadius="15">
+                    <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth0" UniformCornerRadius="15" BorderThickness="5"
+                         BorderBrush="White" Width="110" Height="130" Background="#F6F6F8">
+                        <StackPanel Margin="10">
+                            <materialDesign:PackIcon Kind="Human">
+                                <materialDesign:PackIcon.Foreground>
+                                    <LinearGradientBrush StartPoint="1,0" EndPoint="0.5,1">
+                                        <GradientStop Color="#912A73" Offset="0" />
+                                        <GradientStop Color="#FA8E22" Offset="1" />
+                                    </LinearGradientBrush>
+                                </materialDesign:PackIcon.Foreground>
+                            </materialDesign:PackIcon>
+                            <TextBlock FontSize="12" Text="Số lượng khách" Margin="0 10 0 0"/>
+                            <TextBlock FontWeight="SemiBold" FontSize="25" Text="690K"  />
+                            <TextBlock FontSize="12" Text="người/tháng" />
+                        </StackPanel>
+                    </materialDesign:Card>
+                </Border>
+                <Border BorderBrush="White" BorderThickness="5" Margin="20 0" CornerRadius="15">
+                    <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth0" UniformCornerRadius="15" BorderThickness="5"
+                         BorderBrush="White" Width="110" Height="130" Background="#F6F6F8">
+                        <StackPanel Margin="10">
+                            <materialDesign:PackIcon Kind="Invoice" Foreground="Red" />
+                            <TextBlock FontSize="12" Text="Số hóa đơn" Margin="0 10 0 0"/>
+                            <TextBlock FontWeight="SemiBold" FontSize="25" Text="2.3M"  />
+                            <TextBlock FontSize="12" Text="hóa đơn/tháng" />
+                        </StackPanel>
+                    </materialDesign:Card>
+                </Border>
+                <Border BorderBrush="White" BorderThickness="5" Margin="20 0" CornerRadius="15">
+                    <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth0" UniformCornerRadius="15" BorderThickness="5"
+                         BorderBrush="White" Width="110" Height="130" Background="#F6F6F8">
+                        <StackPanel Margin="10">
+                            <materialDesign:PackIcon Kind="Diamond" Foreground="#29A3EC" />
+                            <TextBlock FontSize="12" Text="Lương nhân viên" Margin="0 10 0 0"/>
+                            <TextBlock FontWeight="SemiBold" FontSize="25" Text="60K"  />
+                            <TextBlock FontSize="12" Text="triệu/tháng" />
+                        </StackPanel>
+                    </materialDesign:Card>
+                </Border>
+            </WrapPanel>
+            <Grid Height="310">
+                <lvc:CartesianChart Background="#222E31">
+                    <lvc:CartesianChart.Series>
+                        <lvc:LineSeries Values="{Binding Values1}" 
+                       StrokeThickness="4" 
+                       StrokeDashArray="2" 
+                       Stroke="#6BBA45" 
+                       Fill="Transparent" 
+                       LineSmoothness="0" 
+                       PointGeometry="{x:Null}" />
+                    </lvc:CartesianChart.Series>
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis IsMerged="True">
+                            <lvc:Axis.Separator>
+                                <lvc:Separator StrokeThickness="1" StrokeDashArray="2">
+                                    <lvc:Separator.Stroke>
+                                        <SolidColorBrush Color="#404F56" />
+                                    </lvc:Separator.Stroke>
+                                </lvc:Separator>
+                            </lvc:Axis.Separator>
+                        </lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis IsMerged="True">
+                            <lvc:Axis.Separator>
+                                <lvc:Separator StrokeThickness="1.5" StrokeDashArray="4">
+                                    <lvc:Separator.Stroke>
+                                        <SolidColorBrush Color="#404F56" />
+                                    </lvc:Separator.Stroke>
+                                </lvc:Separator>
+                            </lvc:Axis.Separator>
+                        </lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>
+            </Grid>
+        </StackPanel>
     </Grid>
 </UserControl>
