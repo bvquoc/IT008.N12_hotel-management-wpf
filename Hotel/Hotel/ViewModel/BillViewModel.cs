@@ -51,6 +51,7 @@ namespace Hotel.ViewModel
             BillVM bill = (BillVM)p;
             BillDetail detail = new BillDetail();
             detail.ID.Text = bill.ID.ToString();
+            detail.Uid = "0";
             detail.Show();
         }
         private bool FilterByName(object emp)
