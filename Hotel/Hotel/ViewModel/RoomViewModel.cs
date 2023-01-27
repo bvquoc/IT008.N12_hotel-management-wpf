@@ -222,6 +222,7 @@ namespace Hotel.ViewModel
                         r.btnAccept.Content = "Nhận phòng";
                     else
                         r.btnAccept.Content = "Thanh toán";
+                    r.btnSave.Visibility = Visibility.Collapsed;
                 }
             }
             else
@@ -229,6 +230,11 @@ namespace Hotel.ViewModel
                 r.btnAccept.Visibility = Visibility.Collapsed;
                 r.btnBookServiece.Visibility = Visibility.Collapsed;
                 r.idbook.Text = "0";
+                r.Uid = room.ID.ToString();
+                if (room.Status == "Trống")
+                    r.cbTrangthai.SelectedIndex = 0;
+                else
+                    r.cbTrangthai.SelectedIndex = 1;
             }
             r.ShowDialog();
         }

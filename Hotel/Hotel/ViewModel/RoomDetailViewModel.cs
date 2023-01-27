@@ -17,7 +17,6 @@ namespace Hotel.ViewModel
     {
         private ObservableCollection<ServiceVM> _listdv;
         public int id;
-        public int idnv;
         public ObservableCollection<ServiceVM> ListDV
         {
             get { return _listdv; }
@@ -26,11 +25,13 @@ namespace Hotel.ViewModel
         public ICommand DoSomeThing { get; set; }
         public ICommand BookService { get; set; }
         public ICommand LoadIdRe { get; set; }
+        public ICommand SaveStatus { get; set; }
         public RoomDetailViewModel()
         {
             DoSomeThing = new RelayCommand<RoomDetail>((p) => true, (p) => MakeSome(p));
             BookService = new RelayCommand<RoomDetail>((p) => true, (p) => MakeService(p));
             LoadIdRe = new RelayCommand<RoomDetail>((p) => true, (p) => Loaded(p));
+            SaveStatus = new RelayCommand<RoomDetail>((p) => true, (p) => savedb(p));
         }
         private void Loaded(RoomDetail p)
         {
@@ -95,6 +96,16 @@ namespace Hotel.ViewModel
                 billDetail.ID.Text = id.ToString(); // id book
                 billDetail.Show();
                 p.Close();
+            }
+        }
+        private void savedb(RoomDetail p)
+        {
+            int idRoom = Convert.ToInt32(p.Uid);
+            using (var db = new QLYHOTELEntities())
+            {
+                var select = (from i in db.PHONGs where i.MAPHONG == idRoom select i).Single();
+                select.TRANGTHAI = p.cbTrangthai.SelectionBoxItem.ToString();
+                db.SaveChanges();
             }
         }
     }

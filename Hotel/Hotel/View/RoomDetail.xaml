@@ -46,7 +46,7 @@
                     <Setter Property="FontSize"
                             Value="15" />
                     <Setter Property="FontFamily"
-                            Value="{StaticResource Vollkorn}"/>
+                            Value="{StaticResource Vollkorn}" />
                 </Style>
             </StackPanel.Resources>
             <Grid>
@@ -180,10 +180,10 @@
                     <Grid Width="400"
                           Height="185">
                         <Grid.RowDefinitions>
-                            
+
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        
+
                         <Grid Grid.Row="1">
                             <TextBlock FontSize="25"
                                        Text="Cập nhật tình trạng phòng"
@@ -193,14 +193,13 @@
                             <ComboBox HorizontalAlignment="Center"
                                       VerticalAlignment="Center"
                                       Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                                      Text=""
-                                      x:Name="cbDonDep"
+                                      x:Name="cbTrangthai"
                                       Height="38"
                                       Padding="7"
                                       Width="200">
                                 <ComboBoxItem Content="Trống" />
                                 <ComboBoxItem Content="Tu sửa" />
-                                
+
                             </ComboBox>
                         </Grid>
 
@@ -315,6 +314,8 @@
                             Content="Lưu"
                             FontFamily="{StaticResource Oswald}"
                             FontSize="20"
+                            Command="{Binding SaveStatus}"
+                            CommandParameter="{Binding ElementName=roomDetail}"
                             Margin="0,0,21,-60"
                             materialDesign:ButtonAssist.CornerRadius="8" />
                     <Button x:Name="btnAccept"
