@@ -196,6 +196,7 @@ namespace Hotel.ViewModel
                 Description = SelectedRoom.Description,
                 Status = SelectedRoom.Status,
                 NumPeo = SelectedRoom.NumPeo,
+                Price = SelectedRoom.Price,
                 DateStart = new DateTime(DateStart.Year, DateStart.Month, DateStart.Day, TimeStart.Hour, TimeStart.Minute, TimeStart.Second),
                 DateEnd = new DateTime(DateEnd.Year, DateEnd.Month, DateEnd.Day, TimeEnd.Hour, TimeEnd.Minute, TimeEnd.Second)
             });
@@ -262,7 +263,7 @@ namespace Hotel.ViewModel
                     info.SONG = room.NumPeo;
                     info.NGAYDAT = room.DateStart;
                     info.NGAYTRA = room.DateEnd;
-                    info.THANHTIEN = room.Price; // ???
+                    info.THANHTIEN = (Convert.ToInt32((info.NGAYTRA.Value - info.NGAYDAT.Value).TotalHours) * room.Price) / 2;
                     info.TRANGTHAI = "Đã đặt";
                     db.DATs.Add(info);
                     db.SaveChanges();
