@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 
@@ -101,7 +102,7 @@ namespace Hotel.ViewModel
         public ICommand SaveReservate { get; set; }
         public ReservationBookViewModel()
         {
-            LoadIdStaff = new RelayCommand<UserControl>((p) => true, (p) => { idnv = Convert.ToInt32(GetIdStaff(p)); });
+            LoadIdStaff = new RelayCommand<ReservationBookView>((p) => true, (p) => { idnv = Convert.ToInt32(GetIdStaff(p)); });
             ChoseRoom = new RelayCommand<object>((p) => true, (p) => addRoom(p));
             DeleteSelected = new RelayCommand<object>((p) => true, (p) => deleteSelected(p));
             CancelReservate = new RelayCommand<ReservationBookView>((p) => true, (p) => Reload(p));
@@ -115,13 +116,13 @@ namespace Hotel.ViewModel
             clearInfo();
             LoadRoom();
         }
-        private string GetIdStaff(UserControl p)
+        private string GetIdStaff(ReservationBookView p)
         {
             FrameworkElement window = GetParent(p);
             var w = window as MainWindow;
             return w._EID.Text;
         }
-        FrameworkElement GetParent(UserControl p)
+        FrameworkElement GetParent(ReservationBookView p)
         {
             FrameworkElement parent = p;
             while (parent.Parent != null)
@@ -155,8 +156,10 @@ namespace Hotel.ViewModel
                     foreach (var dat in room.DATs)
                     {
                         if (dat.TRANGTHAI == "Đã thanh toán") continue;
-                        if (DateTime.Compare(dat.NGAYTRA.Value, start) >= 0 &&
-                            DateTime.Compare(dat.NGAYDAT.Value, end) <= 0)
+                        DateTime timetra = dat.NGAYTRA.Value.AddMinutes(30);
+                        DateTime timedat = dat.NGAYDAT.Value.AddMinutes(-30);
+                        if (DateTime.Compare(timetra, start) > 0 &&
+                            DateTime.Compare(timedat, end) < 0)
                         {
                             ok = false;
                             break;
@@ -167,8 +170,10 @@ namespace Hotel.ViewModel
                         foreach (var sele in SelectedRooms)
                         {
                             if (sele.ID != room.MAPHONG) continue;
-                            if (DateTime.Compare(sele.DateEnd, start) >= 0 &&
-                            DateTime.Compare(sele.DateStart, end) <= 0)
+                            DateTime timetra = sele.DateEnd.AddMinutes(30);
+                            DateTime timedat = sele.DateStart.AddMinutes(-30);
+                            if (DateTime.Compare(timetra, start) > 0 &&
+                                DateTime.Compare(timedat, end) < 0)
                             {
                                 ok = false;
                                 break;
@@ -176,7 +181,7 @@ namespace Hotel.ViewModel
                         }
                     }
                     if (ok)
-                        Rooms.Add(new RoomVM() { ID = room.MAPHONG, Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = room.TRANGTHAI.ToString() });
+                        Rooms.Add(new RoomVM() { ID = room.MAPHONG, Name = room.TENPHONG.ToString(), Description = room.LOAIPHONG.ToString(), Status = room.TRANGTHAI.ToString(), Price = room.DONGIA.Value });
                 }
             }
         }
@@ -257,6 +262,7 @@ namespace Hotel.ViewModel
                     info.SONG = room.NumPeo;
                     info.NGAYDAT = room.DateStart;
                     info.NGAYTRA = room.DateEnd;
+                    info.THANHTIEN = room.Price; // ???
                     info.TRANGTHAI = "Đã đặt";
                     db.DATs.Add(info);
                     db.SaveChanges();

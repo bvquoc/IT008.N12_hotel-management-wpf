@@ -18,6 +18,7 @@ namespace Hotel.ViewModel
         public string Description { get; set; }
         public string Status { get; set; }
         public int NumPeo { get; set; }
+        public int Price { get; set; }
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
         public RoomVM()
