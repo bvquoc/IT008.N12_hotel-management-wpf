@@ -227,6 +227,7 @@ namespace Hotel.ViewModel
                         r.btnAccept.Content = "Nhận phòng";
                     else
                         r.btnAccept.Content = "Thanh toán";
+                    r.btnSave.Visibility = Visibility.Collapsed;
                 }
                 r.ShowDialog();
                 loadDbNotify();

@@ -4,16 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hotel.View"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:vm="clr-namespace:Hotel.ViewModel"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-       
         mc:Ignorable="d"
-        Title="CustomerDetail" Height="600" Width="800"
+        Title="CustomerDetail"
+        Height="600"
+        Width="800"
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         ResizeMode="NoResize"
-        AllowsTransparency="True"
-        >
+        x:Name="customerdetail"
+        AllowsTransparency="True">
+
+    <Window.DataContext>
+        <vm:CustomerDetailViewModel />
+    </Window.DataContext>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loaddb}"
+                                   CommandParameter="{Binding ElementName=customerdetail}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Border BorderBrush="DarkGray"
             BorderThickness="1"
             CornerRadius="10"
@@ -31,7 +46,7 @@
                     <Setter Property="FontSize"
                             Value="15" />
                     <Setter Property="FontFamily"
-                            Value="{StaticResource Vollkorn}"/>
+                            Value="{StaticResource Vollkorn}" />
                 </Style>
             </StackPanel.Resources>
             <Grid>
@@ -45,9 +60,18 @@
                         BorderThickness="0 0 0 1"
                         BorderBrush="Black">
                     <Grid>
-                        <TextBlock Text="Thông tin khách hàng"
+                        <TextBlock Text="Thông tin khách hàng #"
                                    FontFamily="{StaticResource Pacifico}"
                                    HorizontalAlignment="Center"
+                                   VerticalAlignment="Bottom"
+                                   Height="40"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   Foreground="Black" />
+                        <TextBlock x:Name="_IDCus"
+                                   Margin="500 0 0 0"
+                                   FontFamily="{StaticResource Pacifico}"
+                                   HorizontalAlignment="Left"
                                    VerticalAlignment="Bottom"
                                    Height="40"
                                    FontSize="20"
@@ -91,8 +115,8 @@
                                    VerticalAlignment="Center"
                                    Margin="10 0 0 0"></TextBlock>
                     </StackPanel>
-                    
-                    
+
+
                     <StackPanel Grid.Row="2"
                                 Orientation="Horizontal"
                                 HorizontalAlignment="Left"
@@ -146,7 +170,8 @@
                                            RadiusY="10" />
                     </Grid.Clip>
                     <Grid>
-                        <ListView x:Name="lvDV"
+                        <ListView x:Name="lvCus"
+                                  ItemsSource="{Binding ListRese}"
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
@@ -172,7 +197,7 @@
                                                      Width="105">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding Name}"
+                                                <TextBlock Text="{Binding RoomName}"
                                                            FontSize="20"
                                                            Margin="10 0 0 0" />
                                             </DataTemplate>
@@ -182,7 +207,7 @@
                                                     Width="185">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding DayBook}"
+                                                <TextBlock Text="{Binding StartDate, StringFormat={}{0:yy.MM.dd HH:mm}}"
                                                            FontSize="15"
                                                            TextAlignment="Center" />
                                             </DataTemplate>
@@ -192,7 +217,7 @@
                                                     Width="185">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding DayReturn}"
+                                                <TextBlock Text="{Binding EndDate, StringFormat={}{0:yy.MM.dd HH:mm}}"
                                                            FontSize="15"
                                                            TextAlignment="Right"
                                                            Margin="0 0 65 0" />
@@ -203,7 +228,7 @@
                                                     Width="100">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding DayReturn}"
+                                                <TextBlock Text="{Binding Status}"
                                                            FontSize="15"
                                                            TextAlignment="Right"
                                                            Margin="0 0 65 0" />

@@ -36,7 +36,6 @@ namespace Hotel.ViewModel
 
             idbook = Convert.ToInt32(p.ID.Text);
 
-            MessageBox.Show(idbook.ToString());
 
             using (var db = new QLYHOTELEntities())
             {
