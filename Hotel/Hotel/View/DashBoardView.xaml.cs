@@ -24,10 +24,7 @@ namespace Hotel.View
         public DashBoardView()
         {
             InitializeComponent();
-            Values1 = new ChartValues<double> { 21, 12, 32, 23, 34, 43, 45, 54, 56, 65, 100, 18 };
-            DataContext = this;
         }
-        public ChartValues<double> Values1 { get; set; }
 
     }
 }

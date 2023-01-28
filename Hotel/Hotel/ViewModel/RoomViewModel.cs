@@ -158,7 +158,7 @@ namespace Hotel.ViewModel
                             info.TRANGTHAI = "Đã hủy";
                             continue;
                         }
-                        if ((info.NGAYDAT.Value - TimeNow).TotalMinutes <= 20)
+                        if ((info.NGAYDAT.Value - TimeNow).TotalMinutes <= 15)
                         {
                             StatusRoom = info.TRANGTHAI;
                             iDBook = info.MADAT;
