@@ -330,7 +330,7 @@ namespace Hotel.ViewModel
             {
                 if (CCCD.Length != 9 && CCCD.Length != 12)
                     throw new Exception("CMND/CCCD không hợp lệ!");
-                if (SDT.Length != 10)
+                if (SDT.Length < 9 || SDT.Length >= 12)
                     throw new Exception("Số điện thoại không hợp lệ!");
                 if (Name == "")
                     throw new Exception("Tên không hợp lệ!");
