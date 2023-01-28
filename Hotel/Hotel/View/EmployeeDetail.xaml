@@ -259,6 +259,7 @@
                         </Grid>
 
                         <TextBox x:Name="_TotalSalary"
+                                 Text="{Binding TotalSalary, StringFormat={}{0:N0}}"
                                  IsReadOnly="True"
                                  FontFamily="{StaticResource Vollkorn}"
                                  PreviewTextInput="PreviewTextInput"
@@ -268,8 +269,6 @@
                                  VerticalAlignment="Center">
                         </TextBox>
                     </Grid>
-
-
                 </Grid>
             </Grid>
             <Grid>

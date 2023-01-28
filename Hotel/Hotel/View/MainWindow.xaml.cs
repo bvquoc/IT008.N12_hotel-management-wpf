@@ -23,6 +23,7 @@ namespace Hotel.View
             if (LoaiNV > 1)
             {
                 this.menuEmployee.Visibility = Visibility.Collapsed;
+                this.menuDashBoard.Visibility = Visibility.Collapsed;
                 //...
             }
             _EID.Text = MaNV.ToString();
