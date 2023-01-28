@@ -80,6 +80,14 @@ namespace Hotel.ViewModel
             get { return _isEmployeeManagement; }
             set { _isEmployeeManagement = value; OnPropertyChanged(); }
         }
+        private double _isDashBoard;
+
+        public double IsDashBoard
+        {
+            get { return _isDashBoard; }
+            set { _isDashBoard = value; OnPropertyChanged(); }
+        }
+
         private object _currentView;
         public object CurrentView
         {
@@ -125,6 +133,7 @@ namespace Hotel.ViewModel
             IsBill = FontBase;
             IsServiceManagement = FontBase;
             IsEmployeeManagement = FontBase;
+            IsDashBoard = FontBase;
 
             CurrentView = new RoomView();
 
@@ -150,6 +159,7 @@ namespace Hotel.ViewModel
             IsBill = FontBase;
             IsServiceManagement = FontBase;
             IsEmployeeManagement = FontBase;
+            IsDashBoard = FontBase;
 
             switch (uid)
             {
@@ -180,6 +190,10 @@ namespace Hotel.ViewModel
                 case "6":
                     IsEmployeeManagement = FontBase + 1;
                     CurrentView = new EmployeeManagementView();
+                    break;
+                case "7":
+                    IsDashBoard = FontBase + 1;
+                    CurrentView = new DashBoardView();
                     break;
                 default:
                     break;

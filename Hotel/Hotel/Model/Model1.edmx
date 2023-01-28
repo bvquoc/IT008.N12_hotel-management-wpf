@@ -62,6 +62,7 @@
           <Property Name="SDT" Type="varchar" MaxLength="20" />
           <Property Name="NGSINH" Type="date" />
           <Property Name="LUONG" Type="int" />
+          <Property Name="CHECKIN" Type="datetime" />
           <Property Name="SONGAYLV" Type="int" />
         </EntityType>
         <EntityType Name="PHONG">
@@ -182,6 +183,38 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QLYHOTELModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="QLYHOTELEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CUNGCAPs" EntityType="QLYHOTELModel.CUNGCAP" />
+          <EntitySet Name="DATs" EntityType="QLYHOTELModel.DAT" />
+          <EntitySet Name="DICHVUs" EntityType="QLYHOTELModel.DICHVU" />
+          <EntitySet Name="KHACHes" EntityType="QLYHOTELModel.KHACH" />
+          <EntitySet Name="NHANVIENs" EntityType="QLYHOTELModel.NHANVIEN" />
+          <EntitySet Name="PHONGs" EntityType="QLYHOTELModel.PHONG" />
+          <AssociationSet Name="CC_DV" Association="QLYHOTELModel.CC_DV">
+            <End Role="DICHVU" EntitySet="DICHVUs" />
+            <End Role="CUNGCAP" EntitySet="CUNGCAPs" />
+          </AssociationSet>
+          <AssociationSet Name="CC_MD" Association="QLYHOTELModel.CC_MD">
+            <End Role="DAT" EntitySet="DATs" />
+            <End Role="CUNGCAP" EntitySet="CUNGCAPs" />
+          </AssociationSet>
+          <AssociationSet Name="CC_NV" Association="QLYHOTELModel.CC_NV">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+            <End Role="CUNGCAP" EntitySet="CUNGCAPs" />
+          </AssociationSet>
+          <AssociationSet Name="DA_KH" Association="QLYHOTELModel.DA_KH">
+            <End Role="KHACH" EntitySet="KHACHes" />
+            <End Role="DAT" EntitySet="DATs" />
+          </AssociationSet>
+          <AssociationSet Name="DA_NV" Association="QLYHOTELModel.DA_NV">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+            <End Role="DAT" EntitySet="DATs" />
+          </AssociationSet>
+          <AssociationSet Name="DA_PH" Association="QLYHOTELModel.DA_PH">
+            <End Role="PHONG" EntitySet="PHONGs" />
+            <End Role="DAT" EntitySet="DATs" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="CUNGCAP">
           <Key>
             <PropertyRef Name="MACC" />
@@ -192,9 +225,27 @@
           <Property Name="MADAT" Type="Int32" />
           <Property Name="SOLUONG" Type="Int32" />
           <Property Name="TONGTIEN" Type="Int32" />
-          <NavigationProperty Name="DICHVU" Relationship="Self.CC_DV" FromRole="CUNGCAP" ToRole="DICHVU" />
-          <NavigationProperty Name="NHANVIEN" Relationship="Self.CC_NV" FromRole="CUNGCAP" ToRole="NHANVIEN" />
+          <NavigationProperty Name="DICHVU" Relationship="QLYHOTELModel.CC_DV" FromRole="CUNGCAP" ToRole="DICHVU" />
           <NavigationProperty Name="DAT" Relationship="QLYHOTELModel.CC_MD" FromRole="CUNGCAP" ToRole="DAT" />
+          <NavigationProperty Name="NHANVIEN" Relationship="QLYHOTELModel.CC_NV" FromRole="CUNGCAP" ToRole="NHANVIEN" />
+        </EntityType>
+        <EntityType Name="DAT">
+          <Key>
+            <PropertyRef Name="MADAT" />
+          </Key>
+          <Property Name="MADAT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MANV" Type="Int32" />
+          <Property Name="MAKH" Type="Int32" />
+          <Property Name="MAPHONG" Type="Int32" />
+          <Property Name="SONG" Type="Int32" />
+          <Property Name="NGAYDAT" Type="DateTime" Precision="0" />
+          <Property Name="NGAYTRA" Type="DateTime" Precision="0" />
+          <Property Name="TRANGTHAI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="THANHTIEN" Type="Int32" />
+          <NavigationProperty Name="CUNGCAPs" Relationship="QLYHOTELModel.CC_MD" FromRole="DAT" ToRole="CUNGCAP" />
+          <NavigationProperty Name="KHACH" Relationship="QLYHOTELModel.DA_KH" FromRole="DAT" ToRole="KHACH" />
+          <NavigationProperty Name="NHANVIEN" Relationship="QLYHOTELModel.DA_NV" FromRole="DAT" ToRole="NHANVIEN" />
+          <NavigationProperty Name="PHONG" Relationship="QLYHOTELModel.DA_PH" FromRole="DAT" ToRole="PHONG" />
         </EntityType>
         <EntityType Name="DICHVU">
           <Key>
@@ -203,7 +254,7 @@
           <Property Name="MADV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TENDV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DONGIA" Type="Int32" />
-          <NavigationProperty Name="CUNGCAPs" Relationship="Self.CC_DV" FromRole="DICHVU" ToRole="CUNGCAP" />
+          <NavigationProperty Name="CUNGCAPs" Relationship="QLYHOTELModel.CC_DV" FromRole="DICHVU" ToRole="CUNGCAP" />
         </EntityType>
         <EntityType Name="KHACH">
           <Key>
@@ -230,8 +281,9 @@
           <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="NGSINH" Type="DateTime" Precision="0" />
           <Property Name="LUONG" Type="Int32" />
+          <Property Name="CHECKIN" Type="DateTime" Precision="3" />
           <Property Name="SONGAYLV" Type="Int32" />
-          <NavigationProperty Name="CUNGCAPs" Relationship="Self.CC_NV" FromRole="NHANVIEN" ToRole="CUNGCAP" />
+          <NavigationProperty Name="CUNGCAPs" Relationship="QLYHOTELModel.CC_NV" FromRole="NHANVIEN" ToRole="CUNGCAP" />
           <NavigationProperty Name="DATs" Relationship="QLYHOTELModel.DA_NV" FromRole="NHANVIEN" ToRole="DAT" />
         </EntityType>
         <EntityType Name="PHONG">
@@ -246,8 +298,8 @@
           <NavigationProperty Name="DATs" Relationship="QLYHOTELModel.DA_PH" FromRole="PHONG" ToRole="DAT" />
         </EntityType>
         <Association Name="CC_DV">
-          <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="0..1" />
-          <End Role="CUNGCAP" Type="Self.CUNGCAP" Multiplicity="*" />
+          <End Type="QLYHOTELModel.DICHVU" Role="DICHVU" Multiplicity="0..1" />
+          <End Type="QLYHOTELModel.CUNGCAP" Role="CUNGCAP" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DICHVU">
               <PropertyRef Name="MADV" />
@@ -257,68 +309,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="CC_NV">
-          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
-          <End Role="CUNGCAP" Type="Self.CUNGCAP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NHANVIEN">
-              <PropertyRef Name="MANV" />
-            </Principal>
-            <Dependent Role="CUNGCAP">
-              <PropertyRef Name="MANV" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="QLYHOTELEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CUNGCAPs" EntityType="Self.CUNGCAP" />
-          <EntitySet Name="DICHVUs" EntityType="Self.DICHVU" />
-          <EntitySet Name="KHACHes" EntityType="Self.KHACH" />
-          <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
-          <EntitySet Name="PHONGs" EntityType="Self.PHONG" />
-          <AssociationSet Name="CC_DV" Association="Self.CC_DV">
-            <End Role="DICHVU" EntitySet="DICHVUs" />
-            <End Role="CUNGCAP" EntitySet="CUNGCAPs" />
-          </AssociationSet>
-          <AssociationSet Name="CC_NV" Association="Self.CC_NV">
-            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
-            <End Role="CUNGCAP" EntitySet="CUNGCAPs" />
-          </AssociationSet>
-          <EntitySet Name="DATs" EntityType="QLYHOTELModel.DAT" />
-          <AssociationSet Name="CC_MD" Association="QLYHOTELModel.CC_MD">
-            <End Role="DAT" EntitySet="DATs" />
-            <End Role="CUNGCAP" EntitySet="CUNGCAPs" />
-          </AssociationSet>
-          <AssociationSet Name="DA_KH" Association="QLYHOTELModel.DA_KH">
-            <End Role="KHACH" EntitySet="KHACHes" />
-            <End Role="DAT" EntitySet="DATs" />
-          </AssociationSet>
-          <AssociationSet Name="DA_NV" Association="QLYHOTELModel.DA_NV">
-            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
-            <End Role="DAT" EntitySet="DATs" />
-          </AssociationSet>
-          <AssociationSet Name="DA_PH" Association="QLYHOTELModel.DA_PH">
-            <End Role="PHONG" EntitySet="PHONGs" />
-            <End Role="DAT" EntitySet="DATs" />
-          </AssociationSet>
-          </EntityContainer>
-        <EntityType Name="DAT">
-          <Key>
-            <PropertyRef Name="MADAT" />
-          </Key>
-          <Property Name="MADAT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MANV" Type="Int32" />
-          <Property Name="MAKH" Type="Int32" />
-          <Property Name="MAPHONG" Type="Int32" />
-          <Property Name="SONG" Type="Int32" />
-          <Property Name="NGAYDAT" Type="DateTime" Precision="0" />
-          <Property Name="NGAYTRA" Type="DateTime" Precision="0" />
-          <Property Name="TRANGTHAI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="THANHTIEN" Type="Int32" />
-          <NavigationProperty Name="CUNGCAPs" Relationship="QLYHOTELModel.CC_MD" FromRole="DAT" ToRole="CUNGCAP" />
-          <NavigationProperty Name="KHACH" Relationship="QLYHOTELModel.DA_KH" FromRole="DAT" ToRole="KHACH" />
-          <NavigationProperty Name="NHANVIEN" Relationship="QLYHOTELModel.DA_NV" FromRole="DAT" ToRole="NHANVIEN" />
-          <NavigationProperty Name="PHONG" Relationship="QLYHOTELModel.DA_PH" FromRole="DAT" ToRole="PHONG" />
-        </EntityType>
         <Association Name="CC_MD">
           <End Type="QLYHOTELModel.DAT" Role="DAT" Multiplicity="0..1" />
           <End Type="QLYHOTELModel.CUNGCAP" Role="CUNGCAP" Multiplicity="*" />
@@ -328,6 +318,18 @@
             </Principal>
             <Dependent Role="CUNGCAP">
               <PropertyRef Name="MADAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CC_NV">
+          <End Type="QLYHOTELModel.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1" />
+          <End Type="QLYHOTELModel.CUNGCAP" Role="CUNGCAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="CUNGCAP">
+              <PropertyRef Name="MANV" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -376,60 +378,12 @@
           <EntitySetMapping Name="CUNGCAPs">
             <EntityTypeMapping TypeName="QLYHOTELModel.CUNGCAP">
               <MappingFragment StoreEntitySet="CUNGCAP">
-                <ScalarProperty Name="MACC" ColumnName="MACC" />
-                <ScalarProperty Name="MANV" ColumnName="MANV" />
-                <ScalarProperty Name="MADV" ColumnName="MADV" />
-                <ScalarProperty Name="MADAT" ColumnName="MADAT" />
-                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
                 <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DICHVUs">
-            <EntityTypeMapping TypeName="QLYHOTELModel.DICHVU">
-              <MappingFragment StoreEntitySet="DICHVU">
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="MADAT" ColumnName="MADAT" />
                 <ScalarProperty Name="MADV" ColumnName="MADV" />
-                <ScalarProperty Name="TENDV" ColumnName="TENDV" />
-                <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="KHACHes">
-            <EntityTypeMapping TypeName="QLYHOTELModel.KHACH">
-              <MappingFragment StoreEntitySet="KHACH">
-                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
-                <ScalarProperty Name="CCCD" ColumnName="CCCD" />
-                <ScalarProperty Name="TENKH" ColumnName="TENKH" />
-                <ScalarProperty Name="SDT" ColumnName="SDT" />
-                <ScalarProperty Name="DCHI" ColumnName="DCHI" />
-                <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NHANVIENs">
-            <EntityTypeMapping TypeName="QLYHOTELModel.NHANVIEN">
-              <MappingFragment StoreEntitySet="NHANVIEN">
                 <ScalarProperty Name="MANV" ColumnName="MANV" />
-                <ScalarProperty Name="TAIKHOAN" ColumnName="TAIKHOAN" />
-                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
-                <ScalarProperty Name="TENNV" ColumnName="TENNV" />
-                <ScalarProperty Name="CCCD" ColumnName="CCCD" />
-                <ScalarProperty Name="LOAINV" ColumnName="LOAINV" />
-                <ScalarProperty Name="SDT" ColumnName="SDT" />
-                <ScalarProperty Name="NGSINH" ColumnName="NGSINH" />
-                <ScalarProperty Name="LUONG" ColumnName="LUONG" />
-                <ScalarProperty Name="SONGAYLV" ColumnName="SONGAYLV" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PHONGs">
-            <EntityTypeMapping TypeName="QLYHOTELModel.PHONG">
-              <MappingFragment StoreEntitySet="PHONG">
-                <ScalarProperty Name="MAPHONG" ColumnName="MAPHONG" />
-                <ScalarProperty Name="TENPHONG" ColumnName="TENPHONG" />
-                <ScalarProperty Name="LOAIPHONG" ColumnName="LOAIPHONG" />
-                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
-                <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
+                <ScalarProperty Name="MACC" ColumnName="MACC" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -445,6 +399,55 @@
                 <ScalarProperty Name="MAKH" ColumnName="MAKH" />
                 <ScalarProperty Name="MANV" ColumnName="MANV" />
                 <ScalarProperty Name="MADAT" ColumnName="MADAT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DICHVUs">
+            <EntityTypeMapping TypeName="QLYHOTELModel.DICHVU">
+              <MappingFragment StoreEntitySet="DICHVU">
+                <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
+                <ScalarProperty Name="TENDV" ColumnName="TENDV" />
+                <ScalarProperty Name="MADV" ColumnName="MADV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHACHes">
+            <EntityTypeMapping TypeName="QLYHOTELModel.KHACH">
+              <MappingFragment StoreEntitySet="KHACH">
+                <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
+                <ScalarProperty Name="DCHI" ColumnName="DCHI" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="TENKH" ColumnName="TENKH" />
+                <ScalarProperty Name="CCCD" ColumnName="CCCD" />
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHANVIENs">
+            <EntityTypeMapping TypeName="QLYHOTELModel.NHANVIEN">
+              <MappingFragment StoreEntitySet="NHANVIEN">
+                <ScalarProperty Name="SONGAYLV" ColumnName="SONGAYLV" />
+                <ScalarProperty Name="CHECKIN" ColumnName="CHECKIN" />
+                <ScalarProperty Name="LUONG" ColumnName="LUONG" />
+                <ScalarProperty Name="NGSINH" ColumnName="NGSINH" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="LOAINV" ColumnName="LOAINV" />
+                <ScalarProperty Name="CCCD" ColumnName="CCCD" />
+                <ScalarProperty Name="TENNV" ColumnName="TENNV" />
+                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+                <ScalarProperty Name="TAIKHOAN" ColumnName="TAIKHOAN" />
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHONGs">
+            <EntityTypeMapping TypeName="QLYHOTELModel.PHONG">
+              <MappingFragment StoreEntitySet="PHONG">
+                <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
+                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+                <ScalarProperty Name="LOAIPHONG" ColumnName="LOAIPHONG" />
+                <ScalarProperty Name="TENPHONG" ColumnName="TENPHONG" />
+                <ScalarProperty Name="MAPHONG" ColumnName="MAPHONG" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

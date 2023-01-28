@@ -11,15 +11,47 @@ namespace Hotel.ViewModel
 {
     internal class EmployeeDetailViewModel : BaseViewModel
     {
+        private int totalSalary;
+
+        public int TotalSalary
+        {
+            get { return totalSalary; }
+            set { totalSalary = value; OnPropertyChanged(); }
+        }
+        public ICommand LoadedSalary { get; set; }
+        public ICommand Pay { get; set; }
         public ICommand Cancel { get; set; }
         public ICommand Save { get; set; }
         public ICommand Delete { get; set; }
 
         public EmployeeDetailViewModel()
         {
+            LoadedSalary = new RelayCommand<EmployeeDetail>((p) => true, (p) => loadedSalary(p));
+            Pay = new RelayCommand<EmployeeDetail>((p) => true, (p) => pay(p));
             Cancel = new RelayCommand<EmployeeDetail>((p) => true, (p) => cancel(p));
             Save = new RelayCommand<EmployeeDetail>((p) => true, (p) => save(p));
             Delete = new RelayCommand<EmployeeDetail>((p) => true, (p) => delete(p));
+        }
+        public void loadedSalary(EmployeeDetail p)
+        {
+            int id = Convert.ToInt32(p._ID.Text);
+            using (var db = new QLYHOTELEntities())
+            {
+                var select = (from i in db.NHANVIENs where i.MANV == id select i).Single();
+                TotalSalary = Convert.ToInt32(select.SONGAYLV) * Convert.ToInt32(select.LUONG);
+            }
+        }
+        public void pay(EmployeeDetail p)
+        {
+            new DialogCustomize("Đã thanh toán lương").ShowDialog();
+            int id = Convert.ToInt32(p._ID.Text);
+            using (var db = new QLYHOTELEntities())
+            {
+                var select = (from i in db.NHANVIENs where i.MANV == id select i).Single();
+                TotalSalary = 0;
+                select.SONGAYLV = 0;
+                db.SaveChanges();
+            }
         }
         public void cancel(EmployeeDetail p)
         {

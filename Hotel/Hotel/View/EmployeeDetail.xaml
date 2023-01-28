@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Hotel.ViewModel"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:Hotel.View"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -20,6 +21,13 @@
     <Window.DataContext>
         <vm:EmployeeDetailViewModel />
     </Window.DataContext>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedSalary}"
+                                   CommandParameter="{Binding ElementName=employeeDetail}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
     <Border BorderBrush="DarkGray"
             BorderThickness="1"
@@ -251,6 +259,8 @@
                         </Grid>
 
                         <TextBox x:Name="_TotalSalary"
+                                 Text="{Binding TotalSalary, StringFormat={}{0:N0}}"
+                                 IsReadOnly="True"
                                  FontFamily="{StaticResource Vollkorn}"
                                  PreviewTextInput="PreviewTextInput"
                                  Grid.Column="2"
@@ -259,8 +269,6 @@
                                  VerticalAlignment="Center">
                         </TextBox>
                     </Grid>
-
-
                 </Grid>
             </Grid>
             <Grid>
@@ -358,6 +366,8 @@
                                 Width="130"
                                 FontFamily="{StaticResource Oswald}"
                                 Background="DarkKhaki"
+                                Command="{Binding Pay}"
+                                CommandParameter="{Binding ElementName=employeeDetail}"
                                 BorderBrush="Transparent" />
                         <Button Content="Hủy"
                                 materialDesign:ButtonAssist.CornerRadius="8"

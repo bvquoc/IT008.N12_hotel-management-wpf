@@ -94,7 +94,12 @@ namespace Hotel.ViewModel
             get { return _sex; }
             set { _sex = value; OnPropertyChanged(); }
         }
-
+        private int deposits;
+        public int Deposits
+        {
+            get { return deposits; }
+            set { deposits = value; OnPropertyChanged(); }
+        }
         public ICommand LoadIdStaff { get; set; }
         public ICommand ChoseRoom { get; set; }
         public ICommand DeleteSelected { get; set; }
@@ -201,6 +206,7 @@ namespace Hotel.ViewModel
                 DateEnd = new DateTime(DateEnd.Year, DateEnd.Month, DateEnd.Day, TimeEnd.Hour, TimeEnd.Minute, TimeEnd.Second)
             });
             Rooms.Remove(SelectedRoom);
+            UpdateDeposits();
         }
         private void AutoCCCD()
         {
@@ -236,6 +242,7 @@ namespace Hotel.ViewModel
             {
                 var room = (RoomVM)p;
                 SelectedRooms.Remove(room);
+                UpdateDeposits();
                 LoadRoom();
             }
             catch (Exception ex)
@@ -271,6 +278,16 @@ namespace Hotel.ViewModel
             }
             new DialogCustomize("Thành công!").ShowDialog();
             Reload(p);
+        }
+        private void UpdateDeposits()
+        {
+            Deposits = 0;
+            foreach (var room in SelectedRooms)
+            {
+                int Time = Convert.ToInt32((room.DateEnd - room.DateStart).TotalHours);
+                Deposits += (Time * room.Price);
+            }
+            Deposits /= 2;
         }
         private void updateIdCus()
         {

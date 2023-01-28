@@ -30,6 +30,7 @@ namespace Hotel.Model
         public string SDT { get; set; }
         public Nullable<System.DateTime> NGSINH { get; set; }
         public Nullable<int> LUONG { get; set; }
+        public Nullable<System.DateTime> CHECKIN { get; set; }
         public Nullable<int> SONGAYLV { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
