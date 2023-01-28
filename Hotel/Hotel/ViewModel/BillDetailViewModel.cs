@@ -72,7 +72,7 @@ namespace Hotel.ViewModel
                 ListSVbook.Add(new ServiceVM() { Name = "Tiền phòng", Price = (int)select.PHONG.DONGIA, NumSer = 1, Total = RoomMoney });
                 select.THANHTIEN = Tongtien;
                 db.SaveChanges();
-                p._date.Text = select.NGAYTRA.Value.ToString();
+                p._date.Text = select.NGAYTRA.Value.ToShortDateString();
             }
             TotalMoney = Tongtien;
             Deposits = -RoomMoney / 2;

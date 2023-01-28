@@ -223,6 +223,7 @@ namespace Hotel.ViewModel
                     else
                         r.btnAccept.Content = "Thanh toán";
                     r.btnSave.Visibility = Visibility.Collapsed;
+                    r.cbTrangthai.IsEnabled = false;
                 }
             }
             else

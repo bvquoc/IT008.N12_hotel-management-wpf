@@ -80,11 +80,24 @@ namespace Hotel.ViewModel
                 tmp.ShowDialog();
                 return;
             }
-
+            CheckIn(MaNV);
             MainWindow mainWindow = new MainWindow(MaNV, TenNV, LoaiNV);
             cur.Hide();
             mainWindow.Show();
             cur.Close();
+        }
+        private void CheckIn(int manv)
+        {
+            using (var db = new QLYHOTELEntities())
+            {
+                var nv = (from i in db.NHANVIENs where i.MANV == manv select i).Single();
+                if (nv.CHECKIN == null || nv.CHECKIN.Value.Date != DateTime.Now.Date)
+                {
+                    nv.CHECKIN = DateTime.Now;
+                    nv.SONGAYLV++;
+                    db.SaveChanges();
+                }
+            }
         }
     }
 }
