@@ -215,10 +215,6 @@ namespace Hotel.ViewModel
         }
         private void checkNotify()
         {
-            if (IsHome == FontBase + 1)
-            {
-                CurrentView = new RoomView();
-            }
             loadDbNotify();
         }
         private void choseNotify(object ob)

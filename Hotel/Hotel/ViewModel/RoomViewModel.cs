@@ -12,12 +12,15 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace Hotel.ViewModel
 {
     internal class RoomViewModel : BaseViewModel
     {
         private int idnv;
+        private int secondReset = 2;
+        private readonly DispatcherTimer _timer;
         private ObservableCollection<RoomVM> _roomListdb;
         private ObservableCollection<RoomVM> _roomList;
         public ObservableCollection<RoomVM> RoomList
@@ -62,6 +65,10 @@ namespace Hotel.ViewModel
         public ICommand sortRoom { get; set; }
         public ICommand choseRoom { get; set; }
 
+        private int iAll;
+        private int iAvailabel;
+        private int iOrdered;
+        private int iRepair;
         public RoomViewModel()
         {
             RoomList = new ObservableCollection<RoomVM>();
@@ -73,7 +80,21 @@ namespace Hotel.ViewModel
             choseRoom = new RelayCommand<object>((p) => true, (p) => ViewDetailRoom(p));
             sortRoom = new RelayCommand<object>((p) => true, (p) => SortRoomF());
 
+            cleari();
+            iAll = 1;
+
+            //timer
+            _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(secondReset) };
+            _timer.Start();
+            _timer.Tick += (o, e) => LoadDbRoom();
             LoadDbRoom();
+        }
+        private void cleari()
+        {
+            iAll = 0;
+            iAvailabel = 0;
+            iOrdered = 0;
+            iRepair = 0;
         }
         private string GetIdStaff(UserControl p)
         {
@@ -99,16 +120,16 @@ namespace Hotel.ViewModel
         }
         private void SortRoomF()
         {
-            if ((string)SortRoom.Content == "Tầng")
-            {
-                sortFloordb();
-                sortFloor();
-            }
-            if ((string)SortRoom.Content == "Loại phòng")
+            if (SortRoom != null && (string)SortRoom.Content == "Loại phòng")
             {
                 _roomListdb = new ObservableCollection<RoomVM>(_roomListdb.OrderBy(i => i.Description));
                 RoomList = new ObservableCollection<RoomVM>(RoomList.OrderBy(i => i.Description));
+                RoomCollection = CollectionViewSource.GetDefaultView(RoomList);
+                RoomCollection.Filter = FilterByName;
+                return;
             }
+            sortFloordb();
+            sortFloor();
             RoomCollection = CollectionViewSource.GetDefaultView(RoomList);
             RoomCollection.Filter = FilterByName;
         }
@@ -158,7 +179,7 @@ namespace Hotel.ViewModel
                             info.TRANGTHAI = "Đã hủy";
                             continue;
                         }
-                        if ((info.NGAYDAT.Value - TimeNow).TotalMinutes <= 20)
+                        if ((info.NGAYDAT.Value - TimeNow).TotalMinutes <= 15)
                         {
                             StatusRoom = info.TRANGTHAI;
                             iDBook = info.MADAT;
@@ -171,18 +192,33 @@ namespace Hotel.ViewModel
                 }
                 db.SaveChanges();
             }
-            sortFloordb();
-            sortFloor();
+            RepeatStatus();
             RoomCollection = CollectionViewSource.GetDefaultView(RoomList);
+        }
+        private void RepeatStatus()
+        {
+            SortRoomF();
+            if (iAll == 1)
+                LoadAllRoom();
+            if (iAvailabel == 1)
+                LoadAvailabel();
+            if (iOrdered == 1)
+                LoadOrdered();
+            if (iRepair == 1)
+                LoadRepair();
         }
         public void LoadAllRoom()
         {
+            cleari();
+            iAll = 1;
             RoomList.Clear();
             foreach (var room in _roomListdb)
                 RoomList.Add(room);
         }
         public void LoadAvailabel()
         {
+            cleari();
+            iAvailabel = 1;
             RoomList.Clear();
             foreach (var room in _roomListdb)
                 if (room.Status == "Trống")
@@ -190,6 +226,8 @@ namespace Hotel.ViewModel
         }
         public void LoadOrdered()
         {
+            cleari();
+            iOrdered = 1;
             RoomList.Clear();
             foreach (var room in _roomListdb)
                 if (room.Status == "Đã đặt")
@@ -197,6 +235,8 @@ namespace Hotel.ViewModel
         }
         public void LoadRepair()
         {
+            cleari();
+            iRepair = 1;
             RoomList.Clear();
             foreach (var room in _roomListdb)
                 if (room.Status == "Tu sửa")
