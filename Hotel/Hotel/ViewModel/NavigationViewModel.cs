@@ -85,7 +85,7 @@ namespace Hotel.ViewModel
         public double IsDashBoard
         {
             get { return _isDashBoard; }
-            set { _isDashBoard = value; }
+            set { _isDashBoard = value; OnPropertyChanged(); }
         }
 
         private object _currentView;
