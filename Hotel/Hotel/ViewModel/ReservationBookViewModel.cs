@@ -116,8 +116,6 @@ namespace Hotel.ViewModel
             SelectedRooms = new ObservableCollection<RoomVM>();
             DateStart = DateTime.Now;
             DateEnd = DateTime.Now;
-            TimeStart = DateTime.Now;
-            TimeEnd = DateTime.Now;
             clearInfo();
             LoadRoom();
         }
@@ -149,7 +147,7 @@ namespace Hotel.ViewModel
 
             Rooms.Clear();
             if (DateTime.Compare(start, end) >= 0 ||
-                DateTime.Compare(start, DateTime.Now) < 0)
+                DateTime.Compare(start, DateTime.Now.AddMinutes(-5)) < 0)
                 return;
             using (var db = new QLYHOTELEntities())
             {

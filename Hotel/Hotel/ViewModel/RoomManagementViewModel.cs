@@ -69,7 +69,12 @@ namespace Hotel.ViewModel
             {
                 var select = from s in db.PHONGs select s;
                 foreach (var RoomManagement in select)
-                    RoomManagementList.Add(new RoomManagementVM() { ID = RoomManagement.MAPHONG, Name = RoomManagement.TENPHONG.ToString(), Status = RoomManagement.TRANGTHAI.ToString(), Type = RoomManagement.LOAIPHONG.ToString(), Price = RoomManagement.DONGIA.Value });
+                {
+                    string trangthai = RoomManagement.TRANGTHAI.ToString();
+                    if (trangthai == "Trống")
+                        trangthai = "Bình thường";
+                    RoomManagementList.Add(new RoomManagementVM() { ID = RoomManagement.MAPHONG, Name = RoomManagement.TENPHONG.ToString(), Status = trangthai, Type = RoomManagement.LOAIPHONG.ToString(), Price = RoomManagement.DONGIA.Value });
+                }
             }
             RoomManagementCollection = CollectionViewSource.GetDefaultView(RoomManagementList);
         }
