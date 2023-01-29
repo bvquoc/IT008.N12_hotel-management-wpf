@@ -10,18 +10,18 @@ namespace Hotel.ViewModel
 {
     internal class DashBoardViewModel : BaseViewModel
     {
-        private ChartValues<double> chart;
-        private ChartValues<double> chart2;
-        public ChartValues<double> Charts
+        private ChartValues<double> charttol;
+        private ChartValues<double> chartser;
+        public ChartValues<double> ChartTol
         {
-            get { return chart; }
-            set { chart = value; OnPropertyChanged(); }
+            get { return charttol; }
+            set { charttol = value; OnPropertyChanged(); }
         }
 
-        public ChartValues<double> Chart2
+        public ChartValues<double> ChartSer
         {
-            get { return chart2; }
-            set { chart2 = value; OnPropertyChanged(); }
+            get { return chartser; }
+            set { chartser = value; OnPropertyChanged(); }
         }
         private int revenue;
         public int Revenue
@@ -49,9 +49,36 @@ namespace Hotel.ViewModel
         }
         public DashBoardViewModel()
         {
-            Charts = new ChartValues<double> { 21, 12, 32, 23, 34, 43, 45, 54, 56, 65, 100, 18 };
-            Chart2 = new ChartValues<double> { 12, 2, 53, 34, 56, 76, 78, 98, 90, 100, 2, 34 };
+            ChartTol = new ChartValues<double>();
+            ChartSer = new ChartValues<double>();
             LoadDB(DateTime.Now.Month);
+            LoadChart();
+        }
+        private void LoadChart()
+        {
+            for (int i = 1; i <= 12; i++)
+            {
+                int TotalMoney = 0;
+                int TotalService = 0;
+                using (var db = new QLYHOTELEntities())
+                {
+                    var bills = from u in db.DATs select u;
+                    foreach (var u in bills)
+                    {
+                        if (u.NGAYTRA.Value.Month == i && u.TRANGTHAI != "Đã đặt" && u.TRANGTHAI != "Đang sử dụng")
+                        {
+                            TotalMoney += (int)u.THANHTIEN;
+                            TotalService += ((int)u.THANHTIEN - (Convert.ToInt32((u.NGAYTRA.Value - u.NGAYDAT.Value).TotalHours) * (int)u.PHONG.DONGIA));
+                        }
+                    }
+
+
+                    TotalMoney /= 1000000;
+                    TotalService /= 1000000;
+                }
+                ChartTol.Add(TotalMoney);
+                ChartSer.Add(TotalService);
+            }
         }
         private void LoadDB(int Month)
         {
@@ -77,7 +104,6 @@ namespace Hotel.ViewModel
             }
             Revenue /= 1000000;
             Salary /= 1000000;
-            Revenue -= Salary;
         }
     }
 }

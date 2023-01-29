@@ -132,7 +132,7 @@
             </WrapPanel>
             <Grid Height="560">
                 <Grid.ColumnDefinitions>
-                    
+
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
@@ -151,11 +151,11 @@
                                    FontFamily="{StaticResource Mali}"
                                    FontWeight="Bold"
                                    FontSize="40"
-                                   Margin=" 0 0 0 20"/>
+                                   Margin=" 0 0 0 20" />
                     </StackPanel>
                     <Grid   Grid.Row="2"
-                                  Margin="55,418,10,50"
-                                  Height="18">
+                            Margin="55,418,10,50"
+                            Height="18">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
@@ -175,48 +175,37 @@
                                    Foreground="#717EB2" />
                         <TextBlock Text="2"
                                    Grid.Column="1"
-                                   Foreground="#717EB2"
-                                  />
+                                   Foreground="#717EB2" />
                         <TextBlock Text="3"
                                    Grid.Column="2"
-                                   Foreground="#717EB2"
-                                   />
+                                   Foreground="#717EB2" />
                         <TextBlock Text="4"
                                    Grid.Column="3"
-                                   Foreground="#717EB2"
-                                    />
+                                   Foreground="#717EB2" />
                         <TextBlock Text="5"
                                    Grid.Column="4"
-                                   Foreground="#717EB2"
-                                    />
+                                   Foreground="#717EB2" />
                         <TextBlock Text="6"
                                    Grid.Column="5"
-                                   Foreground="#717EB2"
-                                    />
+                                   Foreground="#717EB2" />
                         <TextBlock Text="7"
                                    Grid.Column="6"
-                                   Foreground="#717EB2"
-                                    />
+                                   Foreground="#717EB2" />
                         <TextBlock Text="8"
                                    Grid.Column="7"
-                                   Foreground="#717EB2"
-                                   />
+                                   Foreground="#717EB2" />
                         <TextBlock Text="9"
                                    Grid.Column="8"
-                                   Foreground="#717EB2"
-                                    />
+                                   Foreground="#717EB2" />
                         <TextBlock Text="10"
                                    Grid.Column="9"
-                                   Foreground="#717EB2"
-                                    />
+                                   Foreground="#717EB2" />
                         <TextBlock Text="11"
                                    Grid.Column="10"
-                                   Foreground="#717EB2"
-                                   />
+                                   Foreground="#717EB2" />
                         <TextBlock Text="12"
                                    Grid.Column="11"
-                                   Foreground="#717EB2"
-                                    />
+                                   Foreground="#717EB2" />
                     </Grid>
 
                     <lvc:CartesianChart Grid.Row="2"
@@ -263,11 +252,12 @@
                         </lvc:CartesianChart.AxisY>
 
                         <lvc:CartesianChart.Series>
-                            <lvc:LineSeries Name="Slm" 
-                                            Values="{Binding Charts}"
+                            <lvc:LineSeries Name="Slm"
+                                            Values="{Binding ChartTol}"
                                             Opacity="0.5"
                                             StrokeThickness="2"
                                             Title="Doanh thu tổng"
+                                            Foreground="Blue"
                                             Stroke="#ADA4FD"
                                             PointGeometrySize="0">
                                 <lvc:LineSeries.Fill>
@@ -283,7 +273,7 @@
                             </lvc:LineSeries>
                             <lvc:LineSeries Name="Service"
                                             Title="Doanh thu dịch vụ"
-                                            Values="{Binding Chart2}"
+                                            Values="{Binding ChartSer}"
                                             Opacity="0.1"
                                             StrokeThickness="2"
                                             Stroke="#ff0000"
@@ -303,7 +293,7 @@
                     </lvc:CartesianChart>
 
                 </Grid>
-                
+
             </Grid>
         </StackPanel>
     </Grid>
