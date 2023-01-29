@@ -230,7 +230,7 @@ namespace Hotel.ViewModel
             iOrdered = 1;
             RoomList.Clear();
             foreach (var room in _roomListdb)
-                if (room.Status == "Đã đặt")
+                if (room.Status == "Đã đặt" || room.Status == "Đang sử dụng")
                     RoomList.Add(room);
         }
         public void LoadRepair()
