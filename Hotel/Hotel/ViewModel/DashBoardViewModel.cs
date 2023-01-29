@@ -11,10 +11,17 @@ namespace Hotel.ViewModel
     internal class DashBoardViewModel : BaseViewModel
     {
         private ChartValues<double> chart;
+        private ChartValues<double> chart2;
         public ChartValues<double> Charts
         {
             get { return chart; }
             set { chart = value; OnPropertyChanged(); }
+        }
+
+        public ChartValues<double> Chart2
+        {
+            get { return chart2; }
+            set { chart2 = value; OnPropertyChanged(); }
         }
         private int revenue;
         public int Revenue
@@ -43,6 +50,7 @@ namespace Hotel.ViewModel
         public DashBoardViewModel()
         {
             Charts = new ChartValues<double> { 21, 12, 32, 23, 34, 43, 45, 54, 56, 65, 100, 18 };
+            Chart2 = new ChartValues<double> { 12, 2, 53, 34, 56, 76, 78, 98, 90, 100, 2, 34 };
             LoadDB(DateTime.Now.Month);
         }
         private void LoadDB(int Month)

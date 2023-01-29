@@ -132,8 +132,7 @@
             </WrapPanel>
             <Grid Height="560">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1.5*" />
-                    <ColumnDefinition />
+                    
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
@@ -148,59 +147,83 @@
                         <materialDesign:PackIcon Kind="Check"
                                                  Height="50"
                                                  Width="50"></materialDesign:PackIcon>
-                        <TextBlock Text="Doanh thu từng tháng"
-                                   FontFamily="{StaticResource Coiny}"
-                                   FontSize="40" />
+                        <TextBlock Text="Doanh thu từng tháng (triệu/tháng)"
+                                   FontFamily="{StaticResource Mali}"
+                                   FontWeight="Bold"
+                                   FontSize="40"
+                                   Margin=" 0 0 0 20"/>
                     </StackPanel>
-                    <TextBlock Text="triệu"
-                               Grid.Row="1"
-                               Margin="30 0 0 5"
-                               FontSize="15" />
-                    <StackPanel   Grid.Row="2"
-                                  Orientation="Horizontal"
-                                  Margin="47,360,0,93"
+                    <Grid   Grid.Row="2"
+                                  Margin="55,418,10,50"
                                   Height="18">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
                         <TextBlock Text="1"
+                                   Grid.Column="0"
                                    Foreground="#717EB2" />
                         <TextBlock Text="2"
+                                   Grid.Column="1"
                                    Foreground="#717EB2"
-                                   Margin="37 0 0 0" />
+                                  />
                         <TextBlock Text="3"
+                                   Grid.Column="2"
                                    Foreground="#717EB2"
-                                   Margin="37 0 0 0" />
+                                   />
                         <TextBlock Text="4"
+                                   Grid.Column="3"
                                    Foreground="#717EB2"
-                                   Margin="37 0 0 0" />
+                                    />
                         <TextBlock Text="5"
+                                   Grid.Column="4"
                                    Foreground="#717EB2"
-                                   Margin="37 0 0 0" />
+                                    />
                         <TextBlock Text="6"
+                                   Grid.Column="5"
                                    Foreground="#717EB2"
-                                   Margin="37 0 0 0" />
+                                    />
                         <TextBlock Text="7"
+                                   Grid.Column="6"
                                    Foreground="#717EB2"
-                                   Margin="37 0 0 0" />
+                                    />
                         <TextBlock Text="8"
+                                   Grid.Column="7"
                                    Foreground="#717EB2"
-                                   Margin="37 0 0 0" />
+                                   />
                         <TextBlock Text="9"
+                                   Grid.Column="8"
                                    Foreground="#717EB2"
-                                   Margin="37 0 0 0" />
+                                    />
                         <TextBlock Text="10"
+                                   Grid.Column="9"
                                    Foreground="#717EB2"
-                                   Margin="37 0 0 0" />
+                                    />
                         <TextBlock Text="11"
+                                   Grid.Column="10"
                                    Foreground="#717EB2"
-                                   Margin="37 0 0 0" />
+                                   />
                         <TextBlock Text="12"
+                                   Grid.Column="11"
                                    Foreground="#717EB2"
-                                   Margin="37 0 0 0" />
-                    </StackPanel>
+                                    />
+                    </Grid>
 
                     <lvc:CartesianChart Grid.Row="2"
                                         VerticalAlignment="Top"
-                                        Margin="30,0,0,0"
-                                        Height="355">
+                                        Margin="30,0,68,0"
+                                        Height="400"
+                                        LegendLocation="Top">
                         <lvc:CartesianChart.Background>
                             <LinearGradientBrush StartPoint="0.5,0"
                                                  EndPoint="0.5,1">
@@ -217,10 +240,11 @@
                         </lvc:CartesianChart.DataTooltip>
 
                         <lvc:CartesianChart.AxisX>
-                            <lvc:Axis MinValue="1"
-                                      MaxValue="5"
+                            <lvc:Axis MinValue="0"
+                                      MaxValue="11"
                                       Foreground="#717EB2"
-                                      ShowLabels="False">
+                                      ShowLabels="False"
+                                      Labels="Tháng 1,Tháng 2,Tháng 3,Tháng 4,Tháng 5,Tháng 6,Tháng 7,Tháng 8,Tháng 9,Tháng 10,Tháng 11,Tháng 12">
                                 <lvc:Axis.Separator>
                                     <lvc:Separator StrokeThickness="0"
                                                    Step="1" />
@@ -239,17 +263,38 @@
                         </lvc:CartesianChart.AxisY>
 
                         <lvc:CartesianChart.Series>
-                            <lvc:LineSeries Name="Slm"
+                            <lvc:LineSeries Name="Slm" 
                                             Values="{Binding Charts}"
+                                            Opacity="0.5"
                                             StrokeThickness="2"
+                                            Title="Doanh thu tổng"
                                             Stroke="#ADA4FD"
                                             PointGeometrySize="0">
                                 <lvc:LineSeries.Fill>
                                     <LinearGradientBrush StartPoint="0.5,0"
-                                                         EndPoint="0.5,1">
+                                                         EndPoint="0.5,1"
+                                                         Opacity="0.5">
                                         <GradientStop Color="#B397E2"
                                                       Offset="0.4" />
                                         <GradientStop Color="#6A6AE4"
+                                                      Offset="1.2" />
+                                    </LinearGradientBrush>
+                                </lvc:LineSeries.Fill>
+                            </lvc:LineSeries>
+                            <lvc:LineSeries Name="Service"
+                                            Title="Doanh thu dịch vụ"
+                                            Values="{Binding Chart2}"
+                                            Opacity="0.1"
+                                            StrokeThickness="2"
+                                            Stroke="#ff0000"
+                                            PointGeometrySize="0">
+                                <lvc:LineSeries.Fill>
+                                    <LinearGradientBrush StartPoint="0.5,0"
+                                                         EndPoint="0.5,1"
+                                                         Opacity="0.5">
+                                        <GradientStop Color="#ffb3b3"
+                                                      Offset="0.4" />
+                                        <GradientStop Color="#660000"
                                                       Offset="1.2" />
                                     </LinearGradientBrush>
                                 </lvc:LineSeries.Fill>
@@ -258,92 +303,7 @@
                     </lvc:CartesianChart>
 
                 </Grid>
-                <Grid Grid.Column="1"
-                      Margin="0 100 0 0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <StackPanel Orientation="Horizontal"
-                                Margin="20 0 20 0"
-                                Grid.Row="0"
-                                Background="#0080ff">
-                        <materialDesign:PackIcon Kind="Check"
-                                                 Height="20"
-                                                 Width="20"></materialDesign:PackIcon>
-                        <TextBlock Text="Thông tin kinh doanh hôm nay"
-                                   FontFamily="{StaticResource Coiny}"
-                                   Foreground="White"
-                                   FontSize="15" />
-                    </StackPanel>
-                    <StackPanel Margin="20 0 20 0"
-                                Grid.Row="1"
-                                Height="200"
-                                VerticalAlignment="Top"
-                                Background="#d7dbdb">
-                        <StackPanel  Orientation="Horizontal">
-                            <TextBlock Text="0"
-                                       Margin="15 10 0 0"
-                                       FontWeight="DemiBold"
-                                       FontFamily="{StaticResource Quicksand}"
-                                       FontSize="20"></TextBlock>
-                            <TextBlock Text="đ"
-                                       Margin="3 10 0 0"
-                                       FontWeight="DemiBold"
-                                       FontFamily="{StaticResource Quicksand}"
-                                       FontSize="20"></TextBlock>
-                            <TextBlock Text="Doanh thu"
-                                       Margin="3 15 0 0"
-                                       FontFamily="{StaticResource Quicksand}"
-                                       FontSize="15"></TextBlock>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="0"
-                                       Margin="15 10 0 0"
-                                       FontWeight="DemiBold"
-                                       FontFamily="{StaticResource Quicksand}"
-                                       FontSize="20"></TextBlock>
-                            <TextBlock Text="phòng được đặt"
-                                       Margin="3 15 0 0"
-                                       FontFamily="{StaticResource Quicksand}"
-                                       FontSize="15"></TextBlock>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="0"
-                                       Margin="15 10 0 0"
-                                       FontWeight="DemiBold"
-                                       FontFamily="{StaticResource Quicksand}"
-                                       FontSize="20"></TextBlock>
-                            <TextBlock Text="phòng được trả"
-                                       Margin="3 15 0 0"
-                                       FontFamily="{StaticResource Quicksand}"
-                                       FontSize="15"></TextBlock>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="0"
-                                       Margin="15 10 0 0"
-                                       FontWeight="DemiBold"
-                                       FontFamily="{StaticResource Quicksand}"
-                                       FontSize="20"></TextBlock>
-                            <TextBlock Text="phòng được trả"
-                                       Margin="3 15 0 0"
-                                       FontFamily="{StaticResource Quicksand}"
-                                       FontSize="15"></TextBlock>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="0"
-                                       Margin="15 10 0 0"
-                                       FontWeight="DemiBold"
-                                       FontFamily="{StaticResource Quicksand}"
-                                       FontSize="20"></TextBlock>
-                            <TextBlock Text="khách hàng"
-                                       Margin="3 15 0 0"
-                                       FontFamily="{StaticResource Quicksand}"
-                                       FontSize="15"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-
-                </Grid>
+                
             </Grid>
         </StackPanel>
     </Grid>
