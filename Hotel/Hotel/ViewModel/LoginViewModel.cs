@@ -13,6 +13,7 @@ namespace Hotel.ViewModel
 {
     internal class LoginViewModel : BaseViewModel
     {
+        private bool isDbLoaded = false;
         private ObservableCollection<LoginVM> staffAcountList = new ObservableCollection<LoginVM>();
         public int MaNV { get; set; }
         public int LoaiNV { get; set; }
@@ -47,9 +48,11 @@ namespace Hotel.ViewModel
                     foreach (var item in select)
                         staffAcountList.Add(new LoginVM(item.TAIKHOAN, item.MATKHAU, item.MANV, (int)item.LOAINV, item.TENNV));
                 }
+                isDbLoaded = true;
             }
-            catch (Exception ex)
+            catch (Exception err)
             {
+                isDbLoaded = false;
                 new DialogCustomize("Mất kết nối cơ sở dữ liệu!").ShowDialog();
             }
         }
@@ -59,6 +62,7 @@ namespace Hotel.ViewModel
             MaNV = -1;
             LoaiNV = -1;
             TenNV = "";
+            if (!isDbLoaded) return;
             Login = new RelayCommand<LoginView>((parameter) => true, (parameter) => EnterLogin(parameter));
         }
         private void EnterLogin(LoginView cur)
@@ -76,8 +80,7 @@ namespace Hotel.ViewModel
 
             if (!handleLogin(username, password))
             {
-                DialogCustomize tmp = new DialogCustomize("Sai thông tin đăng nhập!");
-                tmp.ShowDialog();
+                (new DialogCustomize("Sai thông tin đăng nhập!")).ShowDialog();
                 return;
             }
             CheckIn(MaNV);
