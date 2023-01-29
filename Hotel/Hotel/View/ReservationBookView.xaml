@@ -69,7 +69,7 @@
                                     x:Name="dtpNgayBD"
                                     FontFamily="{StaticResource Vollkorn}"
                                     FontSize="14"
-                                    materialDesign:HintAssist.Hint="Ngày bắt đầu"
+                                    materialDesign:HintAssist.Hint="Ngày nhận phòng"
                                     SelectedDate="{Binding DateStart}"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                     </Grid>
@@ -89,7 +89,7 @@
                                                    FontSize="14"
                                                    SelectedTime="{Binding TimeStart}"
                                                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
-                                                   materialDesign:HintAssist.Hint="Giờ bắt đầu" />
+                                                   materialDesign:HintAssist.Hint="Giờ nhận phòng" />
                     </Grid>
                     <Grid Height="40"
                           Width="150"
@@ -105,7 +105,7 @@
                                     FontFamily="{StaticResource Vollkorn}"
                                     FontSize="14"
                                     SelectedDate="{Binding DateEnd}"
-                                    materialDesign:HintAssist.Hint="Ngày kết thúc"
+                                    materialDesign:HintAssist.Hint="Ngày trả phòng"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                     </Grid>
                     <Grid Height="40"
@@ -124,7 +124,9 @@
                                                    Margin="30 0 0 0"
                                                    SelectedTime="{Binding TimeEnd}"
                                                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
-                                                   materialDesign:HintAssist.Hint="Giờ kết thúc" />
+                                                   materialDesign:HintAssist.Hint="Giờ trả phòng" 
+                                                    
+                                                   />
                     </Grid>
                 </Grid>
 
@@ -411,7 +413,7 @@
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn  Header="Ngày BD"
+                                <GridViewColumn  Header="Ngày nhận"
                                                  Width="125">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
@@ -420,7 +422,7 @@
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn  Header="Ngày KT"
+                                <GridViewColumn  Header="Ngày trả"
                                                  Width="125">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
