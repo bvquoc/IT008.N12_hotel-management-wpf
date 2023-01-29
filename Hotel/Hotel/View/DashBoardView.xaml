@@ -153,8 +153,20 @@
                                    FontSize="40"
                                    Margin=" 0 0 0 20" />
                     </StackPanel>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="240 0 0 0">
+                        <StackPanel Orientation="Horizontal" Margin="0 0 30 0">
+                            <materialDesign:PackIcon Foreground="#ADA4FD" Kind="CircleOutline"
+                                                     Height="20" Width="20"></materialDesign:PackIcon>
+                            <TextBlock Text="Doanh thu tổng" FontFamily="{StaticResource Coiny}" FontSize="15"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Height="20" Width="20" Foreground="#ff0000" Kind="CircleOutline"></materialDesign:PackIcon>
+                            <TextBlock Text="Doanh thu dịch vụ" FontFamily="{StaticResource Coiny}" FontSize="15"></TextBlock>
+                        </StackPanel>
+                        
+                    </StackPanel>
                     <Grid   Grid.Row="2"
-                            Margin="55,418,10,50"
+                            Margin="55,418,10,20"
                             Height="18">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
@@ -212,7 +224,7 @@
                                         VerticalAlignment="Top"
                                         Margin="30,0,68,0"
                                         Height="400"
-                                        LegendLocation="Top">
+                                        >
                         <lvc:CartesianChart.Background>
                             <LinearGradientBrush StartPoint="0.5,0"
                                                  EndPoint="0.5,1">
@@ -251,15 +263,19 @@
                             </lvc:Axis>
                         </lvc:CartesianChart.AxisY>
 
-                        <lvc:CartesianChart.Series>
+                        <lvc:CartesianChart.Series
+                            >
+                            
                             <lvc:LineSeries Name="Slm"
                                             Values="{Binding ChartTol}"
                                             Opacity="0.5"
                                             StrokeThickness="2"
                                             Title="Doanh thu tổng"
-                                            Foreground="Blue"
+                                           
                                             Stroke="#ADA4FD"
+                                            
                                             PointGeometrySize="0">
+                                
                                 <lvc:LineSeries.Fill>
                                     <LinearGradientBrush StartPoint="0.5,0"
                                                          EndPoint="0.5,1"
@@ -270,6 +286,7 @@
                                                       Offset="1.2" />
                                     </LinearGradientBrush>
                                 </lvc:LineSeries.Fill>
+                                
                             </lvc:LineSeries>
                             <lvc:LineSeries Name="Service"
                                             Title="Doanh thu dịch vụ"
