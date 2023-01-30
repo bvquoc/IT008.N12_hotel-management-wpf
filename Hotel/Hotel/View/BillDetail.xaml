@@ -78,7 +78,7 @@
                             <StackPanel Grid.Column="0"
                                         Margin="10">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Ngày ghi:"
+                                    <TextBlock Text="Ngày xuất:"
                                                FontSize="20"
                                                Margin="5"
                                                FontFamily="{StaticResource HinaMincho}" />
@@ -130,7 +130,7 @@
                                 <ColumnDefinition Width="1*" />
                                 <ColumnDefinition Width="1*" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="TÊN SP"
+                            <TextBlock Text="SẢN PHẨM"
                                        Grid.Column="0"
                                        FontSize="12"
                                        FontWeight="ExtraLight"
@@ -268,7 +268,7 @@
                                                FontSize="15"
                                                Margin="5"
                                                FontFamily="{StaticResource HinaMincho}" />
-                                    <TextBlock Text="123 456 78"
+                                    <TextBlock Text="99994848"
                                                FontSize="15"
                                                Margin="5"
                                                FontWeight="DemiBold"
@@ -285,7 +285,7 @@
                                                HorizontalAlignment="Right"
                                                Foreground="#FF62013C"
                                                FontWeight="Bold" />
-                                    <TextBlock Text="$"
+                                    <TextBlock Text="đ"
                                                FontSize="25"
                                                Margin="5"
                                                HorizontalAlignment="Right"
@@ -300,7 +300,7 @@
                                                HorizontalAlignment="Right"
                                                Foreground="#FF62013C"
                                                FontWeight="Bold" />
-                                    <TextBlock Text="$"
+                                    <TextBlock Text="đ"
                                                FontSize="15"
                                                Margin="5"
                                                HorizontalAlignment="Right"
@@ -315,7 +315,7 @@
                                                HorizontalAlignment="Right"
                                                Foreground="#FF62013C"
                                                FontWeight="Bold" />
-                                    <TextBlock Text="$"
+                                    <TextBlock Text="đ"
                                                FontSize="15"
                                                Margin="5"
                                                HorizontalAlignment="Right"
@@ -359,7 +359,7 @@
                                            Margin="5"
                                            FontWeight="Light"
                                            FontFamily="{StaticResource Vollkorn}" />
-                                <TextBlock Text="website.com"
+                                <TextBlock Text="© Hotel"
                                            VerticalAlignment="Center"
                                            FontSize="12"
                                            Margin="5"
