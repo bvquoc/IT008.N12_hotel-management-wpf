@@ -50,8 +50,7 @@ namespace Hotel.ViewModel
             }
             catch (Exception err)
             {
-                new DialogCustomize("Mất kết nối cơ sở dữ liệu!").ShowDialog();
-                MessageBox.Show(err.Message, "Error on loading Database");
+                new DialogCustomize("Mất kết nối cơ sở dữ liệu!\nError message: " + err.Message).ShowDialog();
             }
         }
         public LoginViewModel()
