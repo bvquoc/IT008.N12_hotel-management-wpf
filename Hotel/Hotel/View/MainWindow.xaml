@@ -207,6 +207,43 @@
                             </i:Interaction.Triggers>
                         </Button>
                     </Grid>
+                    <!--Quản lý hóa đơn-->
+                    <Grid Margin="0,-17"
+                          x:Name="menuBill">
+                        <Grid HorizontalAlignment="Right"
+                              Width="20"
+                              Height="85"
+                              Panel.ZIndex="1"
+                              Visibility="{Binding ElementName=btnBill,Path=Tag}">
+                            <Path Fill="White"
+                                  Stretch="Fill"
+                                  Data="M0 20.7C15 20 26.5 12 27 0V87.6C26 75 15.1 67.5 0 67V24Z" />
+                        </Grid>
+                        <Button x:Name="btnBill"
+                                Panel.ZIndex="2"
+                                Uid="4"
+                                FontSize="{Binding IsBill}"
+                                Cursor="Hand"
+                                Style="{StaticResource menuButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <icon:PackIconMaterial Kind="CurrencyUsd"
+                                                       Style="{StaticResource menuButtonIcon}" />
+                                <TextBlock Text="Hóa đơn"
+                                           FontFamily="{StaticResource Vollkorn}"
+                                           Style="{StaticResource menuButtonText}" />
+                            </StackPanel>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding GetUidCommand}"
+                                                           CommandParameter="{Binding ElementName=btnBill}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding MakeNavigation}"
+                                                           CommandParameter="{Binding ElementName=btnBill}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Grid>
                     <!--Quản lý khách hàng-->
                     <Grid Margin="0,-17"
                           x:Name="menuCustomer">
@@ -284,43 +321,7 @@
                             </i:Interaction.Triggers>
                         </Button>
                     </Grid>
-                    <!--Quản lý hóa đơn-->
-                    <Grid Margin="0,-17"
-                          x:Name="menuBill">
-                        <Grid HorizontalAlignment="Right"
-                              Width="20"
-                              Height="85"
-                              Panel.ZIndex="1"
-                              Visibility="{Binding ElementName=btnBill,Path=Tag}">
-                            <Path Fill="White"
-                                  Stretch="Fill"
-                                  Data="M0 20.7C15 20 26.5 12 27 0V87.6C26 75 15.1 67.5 0 67V24Z" />
-                        </Grid>
-                        <Button x:Name="btnBill"
-                                Panel.ZIndex="2"
-                                Uid="4"
-                                FontSize="{Binding IsBill}"
-                                Cursor="Hand"
-                                Style="{StaticResource menuButton}">
-                            <StackPanel Orientation="Horizontal">
-                                <icon:PackIconMaterial Kind="CurrencyUsd"
-                                                       Style="{StaticResource menuButtonIcon}" />
-                                <TextBlock Text="Hóa đơn"
-                                           FontFamily="{StaticResource Vollkorn}"
-                                           Style="{StaticResource menuButtonText}" />
-                            </StackPanel>
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="MouseEnter">
-                                    <i:InvokeCommandAction Command="{Binding GetUidCommand}"
-                                                           CommandParameter="{Binding ElementName=btnBill}" />
-                                </i:EventTrigger>
-                                <i:EventTrigger EventName="Click">
-                                    <i:InvokeCommandAction Command="{Binding MakeNavigation}"
-                                                           CommandParameter="{Binding ElementName=btnBill}" />
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </Button>
-                    </Grid>
+
                     <!--Quản lý dịch vụ-->
                     <Grid Margin="0,-17"
                           Name="menuService">
