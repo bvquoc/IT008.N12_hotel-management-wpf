@@ -150,7 +150,7 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\BillDetailViewModel.cs" />
     <Compile Include="ViewModel\BillViewModel.cs" />
-    <Compile Include="ViewModel\BillVM.cs" />
+    <Compile Include="Model\BillVM.cs" />
     <Compile Include="ViewModel\BookServiceViewModel.cs" />
     <Compile Include="ViewModel\ChangeInfoRoomViewModel.cs" />
     <Compile Include="ViewModel\CustomerDetailViewModel.cs" />
@@ -158,8 +158,8 @@
     <Compile Include="ViewModel\CustomerManagementVM.cs" />
     <Compile Include="ViewModel\DashBoardViewModel.cs" />
     <Compile Include="ViewModel\EmployeeDetailViewModel.cs" />
-    <Compile Include="ViewModel\LoginVM.cs" />
-    <Compile Include="ViewModel\ReserveVM.cs" />
+    <Compile Include="Model\LoginVM.cs" />
+    <Compile Include="Model\ReserveVM.cs" />
     <Compile Include="ViewModel\RoomDetailViewModel.cs" />
     <Compile Include="ViewModel\RoomManagementViewModel.cs" />
     <Compile Include="ViewModel\RoomManagementVM.cs" />
@@ -167,11 +167,11 @@
     <Compile Include="ViewModel\NavigationViewModel.cs" />
     <Compile Include="ViewModel\ReservationBookViewModel.cs" />
     <Compile Include="ViewModel\RoomViewModel.cs" />
-    <Compile Include="ViewModel\RoomVM.cs" />
+    <Compile Include="Model\RoomVM.cs" />
     <Compile Include="ViewModel\EmployeeViewModel.cs" />
     <Compile Include="ViewModel\ServicesViewModel.cs" />
-    <Compile Include="ViewModel\EmployeeVM.cs" />
-    <Compile Include="ViewModel\ServiceVM.cs" />
+    <Compile Include="Model\EmployeeVM.cs" />
+    <Compile Include="Model\ServiceVM.cs" />
     <Compile Include="View\AddEmployee.xaml.cs">
       <DependentUpon>AddEmployee.xaml</DependentUpon>
     </Compile>
