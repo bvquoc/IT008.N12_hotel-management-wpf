@@ -37,6 +37,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\icons8-5-star-hotel-48.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.4.3.0\lib\net462\ControlzEx.dll</HintPath>
@@ -420,6 +423,10 @@
     <Resource Include="Images\HotelLogoWhite.png" />
     <Resource Include="Images\Active.png" />
     <Resource Include="Images\Bell.png" />
+    <Resource Include="Images\icons8-5-star-hotel-48.ico" />
+    <Content Include="Images\icons8-5-star-hotel-48.png" />
+    <Resource Include="Images\icons8-5-star-hotel-96.ico" />
+    <Content Include="Images\icons8-5-star-hotel-96.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>

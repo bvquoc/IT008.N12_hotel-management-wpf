@@ -11,6 +11,7 @@
         mc:Ignorable="d"
         Title="Menu"
         Height="750"
+    
         Width="1200"
         Background="Transparent"
         AllowsTransparency="True"

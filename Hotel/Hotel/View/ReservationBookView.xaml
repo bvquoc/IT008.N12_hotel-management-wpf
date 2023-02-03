@@ -57,7 +57,7 @@
                 <Grid Grid.Row="1"
                       HorizontalAlignment="Center">
                     <Grid Height="40"
-                          Width="150"
+                          Width="160"
                           VerticalAlignment="Top"
                           HorizontalAlignment="Left"
                           Margin="10 30 0 0">
@@ -92,7 +92,7 @@
                                                    materialDesign:HintAssist.Hint="Giờ nhận phòng" />
                     </Grid>
                     <Grid Height="40"
-                          Width="150"
+                          Width="160"
                           VerticalAlignment="Top"
                           HorizontalAlignment="Left"
                           Margin="10 100 0 0">
