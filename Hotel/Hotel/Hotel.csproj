@@ -155,14 +155,14 @@
     <Compile Include="ViewModel\ChangeInfoRoomViewModel.cs" />
     <Compile Include="ViewModel\CustomerDetailViewModel.cs" />
     <Compile Include="ViewModel\CustomerManagementViewModel.cs" />
-    <Compile Include="ViewModel\CustomerManagementVM.cs" />
+    <Compile Include="Model\CustomerManagementVM.cs" />
     <Compile Include="ViewModel\DashBoardViewModel.cs" />
     <Compile Include="ViewModel\EmployeeDetailViewModel.cs" />
     <Compile Include="Model\LoginVM.cs" />
     <Compile Include="Model\ReserveVM.cs" />
     <Compile Include="ViewModel\RoomDetailViewModel.cs" />
     <Compile Include="ViewModel\RoomManagementViewModel.cs" />
-    <Compile Include="ViewModel\RoomManagementVM.cs" />
+    <Compile Include="Model\RoomManagementVM.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\NavigationViewModel.cs" />
     <Compile Include="ViewModel\ReservationBookViewModel.cs" />
