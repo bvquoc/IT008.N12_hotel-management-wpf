@@ -38,7 +38,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Images\icons8-5-star-hotel-48.ico</ApplicationIcon>
+    <ApplicationIcon>Images\4497530.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
@@ -424,6 +424,7 @@
     <Resource Include="Images\Active.png" />
     <Resource Include="Images\Bell.png" />
     <Resource Include="Images\icons8-5-star-hotel-48.ico" />
+    <Resource Include="Images\4497530.ico" />
     <Content Include="Images\icons8-5-star-hotel-48.png" />
     <Resource Include="Images\icons8-5-star-hotel-96.ico" />
     <Content Include="Images\icons8-5-star-hotel-96.png" />
