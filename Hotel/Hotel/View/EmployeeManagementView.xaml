@@ -96,7 +96,7 @@
         <Grid Grid.Row="1">
             <Grid HorizontalAlignment="Center"
                   VerticalAlignment="Top"
-                  Width="700"
+                  Width="730"
                   Height="450"
                   Margin="0 40 0 0">
                 <Grid.ColumnDefinitions>
@@ -104,7 +104,7 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.Clip>
-                    <RectangleGeometry Rect="0 0 700 450"
+                    <RectangleGeometry Rect="0 0 730 450"
                                        RadiusX="10"
                                        RadiusY="10" />
                 </Grid.Clip>
@@ -145,7 +145,7 @@
                                 </Style>
                             </GridView.ColumnHeaderContainerStyle>
                             <GridViewColumn  Header="Mã"
-                                             Width="80">
+                                             Width="110">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
 
