@@ -73,7 +73,11 @@ namespace Hotel.ViewModel
                 return;
             }
 
-
+            //string EncryptPass = Encryption.Encrypt(password);
+            //MessageBox.Show(EncryptPass);
+            //MessageBox.Show(EncryptPass.Length.ToString());
+            //MessageBox.Show(Encryption.Decrypt(EncryptPass));
+            //return;
             if (!handleLogin(username, password))
             {
                 (new DialogCustomize("Sai thông tin đăng nhập!")).ShowDialog();

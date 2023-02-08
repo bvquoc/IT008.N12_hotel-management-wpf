@@ -148,7 +148,7 @@ namespace Hotel.ViewModel
 
 
             //demo líst notify
-            loadDbNotify();
+            //loadDbNotify();
         }
         private void makeNavigation(Button parameter)
         {
