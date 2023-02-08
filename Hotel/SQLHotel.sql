@@ -28,7 +28,8 @@ CREATE TABLE DICHVU
 (
 	MADV INT IDENTITY(1,1),
 	TENDV NVARCHAR(100),
-	DONGIA INT
+	DONGIA INT,
+	IsDelete INT DEFAULT 0
 )
 
 GO
@@ -198,7 +199,7 @@ insert into PHONG(TENPHONG, LOAIPHONG, TRANGTHAI, DONGIA)
 values (N'V206', N'Vip', N'Trống', 200000)
 
 insert into KHACH(CCCD, TENKH, SDT, DCHI, GIOITINH)
-values ('045203543', N'Ông Vương', 0538184294, N'12 Lê Văn Tám, Q9, HCM', N'Nam')
+values ('123123123', N'Ông Vương', 0538184294, N'12 Lê Văn Tám, Q9, HCM', N'Nam')
 insert into KHACH(CCCD, TENKH, SDT, DCHI, GIOITINH)
 values ('043758173', N'Trần Dữ', 0374916234, N'Lý Tự Trọng, Hà Nội', N'Nam')
 insert into KHACH(CCCD, TENKH, SDT, DCHI, GIOITINH)

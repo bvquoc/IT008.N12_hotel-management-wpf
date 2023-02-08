@@ -70,7 +70,10 @@ namespace Hotel.ViewModel
             {
                 var select = from s in db.DICHVUs select s;
                 foreach (var service in select)
-                    ServiceList.Add(new ServiceVM() { ID = service.MADV.ToString(), Name = service.TENDV.ToString(), Price = service.DONGIA.Value });
+                {
+                    if (service.IsDelete != 1)
+                        ServiceList.Add(new ServiceVM() { ID = service.MADV.ToString(), Name = service.TENDV.ToString(), Price = service.DONGIA.Value });
+                }
             }
             ServiecCollection = CollectionViewSource.GetDefaultView(ServiceList);
         }

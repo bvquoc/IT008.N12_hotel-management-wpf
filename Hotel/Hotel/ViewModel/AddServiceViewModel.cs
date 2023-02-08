@@ -37,7 +37,7 @@ namespace Hotel.ViewModel
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                new DialogCustomize(ex.Message).ShowDialog();
             }
         }
     }

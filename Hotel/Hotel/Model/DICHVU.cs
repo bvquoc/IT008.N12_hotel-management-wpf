@@ -23,6 +23,7 @@ namespace Hotel.Model
         public int MADV { get; set; }
         public string TENDV { get; set; }
         public Nullable<int> DONGIA { get; set; }
+        public Nullable<int> IsDelete { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CUNGCAP> CUNGCAPs { get; set; }

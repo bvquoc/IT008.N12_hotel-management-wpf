@@ -32,16 +32,23 @@ namespace Hotel.ViewModel
         }
         public void deleteService(ServiceManagementView p)
         {
-            using (var db = new QLYHOTELEntities())
+            try
             {
-                int id = Int32.Parse(this.ID);
-                var delete = (from d in db.DICHVUs where d.MADV == id select d).Single();
-                db.DICHVUs.Remove(delete);
-                db.SaveChanges();
+                using (var db = new QLYHOTELEntities())
+                {
+                    int id = Int32.Parse(this.ID);
+                    var delete = (from d in db.DICHVUs where d.MADV == id select d).Single();
+                    delete.IsDelete = 1;
+                    db.SaveChanges();
+                }
+                //Update data
+                ServiceViewModel serviceViewModel = new ServiceViewModel();
+                p.DataContext = serviceViewModel;
             }
-            //Update data
-            ServiceViewModel serviceViewModel = new ServiceViewModel();
-            p.DataContext = serviceViewModel;
+            catch (Exception ex)
+            {
+                new DialogCustomize(ex.Message).ShowDialog();
+            }
         }
     }
 }

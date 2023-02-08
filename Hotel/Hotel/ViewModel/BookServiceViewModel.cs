@@ -101,6 +101,8 @@ namespace Hotel.ViewModel
                 foreach (var p in select)
                 {
                     bool ok = true;
+                    if (p.IsDelete == 1)
+                        ok = false;
 
                     foreach (var bok in ListSVBook)
                         if (bok.ID == p.MADV.ToString())

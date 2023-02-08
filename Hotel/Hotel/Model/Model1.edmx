@@ -37,6 +37,7 @@
           <Property Name="MADV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TENDV" Type="nvarchar" MaxLength="100" />
           <Property Name="DONGIA" Type="int" />
+          <Property Name="IsDelete" Type="int" />
         </EntityType>
         <EntityType Name="KHACH">
           <Key>
@@ -254,6 +255,7 @@
           <Property Name="MADV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TENDV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DONGIA" Type="Int32" />
+          <Property Name="IsDelete" Type="Int32" />
           <NavigationProperty Name="CUNGCAPs" Relationship="QLYHOTELModel.CC_DV" FromRole="DICHVU" ToRole="CUNGCAP" />
         </EntityType>
         <EntityType Name="KHACH">
@@ -405,6 +407,7 @@
           <EntitySetMapping Name="DICHVUs">
             <EntityTypeMapping TypeName="QLYHOTELModel.DICHVU">
               <MappingFragment StoreEntitySet="DICHVU">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
                 <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
                 <ScalarProperty Name="TENDV" ColumnName="TENDV" />
                 <ScalarProperty Name="MADV" ColumnName="MADV" />
