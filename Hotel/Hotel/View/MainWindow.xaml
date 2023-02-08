@@ -497,7 +497,7 @@
             </Grid.ColumnDefinitions>
             <!--notification-->
             <Button x:Name="Notification"
-                    Grid.Column="1"
+                    Margin="0 0 15 0"
                     Width="25"
                     Height="20"
                     HorizontalAlignment="Right"
@@ -538,7 +538,7 @@
                     FontSize="16"
                     FontFamily="Montserrat"
                     Cursor="Hand"
-                    Grid.Column="2"
+                    Grid.Column="1"
                     Click="btnMinimize_Click">
                 <Button.Style>
                     <Style TargetType="Button">
@@ -549,6 +549,42 @@
                                      Value="True">
                                 <Setter Property="Background"
                                         Value="#0066ff" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="18"
+                                Height="18"
+                                CornerRadius="9"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="btnMaximize"
+                    BorderThickness="0"
+                    Content="{materialDesign:PackIcon Kind=WindowMaximize}"
+                    Foreground="White"
+                    FontSize="16"
+                    FontFamily="Montserrat"
+                    Cursor="Hand"
+                    Grid.Column="2"
+                    Click="btnMaximize_Click"
+                    Height="22"
+                    VerticalAlignment="Center">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background"
+                                Value="Aqua" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="OrangeRed" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -613,7 +649,7 @@
                     Height="500"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
-                    Margin="0 5 50 0"
+                    Margin="0 5 80 0"
                     Panel.ZIndex="1"
                     Background="#D6D6D6"
                     Visibility="{Binding VisNotify}"
