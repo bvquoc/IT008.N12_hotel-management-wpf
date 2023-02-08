@@ -251,7 +251,7 @@
                 </Grid>
                 <Grid Background="Transparent"
                       Grid.Row="2"
-                      Margin="0 30 0 0">
+                      Margin="0 0 0 0">
                     <Grid.Resources>
                         <Style TargetType="Button"
                                BasedOn="{StaticResource MaterialDesignRaisedDarkButton}">
@@ -265,10 +265,25 @@
                                     Value="30" />
                         </Style>
                     </Grid.Resources>
+                    <StackPanel Margin="0 0 200 0"
+                                Orientation="Horizontal"
+                                Height="auto">
+                        <TextBlock Text="Tổng tiền: "
+                               HorizontalAlignment="Right"
+                               FontFamily="{StaticResource Coiny}"
+                               FontSize="17"
+                               Margin="360 0 0 0"
+                               ></TextBlock>
+                        <TextBlock Text="1000000"
+                               FontSize="17"
+                               FontFamily="{StaticResource Coiny}"
+                               Margin="0 0 150 0"></TextBlock>
+                    </StackPanel>
+                    
                     <Button Content="Thoát"
                             FontFamily="{StaticResource Oswald}"
                             materialDesign:ButtonAssist.CornerRadius="8"
-                            Margin="0 0 110 10"
+                            Margin="0 30 110 10"
                             Background="OrangeRed"
                             Command="{Binding Cancel}"
                             CommandParameter="{Binding ElementName=bookservice}"
