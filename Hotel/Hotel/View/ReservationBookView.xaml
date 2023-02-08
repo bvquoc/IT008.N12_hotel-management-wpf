@@ -406,8 +406,10 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBox Text="{Binding NumPeo, Mode=TwoWay}"
+                                                     materialDesign:TextFieldAssist.CharacterCounterVisibility="Collapsed"
                                                      PreviewTextInput="PreviewTextInput"
                                                      materialDesign:HintAssist.Hint="Số người ở"
+                                                     MaxLength="1"
                                                      Margin="-11,0,0,0">
                                             </TextBox>
                                         </DataTemplate>
