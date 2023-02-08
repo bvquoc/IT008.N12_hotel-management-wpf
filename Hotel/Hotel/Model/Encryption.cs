@@ -13,25 +13,20 @@ namespace Hotel.Model
     {
         public static string Encrypt(string str)
         {
-            if (str == null) throw new ArgumentNullException("str");
-            var data = Encoding.Unicode.GetBytes(str);
-            byte[] encrypted = ProtectedData.Protect(data, null, DataProtectionScope.CurrentUser);
+            //Tạo MD5
+            MD5 mh = MD5.Create();
+            //Chuyển kiểu chuổi thành kiểu byte
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(str);
+            //mã hóa chuỗi đã chuyển
+            byte[] hash = mh.ComputeHash(inputBytes);
+            //tạo đối tượng StringBuilder (làm việc với kiểu dữ liệu lớn)
+            StringBuilder sb = new StringBuilder();
 
-            //return as base64 string
-            return Convert.ToBase64String(encrypted);
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
+            }
+            return sb.ToString();
         }
-
-        public static string Decrypt(string str)
-        {
-            if (str == null) throw new ArgumentNullException("str");
-
-            //parse base64 string
-            byte[] data = Convert.FromBase64String(str);
-
-            //decrypt data
-            byte[] decrypted = ProtectedData.Unprotect(data, null, DataProtectionScope.CurrentUser);
-            return Encoding.Unicode.GetString(decrypted);
-        }
-
     }
 }

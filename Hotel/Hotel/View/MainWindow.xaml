@@ -651,45 +651,44 @@
                     VerticalAlignment="Top"
                     Margin="0 5 80 0"
                     Panel.ZIndex="1"
-                    
                     Background="#D6D6D6"
                     Visibility="{Binding VisNotify}"
                     CornerRadius="10">
                 <StackPanel>
-                    <TextBlock Text="Thông báo" FontSize="17"
+                    <TextBlock Text="Thông báo"
+                               FontSize="17"
                                FontFamily="{StaticResource Coiny}"
                                Margin="20 10 0 0"></TextBlock>
                     <Grid Width="auto"
-                      Margin="0 15 0 0"
-                      HorizontalAlignment="Center">
+                          Margin="0 15 0 0"
+                          HorizontalAlignment="Center">
                         <ScrollViewer>
                             <StackPanel>
                                 <ItemsControl x:Name="lvNotify"
-                                          ItemsSource="{Binding LvNotify}">
+                                              ItemsSource="{Binding LvNotify}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <Button x:Name="btnNotify"
-                                                Width="335"
-                                                Height="100"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"
-                                                Margin="30 5 10 10"
-                                                Command="{Binding ElementName=lvNotify, Path=DataContext.ChoseNotify}"
-                                                CommandParameter="{Binding}"
-                                                ToolTip="Resource name: MaterialDesignRaisedAccentButton"
-                                                RenderTransformOrigin="0.5,0.5">
+                                                    Width="335"
+                                                    Height="100"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Margin="30 5 10 10"
+                                                    Command="{Binding ElementName=lvNotify, Path=DataContext.ChoseNotify}"
+                                                    CommandParameter="{Binding}"
+                                                    RenderTransformOrigin="0.5,0.5">
                                                 <Button.Resources>
                                                     <Style x:Key="ScaleStyle"
-                                                       TargetType="Grid">
+                                                           TargetType="Grid">
                                                         <Style.Triggers>
                                                             <Trigger Property="IsMouseOver"
-                                                                 Value="True">
+                                                                     Value="True">
                                                                 <Setter Property="Grid.ZIndex"
-                                                                    Value="1" />
+                                                                        Value="1" />
                                                                 <Setter Property="RenderTransform">
                                                                     <Setter.Value>
                                                                         <ScaleTransform ScaleX="1.05"
-                                                                                    ScaleY="1.05" />
+                                                                                        ScaleY="1.05" />
                                                                     </Setter.Value>
                                                                 </Setter>
                                                             </Trigger>
@@ -698,29 +697,29 @@
                                                 </Button.Resources>
                                                 <Button.Style>
                                                     <Style TargetType="Button"
-                                                       BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
+                                                           BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
                                                         <Setter Property="Background"
-                                                            Value="#FFFBEE" />
+                                                                Value="#FFFBEE" />
                                                         <Style.Triggers>
                                                             <DataTrigger Binding="{Binding Status}"
-                                                                     Value="Đã thanh toán">
+                                                                         Value="Đã thanh toán">
                                                                 <Setter Property="Background"
-                                                                    Value="#F1F1F1">
+                                                                        Value="#F1F1F1">
                                                                 </Setter>
                                                             </DataTrigger>
                                                             <Trigger Property="IsMouseOver"
-                                                                 Value="True">
+                                                                     Value="True">
                                                                 <Setter Property="Background"
-                                                                    Value="DarkGray" />
+                                                                        Value="DarkGray" />
                                                             </Trigger>
                                                             <Trigger Property="IsMouseOver"
-                                                                 Value="True">
+                                                                     Value="True">
                                                                 <Setter Property="Grid.ZIndex"
-                                                                    Value="1" />
+                                                                        Value="1" />
                                                                 <Setter Property="RenderTransform">
                                                                     <Setter.Value>
                                                                         <ScaleTransform ScaleX="1.05"
-                                                                                    ScaleY="1.05" />
+                                                                                        ScaleY="1.05" />
                                                                     </Setter.Value>
                                                                 </Setter>
                                                             </Trigger>
@@ -728,10 +727,10 @@
                                                     </Style>
                                                 </Button.Style>
                                                 <Grid Width="335"
-                                                  Height="100"
-                                                  Background="Transparent"
-                                                  Style="{StaticResource ScaleStyle}"
-                                                  RenderTransformOrigin="0.5,0.5">
+                                                      Height="100"
+                                                      Background="Transparent"
+                                                      Style="{StaticResource ScaleStyle}"
+                                                      RenderTransformOrigin="0.5,0.5">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="auto"></RowDefinition>
                                                         <RowDefinition Height="auto"></RowDefinition>
@@ -741,48 +740,48 @@
                                                     </Grid.RowDefinitions>
                                                     <Grid Grid.Row="0">
                                                         <TextBlock Text="#"
-                                                               Margin="30 0 0 0" />
+                                                                   Margin="30 0 0 0" />
                                                         <TextBlock Text="{Binding ID}"
-                                                               VerticalAlignment="Center"
-                                                               Margin="38 0 0 0"
-                                                               FontSize="13"
-                                                               Foreground="Black" />
+                                                                   VerticalAlignment="Center"
+                                                                   Margin="38 0 0 0"
+                                                                   FontSize="13"
+                                                                   Foreground="Black" />
                                                     </Grid>
                                                     <Grid Grid.Row="1">
                                                         <TextBlock Text="{Binding RoomName}"
-                                                               VerticalAlignment="Center"
-                                                               Margin="30 0 0 0"
-                                                               FontSize="13"
-                                                               Foreground="Black" />
+                                                                   VerticalAlignment="Center"
+                                                                   Margin="30 0 0 0"
+                                                                   FontSize="13"
+                                                                   Foreground="Black" />
                                                     </Grid>
                                                     <Grid Grid.Row="2">
                                                         <TextBlock Text="{Binding CustomerName}"
-                                                               VerticalAlignment="Center"
-                                                               Margin="30 0 0 0"
-                                                               FontSize="13"
-                                                               Foreground="Black" />
+                                                                   VerticalAlignment="Center"
+                                                                   Margin="30 0 0 0"
+                                                                   FontSize="13"
+                                                                   Foreground="Black" />
                                                     </Grid>
                                                     <Grid Grid.Row="3">
                                                         <TextBlock Text="{Binding DateEnd}"
-                                                               VerticalAlignment="Center"
-                                                               Margin="30 0 0 0"
-                                                               FontSize="13"
-                                                               Foreground="Black" />
+                                                                   VerticalAlignment="Center"
+                                                                   Margin="30 0 0 0"
+                                                                   FontSize="13"
+                                                                   Foreground="Black" />
                                                     </Grid>
                                                     <Grid Grid.Row="4">
                                                         <TextBlock Text="{Binding Status}"
-                                                               VerticalAlignment="Center"
-                                                               Margin="30 0 0 0"
-                                                               FontSize="13">
+                                                                   VerticalAlignment="Center"
+                                                                   Margin="30 0 0 0"
+                                                                   FontSize="13">
                                                             <TextBlock.Style>
                                                                 <Style TargetType="TextBlock">
                                                                     <Setter Property="Foreground"
-                                                                        Value="Red" />
+                                                                            Value="Red" />
                                                                     <Style.Triggers>
                                                                         <DataTrigger Binding="{Binding Status}"
-                                                                                 Value="Đã thanh toán">
+                                                                                     Value="Đã thanh toán">
                                                                             <Setter Property="Foreground"
-                                                                                Value="Black" />
+                                                                                    Value="Black" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>

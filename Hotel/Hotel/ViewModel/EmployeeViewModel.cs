@@ -88,7 +88,6 @@ namespace Hotel.ViewModel
                 detail._SDT.Text = select.SDT;
                 detail._Salary.Text = select.LUONG.ToString();
                 detail._Account.Text = select.TAIKHOAN;
-                detail.passtxt.Text = select.MATKHAU;
             }
             detail.ShowDialog();
             LoadAllSV();

@@ -52,7 +52,7 @@ namespace Hotel.ViewModel
                     throw new Exception("Chưa nhập mật khẩu!");
                 if (p._Salary.Text == "")
                     throw new Exception("Chưa nhập lương!");
-                employee.MATKHAU = p._Password.Password;
+                employee.MATKHAU = Encryption.Encrypt(p._Password.Password);
 
                 string LoaiNv = p.cbType.SelectionBoxItem.ToString();
                 switch (LoaiNv)

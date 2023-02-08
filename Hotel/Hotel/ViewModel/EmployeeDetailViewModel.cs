@@ -89,7 +89,8 @@ namespace Hotel.ViewModel
                     select.SDT = p._SDT.Text;
                     select.LUONG = Convert.ToInt32(p._Salary.Text);
                     select.TAIKHOAN = p._Account.Text;
-                    select.MATKHAU = p.passtxt.Text;
+                    if (p.passtxt.Text != "")
+                        select.MATKHAU = Encryption.Encrypt(p.passtxt.Text);
                     string LoaiNv = p.cbType.SelectionBoxItem.ToString();
                     switch (LoaiNv)
                     {
