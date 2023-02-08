@@ -120,6 +120,7 @@
     <Compile Include="Model\DICHVU.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Encryption.cs" />
     <Compile Include="Model\KHACH.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
