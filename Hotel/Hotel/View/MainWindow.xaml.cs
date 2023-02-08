@@ -39,7 +39,7 @@ namespace Hotel.View
                 if (isMaximize)
                 {
                     this.WindowState = WindowState.Normal;
-                    this.Width = 1100;
+                    this.Width = 1200;
                     this.Height = 750;
 
                     isMaximize = false;
@@ -74,7 +74,7 @@ namespace Hotel.View
             if (isMaximize)
             {
                 this.WindowState = WindowState.Normal;
-                this.Width = 1100;
+                this.Width = 1200;
                 this.Height = 750;
 
                 isMaximize = false;
