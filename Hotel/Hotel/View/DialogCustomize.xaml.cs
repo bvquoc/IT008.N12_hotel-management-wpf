@@ -28,7 +28,7 @@ namespace Hotel.View
             try
             {
                 txblMess.Text = mess;
-                
+
             }
             catch (Exception ex)
             {
@@ -46,6 +46,11 @@ namespace Hotel.View
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
+        }
+
+        private void Close(object sender, KeyEventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -141,10 +141,10 @@
                             Background="#FF49886C"
                             Content="OK"
                             FontFamily="{StaticResource Oswald}"
-                                 
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             FontSize="15"
+                            IsDefault="True"
                             Click="btnOK_Click">
                         <Button.Clip>
                             <RectangleGeometry Rect="0,0,70,30"
