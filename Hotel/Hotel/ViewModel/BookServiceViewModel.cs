@@ -9,12 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace Hotel.ViewModel
 {
     internal class BookServiceViewModel : BaseViewModel
     {
         private int idnv;
+        private readonly DispatcherTimer _timer;
         private ObservableCollection<ServiceVM> listSV;
 
         public ObservableCollection<ServiceVM> ListSV
@@ -30,6 +32,15 @@ namespace Hotel.ViewModel
             get { return listSVBook; }
             set { listSVBook = value; OnPropertyChanged(); }
         }
+
+        private int total;
+
+        public int Total
+        {
+            get { return total; }
+            set { total = value; OnPropertyChanged(); }
+        }
+
         public ICommand Load { get; set; }
         public ICommand AddSV { get; set; }
         public ICommand RemoveSV { get; set; }
@@ -45,12 +56,23 @@ namespace Hotel.ViewModel
 
             ListSVBook = new ObservableCollection<ServiceVM>();
             loaddbSv();
+
+            _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
+            _timer.Start();
+            _timer.Tick += (o, e) => loadTotal();
+
         }
         private void addsv(object p)
         {
             ServiceVM ser = (ServiceVM)p;
             ListSVBook.Add(ser);
             ListSV.Remove(ser);
+        }
+        private void loadTotal()
+        {
+            Total = 0;
+            foreach (var info in ListSVBook)
+                Total += info.Price * info.NumSer;
         }
         private void removesv(object p)
         {
@@ -111,7 +133,7 @@ namespace Hotel.ViewModel
                             break;
                         }
                     if (ok)
-                        ListSV.Add(new ServiceVM() { ID = p.MADV.ToString(), Name = p.TENDV, Price = (int)p.DONGIA });
+                        ListSV.Add(new ServiceVM() { ID = p.MADV.ToString(), Name = p.TENDV, Price = (int)p.DONGIA, NumSer = 1 });
                 }
             }
         }

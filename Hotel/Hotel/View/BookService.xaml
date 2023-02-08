@@ -269,17 +269,16 @@
                                 Orientation="Horizontal"
                                 Height="auto">
                         <TextBlock Text="Tổng tiền: "
-                               HorizontalAlignment="Right"
-                               FontFamily="{StaticResource Coiny}"
-                               FontSize="17"
-                               Margin="360 0 0 0"
-                               ></TextBlock>
-                        <TextBlock Text="1000000"
-                               FontSize="17"
-                               FontFamily="{StaticResource Coiny}"
-                               Margin="0 0 150 0"></TextBlock>
+                                   HorizontalAlignment="Right"
+                                   FontFamily="{StaticResource Coiny}"
+                                   FontSize="17"
+                                   Margin="360 0 0 0"></TextBlock>
+                        <TextBlock Text="{Binding Total, StringFormat={}{0:N0}}"
+                                   FontSize="17"
+                                   FontFamily="{StaticResource Coiny}"
+                                   Margin="0 0 150 0"></TextBlock>
                     </StackPanel>
-                    
+
                     <Button Content="Thoát"
                             FontFamily="{StaticResource Oswald}"
                             materialDesign:ButtonAssist.CornerRadius="8"
