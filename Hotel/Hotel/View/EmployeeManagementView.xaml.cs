@@ -12,10 +12,5 @@ namespace Hotel.View
         {
             InitializeComponent();
         }
-        private void btnAddClick(object sender, RoutedEventArgs e)
-        {
-            AddEmployee add = new AddEmployee();
-            add.ShowDialog();
-        }
     }
 }

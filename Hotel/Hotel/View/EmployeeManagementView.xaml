@@ -91,7 +91,7 @@
                 Background="#ffffb3"
                 VerticalAlignment="Center"
                 materialDesign:ButtonAssist.CornerRadius="10"
-                Click="btnAddClick">
+                Command="{Binding AddEmployee}">
         </Button>
         <Grid Grid.Row="1">
             <Grid HorizontalAlignment="Center"

@@ -45,8 +45,10 @@ namespace Hotel.ViewModel
             get { return _employeeCollection; }
             set { _employeeCollection = value; OnPropertyChanged(); }
         }
+        public ICommand AddEmployee { get; set; }
         public EmployeeViewModel()
         {
+            AddEmployee = new RelayCommand<object>((p) => true, (p) => OpenAddEmployee());
             LoadAllSV();
         }
         private bool FilterByName(object emp)
@@ -57,6 +59,11 @@ namespace Hotel.ViewModel
                 return empDetail != null && empDetail.Name.IndexOf(TextToFilterE, StringComparison.OrdinalIgnoreCase) >= 0;
             }
             return true;
+        }
+        private void OpenAddEmployee()
+        {
+            new AddEmployee().ShowDialog();
+            LoadAllSV();
         }
         public void LoadAllSV()
         {

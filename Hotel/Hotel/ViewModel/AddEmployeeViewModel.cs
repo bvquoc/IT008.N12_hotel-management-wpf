@@ -32,7 +32,7 @@ namespace Hotel.ViewModel
                     throw new Exception("CMND/CCCD không hợp lệ!");
                 employee.CCCD = p._CCCD.Text;
 
-                if (p._BirthDay.SelectedDate == null)
+                if (p._BirthDay.SelectedDate == null || DateTime.Compare(p._BirthDay.SelectedDate.Value, DateTime.Now) > 0)
                     throw new Exception("Ngày sinh không hợp lệ!");
                 employee.NGSINH = p._BirthDay.SelectedDate.Value;
 

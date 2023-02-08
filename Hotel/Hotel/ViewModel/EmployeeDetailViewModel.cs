@@ -68,7 +68,7 @@ namespace Hotel.ViewModel
                     throw new Exception("Chưa nhập CMND/CCCD!");
                 if (checkCMND(p._CCCD.Text))
                     throw new Exception("CMND/CCCD không hợp lệ!");
-                if (p._BirthDay.SelectedDate == null)
+                if (p._BirthDay.SelectedDate == null || DateTime.Compare(p._BirthDay.SelectedDate.Value, DateTime.Now) > 0)
                     throw new Exception("Ngày sinh không hợp lệ!");
                 if (p._SDT.Text == "")
                     throw new Exception("Chưa nhập số điện thoại!");
