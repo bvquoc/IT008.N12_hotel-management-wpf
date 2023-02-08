@@ -119,7 +119,7 @@
                                     <Button.Style>
                                         <Style TargetType="Button"
                                                BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
-
+                                            <Setter Property="Background" Value="#70c2b4"></Setter>
 
                                             <Style.Triggers>
 
@@ -150,9 +150,7 @@
                                         </Style>
 
                                     </Button.Style>
-                                    <Button.Background>
-                                        <SolidColorBrush Color="#70c2b4" />
-                                    </Button.Background>
+                                    
 
 
                                     <Grid Margin="-10 0 0 0"
