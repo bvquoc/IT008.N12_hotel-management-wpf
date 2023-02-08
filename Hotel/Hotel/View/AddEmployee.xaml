@@ -120,6 +120,7 @@
                         <TextBox x:Name="_CCCD"
                                  PreviewTextInput="PreviewTextInput"
                                  Grid.Column="2"
+                                 MaxLength="12"
                                  FontFamily="{StaticResource Vollkorn}"
                                  materialDesign:HintAssist.Hint="Căn cước công dân"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -194,6 +195,7 @@
                                  FontFamily="{StaticResource Vollkorn}"
                                  PreviewTextInput="PreviewTextInput"
                                  Grid.Column="2"
+                                 MaxLength="10"
                                  materialDesign:HintAssist.Hint="Số điện thoại"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                  VerticalAlignment="Center">
