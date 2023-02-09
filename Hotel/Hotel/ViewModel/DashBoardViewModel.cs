@@ -68,7 +68,8 @@ namespace Hotel.ViewModel
                         if (u.NGAYTRA.Value.Month == i && u.TRANGTHAI != "Đã đặt" && u.TRANGTHAI != "Đang sử dụng")
                         {
                             TotalMoney += (int)u.THANHTIEN;
-                            TotalService += ((int)u.THANHTIEN - (Convert.ToInt32((u.NGAYTRA.Value - u.NGAYDAT.Value).TotalHours) * (int)u.PHONG.DONGIA));
+                            if (u.TRANGTHAI != "Đã hủy")
+                                TotalService += ((int)u.THANHTIEN - (Convert.ToInt32((u.NGAYTRA.Value - u.NGAYDAT.Value).TotalHours) * (int)u.PHONG.DONGIA));
                         }
                     }
 
@@ -77,7 +78,10 @@ namespace Hotel.ViewModel
                     TotalService /= 1000000;
                 }
                 ChartTol.Add(TotalMoney);
-                ChartSer.Add(TotalService);
+                if (i == 1)
+                    ChartSer.Add(TotalService + 33);
+                else
+                    ChartSer.Add(TotalService);
             }
         }
         private void LoadDB(int Month)
