@@ -20,7 +20,7 @@
 - **Ngôn ngữ lập trình:** C# (.NET Framework)
 - **Framework & Library:** WPF, Entity
 - **Design Pattern:** MVVM
-- **Database**: SQL
+- **Database**: SQL Server
 
 ### Tính năng
 
