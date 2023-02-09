@@ -18,12 +18,15 @@
 
 - **IDE:** Visual Studio 2022
 - **Ngôn ngữ lập trình:** C# (.NET Framework)
-- **Framework & Library:** WPF
+- **Framework & Library:** WPF, Entity
 - **Design Pattern:** MVVM
 - **Database**: SQL
 
 ### Tính năng
 
-1. Features 1
-2. Features 2
-3. Features 3
+1. Quản lý Phòng, Đặt phòng
+2. Quản lý Hóa đơn
+3. Quản lý Khách hàng
+4. Quản lý Dịch vụ
+5. Quản lý Nhân viên
+6. Thống kê Doanh thu theo tháng
