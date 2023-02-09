@@ -78,10 +78,10 @@ namespace Hotel.ViewModel
                     TotalService /= 1000000;
                 }
                 ChartTol.Add(TotalMoney);
-                if (i == 1)
-                    ChartSer.Add(TotalService + 33);
-                else
-                    ChartSer.Add(TotalService);
+                //if (i == 1)
+                //    ChartSer.Add(TotalService + 33);
+                //else
+                ChartSer.Add(TotalService);
             }
         }
         private void LoadDB(int Month)
